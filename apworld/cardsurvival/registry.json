@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 2,
+ "registry_version": 3,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -56,7 +56,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "3d2a3fb85bfa7d042b0388308b2b1fd5",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ArrowBone",
@@ -65,7 +65,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "9bf1e4505c37fb6459ad884372959836",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ArrowFlint",
@@ -74,7 +74,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "cac14bfc7b2bc2943acdaa5397b28a2d",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_AshDressing",
@@ -137,7 +137,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "8d21aa699b2f4034eb213d51b37004c6",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_BeeSuit",
@@ -146,7 +146,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "b06298eb2fdf7a847bdb81620e056024",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Bellows",
@@ -164,7 +164,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "9eb58a8514fe86a4db5c39d77d495dce",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_BoneBroth",
@@ -173,7 +173,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "e468a43773b60c940ab93feac50ce888",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_BoneKnife",
@@ -182,7 +182,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "2d1409d1bfbb04f44a39dbb8dbce1a70",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Bookshelf",
@@ -191,7 +191,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "24326f158154a8441874778ca4d6b600",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Bow",
@@ -200,7 +200,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "97d3eedb64aec914bb90d5feb50e7e86",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_BowComposite",
@@ -209,7 +209,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "829275b73d6396e408f04793d11a22e3",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_BowDrill",
@@ -245,7 +245,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "e3513b137c19ce040bd852baeea4ff88",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ButterBakedOysters",
@@ -254,7 +254,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "bd966e4e61e694143b8a49c8d51cf865",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CageTrap",
@@ -263,7 +263,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "fef4c2ea123b4b447883a53a25ebc0e8",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CandiedGinger",
@@ -272,7 +272,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "6fb228ce50726b04099b6b66609c0071",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Candles",
@@ -371,7 +371,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f783b98c0d114b349b14f75754d99ce2",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ClayJar",
@@ -389,7 +389,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "67922062d74019641b34ea09597f76b7",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ClayVase",
@@ -407,7 +407,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d3e5dce0fc6628c42afe7279e40998ad",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CoconutFish",
@@ -416,7 +416,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d5233fafbeed90c4ba9b73e3d27c7691",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CoconutMilk",
@@ -452,7 +452,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f2fcb0ab88e5c1c47a130a9dbac4a1cf",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CopperAxe",
@@ -461,7 +461,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f18e8a5267bc0dd488213d4ca34eb996",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CopperBottle",
@@ -470,7 +470,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d33d0691739f9724284f50a7a8ede933",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CopperJar",
@@ -479,7 +479,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "e7ef2d2a838d4d749b3939cd92c71ce4",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CopperNecklace",
@@ -488,7 +488,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "043ec5a82ffa6b5439d61e886fb8060b",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CopperNeedles",
@@ -524,7 +524,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "94b82e53a955175458bf265342274f45",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_CropPlot",
@@ -542,7 +542,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "590d6aadabfadae4ca77511f7691ddf4",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Drum",
@@ -560,7 +560,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "fa5b94aeac6d2a342a106ae935909ce9",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_DryingRack",
@@ -587,7 +587,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "6cf0adb3c8e41394d818465c6b376631",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_EatingUtensilsWooden",
@@ -605,7 +605,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "9ee67c0b0616c5c4492fb1f673e46039",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Enclosure",
@@ -614,7 +614,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "52c9e2e0b910c354a8b0dbe11745fb59",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FeedBird",
@@ -623,7 +623,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f703a6c7869d25b4fa4abecd31dc6806",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FeedBoar",
@@ -632,7 +632,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "66902a1359eaeba49ba398a7a43e0c57",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FeedGoat",
@@ -641,7 +641,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "cc4b2a45030fb724ca254af10f8a00e5",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FiberArmor",
@@ -695,7 +695,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "a8981793bbab94544b4f9971f1efdb3f",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FishOmelette",
@@ -704,7 +704,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "a6e9e237d7bcdb946ad9ae304d20ea94",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FishSalted",
@@ -731,7 +731,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "cf25437c5eed5484ea781c69b64cac65",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FishingLine",
@@ -740,7 +740,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d4f93a70d7c6d0047a88b69002f9a764",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FishingRod",
@@ -749,7 +749,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "6d5fc0884ff1364439712ef1af277c7e",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FishingSpear",
@@ -767,7 +767,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "7eb469ad0fd626243893c56604c2e1d6",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FlintKnife",
@@ -821,7 +821,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "4ba3ae846fb321441b9a788ba2f9bfaf",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FriedBananas",
@@ -830,7 +830,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "3573af7a7ebe78d4887cfbdd98603f8f",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_FriedPuffballs",
@@ -839,7 +839,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "effd44cda91d1eb4085c2c4971ca618f",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_GasMask",
@@ -866,7 +866,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "88786cc5df4699e4eba9ab247602acca",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_GoatFeeder",
@@ -875,7 +875,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f4b39ac0b75703740a8ae3fdc64c8402",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_GoatStew",
@@ -884,7 +884,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "970dbfb128a0c8b4b87bec79f7559f19",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Hammock",
@@ -893,7 +893,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "0dacaa6204a34544cb66f3224fcdc7e0",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Harpoon",
@@ -911,7 +911,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "6c8314217d7eaba429ad6eed280d05cd",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Honey",
@@ -929,7 +929,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d26542ce70d889543b5e3b6ef1674647",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_HoneyGlazedPork",
@@ -938,7 +938,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "02f62884295c1114c8c68e5b9f6302fd",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_IslandChicken",
@@ -947,7 +947,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "765ddcdddd10e4d449b44425b646bfdd",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_JacketClothDisabled",
@@ -956,7 +956,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "3aa676c424ff6384c962a7a0cba873c1",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_JungleSalad",
@@ -974,7 +974,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "ee509187c1671214797a5c08d576232a",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_KilnAdvanced",
@@ -983,7 +983,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "fd537078d14906d49bfe32c9845c4b22",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_LeafSkirt",
@@ -1082,7 +1082,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "e8a55b5507f41d54093e1ad654631644",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_LogTrap",
@@ -1091,7 +1091,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "c8df8cf266ceb7544a83ad9f1e3d1257",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Loom",
@@ -1100,7 +1100,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "c32a7cb6c936c2b4f9f78f62833113ac",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MacaqueSkewers",
@@ -1109,7 +1109,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "66dc9d54bd94018489a6ca550b243ba8",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MeatSalted",
@@ -1127,7 +1127,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "86756ac5483d4c247a74c0e9dcbe24b0",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MoldDecoration",
@@ -1136,7 +1136,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "ba0be83b536004043b1d25844c12d05b",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MoldKnife",
@@ -1145,7 +1145,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "24794e7b53d421c48a03ae14efcd3243",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MoldShovel",
@@ -1154,7 +1154,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f5c6a096daf7f8e4e91df4ff69e7affc",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_MoldSpear",
@@ -1163,7 +1163,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "cbea52a73e0828b43b4fadaeb454bb2c",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Mortar",
@@ -1190,7 +1190,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "c309ad17e2e37ba4f813d69c95cd30d6",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_NiterBed",
@@ -1235,7 +1235,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "efd3608e159d4e74cb5fadafcb2678f6",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_PearlNecklace",
@@ -1289,7 +1289,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "884122b96ea355c40a72fce88e77e422",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Quinine",
@@ -1334,7 +1334,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "0be3caea94600e3478d5f11845c78c50",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_RaftShelter",
@@ -1343,7 +1343,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "ccb7b0aee9b4e8e4393af50f74aed4d9",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Raincatcher",
@@ -1379,7 +1379,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f37aaf7dd3fb87f4aaca3c23269e2d7e",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_SagoCake",
@@ -1388,7 +1388,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "452001197dd48bd418d6caa4e0606aae",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_SagoSlime",
@@ -1397,7 +1397,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "bbcfff5560ff1fc4d9449f3fe30c7572",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_SaltBed",
@@ -1415,7 +1415,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "92f5e76e52ef04d448eaa159d210dc63",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Scarecrow",
@@ -1424,7 +1424,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "1c0265eab5677c845bb4a280a85e1088",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ScrapAxe",
@@ -1433,7 +1433,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "d3af2a3785e2ac24e938011b477708e4",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_ScrapKnife",
@@ -1496,7 +1496,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "f0390f10ecb516d40a13289dc3f508d9",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Shelter",
@@ -1523,7 +1523,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "59beb89b17d25be47a036a525fa9a916",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Shower",
@@ -1550,7 +1550,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "294fe8d80cfdcfd4996b27ae06971a29",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Soap",
@@ -1622,7 +1622,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "b7b84484c0c0ada4da487cb6c65d8be4",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Sushi",
@@ -1667,7 +1667,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "31c70193952a683449727e958f4a2f1e",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Travois",
@@ -1685,7 +1685,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "1945949cf5b5bfc4caa4b34fce56da42",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Vitriol",
@@ -1721,7 +1721,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "4df519984d0af1c44a710d698e5156ac",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_Waterskin",
@@ -1739,7 +1739,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "ddc91498198124740b1c8f2f606f5d09",
-   "classification": "progression"
+   "classification": "useful"
   },
   {
    "key": "Bp_Weston",
@@ -1793,7 +1793,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "db75991a4553b3f4780bfe3195a8e1f1",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_WovenBasket",
@@ -1811,7 +1811,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "b0eec3ad1253cdf43a19e34f18c95c95",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_YamCurry",
@@ -1820,7 +1820,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "4828895adc0fd174a8b05c5cd401adb8",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "Bp_YamJam",
@@ -1829,7 +1829,7 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "b348bc230285f0f44bf54bffec1c8878",
-   "classification": "useful"
+   "classification": "progression"
   },
   {
    "key": "filler_washed_up_supplies",
@@ -1956,7 +1956,9 @@
    "research_days": 3,
    "vanilla_item": "Blueprint: Alembic",
    "hint": "Clay Pot Cooler Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ClayPotCoolerUndeployed"
+   }
   },
   {
    "key": "Bp_AloeGel",
@@ -1986,7 +1988,9 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bone Arrows",
    "hint": "More Archery Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Archery"
+   }
   },
   {
    "key": "Bp_ArrowFlint",
@@ -1996,7 +2000,9 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Flint Arrows",
    "hint": "More Archery/Knapping Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Archery"
+   }
   },
   {
    "key": "Bp_AshDressing",
@@ -2037,7 +2043,7 @@
    "vanilla_item": "Blueprint: Bedroll",
    "hint": "Leather Pants Needed",
    "rule": {
-    "event": "Can Build Leather Pants"
+    "event": "Have LeatherPants"
    }
   },
   {
@@ -2049,7 +2055,7 @@
    "vanilla_item": "Blueprint: Bee Skep",
    "hint": "Empty Skep Needed",
    "rule": {
-    "event": "Can Build Empty Skep"
+    "event": "Have BeeSkepEmpty"
    }
   },
   {
@@ -2071,7 +2077,7 @@
    "vanilla_item": "Blueprint: Bee Smoker",
    "hint": "Bee Skep Needed",
    "rule": {
-    "event": "Can Build Bee Skep"
+    "event": "Have BeeSkep"
    }
   },
   {
@@ -2082,7 +2088,9 @@
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Bee Suit",
    "hint": "Bee Smoker Needed",
-   "rule": true
+   "rule": {
+    "event": "Have BeeSmokerOff"
+   }
   },
   {
    "key": "Bp_Bellows",
@@ -2092,7 +2100,28 @@
    "research_days": 1,
    "vanilla_item": "Blueprint: Bellows",
    "hint": "Kiln Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have KilnExtinguished"
+     },
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "event": "Have KilnAdvancedExtinguished"
+     },
+     {
+      "event": "Have Forge"
+     },
+     {
+      "event": "Have ForgeExtinguished"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_BoarFeeder",
@@ -2102,7 +2131,16 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Boar Feeder",
    "hint": "Boar Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have BoarEnclosureMale"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_BoneBroth",
@@ -2112,7 +2150,9 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bone Broth",
    "hint": "Cooking Pot Needed",
-   "rule": true
+   "rule": {
+    "event": "Have CookingPot"
+   }
   },
   {
    "key": "Bp_BoneKnife",
@@ -2192,7 +2232,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Butter",
    "hint": "Milk Needed",
-   "rule": true
+   "rule": {
+    "event": "Have LQ_MilkWhole"
+   }
   },
   {
    "key": "Bp_ButterBakedOysters",
@@ -2212,7 +2254,9 @@
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Cage Trap",
    "hint": "More Trapping Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Trapping"
+   }
   },
   {
    "key": "Bp_CandiedGinger",
@@ -2243,7 +2287,7 @@
    "vanilla_item": "Blueprint: Citronella Candle",
    "hint": "Candles Needed",
    "rule": {
-    "event": "Can Build Candle"
+    "event": "Have CandleOff"
    }
   },
   {
@@ -2255,7 +2299,7 @@
    "vanilla_item": "Blueprint: Jasmine Candle",
    "hint": "Candles Needed",
    "rule": {
-    "event": "Can Build Candle"
+    "event": "Have CandleOff"
    }
   },
   {
@@ -2286,7 +2330,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Cheese",
    "hint": "Milk Needed",
-   "rule": true
+   "rule": {
+    "event": "Have LQ_MilkWhole"
+   }
   },
   {
    "key": "Bp_Chest",
@@ -2316,7 +2362,19 @@
    "research_days": 2,
    "vanilla_item": "Blueprint: Cistern",
    "hint": "Shovel Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have ShovelCopper"
+     },
+     {
+      "event": "Have ShovelScrap"
+     },
+     {
+      "event": "Have ShovelWooden"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_ClayBowl",
@@ -2337,7 +2395,7 @@
    "vanilla_item": "Blueprint: Clay Fire Pit",
    "hint": "Raft Needed",
    "rule": {
-    "event": "Can Build Raft"
+    "event": "Have RaftEntrance"
    }
   },
   {
@@ -2348,7 +2406,16 @@
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Clay Jar",
    "hint": "Kiln Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have KilnExtinguished"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_ClayPotCooler",
@@ -2358,7 +2425,9 @@
    "research_days": 1,
    "vanilla_item": "Blueprint: Clay Pot Cooler",
    "hint": "Clay Vase Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ClayVase"
+   }
   },
   {
    "key": "Bp_ClayVase",
@@ -2368,7 +2437,16 @@
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Clay Vase",
    "hint": "Kiln Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have KilnExtinguished"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_ClubSerrated",
@@ -2388,7 +2466,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Coconut Fish",
    "hint": "Cooking Pot Needed",
-   "rule": true
+   "rule": {
+    "event": "Have CookingPot"
+   }
   },
   {
    "key": "Bp_CoconutMilk",
@@ -2428,7 +2508,16 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Cooking Pot",
    "hint": "Kiln Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have KilnExtinguished"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_CopperAxe",
@@ -2438,7 +2527,9 @@
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Axe",
    "hint": "Copper Axehead Needed",
-   "rule": true
+   "rule": {
+    "event": "Have AxeHead"
+   }
   },
   {
    "key": "Bp_CopperBottle",
@@ -2449,7 +2540,7 @@
    "vanilla_item": "Blueprint: Copper Bottle",
    "hint": "Copper Sheet Needed",
    "rule": {
-    "event": "Can Build Copper Sheet"
+    "event": "Have CopperSheet"
    }
   },
   {
@@ -2461,7 +2552,7 @@
    "vanilla_item": "Blueprint: Copper Jar",
    "hint": "Copper Sheet Needed",
    "rule": {
-    "event": "Can Build Copper Sheet"
+    "event": "Have CopperSheet"
    }
   },
   {
@@ -2483,7 +2574,7 @@
    "vanilla_item": "Blueprint: Copper Needles",
    "hint": "Copper Sheet Needed",
    "rule": {
-    "event": "Can Build Copper Sheet"
+    "event": "Have CopperSheet"
    }
   },
   {
@@ -2504,7 +2595,9 @@
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Shovel",
    "hint": "Copper Shovelhead Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ShovelHead"
+   }
   },
   {
    "key": "Bp_CopperSpear",
@@ -2514,7 +2607,9 @@
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Spear",
    "hint": "Copper Spearhead Needed",
-   "rule": true
+   "rule": {
+    "event": "Have SpearHead"
+   }
   },
   {
    "key": "Bp_CropPlot",
@@ -2624,7 +2719,16 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bird Feed",
    "hint": "Partridge Feeder Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have PartridgeFeederEmpty"
+     },
+     {
+      "event": "Have PartridgeFeeder"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_FeedBoar",
@@ -2634,7 +2738,16 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Boar Feed",
    "hint": "Boar Feeder Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarFeeder"
+     },
+     {
+      "event": "Have BoarFeederEmpty"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_FeedGoat",
@@ -2644,7 +2757,16 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Goat Feed",
    "hint": "Feeding Trough Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatFeeder"
+     },
+     {
+      "event": "Have GoatFeederEmpty"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_FiberArmor",
@@ -2694,7 +2816,9 @@
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Fish Bait",
    "hint": "More Fishing Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Fishing"
+   }
   },
   {
    "key": "Bp_FishNChips",
@@ -2744,7 +2868,16 @@
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Fish Trap (FishTrap)",
    "hint": "More Fishing Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Can Raise Skill_Fishing"
+     },
+     {
+      "event": "Can Raise Skill_Trapping"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_FishingLine",
@@ -2764,7 +2897,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fishing Rod",
    "hint": "More Fishing Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Fishing"
+   }
   },
   {
    "key": "Bp_FishingSpear",
@@ -2884,7 +3019,9 @@
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Glazed Vase",
    "hint": "Clay Vase Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ClayVase"
+   }
   },
   {
    "key": "Bp_Glue",
@@ -2894,7 +3031,9 @@
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Glue",
    "hint": "Quicklime Needed",
-   "rule": true
+   "rule": {
+    "event": "Have Quicklime"
+   }
   },
   {
    "key": "Bp_GoatFeeder",
@@ -2904,7 +3043,16 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Goat Feeder",
    "hint": "Goat Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "event": "Have GoatEnclosureMale"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_GoatStew",
@@ -2984,7 +3132,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Island Chicken",
    "hint": "Cooking Pot Needed",
-   "rule": true
+   "rule": {
+    "event": "Have CookingPot"
+   }
   },
   {
    "key": "Bp_JacketClothDisabled",
@@ -3025,7 +3175,7 @@
    "vanilla_item": "Blueprint: Advanced Kiln",
    "hint": "Mortar Needed",
    "rule": {
-    "event": "Can Build Mortar"
+    "event": "Have Mortar"
    }
   },
   {
@@ -3056,7 +3206,9 @@
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Backpack",
    "hint": "Satchel Needed",
-   "rule": true
+   "rule": {
+    "event": "Have Satchel"
+   }
   },
   {
    "key": "Bp_LeatherBracers",
@@ -3146,7 +3298,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Log Trap",
    "hint": "More Trapping Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Trapping"
+   }
   },
   {
    "key": "Bp_Loom",
@@ -3186,7 +3340,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Axe Mold",
    "hint": "Copper Needed",
-   "rule": true
+   "rule": {
+    "event": "Have Copper"
+   }
   },
   {
    "key": "Bp_MoldDecoration",
@@ -3206,7 +3362,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Knife Mold",
    "hint": "Copper Needed",
-   "rule": true
+   "rule": {
+    "event": "Have Copper"
+   }
   },
   {
    "key": "Bp_MoldShovel",
@@ -3226,7 +3384,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Spear Mold",
    "hint": "Copper Knife Needed",
-   "rule": true
+   "rule": {
+    "event": "Have KnifeCopper"
+   }
   },
   {
    "key": "Bp_Mortar",
@@ -3236,7 +3396,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Mortar",
    "hint": "Quicklime Needed",
-   "rule": true
+   "rule": {
+    "event": "Have Quicklime"
+   }
   },
   {
    "key": "Bp_MudHut",
@@ -3387,7 +3549,7 @@
    "vanilla_item": "Blueprint: Quinine Sulfate",
    "hint": "Quinine Powder Needed",
    "rule": {
-    "event": "Can Build Cinchona Powder"
+    "event": "Have QuininePowder"
    }
   },
   {
@@ -3398,7 +3560,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Quiver",
    "hint": "More Archery Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Archery"
+   }
   },
   {
    "key": "Bp_Raft",
@@ -3419,7 +3583,7 @@
    "vanilla_item": "Blueprint: Fish Trap (RaftFishTrap)",
    "hint": "Raft Needed",
    "rule": {
-    "event": "Can Build Raft"
+    "event": "Have RaftEntrance"
    }
   },
   {
@@ -3431,7 +3595,7 @@
    "vanilla_item": "Blueprint: Raft Shelter",
    "hint": "Raft Needed",
    "rule": {
-    "event": "Can Build Raft"
+    "event": "Have RaftEntrance"
    }
   },
   {
@@ -3503,7 +3667,7 @@
    "vanilla_item": "Blueprint: Salt Bed",
    "hint": "Water Reservoir Needed",
    "rule": {
-    "event": "Can Build Water Reservoir"
+    "event": "Have WaterReservoir"
    }
   },
   {
@@ -3594,7 +3758,16 @@
    "research_days": 1,
    "vanilla_item": "Blueprint: Shed",
    "hint": "Basket Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Basket"
+     },
+     {
+      "event": "Have BasketPlaced"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_Shelf",
@@ -3605,7 +3778,7 @@
    "vanilla_item": "Blueprint: Shelf",
    "hint": "Plank Needed",
    "rule": {
-    "event": "Can Build Wooden Planks"
+    "event": "Have Plank"
    }
   },
   {
@@ -3646,7 +3819,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Shower",
    "hint": "Clay Vase Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ClayVase"
+   }
   },
   {
    "key": "Bp_Sling",
@@ -3666,7 +3841,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Snare Trap",
    "hint": "More Trapping Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Trapping"
+   }
   },
   {
    "key": "Bp_Soap",
@@ -3726,7 +3903,16 @@
    "research_days": 1,
    "vanilla_item": "Blueprint: Stove",
    "hint": "Kiln Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have KilnExtinguished"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_StrawCape",
@@ -3747,7 +3933,7 @@
    "vanilla_item": "Blueprint: Supply Chest",
    "hint": "Raft Needed",
    "rule": {
-    "event": "Can Build Raft"
+    "event": "Have RaftEntrance"
    }
   },
   {
@@ -3798,7 +3984,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Trapping Pit",
    "hint": "More Trapping Needed",
-   "rule": true
+   "rule": {
+    "event": "Can Raise Skill_Trapping"
+   }
   },
   {
    "key": "Bp_Travois",
@@ -3839,7 +4027,7 @@
    "vanilla_item": "Blueprint: Water Filter",
    "hint": "Stove Needed",
    "rule": {
-    "event": "Can Build Stove"
+    "event": "Have StoveExtinguished"
    }
   },
   {
@@ -3850,7 +4038,9 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Water Reservoir",
    "hint": "Clay Vase Needed",
-   "rule": true
+   "rule": {
+    "event": "Have ClayVase"
+   }
   },
   {
    "key": "Bp_WateringTrough",
@@ -3860,7 +4050,22 @@
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Watering Trough",
    "hint": "Goat Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "event": "Have GoatEnclosureMale"
+     },
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have BoarEnclosureMale"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_Waterskin",
@@ -3880,7 +4085,19 @@
    "research_days": 2,
    "vanilla_item": "Blueprint: Well",
    "hint": "Shovel Needed",
-   "rule": true
+   "rule": {
+    "any": [
+     {
+      "event": "Have ShovelCopper"
+     },
+     {
+      "event": "Have ShovelScrap"
+     },
+     {
+      "event": "Have ShovelWooden"
+     }
+    ]
+   }
   },
   {
    "key": "Bp_Weston",
@@ -3941,7 +4158,7 @@
    "vanilla_item": "Blueprint: Woven Backpack",
    "hint": "Basket Needed",
    "rule": {
-    "event": "Can Build Woven Basket"
+    "event": "Have Basket"
    }
   },
   {
@@ -3963,7 +4180,7 @@
    "vanilla_item": "Blueprint: Woven Hat",
    "hint": "Basket Needed",
    "rule": {
-    "event": "Can Build Woven Basket"
+    "event": "Have Basket"
    }
   },
   {
@@ -3989,6 +4206,41 @@
  ],
  "events": [
   {
+   "name": "Can Build Advanced Kiln",
+   "blueprint": "Bp_KilnAdvanced",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Advanced Kiln"
+     },
+     {
+      "event": "Have Mortar"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Arrows",
+   "blueprint": "Bp_Arrow",
+   "rule": {
+    "item": "Blueprint: Arrows"
+   }
+  },
+  {
+   "name": "Can Build Axe Mold",
+   "blueprint": "Bp_MoldAxe",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Axe Mold"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
+   }
+  },
+  {
    "name": "Can Build Bee Skep",
    "blueprint": "Bp_BeeSkep",
    "rule": {
@@ -3997,21 +4249,188 @@
       "item": "Blueprint: Bee Skep"
      },
      {
-      "event": "Can Build Empty Skep"
+      "event": "Have BeeSkepEmpty"
      }
     ]
    }
   },
   {
-   "name": "Can Build Empty Skep",
-   "blueprint": "Bp_BeeSkepEmpty",
+   "name": "Can Build Bee Smoker",
+   "blueprint": "Bp_BeeSmoker",
+   "rule": {
+    "item": "Blueprint: Bee Smoker"
+   }
+  },
+  {
+   "name": "Can Build Bee Suit",
+   "blueprint": "Bp_BeeSuit",
    "rule": {
     "all": [
      {
-      "item": "Blueprint: Empty Skep"
+      "item": "Blueprint: Bee Suit"
      },
      {
-      "event": "Can Build Well"
+      "event": "Have ClothVeryLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Bird Feed",
+   "blueprint": "Bp_FeedBird",
+   "rule": {
+    "item": "Blueprint: Bird Feed"
+   }
+  },
+  {
+   "name": "Can Build Boar Feed",
+   "blueprint": "Bp_FeedBoar",
+   "rule": {
+    "item": "Blueprint: Boar Feed"
+   }
+  },
+  {
+   "name": "Can Build Boar Feeder",
+   "blueprint": "Bp_BoarFeeder",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Boar Feeder"
+     },
+     {
+      "event": "Have Env_Enclosure"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Bone Arrows",
+   "blueprint": "Bp_ArrowBone",
+   "rule": {
+    "item": "Blueprint: Bone Arrows"
+   }
+  },
+  {
+   "name": "Can Build Bone Broth",
+   "blueprint": "Bp_BoneBroth",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Bone Broth"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Bone Knife",
+   "blueprint": "Bp_BoneKnife",
+   "rule": {
+    "item": "Blueprint: Bone Knife"
+   }
+  },
+  {
+   "name": "Can Build Bookshelf",
+   "blueprint": "Bp_Bookshelf",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Bookshelf"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Plank"
+       },
+       {
+        "any": [
+         {
+          "event": "Have AxeCopper"
+         },
+         {
+          "event": "Have AxeScrap"
+         },
+         {
+          "event": "Have AxeFlint"
+         }
+        ]
+       },
+       {
+        "event": "Have Treenail"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Bow",
+   "blueprint": "Bp_Bow",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Bow"
+     },
+     {
+      "event": "Have ArrowSimple"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Butter",
+   "blueprint": "Bp_Butter",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Butter"
+     },
+     {
+      "event": "Have LQ_MilkWhole"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Butter Baked Oysters",
+   "blueprint": "Bp_ButterBakedOysters",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Butter Baked Oysters"
+     },
+     {
+      "all": [
+       {
+        "event": "Have CookingPot"
+       },
+       {
+        "event": "Have Butter"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Cage Trap",
+   "blueprint": "Bp_CageTrap",
+   "rule": {
+    "item": "Blueprint: Cage Trap"
+   }
+  },
+  {
+   "name": "Can Build Candied Ginger",
+   "blueprint": "Bp_CandiedGinger",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Candied Ginger"
+     },
+     {
+      "event": "Have CookingPot"
      }
     ]
    }
@@ -4024,17 +4443,538 @@
    }
   },
   {
+   "name": "Can Build Cinchona Powder",
+   "blueprint": "Bp_Quinine",
+   "rule": {
+    "item": "Blueprint: Cinchona Powder"
+   }
+  },
+  {
+   "name": "Can Build Clay Fire Pit",
+   "blueprint": "Bp_ClayFirePit",
+   "rule": {
+    "item": "Blueprint: Clay Fire Pit"
+   }
+  },
+  {
+   "name": "Can Build Clay Pot Cooler",
+   "blueprint": "Bp_ClayPotCooler",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Clay Pot Cooler"
+     },
+     {
+      "event": "Have ClothLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Cloth Jacket",
+   "blueprint": "Bp_JacketClothDisabled",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Cloth Jacket"
+     },
+     {
+      "event": "Have ClothLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Coconut Fish",
+   "blueprint": "Bp_CoconutFish",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Coconut Fish"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Composite bow",
+   "blueprint": "Bp_BowComposite",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Composite bow"
+     },
+     {
+      "all": [
+       {
+        "any": [
+         {
+          "event": "Have AxeCopper"
+         },
+         {
+          "event": "Have AxeScrap"
+         },
+         {
+          "event": "Have AxeFlint"
+         }
+        ]
+       },
+       {
+        "event": "Have Glue"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Cooking Pot",
+   "blueprint": "Bp_CookingPot",
+   "rule": {
+    "item": "Blueprint: Cooking Pot"
+   }
+  },
+  {
+   "name": "Can Build Copper Axe",
+   "blueprint": "Bp_CopperAxe",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Axe"
+     },
+     {
+      "event": "Have AxeHead"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Copper Bottle",
+   "blueprint": "Bp_CopperBottle",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Bottle"
+     },
+     {
+      "event": "Have CopperSheet"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Copper Eating Utensils",
+   "blueprint": "Bp_EatingUtensilsCopper",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Eating Utensils"
+     },
+     {
+      "event": "Have CopperSheet"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Copper Jar",
+   "blueprint": "Bp_CopperJar",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Jar"
+     },
+     {
+      "event": "Have CopperSheet"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Copper Necklace",
+   "blueprint": "Bp_CopperNecklace",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Necklace"
+     },
+     {
+      "event": "Have CopperSheet"
+     }
+    ]
+   }
+  },
+  {
    "name": "Can Build Copper Sheet",
    "blueprint": "Bp_CopperSheet",
    "rule": {
-    "item": "Blueprint: Copper Sheet"
+    "all": [
+     {
+      "item": "Blueprint: Copper Sheet"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
    }
   },
   {
    "name": "Can Build Copper Shovel",
    "blueprint": "Bp_CopperShovel",
    "rule": {
-    "item": "Blueprint: Copper Shovel"
+    "all": [
+     {
+      "item": "Blueprint: Copper Shovel"
+     },
+     {
+      "event": "Have ShovelHead"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Copper Spear",
+   "blueprint": "Bp_CopperSpear",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Copper Spear"
+     },
+     {
+      "event": "Have SpearHead"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Deadfall Trap",
+   "blueprint": "Bp_DeadfallTrap",
+   "rule": {
+    "item": "Blueprint: Deadfall Trap"
+   }
+  },
+  {
+   "name": "Can Build Decoration Mold",
+   "blueprint": "Bp_MoldDecoration",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Decoration Mold"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Drunken Crab",
+   "blueprint": "Bp_DrunkenCrab",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Drunken Crab"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Egg Fried Rice",
+   "blueprint": "Bp_EggFriedRice",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Egg Fried Rice"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Empty Skep",
+   "blueprint": "Bp_BeeSkepEmpty",
+   "rule": {
+    "item": "Blueprint: Empty Skep"
+   }
+  },
+  {
+   "name": "Can Build Enclosure",
+   "blueprint": "Bp_Enclosure",
+   "rule": {
+    "item": "Blueprint: Enclosure"
+   }
+  },
+  {
+   "name": "Can Build Fish N' Chips",
+   "blueprint": "Bp_FishNChips",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Fish N' Chips"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Fish Omelette",
+   "blueprint": "Bp_FishOmelette",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Fish Omelette"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Fish Trap (FishTrap)",
+   "blueprint": "Bp_FishTrap",
+   "rule": {
+    "item": "Blueprint: Fish Trap (FishTrap)"
+   }
+  },
+  {
+   "name": "Can Build Fish Trap (RaftFishTrap)",
+   "blueprint": "Bp_RaftFishTrap",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Fish Trap (RaftFishTrap)"
+     },
+     {
+      "event": "Have Env_Raft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Fishing Line",
+   "blueprint": "Bp_FishingLine",
+   "rule": {
+    "item": "Blueprint: Fishing Line"
+   }
+  },
+  {
+   "name": "Can Build Fishing Rod",
+   "blueprint": "Bp_FishingRod",
+   "rule": {
+    "item": "Blueprint: Fishing Rod"
+   }
+  },
+  {
+   "name": "Can Build Flint Arrows",
+   "blueprint": "Bp_ArrowFlint",
+   "rule": {
+    "item": "Blueprint: Flint Arrows"
+   }
+  },
+  {
+   "name": "Can Build Flint Axe",
+   "blueprint": "Bp_FlintAxe",
+   "rule": {
+    "item": "Blueprint: Flint Axe"
+   }
+  },
+  {
+   "name": "Can Build Forge",
+   "blueprint": "Bp_Forge",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Forge"
+     },
+     {
+      "event": "Have Mortar"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Fried Bananas",
+   "blueprint": "Bp_FriedBananas",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Fried Bananas"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Fried Puffballs",
+   "blueprint": "Bp_FriedPuffballs",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Fried Puffballs"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Glue",
+   "blueprint": "Bp_Glue",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Glue"
+     },
+     {
+      "all": [
+       {
+        "event": "Have CookingPot"
+       },
+       {
+        "event": "Have LQ_SlakedLime"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Goat Feed",
+   "blueprint": "Bp_FeedGoat",
+   "rule": {
+    "item": "Blueprint: Goat Feed"
+   }
+  },
+  {
+   "name": "Can Build Goat Feeder",
+   "blueprint": "Bp_GoatFeeder",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Goat Feeder"
+     },
+     {
+      "event": "Have Env_Enclosure"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Goat Stew",
+   "blueprint": "Bp_GoatStew",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Goat Stew"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Hammock",
+   "blueprint": "Bp_Hammock",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Hammock"
+     },
+     {
+      "event": "Have ClothVeryLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Hearty Feast",
+   "blueprint": "Bp_HeartyFeast",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Hearty Feast"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Honey Candy",
+   "blueprint": "Bp_HoneyCandy",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Honey Candy"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Honey Glazed Pork",
+   "blueprint": "Bp_HoneyGlazedPork",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Honey Glazed Pork"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Island Chicken",
+   "blueprint": "Bp_IslandChicken",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Island Chicken"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Kiln",
+   "blueprint": "Bp_Kiln",
+   "rule": {
+    "item": "Blueprint: Kiln"
+   }
+  },
+  {
+   "name": "Can Build Knife Mold",
+   "blueprint": "Bp_MoldKnife",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Knife Mold"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
    }
   },
   {
@@ -4045,24 +4985,101 @@
    }
   },
   {
+   "name": "Can Build Lizard Fry",
+   "blueprint": "Bp_LizardFry",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Lizard Fry"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Log Trap",
+   "blueprint": "Bp_LogTrap",
+   "rule": {
+    "item": "Blueprint: Log Trap"
+   }
+  },
+  {
+   "name": "Can Build Loom",
+   "blueprint": "Bp_Loom",
+   "rule": {
+    "item": "Blueprint: Loom"
+   }
+  },
+  {
+   "name": "Can Build Macaque Skewers",
+   "blueprint": "Bp_MacaqueSkewers",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Macaque Skewers"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
    "name": "Can Build Mortar",
    "blueprint": "Bp_Mortar",
    "rule": {
-    "item": "Blueprint: Mortar"
+    "all": [
+     {
+      "item": "Blueprint: Mortar"
+     },
+     {
+      "event": "Have Quicklime"
+     }
+    ]
    }
   },
   {
-   "name": "Can Build Wooden Planks",
-   "blueprint": "Bp_Planks",
+   "name": "Can Build Mushroom Bed",
+   "blueprint": "Bp_MushroomBed",
    "rule": {
-    "item": "Blueprint: Wooden Planks"
+    "all": [
+     {
+      "item": "Blueprint: Mushroom Bed"
+     },
+     {
+      "event": "Have Plank"
+     }
+    ]
    }
   },
   {
-   "name": "Can Build Cinchona Powder",
-   "blueprint": "Bp_Quinine",
+   "name": "Can Build Partridge Feeder",
+   "blueprint": "Bp_PartridgeFeeder",
    "rule": {
-    "item": "Blueprint: Cinchona Powder"
+    "all": [
+     {
+      "item": "Blueprint: Partridge Feeder"
+     },
+     {
+      "event": "Have Env_Enclosure"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Protein Bar",
+   "blueprint": "Bp_ProteinBar",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Protein Bar"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
    }
   },
   {
@@ -4073,10 +5090,198 @@
    }
   },
   {
+   "name": "Can Build Raft Shelter",
+   "blueprint": "Bp_RaftShelter",
+   "rule": {
+    "item": "Blueprint: Raft Shelter"
+   }
+  },
+  {
+   "name": "Can Build Sack",
+   "blueprint": "Bp_Sack",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Sack"
+     },
+     {
+      "event": "Have ClothVeryLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Sago Cake",
+   "blueprint": "Bp_SagoCake",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Sago Cake"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Sago Slime",
+   "blueprint": "Bp_SagoSlime",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Sago Slime"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Satchel",
+   "blueprint": "Bp_Satchel",
+   "rule": {
+    "item": "Blueprint: Satchel"
+   }
+  },
+  {
+   "name": "Can Build Scarecrow",
+   "blueprint": "Bp_Scarecrow",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Scarecrow"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sack"
+       },
+       {
+        "event": "Have HatWoven"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Scrap Axe",
+   "blueprint": "Bp_ScrapAxe",
+   "rule": {
+    "item": "Blueprint: Scrap Axe"
+   }
+  },
+  {
    "name": "Can Build Scrap Shovel",
    "blueprint": "Bp_ScrapShovel",
    "rule": {
     "item": "Blueprint: Scrap Shovel"
+   }
+  },
+  {
+   "name": "Can Build Serrated Club",
+   "blueprint": "Bp_ClubSerrated",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Serrated Club"
+     },
+     {
+      "any": [
+       {
+        "event": "Have AxeCopper"
+       },
+       {
+        "event": "Have AxeScrap"
+       },
+       {
+        "event": "Have AxeFlint"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Shelf",
+   "blueprint": "Bp_Shelf",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Shelf"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Plank"
+       },
+       {
+        "any": [
+         {
+          "event": "Have AxeCopper"
+         },
+         {
+          "event": "Have AxeScrap"
+         },
+         {
+          "event": "Have AxeFlint"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Shirt",
+   "blueprint": "Bp_ShirtCloth",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Shirt"
+     },
+     {
+      "event": "Have ClothLarge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Shovel Mold",
+   "blueprint": "Bp_MoldShovel",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Shovel Mold"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Snare Trap",
+   "blueprint": "Bp_SnareTrap",
+   "rule": {
+    "item": "Blueprint: Snare Trap"
+   }
+  },
+  {
+   "name": "Can Build Spear Mold",
+   "blueprint": "Bp_MoldSpear",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Spear Mold"
+     },
+     {
+      "event": "Have Copper"
+     }
+    ]
    }
   },
   {
@@ -4087,6 +5292,51 @@
    }
   },
   {
+   "name": "Can Build Supply Chest",
+   "blueprint": "Bp_SupplyChest",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Supply Chest"
+     },
+     {
+      "event": "Have Env_Raft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Trapping Pit",
+   "blueprint": "Bp_TrappingPit",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Trapping Pit"
+     },
+     {
+      "any": [
+       {
+        "event": "Have ShovelCopper"
+       },
+       {
+        "event": "Have ShovelScrap"
+       },
+       {
+        "event": "Have ShovelWooden"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Treenails",
+   "blueprint": "Bp_Treenails",
+   "rule": {
+    "item": "Blueprint: Treenails"
+   }
+  },
+  {
    "name": "Can Build Water Reservoir",
    "blueprint": "Bp_WaterReservoir",
    "rule": {
@@ -4094,28 +5344,39 @@
    }
   },
   {
-   "name": "Can Build Well",
-   "blueprint": "Bp_Well",
+   "name": "Can Build Watering Trough",
+   "blueprint": "Bp_WateringTrough",
    "rule": {
     "all": [
      {
-      "item": "Blueprint: Well"
+      "item": "Blueprint: Watering Trough"
+     },
+     {
+      "event": "Have Env_Enclosure"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Wooden Planks",
+   "blueprint": "Bp_Planks",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Wooden Planks"
      },
      {
       "any": [
        {
-        "event": "Can Build Copper Shovel"
+        "event": "Have AxeCopper"
        },
        {
-        "event": "Can Build Scrap Shovel"
+        "event": "Have AxeScrap"
        },
        {
-        "event": "Can Build Wooden Shovel"
+        "event": "Have AxeFlint"
        }
       ]
-     },
-     {
-      "event": "Can Build Mortar"
      }
     ]
    }
@@ -4128,6 +5389,13 @@
    }
   },
   {
+   "name": "Can Build Woven Backpack",
+   "blueprint": "Bp_WovenBackpack",
+   "rule": {
+    "item": "Blueprint: Woven Backpack"
+   }
+  },
+  {
    "name": "Can Build Woven Basket",
    "blueprint": "Bp_WovenBasket",
    "rule": {
@@ -4135,9 +5403,3673 @@
    }
   },
   {
-   "name": "Victory",
+   "name": "Can Build Woven Hat",
+   "blueprint": "Bp_WovenHat",
+   "rule": {
+    "item": "Blueprint: Woven Hat"
+   }
+  },
+  {
+   "name": "Can Build Yam Curry",
+   "blueprint": "Bp_YamCurry",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Yam Curry"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Build Yam Jam",
+   "blueprint": "Bp_YamJam",
+   "rule": {
+    "all": [
+     {
+      "item": "Blueprint: Yam Jam"
+     },
+     {
+      "event": "Have CookingPot"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Play Ending Event_ShipEscape",
+   "card": "victory:Event_ShipEscape",
+   "rule": {
+    "event": "Have Event_ShipEscape"
+   }
+  },
+  {
+   "name": "Can Raise Distance",
+   "card": "stat:Distance",
+   "rule": {
+    "any": [
+     {
+      "event": "Have Env_Raft"
+     },
+     {
+      "event": "Have SailUp_Raft"
+     },
+     {
+      "event": "Have Start_Raft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Raise Irrigated",
+   "card": "stat:Irrigated",
+   "rule": {
+    "event": "Have Imp_Irrigation"
+   }
+  },
+  {
+   "name": "Can Raise Skill_Archery",
+   "card": "stat:Skill_Archery",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have BowRustic"
+       },
+       {
+        "any": [
+         {
+          "event": "Have ArrowBone"
+         },
+         {
+          "event": "Have ArrowFlint"
+         },
+         {
+          "event": "Have ArrowSimple"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have BowComposite"
+       },
+       {
+        "any": [
+         {
+          "event": "Have ArrowBone"
+         },
+         {
+          "event": "Have ArrowFlint"
+         },
+         {
+          "event": "Have ArrowSimple"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "event": "Have BowComposite"
+     },
+     {
+      "event": "Have BowRustic"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Raise Skill_Fishing",
+   "card": "stat:Skill_Fishing",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Sea_Atoll"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRustic"
+         },
+         {
+          "event": "Have FishingRod"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Atoll"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRusticBait"
+         },
+         {
+          "event": "Have FishingRodBait"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have FishingLineRustic"
+       },
+       {
+        "event": "Have FishingRod"
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have FishingLineRusticBait"
+       },
+       {
+        "event": "Have FishingRodBait"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Raft"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRustic"
+         },
+         {
+          "event": "Have FishingRod"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Raft"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRusticBait"
+         },
+         {
+          "event": "Have FishingRodBait"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Raise Skill_Trapping",
+   "card": "stat:Skill_Trapping",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Cage Trap"
+     },
+     {
+      "event": "Can Build Deadfall Trap"
+     },
+     {
+      "event": "Can Build Fish Trap (FishTrap)"
+     },
+     {
+      "event": "Can Build Fish Trap (RaftFishTrap)"
+     },
+     {
+      "event": "Can Build Snare Trap"
+     },
+     {
+      "event": "Can Build Trapping Pit"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeFemale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeMale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredSeagull"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggered"
+     },
+     {
+      "event": "Have CageTrapPlaced"
+     },
+     {
+      "event": "Have DeadfallTrapTriggered"
+     },
+     {
+      "event": "Have DeadfallTrap"
+     },
+     {
+      "event": "Have FishTrapDeployed"
+     },
+     {
+      "event": "Have LogTrapTriggered"
+     },
+     {
+      "event": "Have LogTrap"
+     },
+     {
+      "event": "Have RaftFishTrap"
+     },
+     {
+      "event": "Have SnareTrapTriggered"
+     },
+     {
+      "event": "Have SnareTrap"
+     },
+     {
+      "event": "Have TrappingPitTriggered"
+     },
+     {
+      "event": "Have TrappingPit"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ArrowBone",
+   "card": "ArrowBone",
+   "rule": {
+    "event": "Can Build Bone Arrows"
+   }
+  },
+  {
+   "name": "Have ArrowFlint",
+   "card": "ArrowFlint",
+   "rule": {
+    "event": "Can Build Flint Arrows"
+   }
+  },
+  {
+   "name": "Have ArrowSimple",
+   "card": "ArrowSimple",
+   "rule": {
+    "event": "Can Build Arrows"
+   }
+  },
+  {
+   "name": "Have AxeCopper",
+   "card": "AxeCopper",
+   "rule": {
+    "event": "Can Build Copper Axe"
+   }
+  },
+  {
+   "name": "Have AxeFlint",
+   "card": "AxeFlint",
+   "rule": {
+    "event": "Can Build Flint Axe"
+   }
+  },
+  {
+   "name": "Have AxeHead",
+   "card": "AxeHead",
+   "rule": {
+    "any": [
+     {
+      "event": "Have AxeHeadBlunt"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have MoldAxe"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MoldAxe"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have AxeHeadBlunt",
+   "card": "AxeHeadBlunt",
+   "rule": {
+    "any": [
+     {
+      "event": "Have AxeCopper"
+     },
+     {
+      "event": "Have AxeHead"
+     },
+     {
+      "event": "Have ClubSerrated"
+     },
+     {
+      "event": "Have ShovelHead"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have AxeScrap",
+   "card": "AxeScrap",
+   "rule": {
+    "event": "Can Build Scrap Axe"
+   }
+  },
+  {
+   "name": "Have BackpackBasket",
+   "card": "BackpackBasket",
+   "rule": {
+    "any": [
+     {
+      "event": "Have Basket"
+     },
+     {
+      "event": "Can Build Woven Backpack"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Basket",
+   "card": "Basket",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BackpackBasket"
+     },
+     {
+      "event": "Have BasketPlaced"
+     },
+     {
+      "event": "Can Build Woven Basket"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BasketPlaced",
+   "card": "BasketPlaced",
+   "rule": {
+    "event": "Have Basket"
+   }
+  },
+  {
+   "name": "Have BeeSkep",
+   "card": "BeeSkep",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have BeeSkepSwarming"
+       },
+       {
+        "event": "Have Sack"
+       }
+      ]
+     },
+     {
+      "event": "Have BeeSkepSwarming"
+     },
+     {
+      "event": "Can Build Bee Skep"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BeeSkepEmpty",
+   "card": "BeeSkepEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BeeSkep"
+     },
+     {
+      "event": "Can Build Empty Skep"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BeeSkepSwarming",
+   "card": "BeeSkepSwarming",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BeeSkepEmpty"
+     },
+     {
+      "event": "Have BeeSkep"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BeeSmokerOff",
+   "card": "BeeSmokerOff",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BeeSmokerOn"
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have BeeSmokerUnfired"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have BeeSmokerUnfired"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BeeSmokerOn",
+   "card": "BeeSmokerOn",
+   "rule": {
+    "event": "Have BeeSmokerOff"
+   }
+  },
+  {
+   "name": "Have BeeSmokerUnfired",
+   "card": "BeeSmokerUnfired",
+   "rule": {
+    "event": "Can Build Bee Smoker"
+   }
+  },
+  {
+   "name": "Have BeeSuit",
+   "card": "BeeSuit",
+   "rule": {
+    "event": "Can Build Bee Suit"
+   }
+  },
+  {
+   "name": "Have BoarEnclosureFemale",
+   "card": "BoarEnclosureFemale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosurePiglet"
+     },
+     {
+      "all": [
+       {
+        "event": "Have BoarTiedFemale"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarEnclosureMale",
+   "card": "BoarEnclosureMale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosurePiglet"
+     },
+     {
+      "all": [
+       {
+        "event": "Have BoarTiedMale"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarEnclosurePiglet",
+   "card": "BoarEnclosurePiglet",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "all": [
+       {
+        "event": "Have BoarTiedPiglet"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarFeeder",
+   "card": "BoarFeeder",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have BoarFeederEmpty"
+       },
+       {
+        "event": "Have FeedBoar"
+       }
+      ]
+     },
+     {
+      "event": "Have BoarFeederEmpty"
+     },
+     {
+      "event": "Have BoarFeeder"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarFeederEmpty",
+   "card": "BoarFeederEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarFeeder"
+     },
+     {
+      "event": "Can Build Boar Feeder"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarTiedFemale",
+   "card": "BoarTiedFemale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have BoarTiedPiglet"
+     },
+     {
+      "event": "Have TrappingPit"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarTiedMale",
+   "card": "BoarTiedMale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureMale"
+     },
+     {
+      "event": "Have TrappingPit"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoarTiedPiglet",
+   "card": "BoarTiedPiglet",
+   "rule": {
+    "event": "Have BoarEnclosurePiglet"
+   }
+  },
+  {
+   "name": "Have BoneBroth",
+   "card": "BoneBroth",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoneBrothUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have BoneBrothUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have BoneBrothUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BoneBrothUncooked",
+   "card": "BoneBrothUncooked",
+   "rule": {
+    "event": "Can Build Bone Broth"
+   }
+  },
+  {
+   "name": "Have BookShelfDismantled",
+   "card": "BookShelfDismantled",
+   "rule": {
+    "event": "Have Bookshelf"
+   }
+  },
+  {
+   "name": "Have Bookshelf",
+   "card": "Bookshelf",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BookShelfDismantled"
+     },
+     {
+      "event": "Can Build Bookshelf"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have BowComposite",
+   "card": "BowComposite",
+   "rule": {
+    "event": "Can Build Composite bow"
+   }
+  },
+  {
+   "name": "Have BowRustic",
+   "card": "BowRustic",
+   "rule": {
+    "event": "Can Build Bow"
+   }
+  },
+  {
+   "name": "Have Butter",
+   "card": "Butter",
+   "rule": {
+    "event": "Can Build Butter"
+   }
+  },
+  {
+   "name": "Have ButterBakedOystersCooked",
+   "card": "ButterBakedOystersCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ButterBakedOystersUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have ButterBakedOystersUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have ButterBakedOystersUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ButterBakedOystersUncooked",
+   "card": "ButterBakedOystersUncooked",
+   "rule": {
+    "event": "Can Build Butter Baked Oysters"
+   }
+  },
+  {
+   "name": "Have CageTrap",
+   "card": "CageTrap",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Cage Trap"
+     },
+     {
+      "event": "Have CageTrapMacaque"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeFemale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeMale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredSeagull"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggered"
+     },
+     {
+      "event": "Have CageTrapPlaced"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CageTrapMacaque",
+   "card": "CageTrapMacaque",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CageTrapPlacedTriggered"
+     },
+     {
+      "event": "Have CageTrapPlaced"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CageTrapPlaced",
+   "card": "CageTrapPlaced",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeFemale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredPartridgeMale"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggeredSeagull"
+     },
+     {
+      "event": "Have CageTrapPlacedTriggered"
+     },
+     {
+      "event": "Have CageTrapPlaced"
+     },
+     {
+      "event": "Have CageTrap"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CageTrapPlacedTriggered",
+   "card": "CageTrapPlacedTriggered",
+   "rule": {
+    "event": "Have CageTrapPlaced"
+   }
+  },
+  {
+   "name": "Have CageTrapPlacedTriggeredPartridgeFemale",
+   "card": "CageTrapPlacedTriggeredPartridgeFemale",
+   "rule": {
+    "event": "Have CageTrapPlaced"
+   }
+  },
+  {
+   "name": "Have CageTrapPlacedTriggeredPartridgeMale",
+   "card": "CageTrapPlacedTriggeredPartridgeMale",
+   "rule": {
+    "event": "Have CageTrapPlaced"
+   }
+  },
+  {
+   "name": "Have CageTrapPlacedTriggeredSeagull",
+   "card": "CageTrapPlacedTriggeredSeagull",
+   "rule": {
+    "event": "Have CageTrapPlaced"
+   }
+  },
+  {
+   "name": "Have CandiedGingerCooked",
+   "card": "CandiedGingerCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CandiedGingerUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have CandiedGingerUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have CandiedGingerUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CandiedGingerUncooked",
+   "card": "CandiedGingerUncooked",
+   "rule": {
+    "event": "Can Build Candied Ginger"
+   }
+  },
+  {
+   "name": "Have CandleOff",
+   "card": "CandleOff",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Candle"
+     },
+     {
+      "event": "Have CandleOn"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CandleOn",
+   "card": "CandleOn",
+   "rule": {
+    "event": "Have CandleOff"
+   }
+  },
+  {
+   "name": "Have ClayFirePit",
+   "card": "ClayFirePit",
+   "rule": {
+    "event": "Have ClayFirePitExtinguished"
+   }
+  },
+  {
+   "name": "Have ClayFirePitExtinguished",
+   "card": "ClayFirePitExtinguished",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ClayFirePit"
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have ClayFirePitUnfired"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have ClayFirePitUnfired"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClayFirePitUnfired",
+   "card": "ClayFirePitUnfired",
+   "rule": {
+    "event": "Can Build Clay Fire Pit"
+   }
+  },
+  {
+   "name": "Have ClayPotCoolerOff",
+   "card": "ClayPotCoolerOff",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ClayPotCoolerOn"
+     },
+     {
+      "event": "Have ClayPotCoolerUndeployed"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClayPotCoolerOn",
+   "card": "ClayPotCoolerOn",
+   "rule": {
+    "event": "Have ClayPotCoolerOff"
+   }
+  },
+  {
+   "name": "Have ClayPotCoolerUndeployed",
+   "card": "ClayPotCoolerUndeployed",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ClayPotCoolerOff"
+     },
+     {
+      "event": "Have ClayPotCoolerOn"
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have ClayPotCoolerUnfired"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have ClayPotCoolerUnfired"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClayPotCoolerUnfired",
+   "card": "ClayPotCoolerUnfired",
+   "rule": {
+    "event": "Can Build Clay Pot Cooler"
+   }
+  },
+  {
+   "name": "Have ClayVase",
+   "card": "ClayVase",
+   "rule": {
+    "any": [
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "event": "Have Kiln"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClothLarge",
+   "card": "ClothLarge",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ClothVeryLarge"
+     },
+     {
+      "event": "Have JacketClothDisabled"
+     },
+     {
+      "event": "Have Loom"
+     },
+     {
+      "event": "Have MaskMakeshift"
+     },
+     {
+      "event": "Have ShirtCloth"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClothVeryLarge",
+   "card": "ClothVeryLarge",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BeeSuit"
+     },
+     {
+      "event": "Have Hammock"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Loom"
+       },
+       {
+        "event": "Have ClothLarge"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ClubSerrated",
+   "card": "ClubSerrated",
+   "rule": {
+    "event": "Can Build Serrated Club"
+   }
+  },
+  {
+   "name": "Have CoconutFish",
+   "card": "CoconutFish",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CoconutFishUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have CoconutFishUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have CoconutFishUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CoconutFishUncooked",
+   "card": "CoconutFishUncooked",
+   "rule": {
+    "event": "Can Build Coconut Fish"
+   }
+  },
+  {
+   "name": "Have CookingPot",
+   "card": "CookingPot",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoneBrothUncooked"
+     },
+     {
+      "event": "Have BoneBroth"
+     },
+     {
+      "event": "Have ButterBakedOystersCooked"
+     },
+     {
+      "event": "Have ButterBakedOystersUncooked"
+     },
+     {
+      "event": "Have CandiedGingerCooked"
+     },
+     {
+      "event": "Have CandiedGingerUncooked"
+     },
+     {
+      "event": "Have CoconutFishUncooked"
+     },
+     {
+      "event": "Have CoconutFish"
+     },
+     {
+      "event": "Have DrunkenCrabUncooked"
+     },
+     {
+      "event": "Have DrunkenCrab"
+     },
+     {
+      "event": "Have EggFriedRiceUncooked"
+     },
+     {
+      "event": "Have EggFriedRice"
+     },
+     {
+      "event": "Have FishNChipsUncooked"
+     },
+     {
+      "event": "Have FishNChips"
+     },
+     {
+      "event": "Have FishOmeletteUncooked"
+     },
+     {
+      "event": "Have FishOmelette"
+     },
+     {
+      "event": "Have FriedBananasCooked"
+     },
+     {
+      "event": "Have FriedBananasUncooked"
+     },
+     {
+      "event": "Have FriedPuffballsUncooked"
+     },
+     {
+      "event": "Have FriedPuffballs"
+     },
+     {
+      "event": "Have GlueCooked"
+     },
+     {
+      "event": "Have GlueUncooked"
+     },
+     {
+      "event": "Have GoatStewUncooked"
+     },
+     {
+      "event": "Have GoatStew"
+     },
+     {
+      "event": "Have HeartyFeastUncooked"
+     },
+     {
+      "event": "Have HeartyFeast"
+     },
+     {
+      "event": "Have HoneyCandyCooked"
+     },
+     {
+      "event": "Have HoneyCandyUncooked"
+     },
+     {
+      "event": "Have HoneyGlazedPorkUncooked"
+     },
+     {
+      "event": "Have HoneyGlazedPork"
+     },
+     {
+      "event": "Have IslandChickenUncooked"
+     },
+     {
+      "event": "Have IslandChicken"
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have CookingPotUnfired"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have CookingPotUnfired"
+       }
+      ]
+     },
+     {
+      "event": "Have LizardFryUncooked"
+     },
+     {
+      "event": "Have LizardFry"
+     },
+     {
+      "event": "Have MacaqueSkewersUncooked"
+     },
+     {
+      "event": "Have MacaqueSkewers"
+     },
+     {
+      "event": "Have ProteinBarUncooked"
+     },
+     {
+      "event": "Have ProteinBarsCooked"
+     },
+     {
+      "event": "Have SagoCakeUncooked"
+     },
+     {
+      "event": "Have SagoCake"
+     },
+     {
+      "event": "Have SagoSlimeCooked"
+     },
+     {
+      "event": "Have SagoSlimeUncooked"
+     },
+     {
+      "event": "Have YamCurryUncooked"
+     },
+     {
+      "event": "Have YamCurry"
+     },
+     {
+      "event": "Have YamJamCooked"
+     },
+     {
+      "event": "Have YamJamUncooked"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CookingPotUnfired",
+   "card": "CookingPotUnfired",
+   "rule": {
+    "event": "Can Build Cooking Pot"
+   }
+  },
+  {
+   "name": "Have Copper",
+   "card": "Copper",
+   "rule": {
+    "any": [
+     {
+      "event": "Have Forge"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "any": [
+         {
+          "event": "Have CopperDecoration_Failed"
+         },
+         {
+          "event": "Have CopperDecoration_Fish"
+         },
+         {
+          "event": "Have CopperDecoration_Seashell"
+         },
+         {
+          "event": "Have CopperDecoration_Turtle"
+         },
+         {
+          "event": "Have CopperJar"
+         },
+         {
+          "event": "Have CopperNecklace"
+         },
+         {
+          "event": "Have EatingUtensilsCopper"
+         },
+         {
+          "event": "Have KnifeCopperBlunt"
+         },
+         {
+          "event": "Have KnifeCopper"
+         },
+         {
+          "event": "Have SpearHeadBlunt"
+         },
+         {
+          "event": "Have SpearHead"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "any": [
+         {
+          "event": "Have AxeHeadBlunt"
+         },
+         {
+          "event": "Have AxeHead"
+         },
+         {
+          "event": "Have CopperBottle"
+         },
+         {
+          "event": "Have ShovelHead"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "any": [
+         {
+          "event": "Have CopperDecoration_Failed"
+         },
+         {
+          "event": "Have CopperDecoration_Fish"
+         },
+         {
+          "event": "Have CopperDecoration_Seashell"
+         },
+         {
+          "event": "Have CopperDecoration_Turtle"
+         },
+         {
+          "event": "Have CopperJar"
+         },
+         {
+          "event": "Have CopperNecklace"
+         },
+         {
+          "event": "Have EatingUtensilsCopper"
+         },
+         {
+          "event": "Have KnifeCopperBlunt"
+         },
+         {
+          "event": "Have KnifeCopper"
+         },
+         {
+          "event": "Have SpearHeadBlunt"
+         },
+         {
+          "event": "Have SpearHead"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "any": [
+         {
+          "event": "Have AxeHeadBlunt"
+         },
+         {
+          "event": "Have AxeHead"
+         },
+         {
+          "event": "Have CopperBottle"
+         },
+         {
+          "event": "Have ShovelHead"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "event": "Have MoldCopperDecoration"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CopperBottle",
+   "card": "CopperBottle",
+   "rule": {
+    "event": "Can Build Copper Bottle"
+   }
+  },
+  {
+   "name": "Have CopperDecoration_Failed",
+   "card": "CopperDecoration_Failed",
+   "rule": {
+    "event": "Have CopperDecoration_Mold"
+   }
+  },
+  {
+   "name": "Have CopperDecoration_Fish",
+   "card": "CopperDecoration_Fish",
+   "rule": {
+    "event": "Have CopperDecoration_Mold"
+   }
+  },
+  {
+   "name": "Have CopperDecoration_Mold",
+   "card": "CopperDecoration_Mold",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have MoldCopperDecoration"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MoldCopperDecoration"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CopperDecoration_Seashell",
+   "card": "CopperDecoration_Seashell",
+   "rule": {
+    "event": "Have CopperDecoration_Mold"
+   }
+  },
+  {
+   "name": "Have CopperDecoration_Turtle",
+   "card": "CopperDecoration_Turtle",
+   "rule": {
+    "event": "Have CopperDecoration_Mold"
+   }
+  },
+  {
+   "name": "Have CopperJar",
+   "card": "CopperJar",
+   "rule": {
+    "event": "Can Build Copper Jar"
+   }
+  },
+  {
+   "name": "Have CopperNecklace",
+   "card": "CopperNecklace",
+   "rule": {
+    "event": "Can Build Copper Necklace"
+   }
+  },
+  {
+   "name": "Have CopperSheet",
+   "card": "CopperSheet",
+   "rule": {
+    "event": "Can Build Copper Sheet"
+   }
+  },
+  {
+   "name": "Have DeadfallTrap",
+   "card": "DeadfallTrap",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Deadfall Trap"
+     },
+     {
+      "event": "Have DeadfallTrapTriggered"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have DeadfallTrapTriggered",
+   "card": "DeadfallTrapTriggered",
+   "rule": {
+    "event": "Have DeadfallTrap"
+   }
+  },
+  {
+   "name": "Have DrunkenCrab",
+   "card": "DrunkenCrab",
+   "rule": {
+    "any": [
+     {
+      "event": "Have DrunkenCrabUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have DrunkenCrabUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have DrunkenCrabUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have DrunkenCrabUncooked",
+   "card": "DrunkenCrabUncooked",
+   "rule": {
+    "event": "Can Build Drunken Crab"
+   }
+  },
+  {
+   "name": "Have EatingUtensilsCopper",
+   "card": "EatingUtensilsCopper",
+   "rule": {
+    "event": "Can Build Copper Eating Utensils"
+   }
+  },
+  {
+   "name": "Have EggFriedRice",
+   "card": "EggFriedRice",
+   "rule": {
+    "any": [
+     {
+      "event": "Have EggFriedRiceUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have EggFriedRiceUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have EggFriedRiceUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have EggFriedRiceUncooked",
+   "card": "EggFriedRiceUncooked",
+   "rule": {
+    "event": "Can Build Egg Fried Rice"
+   }
+  },
+  {
+   "name": "Have EnclosureEntrance",
+   "card": "EnclosureEntrance",
+   "rule": {
+    "event": "Can Build Enclosure"
+   }
+  },
+  {
+   "name": "Have Env_Atoll",
+   "card": "Env_Atoll",
+   "rule": {
+    "event": "Have RaftExitAtoll"
+   }
+  },
+  {
+   "name": "Have Env_Enclosure",
+   "card": "Env_Enclosure",
+   "rule": {
+    "event": "Have EnclosureEntrance"
+   }
+  },
+  {
+   "name": "Have Env_Raft",
+   "card": "Env_Raft",
+   "rule": {
+    "any": [
+     {
+      "event": "Have RaftEntranceAtoll"
+     },
+     {
+      "event": "Have RaftEntrance"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_FloatingDebrisMissed",
+   "card": "Event_FloatingDebrisMissed",
+   "rule": {
+    "event": "Have FloatingDebris"
+   }
+  },
+  {
+   "name": "Have Event_Raft_Atoll",
+   "card": "Event_Raft_Atoll",
+   "rule": {
+    "event": "Can Raise Distance"
+   }
+  },
+  {
+   "name": "Have Event_Raft_FloatingDebris",
+   "card": "Event_Raft_FloatingDebris",
+   "rule": {
+    "event": "Can Raise Distance"
+   }
+  },
+  {
+   "name": "Have Event_Raft_PassingShip",
+   "card": "Event_Raft_PassingShip",
+   "rule": {
+    "event": "Can Raise Distance"
+   }
+  },
+  {
+   "name": "Have Event_ShipEscape",
+   "card": "Event_ShipEscape",
+   "rule": {
+    "any": [
+     {
+      "event": "Have Event_FloatingDebrisMissed"
+     },
+     {
+      "event": "Have Event_ShipMissed"
+     },
+     {
+      "event": "Have Event_ShipRescueDistance"
+     },
+     {
+      "event": "Have Event_ShipRescue"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_ShipMissed",
+   "card": "Event_ShipMissed",
+   "rule": {
+    "event": "Have PassingShip"
+   }
+  },
+  {
+   "name": "Have Event_ShipRescue",
+   "card": "Event_ShipRescue",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FloatingDebris"
+     },
+     {
+      "event": "Have PassingShip"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_ShipRescueDistance",
+   "card": "Event_ShipRescueDistance",
+   "rule": {
+    "event": "Can Raise Distance"
+   }
+  },
+  {
+   "name": "Have FeedBird",
+   "card": "FeedBird",
+   "rule": {
+    "event": "Can Build Bird Feed"
+   }
+  },
+  {
+   "name": "Have FeedBoar",
+   "card": "FeedBoar",
+   "rule": {
+    "event": "Can Build Boar Feed"
+   }
+  },
+  {
+   "name": "Have FeedGoat",
+   "card": "FeedGoat",
+   "rule": {
+    "event": "Can Build Goat Feed"
+   }
+  },
+  {
+   "name": "Have FishNChips",
+   "card": "FishNChips",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FishNChipsUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have FishNChipsUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have FishNChipsUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishNChipsUncooked",
+   "card": "FishNChipsUncooked",
+   "rule": {
+    "event": "Can Build Fish N' Chips"
+   }
+  },
+  {
+   "name": "Have FishOmelette",
+   "card": "FishOmelette",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FishOmeletteUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have FishOmeletteUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have FishOmeletteUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishOmeletteUncooked",
+   "card": "FishOmeletteUncooked",
+   "rule": {
+    "event": "Can Build Fish Omelette"
+   }
+  },
+  {
+   "name": "Have FishTrap",
+   "card": "FishTrap",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Fish Trap (FishTrap)"
+     },
+     {
+      "event": "Have FishTrapDeployed"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishTrapDeployed",
+   "card": "FishTrapDeployed",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FishTrap"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Atoll"
+       },
+       {
+        "event": "Have FishTrap"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishingLineRustic",
+   "card": "FishingLineRustic",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Fishing Line"
+     },
+     {
+      "event": "Have FishingLineRusticBait"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishingLineRusticBait",
+   "card": "FishingLineRusticBait",
+   "rule": {
+    "event": "Have FishingLineRustic"
+   }
+  },
+  {
+   "name": "Have FishingRod",
+   "card": "FishingRod",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Fishing Rod"
+     },
+     {
+      "event": "Have FishingRodBait"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Atoll"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRusticBait"
+         },
+         {
+          "event": "Have FishingRodBait"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have FishingLineRusticBait"
+       },
+       {
+        "event": "Have FishingRodBait"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Sea_Raft"
+       },
+       {
+        "any": [
+         {
+          "event": "Have FishingLineRusticBait"
+         },
+         {
+          "event": "Have FishingRodBait"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FishingRodBait",
+   "card": "FishingRodBait",
+   "rule": {
+    "event": "Have FishingRod"
+   }
+  },
+  {
+   "name": "Have FloatingDebris",
+   "card": "FloatingDebris",
+   "rule": {
+    "event": "Have Event_Raft_FloatingDebris"
+   }
+  },
+  {
+   "name": "Have Forge",
+   "card": "Forge",
+   "rule": {
+    "event": "Have ForgeExtinguished"
+   }
+  },
+  {
+   "name": "Have ForgeExtinguished",
+   "card": "ForgeExtinguished",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Forge"
+     },
+     {
+      "event": "Have Forge"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FriedBananasCooked",
+   "card": "FriedBananasCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FriedBananasUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have FriedBananasUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have FriedBananasUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FriedBananasUncooked",
+   "card": "FriedBananasUncooked",
+   "rule": {
+    "event": "Can Build Fried Bananas"
+   }
+  },
+  {
+   "name": "Have FriedPuffballs",
+   "card": "FriedPuffballs",
+   "rule": {
+    "any": [
+     {
+      "event": "Have FriedPuffballsUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have FriedPuffballsUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have FriedPuffballsUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have FriedPuffballsUncooked",
+   "card": "FriedPuffballsUncooked",
+   "rule": {
+    "event": "Can Build Fried Puffballs"
+   }
+  },
+  {
+   "name": "Have Glue",
+   "card": "Glue",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GlueDry"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have GlueDry"
+       }
+      ]
+     },
+     {
+      "event": "Have GlueCooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have GlueDry"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GlueCooked",
+   "card": "GlueCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GlueUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have GlueUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have GlueUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GlueDry",
+   "card": "GlueDry",
+   "rule": {
+    "event": "Have Glue"
+   }
+  },
+  {
+   "name": "Have GlueUncooked",
+   "card": "GlueUncooked",
+   "rule": {
+    "event": "Can Build Glue"
+   }
+  },
+  {
+   "name": "Have GoatEnclosureFemale",
+   "card": "GoatEnclosureFemale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureKid"
+     },
+     {
+      "event": "Have GoatEnclosureLactating"
+     },
+     {
+      "event": "Have GoatTiedFemaleLactating"
+     },
+     {
+      "all": [
+       {
+        "event": "Have GoatTiedFemale"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatEnclosureKid",
+   "card": "GoatEnclosureKid",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "all": [
+       {
+        "event": "Have GoatTiedKid"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatEnclosureLactating",
+   "card": "GoatEnclosureLactating",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "all": [
+       {
+        "event": "Have GoatTiedFemaleLactating"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatEnclosureMale",
+   "card": "GoatEnclosureMale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureKid"
+     },
+     {
+      "all": [
+       {
+        "event": "Have GoatTiedMale"
+       },
+       {
+        "event": "Have Env_Enclosure"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatFeeder",
+   "card": "GoatFeeder",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have GoatFeederEmpty"
+       },
+       {
+        "event": "Have FeedGoat"
+       }
+      ]
+     },
+     {
+      "event": "Have GoatFeederEmpty"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatFeederEmpty",
+   "card": "GoatFeederEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Goat Feeder"
+     },
+     {
+      "event": "Have GoatFeeder"
+     },
+     {
+      "event": "Have WateringTrough"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatStew",
+   "card": "GoatStew",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatStewUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have GoatStewUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have GoatStewUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatStewUncooked",
+   "card": "GoatStewUncooked",
+   "rule": {
+    "event": "Can Build Goat Stew"
+   }
+  },
+  {
+   "name": "Have GoatTiedFemale",
+   "card": "GoatTiedFemale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "event": "Have GoatTiedKid"
+     },
+     {
+      "event": "Have TrappingPit"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have GoatTiedFemaleLactating",
+   "card": "GoatTiedFemaleLactating",
+   "rule": {
+    "event": "Have GoatEnclosureLactating"
+   }
+  },
+  {
+   "name": "Have GoatTiedKid",
+   "card": "GoatTiedKid",
+   "rule": {
+    "event": "Have GoatEnclosureKid"
+   }
+  },
+  {
+   "name": "Have GoatTiedMale",
+   "card": "GoatTiedMale",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarTiedPiglet"
+     },
+     {
+      "event": "Have GoatEnclosureMale"
+     },
+     {
+      "event": "Have GoatTiedKid"
+     },
+     {
+      "event": "Have TrappingPit"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Hammock",
+   "card": "Hammock",
+   "rule": {
+    "event": "Can Build Hammock"
+   }
+  },
+  {
+   "name": "Have HatWoven",
+   "card": "HatWoven",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Woven Hat"
+     },
+     {
+      "event": "Have Scarecrow"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have HeartyFeast",
+   "card": "HeartyFeast",
+   "rule": {
+    "any": [
+     {
+      "event": "Have HeartyFeastUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have HeartyFeastUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have HeartyFeastUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have HeartyFeastUncooked",
+   "card": "HeartyFeastUncooked",
+   "rule": {
+    "event": "Can Build Hearty Feast"
+   }
+  },
+  {
+   "name": "Have HoneyCandyCooked",
+   "card": "HoneyCandyCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have HoneyCandyUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have HoneyCandyUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have HoneyCandyUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have HoneyCandyUncooked",
+   "card": "HoneyCandyUncooked",
+   "rule": {
+    "event": "Can Build Honey Candy"
+   }
+  },
+  {
+   "name": "Have HoneyGlazedPork",
+   "card": "HoneyGlazedPork",
+   "rule": {
+    "any": [
+     {
+      "event": "Have HoneyGlazedPorkUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have HoneyGlazedPorkUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have HoneyGlazedPorkUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have HoneyGlazedPorkUncooked",
+   "card": "HoneyGlazedPorkUncooked",
+   "rule": {
+    "event": "Can Build Honey Glazed Pork"
+   }
+  },
+  {
+   "name": "Have Imp_Irrigation",
+   "card": "Imp_Irrigation",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ShovelCopper"
+     },
+     {
+      "event": "Have ShovelScrap"
+     },
+     {
+      "event": "Have ShovelWooden"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have IslandChicken",
+   "card": "IslandChicken",
+   "rule": {
+    "any": [
+     {
+      "event": "Have IslandChickenUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have IslandChickenUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have IslandChickenUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have IslandChickenUncooked",
+   "card": "IslandChickenUncooked",
+   "rule": {
+    "event": "Can Build Island Chicken"
+   }
+  },
+  {
+   "name": "Have JacketClothDisabled",
+   "card": "JacketClothDisabled",
+   "rule": {
+    "event": "Can Build Cloth Jacket"
+   }
+  },
+  {
+   "name": "Have Kiln",
+   "card": "Kiln",
+   "rule": {
+    "event": "Have KilnExtinguished"
+   }
+  },
+  {
+   "name": "Have KilnAdvanced",
+   "card": "KilnAdvanced",
+   "rule": {
+    "event": "Have KilnAdvancedExtinguished"
+   }
+  },
+  {
+   "name": "Have KilnAdvancedExtinguished",
+   "card": "KilnAdvancedExtinguished",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Advanced Kiln"
+     },
+     {
+      "event": "Have KilnAdvanced"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have KilnExtinguished",
+   "card": "KilnExtinguished",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Kiln"
+     },
+     {
+      "event": "Have Kiln"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have KnifeBone",
+   "card": "KnifeBone",
+   "rule": {
+    "event": "Can Build Bone Knife"
+   }
+  },
+  {
+   "name": "Have KnifeCopper",
+   "card": "KnifeCopper",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have MoldKnife"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MoldKnife"
+       }
+      ]
+     },
+     {
+      "event": "Have KnifeCopperBlunt"
+     },
+     {
+      "event": "Have KnifeCopper"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have KnifeCopperBlunt",
+   "card": "KnifeCopperBlunt",
+   "rule": {
+    "any": [
+     {
+      "event": "Have KnifeBone"
+     },
+     {
+      "event": "Have KnifeCopper"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have LQ_MilkWhole",
+   "card": "LQ_MilkWhole",
+   "rule": {
+    "event": "Have GoatEnclosureLactating"
+   }
+  },
+  {
+   "name": "Have LQ_SlakedLime",
+   "card": "LQ_SlakedLime",
+   "rule": {
+    "event": "Have Quicklime"
+   }
+  },
+  {
+   "name": "Have LeatherPants",
+   "card": "LeatherPants",
+   "rule": {
+    "event": "Can Build Leather Pants"
+   }
+  },
+  {
+   "name": "Have LizardFry",
+   "card": "LizardFry",
+   "rule": {
+    "any": [
+     {
+      "event": "Have LizardFryUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have LizardFryUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have LizardFryUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have LizardFryUncooked",
+   "card": "LizardFryUncooked",
+   "rule": {
+    "event": "Can Build Lizard Fry"
+   }
+  },
+  {
+   "name": "Have LogTrap",
+   "card": "LogTrap",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Log Trap"
+     },
+     {
+      "event": "Have LogTrapTriggered"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have LogTrapTriggered",
+   "card": "LogTrapTriggered",
+   "rule": {
+    "event": "Have LogTrap"
+   }
+  },
+  {
+   "name": "Have Loom",
+   "card": "Loom",
+   "rule": {
+    "event": "Have LoomEmpty"
+   }
+  },
+  {
+   "name": "Have LoomEmpty",
+   "card": "LoomEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Loom"
+     },
+     {
+      "event": "Have Loom"
+     },
+     {
+      "all": [
+       {
+        "event": "Have Loom"
+       },
+       {
+        "event": "Have ClothLarge"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have MacaqueSkewers",
+   "card": "MacaqueSkewers",
+   "rule": {
+    "any": [
+     {
+      "event": "Have MacaqueSkewersUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have MacaqueSkewersUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have MacaqueSkewersUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have MacaqueSkewersUncooked",
+   "card": "MacaqueSkewersUncooked",
+   "rule": {
+    "event": "Can Build Macaque Skewers"
+   }
+  },
+  {
+   "name": "Have MaskMakeshift",
+   "card": "MaskMakeshift",
+   "rule": {
+    "event": "Have ClothLarge"
+   }
+  },
+  {
+   "name": "Have MoldAxe",
+   "card": "MoldAxe",
+   "rule": {
+    "event": "Can Build Axe Mold"
+   }
+  },
+  {
+   "name": "Have MoldCopperDecoration",
+   "card": "MoldCopperDecoration",
+   "rule": {
+    "event": "Can Build Decoration Mold"
+   }
+  },
+  {
+   "name": "Have MoldKnife",
+   "card": "MoldKnife",
+   "rule": {
+    "event": "Can Build Knife Mold"
+   }
+  },
+  {
+   "name": "Have MoldShovel",
+   "card": "MoldShovel",
+   "rule": {
+    "event": "Can Build Shovel Mold"
+   }
+  },
+  {
+   "name": "Have MoldSpear",
+   "card": "MoldSpear",
+   "rule": {
+    "event": "Can Build Spear Mold"
+   }
+  },
+  {
+   "name": "Have Mortar",
+   "card": "Mortar",
+   "rule": {
+    "event": "Can Build Mortar"
+   }
+  },
+  {
+   "name": "Have MortarBurnt",
+   "card": "MortarBurnt",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MortarDry"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have MortarDry"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have MortarDry",
+   "card": "MortarDry",
+   "rule": {
+    "event": "Have Mortar"
+   }
+  },
+  {
+   "name": "Have MushroomBedAssorted",
+   "card": "MushroomBedAssorted",
+   "rule": {
+    "event": "Have MushroomBedEmpty"
+   }
+  },
+  {
+   "name": "Have MushroomBedDry",
+   "card": "MushroomBedDry",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Mushroom Bed"
+     },
+     {
+      "event": "Have MushroomBedAssorted"
+     },
+     {
+      "event": "Have MushroomBedEmpty"
+     },
+     {
+      "event": "Have MushroomBedMagic"
+     },
+     {
+      "event": "Have MushroomBedPuffballs"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have MushroomBedEmpty",
+   "card": "MushroomBedEmpty",
+   "rule": {
+    "event": "Have MushroomBedDry"
+   }
+  },
+  {
+   "name": "Have MushroomBedMagic",
+   "card": "MushroomBedMagic",
+   "rule": {
+    "event": "Have MushroomBedEmpty"
+   }
+  },
+  {
+   "name": "Have MushroomBedPuffballs",
+   "card": "MushroomBedPuffballs",
+   "rule": {
+    "event": "Have MushroomBedEmpty"
+   }
+  },
+  {
+   "name": "Have PartridgeFeeder",
+   "card": "PartridgeFeeder",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have PartridgeFeederEmpty"
+       },
+       {
+        "event": "Have FeedBird"
+       }
+      ]
+     },
+     {
+      "event": "Have PartridgeFeederEmpty"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have PartridgeFeederEmpty",
+   "card": "PartridgeFeederEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Partridge Feeder"
+     },
+     {
+      "event": "Have PartridgeFeeder"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have PassingShip",
+   "card": "PassingShip",
+   "rule": {
+    "event": "Have Event_Raft_PassingShip"
+   }
+  },
+  {
+   "name": "Have Plank",
+   "card": "Plank",
+   "rule": {
+    "any": [
+     {
+      "event": "Have Bookshelf"
+     },
+     {
+      "event": "Can Build Wooden Planks"
+     },
+     {
+      "event": "Have MushroomBedAssorted"
+     },
+     {
+      "event": "Have MushroomBedMagic"
+     },
+     {
+      "event": "Have MushroomBedPuffballs"
+     },
+     {
+      "event": "Have Shelf"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ProteinBarUncooked",
+   "card": "ProteinBarUncooked",
+   "rule": {
+    "event": "Can Build Protein Bar"
+   }
+  },
+  {
+   "name": "Have ProteinBarsCooked",
+   "card": "ProteinBarsCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have ProteinBarUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have ProteinBarUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have ProteinBarUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Quicklime",
+   "card": "Quicklime",
+   "rule": {
+    "any": [
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "event": "Have Kiln"
+     },
+     {
+      "event": "Have MortarBurnt"
+     },
+     {
+      "event": "Have StoneBurnt"
+     },
+     {
+      "event": "Have StoneHeavyBurnt"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have QuininePowder",
+   "card": "QuininePowder",
+   "rule": {
+    "event": "Can Build Cinchona Powder"
+   }
+  },
+  {
+   "name": "Have RaftEntrance",
+   "card": "RaftEntrance",
    "rule": {
     "event": "Can Build Raft"
+   }
+  },
+  {
+   "name": "Have RaftEntranceAtoll",
+   "card": "RaftEntranceAtoll",
+   "rule": {
+    "event": "Have Env_Atoll"
+   }
+  },
+  {
+   "name": "Have RaftExitAtoll",
+   "card": "RaftExitAtoll",
+   "rule": {
+    "event": "Have Event_Raft_Atoll"
+   }
+  },
+  {
+   "name": "Have RaftFishTrap",
+   "card": "RaftFishTrap",
+   "rule": {
+    "event": "Can Build Fish Trap (RaftFishTrap)"
+   }
+  },
+  {
+   "name": "Have RaftShelter",
+   "card": "RaftShelter",
+   "rule": {
+    "event": "Can Build Raft Shelter"
+   }
+  },
+  {
+   "name": "Have Sack",
+   "card": "Sack",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Sack"
+     },
+     {
+      "event": "Have Scarecrow"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SagoCake",
+   "card": "SagoCake",
+   "rule": {
+    "any": [
+     {
+      "event": "Have SagoCakeUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have SagoCakeUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have SagoCakeUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SagoCakeUncooked",
+   "card": "SagoCakeUncooked",
+   "rule": {
+    "event": "Can Build Sago Cake"
+   }
+  },
+  {
+   "name": "Have SagoSlimeCooked",
+   "card": "SagoSlimeCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have SagoSlimeUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have SagoSlimeUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have SagoSlimeUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SagoSlimeUncooked",
+   "card": "SagoSlimeUncooked",
+   "rule": {
+    "event": "Can Build Sago Slime"
+   }
+  },
+  {
+   "name": "Have SailBroken_Raft",
+   "card": "SailBroken_Raft",
+   "rule": {
+    "any": [
+     {
+      "event": "Have SailDown_Raft"
+     },
+     {
+      "event": "Have SailUp_Raft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SailDown_Raft",
+   "card": "SailDown_Raft",
+   "rule": {
+    "any": [
+     {
+      "event": "Have SailBroken_Raft"
+     },
+     {
+      "event": "Have SailUp_Raft"
+     },
+     {
+      "event": "Have Start_RaftAtoll"
+     },
+     {
+      "event": "Have Start_Raft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SailUp_Raft",
+   "card": "SailUp_Raft",
+   "rule": {
+    "any": [
+     {
+      "event": "Have RaftFishTrap"
+     },
+     {
+      "event": "Have RaftShelter"
+     },
+     {
+      "event": "Have SailBroken_Raft"
+     },
+     {
+      "event": "Have SailDown_Raft"
+     },
+     {
+      "event": "Have SupplyChestRaft"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Satchel",
+   "card": "Satchel",
+   "rule": {
+    "event": "Can Build Satchel"
+   }
+  },
+  {
+   "name": "Have Scarecrow",
+   "card": "Scarecrow",
+   "rule": {
+    "event": "Can Build Scarecrow"
+   }
+  },
+  {
+   "name": "Have Sea_Atoll",
+   "card": "Sea_Atoll",
+   "rule": {
+    "event": "Have Env_Atoll"
+   }
+  },
+  {
+   "name": "Have Sea_Raft",
+   "card": "Sea_Raft",
+   "rule": {
+    "event": "Have Start_Raft"
+   }
+  },
+  {
+   "name": "Have Shelf",
+   "card": "Shelf",
+   "rule": {
+    "event": "Can Build Shelf"
+   }
+  },
+  {
+   "name": "Have ShirtCloth",
+   "card": "ShirtCloth",
+   "rule": {
+    "event": "Can Build Shirt"
+   }
+  },
+  {
+   "name": "Have ShovelCopper",
+   "card": "ShovelCopper",
+   "rule": {
+    "event": "Can Build Copper Shovel"
+   }
+  },
+  {
+   "name": "Have ShovelHead",
+   "card": "ShovelHead",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have MoldShovel"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MoldShovel"
+       }
+      ]
+     },
+     {
+      "event": "Have ShovelCopper"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have ShovelScrap",
+   "card": "ShovelScrap",
+   "rule": {
+    "event": "Can Build Scrap Shovel"
+   }
+  },
+  {
+   "name": "Have ShovelWooden",
+   "card": "ShovelWooden",
+   "rule": {
+    "event": "Can Build Wooden Shovel"
+   }
+  },
+  {
+   "name": "Have SnareTrap",
+   "card": "SnareTrap",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Snare Trap"
+     },
+     {
+      "event": "Have SnareTrapTriggered"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SnareTrapTriggered",
+   "card": "SnareTrapTriggered",
+   "rule": {
+    "event": "Have SnareTrap"
+   }
+  },
+  {
+   "name": "Have SpearCopper",
+   "card": "SpearCopper",
+   "rule": {
+    "event": "Can Build Copper Spear"
+   }
+  },
+  {
+   "name": "Have SpearHead",
+   "card": "SpearHead",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have MoldSpear"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have MoldSpear"
+       }
+      ]
+     },
+     {
+      "event": "Have SpearHeadBlunt"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SpearHeadBlunt",
+   "card": "SpearHeadBlunt",
+   "rule": {
+    "any": [
+     {
+      "event": "Have SpearCopper"
+     },
+     {
+      "event": "Have SpearHead"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Start_Raft",
+   "card": "Start_Raft",
+   "rule": {
+    "event": "Have RaftEntrance"
+   }
+  },
+  {
+   "name": "Have Start_RaftAtoll",
+   "card": "Start_RaftAtoll",
+   "rule": {
+    "event": "Have Event_Raft_Atoll"
+   }
+  },
+  {
+   "name": "Have StoneBurnt",
+   "card": "StoneBurnt",
+   "rule": {
+    "any": [
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "event": "Have Kiln"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have StoneHeavyBurnt",
+   "card": "StoneHeavyBurnt",
+   "rule": {
+    "any": [
+     {
+      "event": "Have KilnAdvanced"
+     },
+     {
+      "event": "Have Kiln"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Stove",
+   "card": "Stove",
+   "rule": {
+    "event": "Have StoveExtinguished"
+   }
+  },
+  {
+   "name": "Have StoveExtinguished",
+   "card": "StoveExtinguished",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Stove"
+     },
+     {
+      "event": "Have Stove"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have SupplyChestRaft",
+   "card": "SupplyChestRaft",
+   "rule": {
+    "event": "Can Build Supply Chest"
+   }
+  },
+  {
+   "name": "Have TrappingPit",
+   "card": "TrappingPit",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Trapping Pit"
+     },
+     {
+      "event": "Have TrappingPitTriggered"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have TrappingPitTriggered",
+   "card": "TrappingPitTriggered",
+   "rule": {
+    "event": "Have TrappingPit"
+   }
+  },
+  {
+   "name": "Have Treenail",
+   "card": "Treenail",
+   "rule": {
+    "event": "Can Build Treenails"
+   }
+  },
+  {
+   "name": "Have WaterReservoir",
+   "card": "WaterReservoir",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Water Reservoir"
+     },
+     {
+      "event": "Have WaterReservoirIrrigating"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WaterReservoirIrrigating",
+   "card": "WaterReservoirIrrigating",
+   "rule": {
+    "all": [
+     {
+      "event": "Have WaterReservoir"
+     },
+     {
+      "event": "Can Raise Irrigated"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WateringTrough",
+   "card": "WateringTrough",
+   "rule": {
+    "event": "Can Build Watering Trough"
+   }
+  },
+  {
+   "name": "Have YamCurry",
+   "card": "YamCurry",
+   "rule": {
+    "any": [
+     {
+      "event": "Have YamCurryUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have YamCurryUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have YamCurryUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have YamCurryUncooked",
+   "card": "YamCurryUncooked",
+   "rule": {
+    "event": "Can Build Yam Curry"
+   }
+  },
+  {
+   "name": "Have YamJamCooked",
+   "card": "YamJamCooked",
+   "rule": {
+    "any": [
+     {
+      "event": "Have YamJamUncooked"
+     },
+     {
+      "all": [
+       {
+        "event": "Have ClayFirePit"
+       },
+       {
+        "event": "Have YamJamUncooked"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Stove"
+       },
+       {
+        "event": "Have YamJamUncooked"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have YamJamUncooked",
+   "card": "YamJamUncooked",
+   "rule": {
+    "event": "Can Build Yam Jam"
+   }
+  },
+  {
+   "name": "Victory",
+   "rule": {
+    "event": "Can Play Ending Event_ShipEscape"
    }
   }
  ]

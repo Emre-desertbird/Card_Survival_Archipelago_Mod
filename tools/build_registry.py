@@ -4,11 +4,12 @@ Registry 1 randomizes blueprints:
   item      "Blueprint: X"  - makes blueprint X buildable
   location  "Research - X"  - finishing the research of X in the blueprint screen
 
-Logic comes from the game data. A research check needs the cards that reveal the
-blueprint in vanilla (its unlock conditions); a card made by a blueprint needs
-that blueprint and, through "Can Build" events, everything it is built from.
-Cards with no blueprint behind them (found, harvested, cooked) and skill levels
-count as always obtainable for now; docs/plan.md lists that audit as milestone 3.
+Logic comes from the game data (tools/card_graph.py, explained in docs/logic.md).
+Every way to get a card is a recipe: actions, tools, cooking, time, exploring,
+travelling, fights, events and building blueprints. Cards reachable without any
+Archipelago item are simply "true"; every other card becomes an event "Have X"
+whose rule lists its recipes. A research check needs what reveals the blueprint
+in vanilla (cards, tags, raised stats); the goal needs a real ending.
 """
 
 from __future__ import annotations
@@ -18,6 +19,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+import card_graph
+from card_graph import Need
 from common import AUDITED_BUILD_ID, DUMP, WORLD
 
 GAME = "Card Survival: Tropical Island"
@@ -34,7 +37,10 @@ FILLERS = [
     ("Rope and Fibers", 9005, {"Rope": 1, "Fibers": 2}),
 ]
 EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprints
-GOAL_BLUEPRINT = "Bp_Raft"                             # provisional goal route, see docs/plan.md
+# The ending the logic guarantees. Every ending wins in the game; this one is fully modelled by
+# cards (raft, sailing, rescue). Home depends on comfort and days survived, Weston on its quest
+# line and Mermaid on the character, so the logic does not rely on them (docs/logic.md).
+GOAL_ENDING = "Event_ShipEscape"
 
 
 def text(value) -> str:
@@ -86,13 +92,6 @@ def main() -> None:
                             if name not in starting and not any(card.get(key) for key in conditions))
     randomized = sorted(name for name in blueprints if name not in starting and name not in character_only)
 
-    made_by: dict[str, list[str]] = {}
-    for name in sorted(blueprints):
-        if name in character_only:
-            continue
-        for result in refs(blueprints[name].get("BlueprintResult"), "DroppedCard"):
-            made_by.setdefault(result, []).append(name)
-
     title_count = Counter(text(blueprints[name].get("CardName")) for name in blueprints)
     def title(name: str) -> str:
         label = text(blueprints[name].get("CardName")) or name
@@ -100,44 +99,84 @@ def main() -> None:
     item_name = lambda name: f"Blueprint: {title(name)}"
     can_build = lambda name: f"Can Build {title(name)}"
 
-    def card_rule(card: str):
-        """Being able to hold this card: free unless only blueprints make it."""
-        makers = made_by.get(card)
-        return simplify("any", [{"event": can_build(maker)} for maker in makers]) if makers else True
+    graph = card_graph.build(load)
+    blueprint_needs = {name: card_graph.build_needs(card, graph.tab_groups)
+                       for name, card in cards.items() if card.get("CardType") == "Blueprint"}
+    free = card_graph.Reach(graph, blueprint_needs, set(starting))
+    full = card_graph.Reach(graph, blueprint_needs, set(starting) | set(randomized))
+    producers = graph.producers()
 
-    events, used_items = [], set()
-    for name in sorted(set(randomized) | set(starting)):
-        needs = [] if name in starting else [{"item": item_name(name)}]
-        for stage in blueprints[name].get("BlueprintStages", []):
-            for element in (stage or {}).get("RequiredElements", []):
-                element = element or {}
-                if "RequiredCard" in element:
-                    needs.append(card_rule(element["RequiredCard"]["$ref"]))
-                elif "RequiredTabGroup" in element:
-                    members = groups.get(element["RequiredTabGroup"]["$ref"], [])
-                    needs.append(simplify("any", [card_rule(member) for member in members]) if members else True)
-        events.append({"name": can_build(name), "blueprint": name, "rule": simplify("all", needs)})
+    def have(card: str) -> str:
+        if card.startswith("stat:"):
+            return f"Can Raise {card[5:]}"
+        if card.startswith("victory:"):
+            return f"Can Play Ending {card[8:]}"
+        return f"Have {card}"
+
+    queued_cards: list[str] = []
+    queued_builds: list[str] = []
+    def need_rule(need: Need):
+        """JSON rule for one need, True when free, None when impossible even with every item."""
+        if need.kind == "card":
+            if need.name in free.cards:
+                return True
+            if need.name not in full.cards:
+                return None
+            queued_cards.append(need.name)
+            return {"event": have(need.name)}
+        if need.kind == "tag":
+            return any_rule([Need("card", member) for member in graph.tags.get(need.name, [])])
+        if need.kind == "build":
+            if need.name in free.built:
+                return True
+            if need.name not in full.built:
+                return None
+            queued_builds.append(need.name)
+            return {"event": can_build(need.name)}
+        return any_rule(need.options)
+
+    def any_rule(needs):
+        rules = [rule for rule in (need_rule(need) for need in needs) if rule is not None]
+        return simplify("any", rules) if rules else None
+
+    def all_rule(needs):
+        rules = [need_rule(need) for need in needs]
+        return None if any(rule is None for rule in rules) else simplify("all", rules)
 
     locations = []
     for index, name in enumerate(randomized):
         card = blueprints[name]
-        # Unlock conditions that share an ObjectiveName are alternatives (see CardUnlockConditions
-        # in the game code); differently named ones must all hold. Skill, tag, time and objective
-        # conditions count as always possible in this registry version.
-        alternatives: dict[str, list] = {}
-        for index_, condition in enumerate(card.get("CardsOnBoard") or []):
-            condition = condition or {}
-            rule = card_rule(condition["Card"]["$ref"]) if "Card" in condition else True
-            alternatives.setdefault(condition.get("ObjectiveName") or f"#card{index_}", []).append(rule)
-        for key in ("TagsOnBoard", "StatValues", "TimeValues", "CompletedObjectives"):
-            for index_, condition in enumerate(card.get(key) or []):
-                alternatives.setdefault((condition or {}).get("ObjectiveName") or f"#{key}{index_}", []).append(True)
-        reveal = [simplify("any", options) for options in alternatives.values()]
+        rule = all_rule(card_graph.unlock_needs(card))
+        if rule is None:
+            raise SystemExit(f"The research of {name} can never be revealed")
         locations.append({"key": name, "name": f"Research - {title(name)}", "ap_id": LOCATION_BASE + index,
                           "unique_id": card["UniqueID"], "research_days": card.get("BlueprintUnlockSunsCost", 0),
                           "vanilla_item": item_name(name), "hint": text(card.get("UnlockConditionsDesc")),
-                          "rule": simplify("all", reveal)})
-    events.append({"name": "Victory", "rule": {"event": can_build(GOAL_BLUEPRINT)}})
+                          "rule": rule})
+    goal = need_rule(Need("card", "victory:" + GOAL_ENDING))
+    if goal is None or goal is True:
+        raise SystemExit(f"The goal ending {GOAL_ENDING} is unreachable or needs no item: {goal}")
+
+    events: list[dict] = [{"name": "Victory", "rule": goal}]
+    done: set[str] = set()
+    while queued_cards or queued_builds:
+        if queued_builds:
+            name = queued_builds.pop()
+            if can_build(name) in done:
+                continue
+            done.add(can_build(name))
+            rule = all_rule(blueprint_needs[name])
+            item = [] if name in starting else [{"item": item_name(name)}]
+            events.append({"name": can_build(name), "blueprint": name, "rule": simplify("all", item + [rule])})
+            continue
+        card = queued_cards.pop()
+        if have(card) in done:
+            continue
+        done.add(have(card))
+        options = [rule for rule in (all_rule(recipe.needs) for recipe in producers.get(card, [])) if rule is not None]
+        events.append({"name": have(card), "card": card, "rule": simplify("any", options)})
+    events.sort(key=lambda event: event["name"])
+    used_items = set()
 
     def atoms(rule):
         if isinstance(rule, dict):
@@ -177,7 +216,7 @@ def main() -> None:
                       "contents": [{"card": card, "unique_id": cards[card]["UniqueID"], "count": count}
                                    for card, count in contents.items()]})
 
-    registry = {"game_name": GAME, "registry_version": 2, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 3, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "starting_blueprints": [title(name) for name in starting],
                 "character_only_blueprints": [title(name) for name in character_only],
