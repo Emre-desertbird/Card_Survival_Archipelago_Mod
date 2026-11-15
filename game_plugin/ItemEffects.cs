@@ -32,6 +32,10 @@ namespace CardSurvivalArchipelago
             {
                 Finds.Receive(index, entry);
             }
+            else if (entry.Kind == "trap")
+            {
+                Traps.Receive(index);
+            }
             foreach (string equipment in entry.Equipment)
             {
                 Give(equipment, 1);

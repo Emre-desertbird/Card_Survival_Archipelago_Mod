@@ -1,7 +1,7 @@
 # Plan: neue Checks, Logbuch, neue Perks, Items und Balance
 
-Status: **Phasen A bis C sind gebaut** (Mod-Version 0.6.0, je Phase im echten Spiel getestet).
-Phase D (Ausbau-Set, Stauraum, Extras, Fallen) ist noch offen.
+Status: **Alle Phasen A bis D sind gebaut** (Mod-Version 0.7.0, je Phase im echten Spiel
+getestet). Das Logbuch steht auch im Journal-Buch des Spiels.
 
 Abweichungen beim Bau, jeweils aus den Daten begründet:
 
@@ -14,6 +14,15 @@ Abweichungen beim Bau, jeweils aus den Daten begründet:
   Spiel unterscheidet „eigenes Lager“ nicht sauber.
 - Die Charaktersperre lenkt den Start auf Normal Guy um. Er steht nicht in der
   Charakterliste des Spiels, er ist nur die Vorlage für eigene Charaktere.
+- Extras: **11 Spielerfolge** statt etwa 25. Die übrigen sind Doppelte zu anderen Checks,
+  verlangen Schaden (gebissen werden, Bienenschwarm), hängen an Charakter, Tod, Sieg oder
+  Maximal-Skills, oder sind für Normal Guy unerreichbar („Defeat the Hunter“, automatisch
+  weggelassen). Dazu 3 Tierhaltungs- und 5 Überlebenstage-Checks: zusammen 19.
+- Ausbau-Set: geht nur bei genau einer Hütte dieser Art und noch keiner der nächsten Art
+  (sonst wären die gespeicherten Innenräume nicht eindeutig). Die Mod speichert dafür kurz
+  und lädt neu.
+- Die Stauraum-Erweiterung gibt 25 % des Platzes der *aktuellen* Hüttenart; nach einem Ausbau
+  wächst sie also mit.
 - Item-Namen sind englisch wie alle Archipelago-Namen: Pack Mule (Lastenträger), Nimble
   Hands (Geschickte Hände), Pathfinder (Pfadfinder), Careful Hands (Sorgsam), Inquisitive
   Mind (Forschergeist), Pantry Keeper (Vorratshalter).

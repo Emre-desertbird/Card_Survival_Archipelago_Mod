@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 8,
+ "registry_version": 9,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -9,6 +9,44 @@
   "unique_id": "5a85a4cd74a8042479821d4a543721ce"
  },
  "determination_stat": "f2dfbaa2bf3a3d446a9109747932accb",
+ "hut_tiers": [
+  [
+   "332a86ba3adde8e4b8e599b15b2dc81c",
+   "b422a356e0b8df64a966c8178495af72",
+   "40e6016b1943f6444af3f459706a31e6",
+   "6f902caab86e5b14599d4ff8db59b648"
+  ],
+  [
+   "ad711b302797d0447a7a1ec8acf7c761",
+   "a56409d0f788ebc40bb2bed9c0d32710",
+   "e6c0302a6f406ca41a376c1ff73ab8bf",
+   "d8099db887d9d044b82c074362b0583a"
+  ],
+  [
+   "6a450b0cf520c7b458147a06027a464f",
+   "e6198e12cc0ecd24582df79879a1262f",
+   "c86b8ddd5a9eaba4198d5f8bd05f8c00",
+   "926d32570b2bb6c4894538d9ed2b4bd3"
+  ]
+ ],
+ "storage_areas": [
+  "332a86ba3adde8e4b8e599b15b2dc81c",
+  "ad711b302797d0447a7a1ec8acf7c761",
+  "6a450b0cf520c7b458147a06027a464f",
+  "a9f7d5db7ddf9f14d88c7fb9e0f2c68a"
+ ],
+ "trap_free_areas": [
+  "3cd9f2c36c3761f4eaa718f2fcee8b35"
+ ],
+ "traps": [
+  "Trap: Abrasion",
+  "Trap: Bruise",
+  "Trap: Scratch",
+  "Trap: Rain Shower",
+  "Trap: Mosquito Swarm",
+  "Trap: Mud and Dirt",
+  "Trap: Fright"
+ ],
  "starting_blueprints": [
   "Broom",
   "Campfire",
@@ -2517,6 +2555,88 @@
    "kind": "newperk",
    "effect": "food and drinks spoil 15% slower",
    "classification": "useful"
+  },
+  {
+   "key": "upgrade_kit",
+   "name": "Hut Upgrade Kit",
+   "ap_id": 1694426000,
+   "quantity": 2,
+   "kind": "upgrade",
+   "classification": "useful"
+  },
+  {
+   "key": "storage_extension",
+   "name": "Storage Extension",
+   "ap_id": 1694426001,
+   "quantity": 3,
+   "kind": "upgrade",
+   "classification": "useful"
+  },
+  {
+   "key": "trap_abrasion",
+   "name": "Trap: Abrasion",
+   "ap_id": 1694429100,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "card_id": "5ce7e11b3b068784ab27b8c69a77cae8"
+  },
+  {
+   "key": "trap_bruise",
+   "name": "Trap: Bruise",
+   "ap_id": 1694429101,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "card_id": "08a3dbbfe9e596e4d85e0c078939b960"
+  },
+  {
+   "key": "trap_scratch",
+   "name": "Trap: Scratch",
+   "ap_id": 1694429102,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "card_id": "dcfb845bd94014940b2d36e5688deef6"
+  },
+  {
+   "key": "trap_rain_shower",
+   "name": "Trap: Rain Shower",
+   "ap_id": 1694429103,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "card_id": "76e15d6d2ee199844a4812b3dc361c74"
+  },
+  {
+   "key": "trap_mosquito_swarm",
+   "name": "Trap: Mosquito Swarm",
+   "ap_id": 1694429104,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "stat_id": "5c42aacf9a2584f4fb44e69e4da8e369",
+   "amount": 48
+  },
+  {
+   "key": "trap_mud_and_dirt",
+   "name": "Trap: Mud and Dirt",
+   "ap_id": 1694429105,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "stat_id": "111606ba528c30e4f8e38494f41b92c7",
+   "amount": 100
+  },
+  {
+   "key": "trap_fright",
+   "name": "Trap: Fright",
+   "ap_id": 1694429106,
+   "quantity": 0,
+   "kind": "trap",
+   "classification": "trap",
+   "stat_id": "3b79a4c6d7e151044a1c56fbbd401d78",
+   "amount": 30
   },
   {
    "key": "find_bundle_of_sticks",
@@ -12311,6 +12431,662 @@
    "rule": {
     "event": "Have RaftEntrance"
    }
+  },
+  {
+   "key": "extra_0",
+   "kind": "extra",
+   "name": "Extra - Carve Five Figurines",
+   "ap_id": 1694435000,
+   "watch": [
+    {
+     "cards": [
+      "f2d50fe822c2fcf44a565cbe73fce861"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "e89245c2f8961a546b8df0cf0513b59d"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "e339ac730297e3b48bbdfd189116608f"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "973720a0e9a998c46a3f767a1196e2ac"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "ea076256c1d744b4c9f26f32c6f5655a"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "all": [
+     {
+      "event": "Have WoodCarving_Goat"
+     },
+     {
+      "event": "Have WoodCarving_Man"
+     },
+     {
+      "event": "Have WoodCarving_Monster"
+     },
+     {
+      "event": "Have WoodCarving_Seagull"
+     },
+     {
+      "event": "Have WoodCarving_Woman"
+     }
+    ]
+   }
+  },
+  {
+   "key": "extra_1",
+   "kind": "extra",
+   "name": "Extra - Use Dynamite",
+   "ap_id": 1694435001,
+   "watch": [
+    {
+     "actions": [
+      {
+       "card": "977cc7d7233e1844b8c5aeed108e1e47",
+       "action": "Boom!"
+      },
+      {
+       "card": "be70404389e31164cb76a287f618941d",
+       "action": "Boom!"
+      },
+      {
+       "card": "80da1e93352af0444af0677cf59fb694",
+       "action": "Boom!"
+      },
+      {
+       "card": "d0704a9adae8ed4478e0679d85d7b857",
+       "action": "Boom!"
+      },
+      {
+       "card": "3612c25e6ed06dd4cb71541936e136f9",
+       "action": "Boom!"
+      },
+      {
+       "card": "dd40df7cdc9d16b4199e95e61ea04598",
+       "action": "Boom!"
+      },
+      {
+       "card": "fdc1dea4180178e409dd11f92e12f091",
+       "action": "Boom!"
+      },
+      {
+       "card": "11c21f04e59b27244abb401684c04f0f",
+       "action": "Boom!"
+      },
+      {
+       "card": "6b87970979841684bb6d6a7471430798",
+       "action": "Boom!"
+      },
+      {
+       "card": "1d8a5586879b6aa489b6b63b1255ed59",
+       "action": "Boom!"
+      },
+      {
+       "card": "749dadaca7677ec4c9f54e35b4343cdb",
+       "action": "Boom!"
+      },
+      {
+       "card": "c3b8f83d682923643a960fe6c64d19fc",
+       "action": "Boom!"
+      },
+      {
+       "card": "4a02a6fed76406546ad36f6481a910a2",
+       "action": "Boom!"
+      },
+      {
+       "card": "64933f58900541a49bc1becbe7a852c5",
+       "action": "Boom!"
+      },
+      {
+       "card": "115769419d6a5144683d9d61e7cff8e9",
+       "action": "Boom!"
+      },
+      {
+       "card": "a0e8e31d9db3a974b8a08e41295799e0",
+       "action": "Boom!"
+      },
+      {
+       "card": "c622042373c977a4aa03009ab59efe33",
+       "action": "Revenge!"
+      }
+     ]
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have DynamiteOn"
+     },
+     {
+      "event": "Have DynamiteOff"
+     }
+    ]
+   }
+  },
+  {
+   "key": "extra_2",
+   "kind": "extra",
+   "name": "Extra - Eat a Prepared Meal",
+   "ap_id": 1694435002,
+   "watch": [
+    {
+     "actions": [
+      {
+       "card": "8c5ba68a7662e164891f60d35623f4d9",
+       "action": "Eat"
+      },
+      {
+       "card": "0c9c7c1be7142d74eaa0e5d88a5d0727",
+       "action": "Eat"
+      },
+      {
+       "card": "42f8ee8775baf414498362bd057bef0a",
+       "action": "Eat"
+      },
+      {
+       "card": "a1278a81f561df44cb5051e42077b8d0",
+       "action": "Eat"
+      },
+      {
+       "card": "eda67b50f7c958047a0e15bf72da5d5c",
+       "action": "Eat"
+      },
+      {
+       "card": "d174605490de81d42909c43a0c6de0d6",
+       "action": "Eat"
+      },
+      {
+       "card": "ea60f4255a8e977489af1c5fde7353f5",
+       "action": "Eat"
+      },
+      {
+       "card": "1d4bd206535912d46aeca8e58790b019",
+       "action": "Eat"
+      },
+      {
+       "card": "5507f43694180f04faee4bd1003a3071",
+       "action": "Eat"
+      },
+      {
+       "card": "4882b19c248f5ae439e86e357674c90d",
+       "action": "Eat"
+      },
+      {
+       "card": "4d4c5ccd15eb295459a12d9a422508d9",
+       "action": "Eat"
+      },
+      {
+       "card": "ecde38f41e193ae48ad6d16f6e9bf5b7",
+       "action": "Eat"
+      },
+      {
+       "card": "f5c625739c99188408a09bfcd2a700c7",
+       "action": "Eat"
+      },
+      {
+       "card": "f1a2cb504e1755e48b1c77e36ca651c2",
+       "action": "Eat"
+      },
+      {
+       "card": "1525eb3d7d4063a4aae610c6f673565a",
+       "action": "Drink"
+      },
+      {
+       "card": "db3889abcc6518a46a79ebe1199104d9",
+       "action": "Eat"
+      },
+      {
+       "card": "3088ab354e89c4b4ca595575ead4a803",
+       "action": "Eat"
+      },
+      {
+       "card": "ee106dd0ba9e48e45b62360d832a5ecc",
+       "action": "Eat"
+      }
+     ]
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have IslandChicken"
+     },
+     {
+      "event": "Have OysterMeatBaked"
+     },
+     {
+      "event": "Have CandiedGinger"
+     },
+     {
+      "event": "Have FishNChips"
+     },
+     {
+      "event": "Have FishOmelette"
+     },
+     {
+      "event": "Have FriedBanana"
+     },
+     {
+      "event": "Have GoatStew"
+     },
+     {
+      "event": "Have HeartyFeast"
+     },
+     {
+      "event": "Have HoneyCandy"
+     },
+     {
+      "event": "Have HoneyGlazedPork"
+     },
+     {
+      "event": "Have LizardFry"
+     },
+     {
+      "event": "Have MacaqueSkewers"
+     },
+     {
+      "event": "Have ProteinBar"
+     },
+     {
+      "event": "Have SagoCake"
+     },
+     {
+      "event": "Have BoneBroth"
+     },
+     {
+      "event": "Have YamCurry"
+     },
+     {
+      "event": "Have YamJam"
+     },
+     {
+      "event": "Have CoconutFish"
+     }
+    ]
+   }
+  },
+  {
+   "key": "extra_3",
+   "kind": "extra",
+   "name": "Extra - Explore the Cave System",
+   "ap_id": 1694435003,
+   "watch": [
+    {
+     "cards": [
+      "9b0a39363dd3efa4c99800349b28b0b3"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "6b68a4eb24a10b74c8d56a839d5f89b0"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "94a4c6a9c7f172840b6479c1c965a7e4"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "5066325b0848b6c48a0f60faa53c35c4"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "50a4b7c56fbf1db4ab0f19c25084c3d1"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "d654e223aa24bb74091f8a8caa472106"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "752e7d24c66c5fc4980825afdd84342b"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "7d6bc200c07040d4aa7120b53adf5499"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "11953e4985a94c34ca77b6862a7febdc"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "3e544147ca3997a46accf676e2d9d445"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": true,
+   "rule": true
+  },
+  {
+   "key": "extra_4",
+   "kind": "extra",
+   "name": "Extra - Find a Shipwreck",
+   "ap_id": 1694435004,
+   "watch": [
+    {
+     "cards": [
+      "f1656530d670275408ed8ec432a37a1f"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_5",
+   "kind": "extra",
+   "name": "Extra - A Goat Gives Birth",
+   "ap_id": 1694435005,
+   "watch": [
+    {
+     "cards": [
+      "97567b6f6e169c44ab366d4fedf79ea9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have GoatEnclosureKid"
+   }
+  },
+  {
+   "key": "extra_6",
+   "kind": "extra",
+   "name": "Extra - Hatch a Partridge Egg",
+   "ap_id": 1694435006,
+   "watch": [
+    {
+     "cards": [
+      "319d36598390ceb44b1c42932c9b5f0d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_7",
+   "kind": "extra",
+   "name": "Extra - Make a Macaque Friend",
+   "ap_id": 1694435007,
+   "watch": [
+    {
+     "cards": [
+      "453ffc87a1178b14190485279e5445d4"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_8",
+   "kind": "extra",
+   "name": "Extra - Make a Pearl Necklace",
+   "ap_id": 1694435008,
+   "watch": [
+    {
+     "cards": [
+      "7043ab17531cdeb47873e6e159044566"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have PearlNecklace"
+   }
+  },
+  {
+   "key": "extra_9",
+   "kind": "extra",
+   "name": "Extra - Make a Friend",
+   "ap_id": 1694435009,
+   "watch": [
+    {
+     "cards": [
+      "1a7a643a9fea99946b86316aecb36347"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have Weston"
+   }
+  },
+  {
+   "key": "extra_10",
+   "kind": "extra",
+   "name": "Extra - Weston Talks Back",
+   "ap_id": 1694435010,
+   "watch": [
+    {
+     "cards": [
+      "11206b26575faf94f857e35fd768c93d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have Event_WestonSpecial1a"
+   }
+  },
+  {
+   "key": "extra_12",
+   "kind": "extra",
+   "name": "Extra - Keep a Goat",
+   "ap_id": 1694435012,
+   "watch": [
+    {
+     "cards": [
+      "049c145351107f742b9c8d4b92b3e39b",
+      "221014fcbf105534bade752d2ef8bf64",
+      "ab1af0163eff00f449ac0965ca5e8df1",
+      "2b4ef24ae35199b4680e3c5cba359827",
+      "8b7b67ec094ec4e4a9808231e6af5a15",
+      "6e716aef10aa1324ea173eff8ea46089",
+      "057c7b91212117b409fdc52221f9978b",
+      "97567b6f6e169c44ab366d4fedf79ea9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have GoatTiedFemale"
+     },
+     {
+      "event": "Have GoatTiedMale"
+     },
+     {
+      "event": "Have GoatTiedFemaleLactating"
+     },
+     {
+      "event": "Have GoatTiedKid"
+     },
+     {
+      "event": "Have GoatEnclosureFemale"
+     },
+     {
+      "event": "Have GoatEnclosureMale"
+     },
+     {
+      "event": "Have GoatEnclosureLactating"
+     },
+     {
+      "event": "Have GoatEnclosureKid"
+     }
+    ]
+   }
+  },
+  {
+   "key": "extra_13",
+   "kind": "extra",
+   "name": "Extra - Keep Partridges",
+   "ap_id": 1694435013,
+   "watch": [
+    {
+     "cards": [
+      "7008ccbb5cb13154ca455ba079544cad",
+      "80e38183caf2dd042a7099079c6aa82e"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_14",
+   "kind": "extra",
+   "name": "Extra - Keep a Boar",
+   "ap_id": 1694435014,
+   "watch": [
+    {
+     "cards": [
+      "04c672bd1794c264bb2d0a43fe95a975",
+      "100c636cc960dfa419a486a941169934",
+      "529e9522b6acfd040a454883ae5cf669",
+      "93a57e11501d741468264a5340b83f0e",
+      "1741e0f6eb86c134da1c2b654566e296",
+      "3a2695b0c1f80874d9237dc2155de4d9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarTiedFemale"
+     },
+     {
+      "event": "Have BoarTiedMale"
+     },
+     {
+      "event": "Have BoarTiedPiglet"
+     },
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have BoarEnclosureMale"
+     },
+     {
+      "event": "Have BoarEnclosurePiglet"
+     }
+    ]
+   }
+  },
+  {
+   "key": "extra_15",
+   "kind": "extra",
+   "name": "Extra - Survive 7 Days",
+   "ap_id": 1694435015,
+   "watch": [
+    {
+     "day": 7
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_16",
+   "kind": "extra",
+   "name": "Extra - Survive 14 Days",
+   "ap_id": 1694435016,
+   "watch": [
+    {
+     "day": 14
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_17",
+   "kind": "extra",
+   "name": "Extra - Survive 30 Days",
+   "ap_id": 1694435017,
+   "watch": [
+    {
+     "day": 30
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "extra_18",
+   "kind": "extra",
+   "name": "Extra - Survive 60 Days",
+   "ap_id": 1694435018,
+   "watch": [
+    {
+     "day": 60
+    }
+   ],
+   "challenge": true,
+   "rule": true
+  },
+  {
+   "key": "extra_19",
+   "kind": "extra",
+   "name": "Extra - Survive 100 Days",
+   "ap_id": 1694435019,
+   "watch": [
+    {
+     "day": 100
+    }
+   ],
+   "challenge": true,
+   "rule": true
   }
  ],
  "events": [
@@ -14823,6 +15599,207 @@
    }
   },
   {
+   "name": "Can Raise Skill_WindInstruments",
+   "card": "stat:Skill_WindInstruments",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes1"
+       },
+       {
+        "event": "Can Raise Tune_Simple"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes1"
+       },
+       {
+        "event": "Can Raise Tune_Happy"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes1"
+       },
+       {
+        "event": "Can Raise Tune_Sad"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes2"
+       },
+       {
+        "event": "Can Raise Tune_Lonely"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes2"
+       },
+       {
+        "event": "Can Raise Tune_Weston"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes2"
+       },
+       {
+        "event": "Can Raise Tune_Advanced"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes3"
+       },
+       {
+        "event": "Can Raise Tune_Sea"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes3"
+       },
+       {
+        "event": "Can Raise Tune_Jungle"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have Event_FluteTunes3"
+       },
+       {
+        "event": "Can Raise Tune_Cave"
+       }
+      ]
+     },
+     {
+      "event": "Have FluteBone"
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "event": "Have FluteWooden"
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Can Raise Tune_Advanced",
+   "card": "stat:Tune_Advanced",
+   "rule": {
+    "event": "Have Event_NewTuneAdvanced"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Cave",
+   "card": "stat:Tune_Cave",
+   "rule": {
+    "event": "Have Event_NewTuneCave"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Happy",
+   "card": "stat:Tune_Happy",
+   "rule": {
+    "event": "Have Event_NewTuneHappy"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Jungle",
+   "card": "stat:Tune_Jungle",
+   "rule": {
+    "event": "Have Event_NewTuneJungle"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Lonely",
+   "card": "stat:Tune_Lonely",
+   "rule": {
+    "event": "Have Event_NewTuneLonely"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Sad",
+   "card": "stat:Tune_Sad",
+   "rule": {
+    "event": "Have Event_NewTuneSad"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Sea",
+   "card": "stat:Tune_Sea",
+   "rule": {
+    "event": "Have Event_NewTuneSea"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Simple",
+   "card": "stat:Tune_Simple",
+   "rule": {
+    "event": "Have Event_NewTuneSimple"
+   }
+  },
+  {
+   "name": "Can Raise Tune_Weston",
+   "card": "stat:Tune_Weston",
+   "rule": {
+    "event": "Have Event_NewTuneWeston"
+   }
+  },
+  {
+   "name": "Can Raise WestonPropinquity",
+   "card": "stat:WestonPropinquity",
+   "rule": {
+    "all": [
+     {
+      "event": "Have Event_FluteTunes2"
+     },
+     {
+      "event": "Can Raise Tune_Weston"
+     }
+    ]
+   }
+  },
+  {
    "name": "Have AlembicOff",
    "card": "AlembicOff",
    "rule": {
@@ -15523,6 +16500,13 @@
    "card": "CageTrapPlacedTriggeredSeagull",
    "rule": {
     "event": "Have CageTrapPlaced"
+   }
+  },
+  {
+   "name": "Have CandiedGinger",
+   "card": "CandiedGinger",
+   "rule": {
+    "event": "Have CandiedGingerCooked"
    }
   },
   {
@@ -16792,6 +17776,27 @@
    }
   },
   {
+   "name": "Have DynamiteOff",
+   "card": "DynamiteOff",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Dynamite"
+     },
+     {
+      "event": "Have DynamiteOn"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have DynamiteOn",
+   "card": "DynamiteOn",
+   "rule": {
+    "event": "Have DynamiteOff"
+   }
+  },
+  {
    "name": "Have EatingUtensilsCopper",
    "card": "EatingUtensilsCopper",
    "rule": {
@@ -16907,6 +17912,300 @@
    }
   },
   {
+   "name": "Have Event_FluteTunes1",
+   "card": "Event_FluteTunes1",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Tune_Simple"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Tune_Simple"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_FluteTunes2",
+   "card": "Event_FluteTunes2",
+   "rule": {
+    "event": "Have Event_FluteTunes1"
+   }
+  },
+  {
+   "name": "Have Event_FluteTunes3",
+   "card": "Event_FluteTunes3",
+   "rule": {
+    "event": "Have Event_FluteTunes2"
+   }
+  },
+  {
+   "name": "Have Event_NewTuneAdvanced",
+   "card": "Event_NewTuneAdvanced",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneCave",
+   "card": "Event_NewTuneCave",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneHappy",
+   "card": "Event_NewTuneHappy",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneJungle",
+   "card": "Event_NewTuneJungle",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneLonely",
+   "card": "Event_NewTuneLonely",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneSad",
+   "card": "Event_NewTuneSad",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneSea",
+   "card": "Event_NewTuneSea",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneSimple",
+   "card": "Event_NewTuneSimple",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have Event_NewTuneWeston",
+   "card": "Event_NewTuneWeston",
+   "rule": {
+    "any": [
+     {
+      "all": [
+       {
+        "event": "Have FluteBone"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     },
+     {
+      "all": [
+       {
+        "event": "Have FluteWooden"
+       },
+       {
+        "event": "Can Raise Skill_WindInstruments"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
    "name": "Have Event_Raft_Atoll",
    "card": "Event_Raft_Atoll",
    "rule": {
@@ -16973,6 +18272,13 @@
    "card": "Event_ShipRescueDistance",
    "rule": {
     "event": "Can Raise Distance"
+   }
+  },
+  {
+   "name": "Have Event_WestonSpecial1a",
+   "card": "Event_WestonSpecial1a",
+   "rule": {
+    "event": "Can Raise WestonPropinquity"
    }
   },
   {
@@ -17201,6 +18507,34 @@
    }
   },
   {
+   "name": "Have FluteBone",
+   "card": "FluteBone",
+   "rule": {
+    "event": "Have FluteBone_Unfinished"
+   }
+  },
+  {
+   "name": "Have FluteBone_Unfinished",
+   "card": "FluteBone_Unfinished",
+   "rule": {
+    "event": "Can Build Bone Flute"
+   }
+  },
+  {
+   "name": "Have FluteWooden",
+   "card": "FluteWooden",
+   "rule": {
+    "event": "Have FluteWooden_Unfinished"
+   }
+  },
+  {
+   "name": "Have FluteWooden_Unfinished",
+   "card": "FluteWooden_Unfinished",
+   "rule": {
+    "event": "Can Build Wooden Flute"
+   }
+  },
+  {
    "name": "Have Forge",
    "card": "Forge",
    "rule": {
@@ -17219,6 +18553,13 @@
       "event": "Have Forge"
      }
     ]
+   }
+  },
+  {
+   "name": "Have FriedBanana",
+   "card": "FriedBanana",
+   "rule": {
+    "event": "Have FriedBananasCooked"
    }
   },
   {
@@ -17709,6 +19050,13 @@
    "card": "Herring",
    "rule": {
     "event": "Have RaftFishTrap"
+   }
+  },
+  {
+   "name": "Have HoneyCandy",
+   "card": "HoneyCandy",
+   "rule": {
+    "event": "Have HoneyCandyCooked"
    }
   },
   {
@@ -18273,6 +19621,13 @@
    }
   },
   {
+   "name": "Have OysterMeatBaked",
+   "card": "OysterMeatBaked",
+   "rule": {
+    "event": "Have ButterBakedOystersCooked"
+   }
+  },
+  {
    "name": "Have ParrotFishSmoked",
    "card": "ParrotFishSmoked",
    "rule": {
@@ -18322,6 +19677,13 @@
    }
   },
   {
+   "name": "Have PearlNecklace",
+   "card": "PearlNecklace",
+   "rule": {
+    "event": "Can Build Pearl Necklace"
+   }
+  },
+  {
    "name": "Have Plank",
    "card": "Plank",
    "rule": {
@@ -18345,6 +19707,13 @@
       "event": "Have Shelf"
      }
     ]
+   }
+  },
+  {
+   "name": "Have ProteinBar",
+   "card": "ProteinBar",
+   "rule": {
+    "event": "Have ProteinBarsCooked"
    }
   },
   {
@@ -18954,6 +20323,90 @@
    }
   },
   {
+   "name": "Have Weston",
+   "card": "Weston",
+   "rule": {
+    "event": "Can Build Weston"
+   }
+  },
+  {
+   "name": "Have WoodCarving_Goat",
+   "card": "WoodCarving_Goat",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CopperDecoration_Mold"
+     },
+     {
+      "event": "Have WoodCarving_Unfinished"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WoodCarving_Man",
+   "card": "WoodCarving_Man",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CopperDecoration_Mold"
+     },
+     {
+      "event": "Have WoodCarving_Unfinished"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WoodCarving_Monster",
+   "card": "WoodCarving_Monster",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CopperDecoration_Mold"
+     },
+     {
+      "event": "Have WoodCarving_Unfinished"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WoodCarving_Seagull",
+   "card": "WoodCarving_Seagull",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CopperDecoration_Mold"
+     },
+     {
+      "event": "Have WoodCarving_Unfinished"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have WoodCarving_Unfinished",
+   "card": "WoodCarving_Unfinished",
+   "rule": {
+    "event": "Can Build Wood Carvings"
+   }
+  },
+  {
+   "name": "Have WoodCarving_Woman",
+   "card": "WoodCarving_Woman",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CopperDecoration_Mold"
+     },
+     {
+      "event": "Have WoodCarving_Unfinished"
+     }
+    ]
+   }
+  },
+  {
    "name": "Have YamCurry",
    "card": "YamCurry",
    "rule": {
@@ -18989,6 +20442,13 @@
    "card": "YamCurryUncooked",
    "rule": {
     "event": "Can Build Yam Curry"
+   }
+  },
+  {
+   "name": "Have YamJam",
+   "card": "YamJam",
+   "rule": {
+    "event": "Have YamJamCooked"
    }
   },
   {

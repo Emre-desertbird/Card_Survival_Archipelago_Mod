@@ -64,6 +64,8 @@ namespace CardSurvivalArchipelago
             AppliedNow = 0;
             RewardsNow = 0;
             Finds.Reset();
+            Traps.OnLoad(State);
+            HutUpgrades.OnLoad(State);
             syncedThisSession = false;
             Messages.Add("New Archipelago game for " + State.SlotName + " (seed " + State.SeedName + ").");
         }
@@ -75,6 +77,8 @@ namespace CardSurvivalArchipelago
             AppliedNow = State != null ? State.AppliedMain : 0;
             RewardsNow = State != null ? State.RewardsMain : 0;
             Finds.OnLoad(State != null ? State.BufferMain : null);
+            Traps.OnLoad(State);
+            HutUpgrades.OnLoad(State);
             syncedThisSession = false;
             if (State != null && ApConnection.IsConnected && !MatchesConnection())
             {
@@ -90,6 +94,10 @@ namespace CardSurvivalArchipelago
             State.AppliedMain = State.AppliedCheckpoint;   // mirrors MainData = CheckpointData.Copy()
             State.BufferMain = new List<int>(State.BufferCheckpoint);
             State.RewardsMain = State.RewardsCheckpoint;
+            State.TrapsMain = new List<int>(State.TrapsCheckpoint);
+            State.TrapDayMain = State.TrapDayCheckpoint;
+            State.KitsMain = State.KitsCheckpoint;
+            State.StorageMain = new List<string>(State.StorageCheckpoint);
             State.Write();
         }
 
@@ -99,9 +107,17 @@ namespace CardSurvivalArchipelago
             State.AppliedMain = AppliedNow;
             State.BufferMain = new List<int>(Finds.Buffer);
             State.RewardsMain = RewardsNow;
+            State.TrapsMain = new List<int>(Traps.Queue);
+            State.TrapDayMain = Traps.LastDay;
+            State.KitsMain = HutUpgrades.KitsUsed;
+            State.StorageMain = new List<string>(HutUpgrades.Extended);
             if (checkpoint)
             {
                 State.RewardsCheckpoint = RewardsNow;
+                State.TrapsCheckpoint = new List<int>(Traps.Queue);
+                State.TrapDayCheckpoint = Traps.LastDay;
+                State.KitsCheckpoint = HutUpgrades.KitsUsed;
+                State.StorageCheckpoint = new List<string>(HutUpgrades.Extended);
                 State.AppliedCheckpoint = AppliedNow;
                 State.BufferCheckpoint = new List<int>(Finds.Buffer);
             }
@@ -171,6 +187,7 @@ namespace CardSurvivalArchipelago
                 Checks.Update(gm);
                 Checks.ScanCards(gm);
                 NewPerks.Update(gm);
+                Traps.Update(gm);
             }
         }
 

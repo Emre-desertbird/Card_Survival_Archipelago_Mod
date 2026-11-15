@@ -132,6 +132,54 @@ LOGBOOK = [
     ("Departure", "Set Sail", 500, ("objective", "Obj6_MakeRaft")),
 ]
 BASE_KINDS = ["research", "build", "visit"]
+# Extras (option extra_checks): achievements of the game that no other check already covers and
+# that do not ask the player to get hurt, keeping animals, and days survived.
+# (label, source, challenge); sources as in LOGBOOK, plus ("day", n).
+EXTRAS = [
+    ("Carve Five Figurines", ("objective", "Ach_CarveFigurines"), False),
+    ("Use Dynamite", ("objective", "Ach_Dynamite", ["DynamiteOn", "DynamiteOff"]), False),   # the action needs dynamite
+    ("Eat a Prepared Meal", ("objective", "Ach_EatAdvancedDish"), False),
+    ("Explore the Cave System", ("objective", "Ach_ExploreCaves"), True),
+    ("Find a Shipwreck", ("objective", "Ach_FindShipwreck"), False),
+    ("A Goat Gives Birth", ("objective", "Ach_GoatBirth"), False),
+    ("Hatch a Partridge Egg", ("objective", "Ach_HatchEgg"), False),
+    ("Make a Macaque Friend", ("objective", "Ach_MacaqueFriend"), False),
+    ("Make a Pearl Necklace", ("objective", "Ach_MakePearlNecklace"), False),
+    ("Make a Friend", ("objective", "Ach_MakeWeston"), False),
+    ("Weston Talks Back", ("objective", "Ach_WestonTalk"), False),
+    ("Defeat the Hunter", ("objective", "Ach_DefeatHunter"), False),
+    ("Keep a Goat", ("cards", ["GoatTiedFemale", "GoatTiedMale", "GoatTiedFemaleLactating", "GoatTiedKid",
+                               "GoatEnclosureFemale", "GoatEnclosureMale", "GoatEnclosureLactating", "GoatEnclosureKid"], 1), False),
+    ("Keep Partridges", ("cards", ["PartridgeFemaleEnclosure", "PartridgeMaleEnclosure"], 1), False),
+    ("Keep a Boar", ("cards", ["BoarTiedFemale", "BoarTiedMale", "BoarTiedPiglet",
+                               "BoarEnclosureFemale", "BoarEnclosureMale", "BoarEnclosurePiglet"], 1), False),
+    ("Survive 7 Days", ("day", 7), False),
+    ("Survive 14 Days", ("day", 14), False),
+    ("Survive 30 Days", ("day", 30), False),
+    ("Survive 60 Days", ("day", 60), True),
+    ("Survive 100 Days", ("day", 100), True),
+]
+# Traps (options trap_percentage, trap_limit): mild only, the worst is a light wound.
+# (name, offset, effect): ("card", name) adds the card (a wound, or a weather that replaces the
+# current one), ("stat", name, amount) changes a stat once.
+TRAPS = [
+    ("Trap: Abrasion", 9100, ("card", "W_Abrasion")),
+    ("Trap: Bruise", 9101, ("card", "W_Bruise")),
+    ("Trap: Scratch", 9102, ("card", "W_LizardScratch")),
+    ("Trap: Rain Shower", 9103, ("card", "TropicalIsland_LightRain")),
+    ("Trap: Mosquito Swarm", 9104, ("stat", "BugBites", 48)),
+    ("Trap: Mud and Dirt", 9105, ("stat", "Filth", 100)),
+    ("Trap: Fright", 9106, ("stat", "Stress", 30)),
+]
+TRAP_FREE_AREAS = ["Env_Raft"]        # at sea: no traps
+# Hut upgrades (option hut_upgrades). The kit turns the hut you stand in into the next tier;
+# each tier is (environment, entrance, explorable, exit). Storage extensions add 25% space to the
+# hut or cellar you stand in.
+HUT_TIERS = [("Env_Shed", "ShedEntrance", "Shed", "ShedExit"),
+             ("Env_MudHut", "MudHutEntrance", "MudHut", "MudHutExit"),
+             ("Env_StoneHut", "StoneHutEntrance", "StoneHut", "StoneHutExit")]
+STORAGE_AREAS = ["Env_Shed", "Env_MudHut", "Env_StoneHut", "Env_Cellar"]
+UPGRADES = [("upgrade_kit", "Hut Upgrade Kit", 6000, 2), ("storage_extension", "Storage Extension", 6001, 3)]
 # New perks that the base game does not have (option new_perks, off by default). Small steps,
 # so the game stays a survival game (docs/plan_erweiterung.md, 3). (key, name, levels, what one level does)
 NEW_PERKS = [
@@ -421,6 +469,28 @@ def main() -> None:
                           "requires_kinds": requires, "watch": parts, "challenge": False,
                           "rule": simplify("all", rules)})
 
+    # Extras: achievements, animals, days survived.
+    for index, (label, source, challenge) in enumerate(EXTRAS):
+        if source[0] == "day":
+            parts, rule = [{"day": source[1]}], True
+        else:
+            parts = objective_parts(source[1]) if source[0] == "objective" else [{"cards": card_names(source[1]), "count": source[2]}]
+            rules = [part_rule(part, rules_by_kind) for part in parts]
+            if source[0] == "objective" and len(source) > 2:
+                rules.append(any_rule([Need("card", name) for name in card_names(source[2])]))
+            if any(rule is None for rule in rules):
+                print(f"Extra {label!r} is impossible in this game mode; dropped")
+                continue
+            rule = simplify("all", rules)
+            for part in parts:
+                logbook_cards.update(part.get("cards", []))
+                if "cards" in part:
+                    part["cards"] = [cards[card]["UniqueID"] for card in part["cards"]]
+                for entry in part.get("actions", []):
+                    entry["card"] = cards[entry["card"]]["UniqueID"]
+        locations.append({"key": f"extra_{index}", "kind": "extra", "name": f"Extra - {label}",
+                          "ap_id": LOCATION_BASE + 5000 + index, "watch": parts, "challenge": challenge, "rule": rule})
+
     goal = need_rule(Need("card", "victory:" + GOAL_ENDING))
     if goal is None or goal is True:
         raise SystemExit(f"The goal ending {GOAL_ENDING} is unreachable or needs no item: {goal}")
@@ -518,6 +588,21 @@ def main() -> None:
         items.append({"key": key, "name": perk_name, "ap_id": ITEM_BASE + 5000 + index, "quantity": levels,
                       "kind": "newperk", "effect": effect, "classification": "useful"})
 
+    for key, upgrade_name, offset, quantity in UPGRADES:
+        items.append({"key": key, "name": upgrade_name, "ap_id": ITEM_BASE + offset, "quantity": quantity,
+                      "kind": "upgrade", "classification": "useful"})
+    for trap_name, offset, effect in TRAPS:
+        target = effect[1]
+        if (effect[0] == "card" and target not in cards) or (effect[0] == "stat" and target not in stats):
+            raise SystemExit(f"Trap {trap_name!r} names an unknown {effect[0]}: {target}")
+        entry = {"key": "trap_" + re.sub(r"\W+", "_", trap_name.split(": ", 1)[1].lower()), "name": trap_name,
+                 "ap_id": ITEM_BASE + offset, "quantity": 0, "kind": "trap", "classification": "trap"}
+        if effect[0] == "card":
+            entry["card_id"] = cards[target]["UniqueID"]
+        else:
+            entry.update({"stat_id": stats[target]["UniqueID"], "amount": effect[2]})
+        items.append(entry)
+
     # A find must never complete a "first time" check by itself.
     watched_cards = {card for _, _, _, names, _ in watched for card in names} | logbook_cards
     for category, find_name, offset, contents in FINDS:
@@ -539,11 +624,15 @@ def main() -> None:
                       "ap_id": ITEM_BASE + offset, "quantity": 0, "kind": "find", "category": category,
                       "classification": "filler", "contents": parts})
 
-    registry = {"game_name": GAME, "registry_version": 8, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 9, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "archipelago_character": {"name": ARCHIPELAGO_CHARACTER, "unique_id": next(
                     character["UniqueID"] for character in load("PlayerCharacter") if character["$name"] == ARCHIPELAGO_CHARACTER)},
                 "determination_stat": stats["Determination"]["UniqueID"],
+                "hut_tiers": [[cards[name]["UniqueID"] for name in tier] for tier in HUT_TIERS],
+                "storage_areas": [cards[name]["UniqueID"] for name in STORAGE_AREAS],
+                "trap_free_areas": [cards[name]["UniqueID"] for name in TRAP_FREE_AREAS],
+                "traps": [name for name, _, _ in TRAPS],
                 "starting_blueprints": [title(name) for name in starting],
                 "survival_basics": [title(name) for name in SURVIVAL_BASICS],
                 "character_only_blueprints": [title(name) for name in character_only],

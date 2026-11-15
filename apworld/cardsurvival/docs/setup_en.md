@@ -42,6 +42,13 @@ game: "Card Survival: Tropical Island"
   logbook: true
   # Perks the base game does not have (off by default).
   new_perks: true
+  # Achievements, keeping animals, days survived (off by default).
+  extra_checks: true
+  # 2 hut upgrade kits and 3 storage extensions, used from F8 inside a hut.
+  hut_upgrades: true
+  # Mild traps replacing part of the filler (0 = none), and their maximum.
+  trap_percentage: 0
+  trap_limit: 10
 ```
 
 The game name contains a colon, so it must be in quotes.

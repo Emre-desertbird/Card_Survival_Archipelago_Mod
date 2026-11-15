@@ -15,6 +15,8 @@ You survive on the island as usual, but your **knowledge** is shuffled.
   `new_perks`, also perks the game does not have, in small steps: carry more, build and
   travel faster, tools wear slower, research faster, food spoils slower.
   Equipment blueprints also come with one finished copy.
+- Optional: extra checks (achievements, keeping animals, days survived), hut upgrade kits
+  and storage extensions, and mild traps (a light wound at worst, one per day).
 - Filler items are **finds**: long-lasting food, drinks, cooking ingredients or common
   materials that appear on the ground where you are (at most 10 per in-game hour; the rest
   waits in a buffer you open with F8).
@@ -23,7 +25,7 @@ You survive on the island as usual, but your **knowledge** is shuffled.
 
 Archipelago games start as Normal Guy: no perks, no starting kit, the Beach. With the
 `logbook` option he keeps an Archipelago logbook: 44 tasks that are checks and give the
-Determination the normal journal would give.
+Determination the normal journal would give. The logbook is part of the game's journal book.
 
 ## What stays the same?
 
@@ -51,4 +53,5 @@ only finds unless you turn off `exclude_challenge_checks`.
 ## Item and location groups
 
 Items: `Blueprints`, `Skills`, `Perks`, `New Perks`, `Finds`. Locations: `Research`, `Build`, `Visit`,
-`Fishing`, `Hunting`, `Cooking`, `Farming`, `Logbook`.
+`Fishing`, `Hunting`, `Cooking`, `Farming`, `Logbook`, `Extras`. Also `Hut Upgrades` and
+`Traps` for items.

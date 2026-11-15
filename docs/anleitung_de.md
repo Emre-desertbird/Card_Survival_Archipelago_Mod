@@ -36,8 +36,24 @@ Charakter, startet das Spiel trotzdem als Normal Guy; das Archipelago-Fenster sa
 Mit `logbook: true` bekommt Normal Guy das **Archipelago-Logbuch**: 44 Aufgaben in sechs
 Kapiteln (Gestrandet, Überleben, Die Insel, Handwerk, Multiworld, Aufbruch). Jede Aufgabe
 ist ein Check und gibt Determination wie das normale Journal, dessen Belohnungen sie
-ersetzt. Zusammen reicht das für das Home-Ending. Du öffnest das Logbuch mit F8 →
-„Logbook“.
+ersetzt. Zusammen reicht das für das Home-Ending. Das Logbuch steht im
+**Journal-Buch** des Spiels (eine Seite pro Kapitel, mit Häkchen und Fortschritt) und
+zusätzlich im F8-Fenster unter „Logbook“.
+
+## Extras, Hütten-Upgrades und Fallen
+
+- **Extras** (`extra_checks`): 11 Spielerfolge, die kein anderer Check abdeckt (z. B. fünf
+  Figuren schnitzen, ein Schiffswrack finden, ein Ei ausbrüten), Tiere halten (Ziege,
+  Rebhühner, Wildschwein) und 7/14/30/60/100 Tage überleben.
+- **Hütten-Upgrades** (`hut_upgrades`): 2 Ausbau-Sets und 3 Stauraum-Erweiterungen. Du setzt
+  sie im F8-Fenster ein, während du **in** einer Hütte stehst. Das Ausbau-Set macht aus dem
+  Schuppen eine Lehmhütte bzw. aus der Lehmhütte eine Steinhütte; alles darin bleibt. Dafür
+  speichert die Mod kurz und lädt neu. Es geht, wenn du genau eine Hütte dieser Art und noch
+  keine der nächsten hast. Die Stauraum-Erweiterung gibt der Hütte oder dem Keller 25 % mehr
+  Platz.
+- **Fallen** (`trap_percentage`, `trap_limit`): harmlos, das Schlimmste ist eine leichte
+  Wunde. Höchstens eine pro Spieltag, keine auf See, im Kampf oder während eines
+  Ereignisses. Der Rest wartet (das F8-Fenster zeigt, wie viele).
 
 ## Neue Perks (Option `new_perks`)
 
@@ -101,6 +117,10 @@ Randomizer-Spielstände liegen im eigenen Ordner
      finds_amount: normal      # less / normal / more
      logbook: true             # optional, Standard: aus
      new_perks: true           # optional, Standard: aus
+     extra_checks: true        # optional, Standard: aus
+     hut_upgrades: true        # optional, Standard: aus
+     trap_percentage: 0        # 0 bis 100, Standard 0 = keine Fallen
+     trap_limit: 10            # höchstens so viele Fallen
    ```
 
    Der Spielname enthält einen Doppelpunkt und muss deshalb in Anführungszeichen stehen.

@@ -20,6 +20,7 @@ namespace CardSurvivalArchipelago
     {
         private static CardData lastEnvironment;
         private static float nextScan;
+        private static int lastDay;
 
         public static void Install()
         {
@@ -67,6 +68,11 @@ namespace CardSurvivalArchipelago
         {
             if (Time.unscaledTime < nextScan) return;
             nextScan = Time.unscaledTime + 0.25f;
+            if (gm.CurrentDay != lastDay)
+            {
+                lastDay = gm.CurrentDay;
+                EvaluateWatched();   // "survive N days"
+            }
             bool changed = false;
             foreach (InGameCardBase card in gm.AllCards)
             {
@@ -133,6 +139,11 @@ namespace CardSurvivalArchipelago
                 });
             }
             if (part.Actions.Count > 0) return part.Actions.Any(ApGame.State.HasAction) ? part.Count : 0;
+            if (part.Day > 0)
+            {
+                GameManager gm = MBSingleton<GameManager>.Instance;
+                return gm != null && ApGame.InGame && gm.CurrentDay >= part.Day ? part.Count : 0;
+            }
             return part.Cards.Count(ApGame.State.HasSeen);
         }
 
@@ -140,6 +151,7 @@ namespace CardSurvivalArchipelago
         {
             lastEnvironment = null;
             nextScan = 0f;
+            lastDay = 0;
         }
     }
 }

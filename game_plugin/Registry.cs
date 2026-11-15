@@ -53,12 +53,17 @@ namespace CardSurvivalArchipelago
             public HashSet<string> Actions = new HashSet<string>();
             public List<string> CheckKinds;
             public int Count = 1;
+            public int Day;          // > 0: the game reached this day
         }
 
         public static int Version { get; private set; }
         /// <summary>The Archipelago character (PlayerCharacter UniqueID) and the Determination stat.</summary>
         public static string CharacterId { get; private set; }
         public static string DeterminationStatId { get; private set; }
+        /// <summary>Hut tiers, each [environment, entrance, explorable, exit] UniqueIDs, smallest first.</summary>
+        public static readonly List<string[]> HutTiers = new List<string[]>();
+        public static readonly HashSet<string> StorageAreas = new HashSet<string>();
+        public static readonly HashSet<string> TrapFreeAreas = new HashSet<string>();
         public static string Error { get; private set; }
 
         public static readonly Dictionary<long, Entry> Items = new Dictionary<long, Entry>();
@@ -90,12 +95,18 @@ namespace CardSurvivalArchipelago
             Version = (int)data["registry_version"];
             CharacterId = (string)data["archipelago_character"]?["unique_id"];
             DeterminationStatId = (string)data["determination_stat"];
+            if (data["hut_tiers"] is JArray tiers)
+            {
+                foreach (JArray tier in tiers) HutTiers.Add(tier.Select(id => (string)id).ToArray());
+            }
+            if (data["storage_areas"] is JArray storage) StorageAreas.UnionWith(storage.Select(id => (string)id));
+            if (data["trap_free_areas"] is JArray trapFree) TrapFreeAreas.UnionWith(trapFree.Select(id => (string)id));
             foreach (JObject raw in data["items"])
             {
                 var entry = new Entry
                 {
                     Id = (long)raw["ap_id"], Name = (string)raw["name"], Key = (string)raw["key"],
-                    CardId = (string)raw["unique_id"], Kind = (string)raw["kind"] ?? "blueprint",
+                    CardId = (string)raw["unique_id"] ?? (string)raw["card_id"], Kind = (string)raw["kind"] ?? "blueprint",
                     StatId = (string)raw["stat_id"], Amount = (float?)raw["amount"] ?? 0f, PerkId = (string)raw["perk_id"],
                 };
                 JArray equipment = raw["equipment"] as JArray;
@@ -139,7 +150,7 @@ namespace CardSurvivalArchipelago
                 {
                     foreach (JObject part in watch)
                     {
-                        var condition = new WatchPart { Count = (int?)part["count"] ?? 1 };
+                        var condition = new WatchPart { Count = (int?)part["count"] ?? 1, Day = (int?)part["day"] ?? 0 };
                         if (part["cards"] is JArray watchedCards)
                         {
                             foreach (JToken card in watchedCards) condition.Cards.Add((string)card);

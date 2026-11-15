@@ -6,3 +6,5 @@ game: "Card Survival: Tropical Island"
   finds_amount: less
   logbook: true
   character_lock: false
+  trap_percentage: 50
+  trap_limit: 30

@@ -385,6 +385,26 @@ namespace CardSurvivalArchipelago
                   Mathf.Abs(determinationNow - (determinationStart + determinationGiven)) < 2f,
                   new { determinationStart, determinationGiven, determinationNow });
 
+            // 8d2b. The logbook in the game's own journal book (the "press a key" screen is dismissed like a player would).
+            AsyncLoading loading = UnityEngine.Object.FindObjectOfType<AsyncLoading>();
+            GameObject pressKey = loading != null ? Traverse.Create(loading).Field("InitLoadingVisuals").GetValue<GameObject>() : null;
+            if (pressKey != null) pressKey.SetActive(false);
+            gm.OpenJournal();
+            yield return Wait(2f);
+            ContentDisplayer journal = Traverse.Create(gm).Field("Journal").GetValue<ContentDisplayer>();
+            var logbookPages = LogbookJournal.LastPages;
+            string beachLine = logbookPages.SelectMany(page => page.Sections).SelectMany(section => section.Entries)
+                .Select(entry => entry.Title.DefaultText).FirstOrDefault(title => title.Contains("Explore the Beach"));
+            string screenshot = Path.Combine(Path.GetDirectoryName((string)config["report"]), "journal.png");
+            ScreenCapture.CaptureScreenshot(screenshot);
+            yield return Wait(1f);
+            Check("logbook in the journal book: one page per chapter, done tasks ticked",
+                  journal != null && logbookPages.Count == 6 && journal.AllPages.Contains(logbookPages[0]) &&
+                  beachLine != null && beachLine.StartsWith("[x]"),
+                  new { pages = logbookPages.Select(page => page.PageTitle.DefaultText).ToArray(), beachLine, screenshot });
+            gm.CloseJournal();
+            yield return Wait(2f);
+
             // 8d3. New perks (Phase C): receive all of them through real checks, then measure each effect.
             CardAction[] allActions = GameLoad.Instance.DataBase.AllData.OfType<CardData>()
                 .Where(card => card.DismantleActions != null).SelectMany(card => card.DismantleActions).ToArray();
@@ -525,6 +545,69 @@ namespace CardSurvivalArchipelago
                   new { now = gm.StatsDict[determination].CurrentBaseValue, determinationSaved, ApGame.RewardsNow });
             Check("after checkpoint: applied counter restored", ApGame.AppliedNow == ApGame.State.Received.Count,
                   new { ApGame.AppliedNow, received = ApGame.State.Received.Count });
+
+            // 10b. Phase D: extras, traps, storage extension and hut upgrade kit.
+            gm = GM;
+            Registry.Entry partridges = Registry.Watched.First(entry => entry.Name == "Extra - Keep Partridges");
+            Registry.Entry week = Registry.Watched.First(entry => entry.Name == "Extra - Survive 7 Days");
+            GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(partridges.Watch[0].Cards.First()), true);
+            yield return WaitFor(() => ApGame.State.IsChecked(partridges.Id), 5f);
+            Check("extra: keeping partridges is a check; day 7 is not reached on day " + gm.CurrentDay,
+                  ApGame.State.IsChecked(partridges.Id) && (gm.CurrentDay >= 7 || !ApGame.State.IsChecked(week.Id)));
+
+            int trapsBefore = Traps.WentOff.Count;
+            var trapLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) && pair.Value.Player.Slot == ApConnection.Slot &&
+                    Registry.Items.ContainsKey(pair.Value.ItemId) && Registry.Items[pair.Value.ItemId].Kind == "trap").Take(2).ToList();
+            var upgradeLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) && pair.Value.Player.Slot == ApConnection.Slot &&
+                    Registry.Items.ContainsKey(pair.Value.ItemId) && Registry.Items[pair.Value.ItemId].Kind == "upgrade").ToList();
+            foreach (var pair in trapLocations.Concat(upgradeLocations)) ApGame.CompleteLocation(pair.Key);
+            yield return WaitFor(() => ApGame.AppliedNow == ApGame.State.Received.Count && HutUpgrades.KitsLeft >= 1 && HutUpgrades.ExtensionsLeft >= 1, 15f);
+            yield return Wait(2f);
+            Check("traps: at most one per day, the rest waits", trapLocations.Count == 2 && Traps.LastDay == gm.CurrentDay &&
+                  Traps.WentOff.Count - trapsBefore <= 1 && Traps.WentOff.Count >= 1 && Traps.Queue.Count >= 1,
+                  new { wentOff = Traps.WentOff.ToArray(), waiting = Traps.Queue.Count, Traps.LastDay, gm.CurrentDay });
+
+            string[] shedTier = Registry.HutTiers[0], mudTier = Registry.HutTiers[1];
+            GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(shedTier[1]), true);
+            yield return Wait(2f);
+            InGameCardBase entrance = gm.AllCards.LastOrDefault(card => card != null && !card.Destroyed && card.CardModel != null &&
+                                                                        card.CardModel.UniqueID == shedTier[1]);
+            CardAction enter = entrance?.CardModel.DismantleActions.FirstOrDefault(action => action.IsTravellingAction);
+            if (enter != null) GameManager.PerformAction(enter, entrance, _FastMode: false);
+            yield return WaitFor(() => gm.CurrentEnvironment != null && gm.CurrentEnvironment.UniqueID == shedTier[0] && ApGame.InGame, 60f);
+            yield return Wait(2f);
+            Check("entering a shed", gm.CurrentEnvironment.UniqueID == shedTier[0], gm.CurrentEnvironment.name);
+            float spaceBefore = gm.MaxEnvWeight;
+            HutUpgrades.Extend();
+            Check("storage extension: +25% space here", Mathf.Abs(gm.MaxEnvWeight - spaceBefore * 1.25f) < 1f,
+                  new { spaceBefore, now = gm.MaxEnvWeight });
+            GameManager.GiveCard(stone, true);
+            yield return Wait(2f);
+            int stonesInside = gm.AllCards.Count(card => card != null && !card.Destroyed && card.CardModel == stone);
+            int kitsBefore = HutUpgrades.KitsLeft;
+            HutUpgrades.Upgrade();
+            yield return WaitFor(() => !ApGame.InGame, 30f);
+            yield return WaitForLoaded();
+            yield return Wait(3f);
+            gm = GM;
+            CardData mudArea = UniqueIDScriptable.GetFromID<CardData>(mudTier[0]);
+            Check("upgrade kit: the shed became a mud hut, contents kept",
+                  ApGame.InGame && gm.CurrentEnvironment.UniqueID == mudTier[0] && stonesInside > 0 &&
+                  gm.AllCards.Count(card => card != null && !card.Destroyed && card.CardModel == stone) == stonesInside &&
+                  HutUpgrades.KitsLeft == kitsBefore - 1,
+                  new { area = gm.CurrentEnvironment.name, stonesInside, kitsLeft = HutUpgrades.KitsLeft });
+            Check("upgrade kit: the storage extension moved along",
+                  Mathf.Abs(gm.MaxEnvWeight - mudArea.GetWeightCapacity(0f) * 1.25f) < 1f, gm.MaxEnvWeight);
+            InGameCardBase exit = gm.AllCards.FirstOrDefault(card => card != null && !card.Destroyed && card.CardModel != null &&
+                                                                     card.CardModel.DismantleActions != null &&
+                                                                     card.CardModel.DismantleActions.Any(action => action.IsTravellingAction));
+            if (exit != null) GameManager.PerformAction(exit.CardModel.DismantleActions.First(action => action.IsTravellingAction), exit, _FastMode: false);
+            yield return WaitFor(() => gm.CurrentEnvironment != null && gm.CurrentEnvironment.UniqueID != mudTier[0] && ApGame.InGame, 60f);
+            yield return Wait(2f);
+            Check("outside, the entrance is a mud hut now",
+                  gm.AllCards.Any(card => card != null && !card.Destroyed && card.CardModel != null && card.CardModel.UniqueID == mudTier[1]) &&
+                  !gm.AllCards.Any(card => card != null && !card.Destroyed && card.CardModel != null && card.CardModel.UniqueID == shedTier[1]),
+                  gm.CurrentEnvironment.name);
 
             // 11. A real ending's screen completes the goal and offers the checkpoint.
             MBSingleton<EndgameMenu>.Instance.Setup("Self test ending", 0, 0, GameLoad.Instance.Games[GameLoad.Instance.CurrentGameDataIndex].MainData, false, false, false, false, false);

@@ -156,6 +156,32 @@ one tick; Careful Hands adds back part of a negative usage change through the ac
 durability changes; Inquisitive Mind scales `GameManager.DaysToTicks` (used for research
 only); Pantry Keeper scales a negative `InGameCardBase.CurrentSpoilageRate`.
 
+### Traps: `Traps`
+
+A trap is a one-time effect that waits in a queue (`Traps.Queue`, indices into the ledger).
+At most one goes off per in-game day (`Traps.LastDay`), never at sea (`trap_free_areas`),
+during a fight or an event. A trap adds a card (a light wound, or a weather card, which
+replaces the current weather) or changes a stat once. Queue and day follow the main save
+and the checkpoint copy like the finds buffer.
+
+### Hut upgrades: `HutUpgrades`
+
+Storage extensions: `StoragePatch` adds 25 % of the area's own capacity per extension to
+`InGameCardBase.MaxWeightCapacity` of the current area card; the extended areas are kept by
+their environment key. Upgrade kit: the game cannot change a hut into another, so the mod
+saves, serialises the main save with `JsonUtility` (the game's own format), replaces the
+area, entrance, explorable and exit card of the hut tier by the next one (by save id and
+UniqueID), raises the stored capacity, writes the save and loads it. It refuses when there
+is more than one hut of that kind or one of the next kind already. Used kits and extended
+areas follow the main save and the checkpoint copy.
+
+### The logbook in the journal book: `LogbookJournal`
+
+The game instantiates the journal from its prefab whenever it opens and then opens a page
+(`ContentDisplayer.Init`). In a save with the logbook, a postfix builds one `ContentPage` per
+chapter from the current state (styled with the original page's first entry), links them
+with the arrow buttons and opens the first one. A normal save never reopens a logbook page.
+
 ### Finds: `Finds`
 
 A find is a one-time effect like supplies were. When it is applied it lands on the base row

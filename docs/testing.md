@@ -42,7 +42,7 @@ python tools/run_selftest.py ... --game-dir "C:\ProgramData\Archipelago\Card Sur
 It generates a solo seed, hosts it on a local Archipelago server, and starts the game with
 `CSAP_SELFTEST`. The plugin then plays a scripted session and writes a report. Saves go to
 `...(Archipelago Test)`; the tool checksums the normal saves before and after and stops if
-they changed. 64 steps at the moment (the test seed switches every option on):
+they changed. 72 steps at the moment (the test seed switches every option on, traps at 100 % up to 10):
 
 - connect, scout all locations, bind a new save, the character lock starts Normal Guy
   (the test picks another character), Safe Mode on, starting area check;
@@ -57,6 +57,8 @@ they changed. 64 steps at the moment (the test seed switches every option on):
   check; "three different crops" needs the third crop;
 - logbook: a card task, an action task (needs both actions), a task counting sent checks;
   Determination given once, the journal's reward for the same thing skipped;
+- the journal book opens on the logbook: six chapter pages, done tasks ticked (a
+  screenshot `journal.png` is saved next to the report);
 - all ten new perk levels arrive through real checks; each effect is measured (carried
   weight x0.7, 30 min travel -> 15, 15 stays 15, 45 min building -> 30, tool wear -30 %,
   research ticks -30 %, spoilage x0.85); levels are kept after reload;
@@ -67,6 +69,11 @@ they changed. 64 steps at the moment (the test seed switches every option on):
   ledger equals the server, the buffer is as saved;
 - after loading an older checkpoint: checks kept, items since then applied exactly once,
   finds since then land again or wait in the buffer without duplicates;
+- extras: keeping partridges completes its check, "survive 7 days" does not on day 1;
+- traps: two arrive, at most one goes off per day, the other waits;
+- a shed is built and entered, a storage extension adds 25 %, a stone is put inside, the
+  upgrade kit turns it into a mud hut (stone and extension kept), outside the entrance is
+  a mud hut;
 - an ending completes the goal (the server log is checked) and offers the checkpoint.
 
 ## Still manual

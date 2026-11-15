@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Toggle
+from Options import Choice, DefaultOnToggle, PerGameCommonOptions, Range, Toggle
 
 
 class ExcludeChallengeChecks(DefaultOnToggle):
@@ -30,6 +30,38 @@ class FarmingChecks(Toggle):
     """A few planting milestones are checks: first crop, three and six different crops, first tree,
     first mushroom bed ("Plant - X")."""
     display_name = "Farming Checks"
+
+
+class ExtraChecks(Toggle):
+    """Extra checks: achievements of the game that no other check covers (carve five figurines,
+    find a shipwreck, hatch an egg, ...), keeping animals, and surviving 7, 14, 30, 60 and 100 days
+    (60 and 100 are challenge checks)."""
+    display_name = "Extra Checks"
+
+
+class HutUpgrades(Toggle):
+    """Adds 2 Hut Upgrade Kits and 3 Storage Extensions as useful items. Use them in the F8 panel
+    while you stand in a hut: a kit turns a Shed into a Mud Hut or a Mud Hut into a Stone Hut and
+    keeps everything inside; a storage extension adds 25% space to the hut or cellar."""
+    display_name = "Hut Upgrades"
+
+
+class TrapPercentage(Range):
+    """How many of the filler items become mild traps (a light wound at worst: an abrasion, a
+    bruise, a scratch, a rain shower, mosquitoes, dirt, a fright). At most one trap per in-game
+    day, none at sea. 0 turns traps off."""
+    display_name = "Trap Percentage"
+    range_start = 0
+    range_end = 100
+    default = 0
+
+
+class TrapLimit(Range):
+    """The most traps a seed can hold for you, even at 100%."""
+    display_name = "Trap Limit"
+    range_start = 0
+    range_end = 30
+    default = 10
 
 
 class CharacterLock(DefaultOnToggle):
@@ -76,3 +108,7 @@ class CardSurvivalOptions(PerGameCommonOptions):
     character_lock: CharacterLock
     logbook: Logbook
     new_perks: NewPerks
+    extra_checks: ExtraChecks
+    hut_upgrades: HutUpgrades
+    trap_percentage: TrapPercentage
+    trap_limit: TrapLimit

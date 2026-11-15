@@ -79,7 +79,7 @@ namespace CardSurvivalArchipelago
 
         private void DrawPanel()
         {
-            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 320 : 215);
+            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 360 : 215);
             GUILayout.BeginArea(area, "Archipelago", GUI.skin.window);
             if (Registry.Error != null)
             {
@@ -126,6 +126,17 @@ namespace CardSurvivalArchipelago
                         .Where(entry => NewPerks.Level(entry.Key) > 0)
                         .Select(entry => entry.Name.Replace("Progressive ", "") + " " + NewPerks.Level(entry.Key)).ToArray());
                     if (perks.Length > 0) GUILayout.Label("New perks: " + perks, small);
+                    if (HutUpgrades.KitsLeft > 0 || HutUpgrades.ExtensionsLeft > 0)
+                    {
+                        GUILayout.BeginHorizontal();
+                        GUI.enabled = HutUpgrades.CanUpgrade;
+                        if (GUILayout.Button("Upgrade this hut (" + HutUpgrades.KitsLeft + ")")) HutUpgrades.Upgrade();
+                        GUI.enabled = HutUpgrades.CanExtend;
+                        if (GUILayout.Button("Extend storage (" + HutUpgrades.ExtensionsLeft + ")")) HutUpgrades.Extend();
+                        GUI.enabled = true;
+                        GUILayout.EndHorizontal();
+                    }
+                    if (Traps.Queue.Count > 0) GUILayout.Label("Traps waiting: " + Traps.Queue.Count + " (one per day)", small);
                 }
                 if (ApGame.Active && ApGame.State.LocationKinds.Contains("logbook") &&
                          GUILayout.Button(logbookOpen ? "Hide logbook" : "Logbook"))
@@ -161,7 +172,7 @@ namespace CardSurvivalArchipelago
         private void DrawBuffer()
         {
             int count = Finds.Buffer.Count;
-            var area = new Rect(10, 360, 360, Mathf.Min(90 + 24 * count, Screen.height * 0.45f));
+            var area = new Rect(10, 400, 360, Mathf.Min(90 + 24 * count, Screen.height * 0.45f));
             GUILayout.BeginArea(area, "Finds buffer (" + count + ")", GUI.skin.window);
             if (count == 0)
             {

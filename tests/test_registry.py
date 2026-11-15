@@ -56,8 +56,25 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(len({entry["ap_id"] for entry in DATA["locations"]}), len(DATA["locations"]))
         self.assertEqual(len({entry["ap_id"] for entry in DATA["items"]}), len(DATA["items"]))
         self.assertLessEqual({entry["kind"] for entry in DATA["locations"]},
-                             {"research", "build", "visit", "fish", "hunt", "cook", "farm", "logbook"})
-        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "newperk", "find"})
+                             {"research", "build", "visit", "fish", "hunt", "cook", "farm", "logbook", "extra"})
+        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "newperk", "find", "upgrade", "trap"})
+
+    def test_traps_are_mild(self):
+        allowed_cards = {"W_Abrasion", "W_Bruise", "W_LizardScratch", "TropicalIsland_LightRain"}
+        traps = [entry for entry in DATA["items"] if entry["kind"] == "trap"]
+        self.assertEqual({entry["name"] for entry in traps}, set(DATA["traps"]))
+        for entry in traps:
+            self.assertEqual(entry["quantity"], 0, entry["name"])     # only ever placed instead of filler
+            if "amount" in entry:
+                self.assertLessEqual(entry["amount"], 100, entry["name"])
+        self.assertEqual(sum("card_id" in entry for entry in traps), len(allowed_cards))
+
+    def test_extras(self):
+        extras = [entry for entry in DATA["locations"] if entry["kind"] == "extra"]
+        self.assertGreaterEqual(len(extras), 15)
+        days = [entry for entry in extras if "day" in entry["watch"][0]]
+        self.assertEqual([entry["watch"][0]["day"] for entry in days], [7, 14, 30, 60, 100])
+        self.assertTrue(all(entry["challenge"] for entry in days if entry["watch"][0]["day"] >= 60))
 
     def test_new_perks_are_small_and_never_logic(self):
         perks = [entry for entry in DATA["items"] if entry["kind"] == "newperk"]
@@ -69,7 +86,7 @@ class RegistryTests(unittest.TestCase):
     def test_first_time_checks_watch_cards(self):
         watched = set()
         for entry in DATA["locations"]:
-            if entry["kind"] in ("fish", "hunt", "cook", "farm", "logbook"):
+            if entry["kind"] in ("fish", "hunt", "cook", "farm", "logbook", "extra"):
                 self.assertTrue(entry["watch"], entry["name"])
                 for part in entry["watch"]:
                     if "cards" in part:

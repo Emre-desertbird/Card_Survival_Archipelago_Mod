@@ -47,7 +47,7 @@ Related documents:
 
 ## What the randomizer does
 
-### Locations (451, up to 538 with the optional ones)
+### Locations (451, up to 557 with the optional ones)
 
 | Kind | Count | Sent when |
 | --- | --- | --- |
@@ -59,6 +59,7 @@ Related documents:
 | Cook - X (option `cooking_checks`) | 17 | A cooking pot or coconut shell dish exists for the first time. |
 | Plant - ... (option `farming_checks`) | 5 | First crop, three and six different crops, first tree, first mushroom bed. |
 | Logbook - ... (option `logbook`) | 44 | A task of the Archipelago logbook is done (see below). |
+| Extra - ... (option `extra_checks`) | 19 | 11 achievements no other check covers (figurines, dynamite, a prepared meal, the cave system, a shipwreck, goat birth, a hatched egg, a macaque friend, a pearl necklace, Weston), keeping a goat, partridges or a boar, surviving 7/14/30/60/100 days. Cave system, day 60 and day 100 are challenge checks. |
 
 The optional kinds are off by default. Kinds nothing can reach in this game mode (Grouper,
 Seahound) are dropped by the registry tool.
@@ -75,6 +76,16 @@ by default they only hold filler (`exclude_challenge_checks`, on by default).
 | Perk: X | 11 | A helpful vanilla perk with passive bonuses only (e.g. Slow Metabolism). |
 | New perks (option `new_perks`) | 10 | Perks the game does not have, in small steps: Progressive Pack Mule (carried weight -10 % per level, 3), Nimble Hands (building -33 %), Pathfinder (travel -33 %), Progressive Careful Hands (tool wear -15 % per level, 2), Progressive Inquisitive Mind (research -15 % per level, 2), Pantry Keeper (spoilage -15 %). Times are whole 15-minute ticks: rounded, never under one tick. |
 | Find: X | the rest (180 to 223) | Filler: long-lasting food, drinks, cooking ingredients or common materials, left on the ground where you are (see below). |
+
+**Hut upgrades** (option `hut_upgrades`): 2 Hut Upgrade Kits and 3 Storage Extensions,
+useful items used from the F8 panel while standing in a hut. A kit turns a Shed into a Mud
+Hut or a Mud Hut into a Stone Hut and keeps everything inside (it needs exactly one hut of
+that kind and none of the next); an extension adds 25 % space to the hut or cellar.
+
+**Traps** (`trap_percentage`, default 0, and `trap_limit`, default 10): a share of the
+filler becomes mild traps, never more than the limit. The worst is a light wound (abrasion,
+bruise, scratch); the others are a rain shower, mosquitoes, dirt and a fright. At most one
+per in-game day, none at sea, during a fight or an event; the rest waits.
 
 **Finds** come in five categories with fixed shares of the filler pool: material 35 %,
 ingredients 20 %, provisions 20 %, drinks 15 %, treats 10 %. Only things the base game
@@ -120,7 +131,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.6.0)
+## Current state (version 0.7.0)
 
 | Part | State |
 | --- | --- |
@@ -134,10 +145,11 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 | Finds, hourly limit, buffer | Work, tested in the real game: ground row, filled coconut shells, buffer across reload and checkpoint. |
 | Fishing, hunting, cooking, farming checks | Work, tested in the real game (first-time and counting checks). |
 | New perks | Work, tested in the real game: each effect measured, levels kept after reload. |
-| Character lock, logbook | Work, tested in the real game: Normal Guy start, card, action and check-counting tasks, Determination exactly once across reload and checkpoint, journal rewards skipped. The logbook is shown in the F8 panel, not yet in the game's journal book. |
+| Extras, traps, hut upgrades | Work, tested in the real game: an extra check, one trap per day, storage +25 %, a Shed upgraded to a Mud Hut with its contents and its extension, the entrance outside changed. |
+| Character lock, logbook | Work, tested in the real game: Normal Guy start, card, action and check-counting tasks, Determination exactly once across reload and checkpoint, journal rewards skipped. The logbook is shown in the game's journal book (one page per chapter) and in the F8 panel. |
 | Ending detection, goal, checkpoint after victory | Work, tested. |
 | Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
-| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 20 unit tests. |
+| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 21 unit tests. |
 | Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
 | Release | `tools/package.py` builds `cardsurvival.apworld` and a release zip. |
 
@@ -150,8 +162,7 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
    optional). Archipelago logbook and character lock: done (0.5.0)
    ([plan_erweiterung.md](plan_erweiterung.md)).
 5. **More items.** Skills, perks, equipment copies: done. Finds (0.4.0) and new perks
-   (0.6.0, optional): done. Next, optional: upgrade kit and storage extension for huts,
-   extras (achievements, survival days, animals) and mild traps (plan_erweiterung.md, phase D).
+   (0.6.0, optional), hut upgrades, extras and mild traps (0.7.0, optional): done.
 6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a
    multiworld seed, then balancing (skill step size, supplies, challenge thresholds).
 

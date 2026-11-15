@@ -91,6 +91,8 @@ class Registry:
         if self.items.keys() & self.events.keys() or data["goal_event"] not in self.events:
             raise ValueError("Event names collide with items, or the goal event is missing")
         fillers = [name for names in data["filler"].values() for name in names] + [data["keepsake"]]
+        if any(self.items.get(name, {}).get("classification") != "trap" for name in data.get("traps", [])):
+            raise ValueError("Every trap name must be a trap item in the item list")
         if not all(data["filler"].values()) or any(self.items.get(name, {}).get("classification") != "filler"
                                                    for name in fillers):
             raise ValueError("Every filler name must be a filler item in the item list")

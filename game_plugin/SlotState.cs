@@ -67,6 +67,17 @@ namespace CardSurvivalArchipelago
         public List<int> BufferMain = new List<int>();
         public List<int> BufferCheckpoint = new List<int>();
 
+        /// <summary>Traps waiting (indices into Received) and the last day a trap went off; like the buffer.</summary>
+        public List<int> TrapsMain = new List<int>();
+        public List<int> TrapsCheckpoint = new List<int>();
+        public int TrapDayMain;
+        public int TrapDayCheckpoint;
+        /// <summary>Hut upgrade kits used, and the areas (environment keys) extended by storage extensions.</summary>
+        public int KitsMain;
+        public int KitsCheckpoint;
+        public List<string> StorageMain = new List<string>();
+        public List<string> StorageCheckpoint = new List<string>();
+
         [JsonIgnore] public int SaveIndex = -1;
         [JsonIgnore] private HashSet<long> checkedSet;
         [JsonIgnore] private HashSet<long> receivedSet;

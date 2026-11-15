@@ -15,7 +15,7 @@ GAME = DATA["game_name"]
 FILLERS = DATA["filler"]               # category -> find names
 FILLER_SHARES = DATA["filler_shares"]  # category -> share of the filler pool
 CLASSIFICATIONS = {"progression": ItemClassification.progression, "useful": ItemClassification.useful,
-                   "filler": ItemClassification.filler}
+                   "filler": ItemClassification.filler, "trap": ItemClassification.trap}
 
 
 class CardSurvivalItem(Item):
@@ -35,13 +35,16 @@ class CardSurvivalWebWorld(WebWorld):
     )]
 
 
-GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "newperk": "New Perks", "find": "Finds"}
+GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "newperk": "New Perks", "find": "Finds",
+          "upgrade": "Hut Upgrades", "trap": "Traps"}
 LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit", "fish": "Fishing",
-                   "hunt": "Hunting", "cook": "Cooking", "farm": "Farming", "logbook": "Logbook"}
+                   "hunt": "Hunting", "cook": "Cooking", "farm": "Farming", "logbook": "Logbook",
+                   "extra": "Extras"}
 # Optional location kinds and the option that turns each on.
 OPTIONAL_KINDS = {"fish": "fishing_checks", "hunt": "hunting_checks", "cook": "cooking_checks",
-                  "farm": "farming_checks"}
+                  "farm": "farming_checks", "extra": "extra_checks"}
 PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "character_lock", "logbook", "new_perks",
+               "hut_upgrades", "trap_percentage", "trap_limit",
                *OPTIONAL_KINDS.values()]
 
 
@@ -109,9 +112,14 @@ class CardSurvivalWorld(World):
             island.locations.append(location)
 
     def create_items(self) -> None:
+        optional = {"newperk": self.options.new_perks, "upgrade": self.options.hut_upgrades}
         pool = [self.create_item(entry["name"]) for entry in DATA["items"] for _ in range(entry["quantity"])
-                if entry["kind"] != "newperk" or self.options.new_perks]
-        pool += [self.create_filler() for _ in range(len(self.included_locations()) - len(pool))]
+                if optional.get(entry["kind"], True)]
+        free = len(self.included_locations()) - len(pool)
+        # Traps replace some filler: a share of it, never more than the limit.
+        traps = min(self.options.trap_limit.value, round(free * self.options.trap_percentage.value / 100))
+        pool += [self.create_item(self.random.choice(DATA["traps"])) for _ in range(traps)]
+        pool += [self.create_filler() for _ in range(free - traps)]
         self.multiworld.itempool.extend(pool)
 
     def create_item(self, name: str) -> CardSurvivalItem:
@@ -141,5 +149,6 @@ class CardSurvivalWorld(World):
             "location_kinds": self.enabled_kinds(),
             "character_lock": bool(self.options.character_lock),
             "new_perks": bool(self.options.new_perks),
+            "hut_upgrades": bool(self.options.hut_upgrades),
             **{option: int(getattr(self.options, option)) for option in OPTIONAL_KINDS.values()},
         }

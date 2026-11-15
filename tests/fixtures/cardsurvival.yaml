@@ -7,3 +7,7 @@ game: "Card Survival: Tropical Island"
   farming_checks: true
   logbook: true
   new_perks: true
+  extra_checks: true
+  hut_upgrades: true
+  trap_percentage: 100
+  trap_limit: 10
