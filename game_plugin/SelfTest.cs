@@ -205,6 +205,21 @@ namespace CardSurvivalArchipelago
             Check("research tab shows it, build tabs still build it",
                   shownInResearch && gm.BlueprintModelStates[reward] == BlueprintModelState.Available);
 
+            // 7b. A survival basic: research teaches it as in vanilla and also sends its check.
+            CardData shelter = UniqueIDScriptable.GetFromID<CardData>(
+                Registry.ResearchByCard.Values.First(entry => entry.Key == "Bp_Shelter").CardId);
+            if (!gm.BlueprintModelCards.Contains(shelter))
+            {
+                yield return gm.StartCoroutine((IEnumerator)AddCardSimple.Invoke(gm, new object[]
+                    { shelter, null, true, null, true, SpawningLiquid.Empty, new Vector2Int(gm.CurrentTickInfo.z, 0), false }));
+            }
+            screen.LoadResearchedBlueprint(shelter);
+            screen.FinishBlueprintResearch();
+            BlueprintRando.Reconcile(true);
+            Check("survival basic: research teaches it and sends its check",
+                  ApGame.State.IsChecked(Registry.ResearchByCard[shelter.UniqueID].Id) &&
+                  gm.BlueprintModelStates[shelter] == BlueprintModelState.Available, gm.BlueprintModelStates[shelter].ToString());
+
             // 8. Save with a checkpoint, then research it (state moves on after the checkpoint).
             GameLoad.Instance.AutoSaveGame(true);
             Check("checkpoint records applied items", ApGame.State.AppliedCheckpoint == ApGame.AppliedNow,

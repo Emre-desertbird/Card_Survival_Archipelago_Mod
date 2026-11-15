@@ -49,6 +49,7 @@ namespace CardSurvivalArchipelago
                     shuffled = new Dictionary<CardData, Registry.Entry>();
                     foreach (var pair in Registry.ResearchByCard)
                     {
+                        if (!Registry.BlueprintItemByCard.ContainsKey(pair.Key)) continue;   // survival basics
                         CardData card = UniqueIDScriptable.GetFromID<CardData>(pair.Key);
                         if (card != null) shuffled[card] = pair.Value;
                         else Plugin.Log.LogWarning("Blueprint " + pair.Value.Key + " is not in this game build.");
@@ -61,6 +62,13 @@ namespace CardSurvivalArchipelago
         public static bool IsShuffled(CardData card)
         {
             return ApGame.Active && card != null && card.CardType == CardTypes.Blueprint && Shuffled.ContainsKey(card);
+        }
+
+        /// <summary>A survival basic: researched as in vanilla, and the research also sends a check.</summary>
+        public static bool IsSurvivalBasic(CardData card)
+        {
+            return ApGame.Active && card != null && Registry.ResearchByCard.ContainsKey(card.UniqueID) &&
+                   !Registry.BlueprintItemByCard.ContainsKey(card.UniqueID);
         }
 
         public static bool IsResearched(CardData card)
@@ -188,6 +196,11 @@ namespace CardSurvivalArchipelago
         private static bool Prefix(BlueprintModelsScreen __instance)
         {
             CardData card = __instance.CurrentResearch;
+            if (BlueprintRando.IsSurvivalBasic(card))
+            {
+                ApGame.CompleteLocation(Registry.ResearchByCard[card.UniqueID].Id);
+                return true;   // vanilla: the research also teaches the recipe
+            }
             if (!BlueprintRando.IsShuffled(card)) return true;
             GameManager gm = MBSingleton<GameManager>.Instance;
             if (gm != null && gm.FinishedBlueprintResearch == card && !BlueprintRando.IsReceived(card))
@@ -209,6 +222,11 @@ namespace CardSurvivalArchipelago
     {
         private static bool Prefix(CardData _Blueprint, ref IEnumerator __result)
         {
+            if (BlueprintRando.IsSurvivalBasic(_Blueprint))
+            {
+                ApGame.CompleteLocation(Registry.ResearchByCard[_Blueprint.UniqueID].Id);
+                return true;
+            }
             if (!BlueprintRando.IsShuffled(_Blueprint) || BlueprintRando.IsGranting(_Blueprint)) return true;
             BlueprintRando.MarkResearched(_Blueprint);
             __result = Enumerable.Empty<object>().GetEnumerator();

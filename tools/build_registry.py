@@ -48,6 +48,10 @@ EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprint
 # cards (raft, sailing, rescue). Home depends on comfort and days survived, Weston on its quest
 # line and Mermaid on the character, so the logic does not rely on them (docs/logic.md).
 GOAL_ENDING = "Event_ShipEscape"
+# Survival basics (rule 6 in docs/plan.md): their research teaches the recipe as in vanilla
+# AND sends its check, so shelter, sleep, light, a water bowl and basic wound care never
+# depend on other players. They have no item.
+SURVIVAL_BASICS = ["Bp_Shelter", "Bp_Leafbed", "Bp_Torch", "Bp_ClayBowl", "Bp_Splint", "Bp_AshDressing"]
 SKILL_COPIES, SKILL_STEP = 3, 25          # the game's skill perks give +75
 EXCLUDED_SKILLS = {"Skill_Insight"}       # tied to endings, see docs/plan.md
 CHALLENGE_RESEARCH_DAYS = 3               # research taking this many days or more
@@ -102,6 +106,9 @@ def main() -> None:
     character_only = sorted(name for name, card in blueprints.items()
                             if name not in starting and not any(card.get(key) for key in conditions))
     randomized = sorted(name for name in blueprints if name not in starting and name not in character_only)
+    missing = [name for name in SURVIVAL_BASICS if name not in randomized]
+    if missing:
+        raise SystemExit(f"Survival basics not found among researchable blueprints: {missing}")
 
     title_count = Counter(text(blueprints[name].get("CardName")) for name in blueprints)
     def title(name: str) -> str:
@@ -113,7 +120,10 @@ def main() -> None:
     graph = card_graph.build(load)
     blueprint_needs = {name: card_graph.build_needs(card, graph.tab_groups)
                        for name, card in cards.items() if card.get("CardType") == "Blueprint"}
-    free = card_graph.Reach(graph, blueprint_needs, set(starting))
+    for name in SURVIVAL_BASICS:
+        # Buildable without an item, once the research is revealed (and done).
+        blueprint_needs[name] = blueprint_needs[name] + card_graph.unlock_needs(blueprints[name])
+    free = card_graph.Reach(graph, blueprint_needs, set(starting) | set(SURVIVAL_BASICS))
     full = card_graph.Reach(graph, blueprint_needs, set(starting) | set(randomized))
     producers = graph.producers()
 
@@ -163,7 +173,8 @@ def main() -> None:
         days = card.get("BlueprintUnlockSunsCost", 0) or 0
         locations.append({"key": name, "kind": "research", "name": f"Research - {title(name)}",
                           "ap_id": LOCATION_BASE + index, "unique_id": card["UniqueID"], "research_days": days,
-                          "vanilla_item": item_name(name), "hint": text(card.get("UnlockConditionsDesc")),
+                          "vanilla_item": None if name in SURVIVAL_BASICS else item_name(name),
+                          "teaches": name in SURVIVAL_BASICS, "hint": text(card.get("UnlockConditionsDesc")),
                           "challenge": days >= CHALLENGE_RESEARCH_DAYS, "rule": rule})
 
     # Building: the first time a blueprint is finished (an AP item never counts, see game_plugin/Checks.cs).
@@ -198,7 +209,7 @@ def main() -> None:
                 continue
             done.add(can_build(name))
             rule = all_rule(blueprint_needs[name])
-            item = [] if name in starting else [{"item": item_name(name)}]
+            item = [] if name in starting or name in SURVIVAL_BASICS else [{"item": item_name(name)}]
             events.append({"name": can_build(name), "blueprint": name, "rule": simplify("all", item + [rule])})
             continue
         card = queued_cards.pop()
@@ -247,6 +258,8 @@ def main() -> None:
 
     items = []
     for index, name in enumerate(randomized):
+        if name in SURVIVAL_BASICS:
+            continue
         entry = {"key": name, "name": item_name(name), "ap_id": ITEM_BASE + index, "quantity": 1, "kind": "blueprint",
                  "unique_id": blueprints[name]["UniqueID"],
                  "classification": "progression" if item_name(name) in used_items else "useful"}
@@ -282,9 +295,10 @@ def main() -> None:
                       "contents": [{"card": card, "unique_id": cards[card]["UniqueID"], "count": count}
                                    for card, count in contents.items()]})
 
-    registry = {"game_name": GAME, "registry_version": 4, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 5, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "starting_blueprints": [title(name) for name in starting],
+                "survival_basics": [title(name) for name in SURVIVAL_BASICS],
                 "character_only_blueprints": [title(name) for name in character_only],
                 "filler": [name for name, _, _ in FILLERS], "items": items, "locations": locations, "events": events}
     target = WORLD / "registry.json"

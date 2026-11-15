@@ -36,7 +36,7 @@ class RegistryTests(unittest.TestCase):
 
     def test_one_blueprint_item_per_research_check(self):
         blueprints = [entry for entry in DATA["items"] if entry["kind"] == "blueprint"]
-        research = [entry for entry in DATA["locations"] if entry["kind"] == "research"]
+        research = [entry for entry in DATA["locations"] if entry["kind"] == "research" and not entry["teaches"]]
         self.assertEqual(len(blueprints), len(research))
         self.assertEqual({entry["name"] for entry in blueprints}, {entry["vanilla_item"] for entry in research})
 
@@ -56,6 +56,20 @@ class RegistryTests(unittest.TestCase):
         important = sum(entry["quantity"] for entry in DATA["items"] if entry["classification"] != "filler")
         standard = sum(not entry["challenge"] for entry in DATA["locations"])
         self.assertLessEqual(important, standard)
+
+    def test_survival_basics_teach_and_send_a_check(self):
+        basics = [entry for entry in DATA["locations"] if entry["kind"] == "research" and entry["teaches"]]
+        self.assertEqual(len(basics), len(DATA["survival_basics"]))
+        names = {entry["name"] for entry in DATA["items"]}
+        for entry in basics:
+            self.assertIsNone(entry["vanilla_item"])
+            self.assertNotIn(entry["name"].replace("Research - ", "Blueprint: "), names)
+        # Building them needs no item at all.
+        for title in DATA["survival_basics"]:
+            event = next(event for event in DATA["events"] if event["name"] == f"Can Build {title}") \
+                if any(event["name"] == f"Can Build {title}" for event in DATA["events"]) else None
+            if event:
+                self.assertNotIn('"item"', json.dumps(event["rule"]))
 
     def test_skill_items_add_up_to_one_skill_perk(self):
         for entry in DATA["items"]:

@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 4,
+ "registry_version": 5,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -14,6 +14,14 @@
   "Stone Axe",
   "Tourniquet",
   "Improvised Tourniquet"
+ ],
+ "survival_basics": [
+  "Shelter",
+  "Leaf Bed",
+  "Torch",
+  "Clay Bowl",
+  "Splint",
+  "Ash Dressing"
  ],
  "character_only_blueprints": [
   "Ceremonial Dagger",
@@ -75,21 +83,6 @@
    "kind": "blueprint",
    "unique_id": "cac14bfc7b2bc2943acdaa5397b28a2d",
    "classification": "progression"
-  },
-  {
-   "key": "Bp_AshDressing",
-   "name": "Blueprint: Ash Dressing",
-   "ap_id": 1694420005,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "da36fdd9bcc3dc641999c8487afb2e30",
-   "classification": "progression",
-   "equipment": [
-    {
-     "card": "AshDressing",
-     "unique_id": "ab926cc09718a244296c2adb4cd52f87"
-    }
-   ]
   },
   {
    "key": "Bp_BedRustic",
@@ -389,15 +382,6 @@
    "quantity": 1,
    "kind": "blueprint",
    "unique_id": "448196ad3ccc19641b7b8088d93b1457",
-   "classification": "progression"
-  },
-  {
-   "key": "Bp_ClayBowl",
-   "name": "Blueprint: Clay Bowl",
-   "ap_id": 1694420036,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "090cea96fab32934da8fd67ef4e80f65",
    "classification": "progression"
   },
   {
@@ -1151,15 +1135,6 @@
    ]
   },
   {
-   "key": "Bp_Leafbed",
-   "name": "Blueprint: Leaf Bed",
-   "ap_id": 1694420107,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "a20c00d387c339244bc13d8a33a51646",
-   "classification": "progression"
-  },
-  {
    "key": "Bp_LeatherBackpack",
    "name": "Blueprint: Leather Backpack",
    "ap_id": 1694420108,
@@ -1775,15 +1750,6 @@
    "classification": "progression"
   },
   {
-   "key": "Bp_Shelter",
-   "name": "Blueprint: Shelter",
-   "ap_id": 1694420163,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "1d4ce488ac2e4774c982cec382294d2b",
-   "classification": "progression"
-  },
-  {
    "key": "Bp_Shield",
    "name": "Blueprint: Shield",
    "ap_id": 1694420164,
@@ -1874,15 +1840,6 @@
    "classification": "progression"
   },
   {
-   "key": "Bp_Splint",
-   "name": "Blueprint: Splint",
-   "ap_id": 1694420172,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "2c9fbb50201807b4c92d83e350a5dc35",
-   "classification": "progression"
-  },
-  {
    "key": "Bp_StoneHut",
    "name": "Blueprint: Stone Hut",
    "ap_id": 1694420173,
@@ -1950,21 +1907,6 @@
    "kind": "blueprint",
    "unique_id": "01333dcc887d0764686756d2f3385a8b",
    "classification": "progression"
-  },
-  {
-   "key": "Bp_Torch",
-   "name": "Blueprint: Torch",
-   "ap_id": 1694420180,
-   "quantity": 1,
-   "kind": "blueprint",
-   "unique_id": "d7ffe30617d4c9e4ca348dd7449551e7",
-   "classification": "progression",
-   "equipment": [
-    {
-     "card": "TorchOff",
-     "unique_id": "b86d894ea072d5d45ac0cb3b2feef394"
-    }
-   ]
   },
   {
    "key": "Bp_TrappingPit",
@@ -2605,6 +2547,7 @@
    "unique_id": "84fb7452dba593b479bab5e4eeb48161",
    "research_days": 3,
    "vanilla_item": "Blueprint: Alembic",
+   "teaches": false,
    "hint": "Clay Pot Cooler Needed",
    "challenge": true,
    "rule": {
@@ -2619,6 +2562,7 @@
    "unique_id": "30bb105b39e8d6343bd318f8a10bfe9a",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Aloe Gel",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -2631,6 +2575,7 @@
    "unique_id": "3d2a3fb85bfa7d042b0388308b2b1fd5",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Arrows",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -2643,6 +2588,7 @@
    "unique_id": "9bf1e4505c37fb6459ad884372959836",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bone Arrows",
+   "teaches": false,
    "hint": "More Archery Needed",
    "challenge": false,
    "rule": {
@@ -2657,6 +2603,7 @@
    "unique_id": "cac14bfc7b2bc2943acdaa5397b28a2d",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Flint Arrows",
+   "teaches": false,
    "hint": "More Archery/Knapping Needed",
    "challenge": false,
    "rule": {
@@ -2670,7 +2617,8 @@
    "ap_id": 1694430005,
    "unique_id": "da36fdd9bcc3dc641999c8487afb2e30",
    "research_days": 0.125,
-   "vanilla_item": "Blueprint: Ash Dressing",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "Ash Needed",
    "challenge": false,
    "rule": true
@@ -2683,6 +2631,7 @@
    "unique_id": "0614f3ab0059ddc438f6d161ff5e47a8",
    "research_days": 1,
    "vanilla_item": "Blueprint: Rustic Bed",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -2695,6 +2644,7 @@
    "unique_id": "ee174f9ccc158dc42a8847af15ee3d6f",
    "research_days": 2,
    "vanilla_item": "Blueprint: Wooden Bed",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -2707,6 +2657,7 @@
    "unique_id": "2ee163f0172c26a419e7e2442bb1dcbc",
    "research_days": 1,
    "vanilla_item": "Blueprint: Bedroll",
+   "teaches": false,
    "hint": "Leather Pants Needed",
    "challenge": false,
    "rule": {
@@ -2721,6 +2672,7 @@
    "unique_id": "0eb7addff318e4c469461760937a2406",
    "research_days": 0,
    "vanilla_item": "Blueprint: Bee Skep",
+   "teaches": false,
    "hint": "Empty Skep Needed",
    "challenge": false,
    "rule": {
@@ -2735,6 +2687,7 @@
    "unique_id": "a48d98488acce704f80c9813193ee631",
    "research_days": 1,
    "vanilla_item": "Blueprint: Empty Skep",
+   "teaches": false,
    "hint": "Beehive Needed",
    "challenge": false,
    "rule": true
@@ -2747,6 +2700,7 @@
    "unique_id": "8d21aa699b2f4034eb213d51b37004c6",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Bee Smoker",
+   "teaches": false,
    "hint": "Bee Skep Needed",
    "challenge": false,
    "rule": {
@@ -2761,6 +2715,7 @@
    "unique_id": "b06298eb2fdf7a847bdb81620e056024",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Bee Suit",
+   "teaches": false,
    "hint": "Bee Smoker Needed",
    "challenge": false,
    "rule": {
@@ -2775,6 +2730,7 @@
    "unique_id": "04c16758dfcfbbc44b8c49f75a97ffc3",
    "research_days": 1,
    "vanilla_item": "Blueprint: Bellows",
+   "teaches": false,
    "hint": "Kiln Needed",
    "challenge": false,
    "rule": {
@@ -2808,6 +2764,7 @@
    "unique_id": "9eb58a8514fe86a4db5c39d77d495dce",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Boar Feeder",
+   "teaches": false,
    "hint": "Boar Needed",
    "challenge": false,
    "rule": {
@@ -2829,6 +2786,7 @@
    "unique_id": "e468a43773b60c940ab93feac50ce888",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bone Broth",
+   "teaches": false,
    "hint": "Cooking Pot Needed",
    "challenge": false,
    "rule": {
@@ -2843,6 +2801,7 @@
    "unique_id": "2d1409d1bfbb04f44a39dbb8dbce1a70",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bone Knife",
+   "teaches": false,
    "hint": "Bones Needed",
    "challenge": false,
    "rule": true
@@ -2855,6 +2814,7 @@
    "unique_id": "24326f158154a8441874778ca4d6b600",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Bookshelf",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -2867,6 +2827,7 @@
    "unique_id": "97d3eedb64aec914bb90d5feb50e7e86",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Bow",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -2879,6 +2840,7 @@
    "unique_id": "829275b73d6396e408f04793d11a22e3",
    "research_days": 1,
    "vanilla_item": "Blueprint: Composite bow",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -2891,6 +2853,7 @@
    "unique_id": "ac714f698cf3d974482d30dd6350e05a",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Bow Drill",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -2903,6 +2866,7 @@
    "unique_id": "b52008ac678dd4541bdf5e0e1e34398f",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Brimstone Gel",
+   "teaches": false,
    "hint": "Brimstone Needed",
    "challenge": false,
    "rule": true
@@ -2915,6 +2879,7 @@
    "unique_id": "fd0712236546c77478c9b48367a9795c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Bug Repellent",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -2927,6 +2892,7 @@
    "unique_id": "e3513b137c19ce040bd852baeea4ff88",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Butter",
+   "teaches": false,
    "hint": "Milk Needed",
    "challenge": false,
    "rule": {
@@ -2941,6 +2907,7 @@
    "unique_id": "bd966e4e61e694143b8a49c8d51cf865",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Butter Baked Oysters",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -2953,6 +2920,7 @@
    "unique_id": "fef4c2ea123b4b447883a53a25ebc0e8",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Cage Trap",
+   "teaches": false,
    "hint": "More Trapping Needed",
    "challenge": false,
    "rule": {
@@ -2967,6 +2935,7 @@
    "unique_id": "6fb228ce50726b04099b6b66609c0071",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Candied Ginger",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -2979,6 +2948,7 @@
    "unique_id": "f1c5253873c055d4592fb3c1dba631a1",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Candle",
+   "teaches": false,
    "hint": "Fat/Wax Needed",
    "challenge": false,
    "rule": true
@@ -2991,6 +2961,7 @@
    "unique_id": "4febbb3fb75141243882ba03963bd32c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Citronella Candle",
+   "teaches": false,
    "hint": "Candles Needed",
    "challenge": false,
    "rule": {
@@ -3005,6 +2976,7 @@
    "unique_id": "048459b08d8eb3d41940e950429a6caa",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Jasmine Candle",
+   "teaches": false,
    "hint": "Candles Needed",
    "challenge": false,
    "rule": {
@@ -3019,6 +2991,7 @@
    "unique_id": "b58ad38d9672870468be7fd2391c4623",
    "research_days": 2,
    "vanilla_item": "Blueprint: Cellar",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -3031,6 +3004,7 @@
    "unique_id": "d1073139f4fc0f84db3d11418a4ef6e7",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Chair",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -3043,6 +3017,7 @@
    "unique_id": "fc09f021215c6104e876267c110ce68e",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Cheese",
+   "teaches": false,
    "hint": "Milk Needed",
    "challenge": false,
    "rule": {
@@ -3057,6 +3032,7 @@
    "unique_id": "36c82cd136170674bae84a6f70755126",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Chest",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -3069,6 +3045,7 @@
    "unique_id": "e94d702d3d7a40a42b130087b6fa779f",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Chicken Sandwich",
+   "teaches": false,
    "hint": "Sago Flatbread Needed",
    "challenge": false,
    "rule": true
@@ -3081,6 +3058,7 @@
    "unique_id": "448196ad3ccc19641b7b8088d93b1457",
    "research_days": 2,
    "vanilla_item": "Blueprint: Cistern",
+   "teaches": false,
    "hint": "Shovel Needed",
    "challenge": false,
    "rule": {
@@ -3104,7 +3082,8 @@
    "ap_id": 1694430036,
    "unique_id": "090cea96fab32934da8fd67ef4e80f65",
    "research_days": 0.125,
-   "vanilla_item": "Blueprint: Clay Bowl",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "Clay Needed",
    "challenge": false,
    "rule": true
@@ -3117,6 +3096,7 @@
    "unique_id": "f783b98c0d114b349b14f75754d99ce2",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Clay Fire Pit",
+   "teaches": false,
    "hint": "Raft Needed",
    "challenge": false,
    "rule": {
@@ -3131,6 +3111,7 @@
    "unique_id": "1f15f3bd82a791e419e8110af9ecf510",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Clay Jar",
+   "teaches": false,
    "hint": "Kiln Needed",
    "challenge": false,
    "rule": {
@@ -3152,6 +3133,7 @@
    "unique_id": "67922062d74019641b34ea09597f76b7",
    "research_days": 1,
    "vanilla_item": "Blueprint: Clay Pot Cooler",
+   "teaches": false,
    "hint": "Clay Vase Needed",
    "challenge": false,
    "rule": {
@@ -3166,6 +3148,7 @@
    "unique_id": "5b4c32c8bb221c44997350d0674d8aac",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Clay Vase",
+   "teaches": false,
    "hint": "Kiln Needed",
    "challenge": false,
    "rule": {
@@ -3187,6 +3170,7 @@
    "unique_id": "d3e5dce0fc6628c42afe7279e40998ad",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Serrated Club",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -3199,6 +3183,7 @@
    "unique_id": "d5233fafbeed90c4ba9b73e3d27c7691",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Coconut Fish",
+   "teaches": false,
    "hint": "Cooking Pot Needed",
    "challenge": false,
    "rule": {
@@ -3213,6 +3198,7 @@
    "unique_id": "b3f48dd154d442f408254ef5e858dd2e",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Coconut Milk",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3225,6 +3211,7 @@
    "unique_id": "83f174f7f221e3f42925f7a407e28d55",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Coconut Sandals",
+   "teaches": false,
    "hint": "Cords Needed",
    "challenge": false,
    "rule": true
@@ -3237,6 +3224,7 @@
    "unique_id": "fa22b479d7177ad4ea110f441dfa917b",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Compost Bin",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -3249,6 +3237,7 @@
    "unique_id": "f2fcb0ab88e5c1c47a130a9dbac4a1cf",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Cooking Pot",
+   "teaches": false,
    "hint": "Kiln Needed",
    "challenge": false,
    "rule": {
@@ -3270,6 +3259,7 @@
    "unique_id": "f18e8a5267bc0dd488213d4ca34eb996",
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Axe",
+   "teaches": false,
    "hint": "Copper Axehead Needed",
    "challenge": false,
    "rule": {
@@ -3284,6 +3274,7 @@
    "unique_id": "d33d0691739f9724284f50a7a8ede933",
    "research_days": 1,
    "vanilla_item": "Blueprint: Copper Bottle",
+   "teaches": false,
    "hint": "Copper Sheet Needed",
    "challenge": false,
    "rule": {
@@ -3298,6 +3289,7 @@
    "unique_id": "e7ef2d2a838d4d749b3939cd92c71ce4",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Copper Jar",
+   "teaches": false,
    "hint": "Copper Sheet Needed",
    "challenge": false,
    "rule": {
@@ -3312,6 +3304,7 @@
    "unique_id": "043ec5a82ffa6b5439d61e886fb8060b",
    "research_days": 1,
    "vanilla_item": "Blueprint: Copper Necklace",
+   "teaches": false,
    "hint": "More Metalworking Needed",
    "challenge": false,
    "rule": true
@@ -3324,6 +3317,7 @@
    "unique_id": "85ab8a296406759439207fbef575574d",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Copper Needles",
+   "teaches": false,
    "hint": "Copper Sheet Needed",
    "challenge": false,
    "rule": {
@@ -3338,6 +3332,7 @@
    "unique_id": "09b5d28e3dd3171438be126ba5fdf0af",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Copper Sheet",
+   "teaches": false,
    "hint": "More Metalworking Needed",
    "challenge": false,
    "rule": true
@@ -3350,6 +3345,7 @@
    "unique_id": "5a1293f40d7a10047a6c1c774d2c5c6c",
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Shovel",
+   "teaches": false,
    "hint": "Copper Shovelhead Needed",
    "challenge": false,
    "rule": {
@@ -3364,6 +3360,7 @@
    "unique_id": "94b82e53a955175458bf265342274f45",
    "research_days": 0,
    "vanilla_item": "Blueprint: Copper Spear",
+   "teaches": false,
    "hint": "Copper Spearhead Needed",
    "challenge": false,
    "rule": {
@@ -3378,6 +3375,7 @@
    "unique_id": "fa19441c35c9bff418c409e8100f895d",
    "research_days": 1,
    "vanilla_item": "Blueprint: Crop Plot",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -3390,6 +3388,7 @@
    "unique_id": "590d6aadabfadae4ca77511f7691ddf4",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Deadfall Trap",
+   "teaches": false,
    "hint": "Heavy Stone Needed",
    "challenge": false,
    "rule": true
@@ -3402,6 +3401,7 @@
    "unique_id": "162e9585121c41c4a9ba3087fc9fae4c",
    "research_days": 2,
    "vanilla_item": "Blueprint: Drum",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -3414,6 +3414,7 @@
    "unique_id": "fa5b94aeac6d2a342a106ae935909ce9",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Drunken Crab",
+   "teaches": false,
    "hint": "Alcohol Needed",
    "challenge": false,
    "rule": true
@@ -3426,6 +3427,7 @@
    "unique_id": "d7cc249ec6c41f44c88245b7b86f12be",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Drying Rack",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3438,6 +3440,7 @@
    "unique_id": "2e1598af4ce24754da9dc4505dd83845",
    "research_days": 3,
    "vanilla_item": "Blueprint: Dynamite",
+   "teaches": false,
    "hint": "Saltpeter Needed",
    "challenge": true,
    "rule": true
@@ -3450,6 +3453,7 @@
    "unique_id": "6cf0adb3c8e41394d818465c6b376631",
    "research_days": 1,
    "vanilla_item": "Blueprint: Copper Eating Utensils",
+   "teaches": false,
    "hint": "More Metalworking Needed",
    "challenge": false,
    "rule": true
@@ -3462,6 +3466,7 @@
    "unique_id": "fb1fb222faafb7e44b0de55c4590c0e3",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Wooden Eating Utensils",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -3474,6 +3479,7 @@
    "unique_id": "9ee67c0b0616c5c4492fb1f673e46039",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Egg Fried Rice",
+   "teaches": false,
    "hint": "Cooked Rice Needed",
    "challenge": false,
    "rule": true
@@ -3486,6 +3492,7 @@
    "unique_id": "52c9e2e0b910c354a8b0dbe11745fb59",
    "research_days": 1,
    "vanilla_item": "Blueprint: Enclosure",
+   "teaches": false,
    "hint": "Partridge Needed",
    "challenge": false,
    "rule": true
@@ -3498,6 +3505,7 @@
    "unique_id": "f703a6c7869d25b4fa4abecd31dc6806",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Bird Feed",
+   "teaches": false,
    "hint": "Partridge Feeder Needed",
    "challenge": false,
    "rule": {
@@ -3519,6 +3527,7 @@
    "unique_id": "66902a1359eaeba49ba398a7a43e0c57",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Boar Feed",
+   "teaches": false,
    "hint": "Boar Feeder Needed",
    "challenge": false,
    "rule": {
@@ -3540,6 +3549,7 @@
    "unique_id": "cc4b2a45030fb724ca254af10f8a00e5",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Goat Feed",
+   "teaches": false,
    "hint": "Feeding Trough Needed",
    "challenge": false,
    "rule": {
@@ -3561,6 +3571,7 @@
    "unique_id": "e0c1037701567354195b4b5d22bcc572",
    "research_days": 1,
    "vanilla_item": "Blueprint: Fiber Armor",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -3573,6 +3584,7 @@
    "unique_id": "9ab8d831d93ebe84ca683d07dbf7b802",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fiber Bracers",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -3585,6 +3597,7 @@
    "unique_id": "72a5995a46be1dc41b377aedfc7d930c",
    "research_days": 1,
    "vanilla_item": "Blueprint: Fiber Cuirass",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -3597,6 +3610,7 @@
    "unique_id": "0ea2f026e076ecc44af9b46f74e0282c",
    "research_days": 1,
    "vanilla_item": "Blueprint: Fiber Helmet",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -3609,6 +3623,7 @@
    "unique_id": "48cbb40ddab2dd44ca6f726dd99f054d",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Fish Bait",
+   "teaches": false,
    "hint": "More Fishing Needed",
    "challenge": false,
    "rule": {
@@ -3623,6 +3638,7 @@
    "unique_id": "a8981793bbab94544b4f9971f1efdb3f",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fish N' Chips",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3635,6 +3651,7 @@
    "unique_id": "a6e9e237d7bcdb946ad9ae304d20ea94",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fish Omelette",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3647,6 +3664,7 @@
    "unique_id": "7b63c4f6cc7ae8e49ba9d027a92ac328",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Salted Fish Meat",
+   "teaches": false,
    "hint": "Salt Needed. ",
    "challenge": false,
    "rule": true
@@ -3659,6 +3677,7 @@
    "unique_id": "18ebd2fb4418a834990722f46339b6ab",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Fish Taco",
+   "teaches": false,
    "hint": "Sago Flatbread Needed",
    "challenge": false,
    "rule": true
@@ -3671,6 +3690,7 @@
    "unique_id": "cf25437c5eed5484ea781c69b64cac65",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Fish Trap (FishTrap)",
+   "teaches": false,
    "hint": "More Fishing Needed",
    "challenge": false,
    "rule": {
@@ -3692,6 +3712,7 @@
    "unique_id": "d4f93a70d7c6d0047a88b69002f9a764",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Fishing Line",
+   "teaches": false,
    "hint": "Bone Hook Needed",
    "challenge": false,
    "rule": true
@@ -3704,6 +3725,7 @@
    "unique_id": "6d5fc0884ff1364439712ef1af277c7e",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fishing Rod",
+   "teaches": false,
    "hint": "More Fishing Needed",
    "challenge": false,
    "rule": {
@@ -3718,6 +3740,7 @@
    "unique_id": "57fb4767ec1e425428229b49db6d8e0e",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Fishing Spear",
+   "teaches": false,
    "hint": "More Spearfishing Needed",
    "challenge": false,
    "rule": true
@@ -3730,6 +3753,7 @@
    "unique_id": "7eb469ad0fd626243893c56604c2e1d6",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Flint Axe",
+   "teaches": false,
    "hint": "More Knapping Needed",
    "challenge": false,
    "rule": true
@@ -3742,6 +3766,7 @@
    "unique_id": "a78ab24ed932fb947a32e123bcff16e4",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Flint Knife",
+   "teaches": false,
    "hint": "More Knapping Needed",
    "challenge": false,
    "rule": true
@@ -3754,6 +3779,7 @@
    "unique_id": "bee40d2c75b877247ad2c370fc4a632c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Flint Spear",
+   "teaches": false,
    "hint": "More Knapping Needed",
    "challenge": false,
    "rule": true
@@ -3766,6 +3792,7 @@
    "unique_id": "7165366ddd489664f9b9f5c81d047530",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Flower Necklace",
+   "teaches": false,
    "hint": "Jasmine Flowers Needed",
    "challenge": false,
    "rule": true
@@ -3778,6 +3805,7 @@
    "unique_id": "1d83061dc0e386c40a4a0691eff762d0",
    "research_days": 2,
    "vanilla_item": "Blueprint: Bone Flute",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -3790,6 +3818,7 @@
    "unique_id": "03db30a464b58a0498341cbf72a492e6",
    "research_days": 2,
    "vanilla_item": "Blueprint: Wooden Flute",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -3802,6 +3831,7 @@
    "unique_id": "4ba3ae846fb321441b9a788ba2f9bfaf",
    "research_days": 1,
    "vanilla_item": "Blueprint: Forge",
+   "teaches": false,
    "hint": "Copper Ore Needed",
    "challenge": false,
    "rule": true
@@ -3814,6 +3844,7 @@
    "unique_id": "3573af7a7ebe78d4887cfbdd98603f8f",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fried Bananas",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3826,6 +3857,7 @@
    "unique_id": "effd44cda91d1eb4085c2c4971ca618f",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fried Puffballs",
+   "teaches": false,
    "hint": "Puffballs Needed",
    "challenge": false,
    "rule": true
@@ -3838,6 +3870,7 @@
    "unique_id": "7891e1c1608ef48418247a103803511c",
    "research_days": 2,
    "vanilla_item": "Blueprint: Gas Mask",
+   "teaches": false,
    "hint": "Volcano Needed",
    "challenge": false,
    "rule": true
@@ -3850,6 +3883,7 @@
    "unique_id": "e30b572e7ebcba1419505a6186b7956b",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Glazed Vase",
+   "teaches": false,
    "hint": "Clay Vase Needed",
    "challenge": false,
    "rule": {
@@ -3864,6 +3898,7 @@
    "unique_id": "88786cc5df4699e4eba9ab247602acca",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Glue",
+   "teaches": false,
    "hint": "Quicklime Needed",
    "challenge": false,
    "rule": {
@@ -3878,6 +3913,7 @@
    "unique_id": "f4b39ac0b75703740a8ae3fdc64c8402",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Goat Feeder",
+   "teaches": false,
    "hint": "Goat Needed",
    "challenge": false,
    "rule": {
@@ -3899,6 +3935,7 @@
    "unique_id": "970dbfb128a0c8b4b87bec79f7559f19",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Goat Stew",
+   "teaches": false,
    "hint": "Goat Meat Needed",
    "challenge": false,
    "rule": true
@@ -3911,6 +3948,7 @@
    "unique_id": "0dacaa6204a34544cb66f3224fcdc7e0",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Hammock",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -3923,6 +3961,7 @@
    "unique_id": "6668683e3695084428b02e09996a101a",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Harpoon",
+   "teaches": false,
    "hint": "More Spearfishing Needed",
    "challenge": false,
    "rule": true
@@ -3935,6 +3974,7 @@
    "unique_id": "6c8314217d7eaba429ad6eed280d05cd",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Hearty Feast",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3947,6 +3987,7 @@
    "unique_id": "2002ac10e82bae247bd463d826d76509",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Honey",
+   "teaches": false,
    "hint": "Honeycomb Needed",
    "challenge": false,
    "rule": true
@@ -3959,6 +4000,7 @@
    "unique_id": "d26542ce70d889543b5e3b6ef1674647",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Honey Candy",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3971,6 +4013,7 @@
    "unique_id": "02f62884295c1114c8c68e5b9f6302fd",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Honey Glazed Pork",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -3983,6 +4026,7 @@
    "unique_id": "765ddcdddd10e4d449b44425b646bfdd",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Island Chicken",
+   "teaches": false,
    "hint": "Cooking Pot Needed",
    "challenge": false,
    "rule": {
@@ -3997,6 +4041,7 @@
    "unique_id": "3aa676c424ff6384c962a7a0cba873c1",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Cloth Jacket",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4009,6 +4054,7 @@
    "unique_id": "14728277fe5b59b4183b68d88d95e2f7",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Jungle Salad",
+   "teaches": false,
    "hint": "Oil Needed",
    "challenge": false,
    "rule": true
@@ -4021,6 +4067,7 @@
    "unique_id": "ee509187c1671214797a5c08d576232a",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Kiln",
+   "teaches": false,
    "hint": "Mud Brick Needed",
    "challenge": false,
    "rule": true
@@ -4033,6 +4080,7 @@
    "unique_id": "fd537078d14906d49bfe32c9845c4b22",
    "research_days": 2,
    "vanilla_item": "Blueprint: Advanced Kiln",
+   "teaches": false,
    "hint": "Mortar Needed",
    "challenge": false,
    "rule": {
@@ -4047,6 +4095,7 @@
    "unique_id": "33178eddd3613a44a8942f0f983f04a9",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Leaf Skirt",
+   "teaches": false,
    "hint": "Cord Needed",
    "challenge": false,
    "rule": true
@@ -4058,7 +4107,8 @@
    "ap_id": 1694430107,
    "unique_id": "a20c00d387c339244bc13d8a33a51646",
    "research_days": 0.125,
-   "vanilla_item": "Blueprint: Leaf Bed",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "Leaves Needed",
    "challenge": false,
    "rule": true
@@ -4071,6 +4121,7 @@
    "unique_id": "c8e1313cfd62a8144844b1a1115dc996",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Backpack",
+   "teaches": false,
    "hint": "Satchel Needed",
    "challenge": false,
    "rule": {
@@ -4085,6 +4136,7 @@
    "unique_id": "0fc560cefb9b2c1449d1760abc93cba4",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Leather Bracers",
+   "teaches": false,
    "hint": "Cured Skin Needed",
    "challenge": false,
    "rule": true
@@ -4097,6 +4149,7 @@
    "unique_id": "5aa94886449ef4944b8cc9cd63211893",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Gloves",
+   "teaches": false,
    "hint": "Cured Skin Needed",
    "challenge": false,
    "rule": true
@@ -4109,6 +4162,7 @@
    "unique_id": "d6134e60c07c0524783d1c4f3e7fb71e",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Helmet",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4121,6 +4175,7 @@
    "unique_id": "75dda7f37c6d97946824876f11d5cd44",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Jacket",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4133,6 +4188,7 @@
    "unique_id": "ebec99b2465ca7247bf8e14268044b16",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Pants",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4145,6 +4201,7 @@
    "unique_id": "e2bd8cf1288913e4f976ec85ad158c53",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Shoes",
+   "teaches": false,
    "hint": "Cured Skin Needed",
    "challenge": false,
    "rule": true
@@ -4157,6 +4214,7 @@
    "unique_id": "da1eb79b612b85f4ba54885a61075926",
    "research_days": 1,
    "vanilla_item": "Blueprint: Leather Vest",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4169,6 +4227,7 @@
    "unique_id": "e8a55b5507f41d54093e1ad654631644",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Lizard Fry",
+   "teaches": false,
    "hint": "Monitor Meat Needed",
    "challenge": false,
    "rule": true
@@ -4181,6 +4240,7 @@
    "unique_id": "c8df8cf266ceb7544a83ad9f1e3d1257",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Log Trap",
+   "teaches": false,
    "hint": "More Trapping Needed",
    "challenge": false,
    "rule": {
@@ -4195,6 +4255,7 @@
    "unique_id": "c32a7cb6c936c2b4f9f78f62833113ac",
    "research_days": 1,
    "vanilla_item": "Blueprint: Loom",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4207,6 +4268,7 @@
    "unique_id": "66dc9d54bd94018489a6ca550b243ba8",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Macaque Skewers",
+   "teaches": false,
    "hint": "Macaque Meat Needed",
    "challenge": false,
    "rule": true
@@ -4219,6 +4281,7 @@
    "unique_id": "8c1dcdf1b0d276b498ac55e61b77f9e0",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Salted Meat",
+   "teaches": false,
    "hint": "Salt Needed. ",
    "challenge": false,
    "rule": true
@@ -4231,6 +4294,7 @@
    "unique_id": "86756ac5483d4c247a74c0e9dcbe24b0",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Axe Mold",
+   "teaches": false,
    "hint": "Copper Needed",
    "challenge": false,
    "rule": {
@@ -4245,6 +4309,7 @@
    "unique_id": "ba0be83b536004043b1d25844c12d05b",
    "research_days": 1,
    "vanilla_item": "Blueprint: Decoration Mold",
+   "teaches": false,
    "hint": "More Metalworking Needed",
    "challenge": false,
    "rule": true
@@ -4257,6 +4322,7 @@
    "unique_id": "24794e7b53d421c48a03ae14efcd3243",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Knife Mold",
+   "teaches": false,
    "hint": "Copper Needed",
    "challenge": false,
    "rule": {
@@ -4271,6 +4337,7 @@
    "unique_id": "f5c6a096daf7f8e4e91df4ff69e7affc",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Shovel Mold",
+   "teaches": false,
    "hint": "More Metalworking Needed",
    "challenge": false,
    "rule": true
@@ -4283,6 +4350,7 @@
    "unique_id": "cbea52a73e0828b43b4fadaeb454bb2c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Spear Mold",
+   "teaches": false,
    "hint": "Copper Knife Needed",
    "challenge": false,
    "rule": {
@@ -4297,6 +4365,7 @@
    "unique_id": "6ac4eabe985e4734c97883e6b768cf9a",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Mortar",
+   "teaches": false,
    "hint": "Quicklime Needed",
    "challenge": false,
    "rule": {
@@ -4311,6 +4380,7 @@
    "unique_id": "5bd5b478122e8744a85fd6c44354632a",
    "research_days": 2,
    "vanilla_item": "Blueprint: Mud Hut",
+   "teaches": false,
    "hint": "Log Needed",
    "challenge": false,
    "rule": true
@@ -4323,6 +4393,7 @@
    "unique_id": "c309ad17e2e37ba4f813d69c95cd30d6",
    "research_days": 1,
    "vanilla_item": "Blueprint: Mushroom Bed",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4335,6 +4406,7 @@
    "unique_id": "ade5b188934a01545aae99c0f9eea099",
    "research_days": 1,
    "vanilla_item": "Blueprint: Niter Bed",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4347,6 +4419,7 @@
    "unique_id": "800f1fc8215885044903e207c37b7bd4",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Obsidian Knife",
+   "teaches": false,
    "hint": "More Knapping Needed",
    "challenge": false,
    "rule": true
@@ -4359,6 +4432,7 @@
    "unique_id": "44fc53078aea32a48b2f8b422cfedc0c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Obsidian Spear",
+   "teaches": false,
    "hint": "More Knapping Needed",
    "challenge": false,
    "rule": true
@@ -4371,6 +4445,7 @@
    "unique_id": "cc40813ce9b1d644e97c817249b336db",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Cloth Pants",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4383,6 +4458,7 @@
    "unique_id": "efd3608e159d4e74cb5fadafcb2678f6",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Partridge Feeder",
+   "teaches": false,
    "hint": "Partridge Needed",
    "challenge": false,
    "rule": true
@@ -4395,6 +4471,7 @@
    "unique_id": "b384dfa26a0e42c4d8188fb6a2db21d7",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Pearl Necklace",
+   "teaches": false,
    "hint": "Pearl Needed",
    "challenge": false,
    "rule": true
@@ -4407,6 +4484,7 @@
    "unique_id": "6e1a1aaae97ddc44a974e80d9f13ad0f",
    "research_days": 1,
    "vanilla_item": "Blueprint: Brimstone Pesticide",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4419,6 +4497,7 @@
    "unique_id": "2146edc8d30a98b45afa6ff7f22131d7",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Chilli Pesticide",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4431,6 +4510,7 @@
    "unique_id": "86833afdb17fb0843a8addb60e238060",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Wooden Planks",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -4443,6 +4523,7 @@
    "unique_id": "a5b75861aa486374fbf91afbe57234a1",
    "research_days": 1,
    "vanilla_item": "Blueprint: Pottery Wheel",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -4455,6 +4536,7 @@
    "unique_id": "884122b96ea355c40a72fce88e77e422",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Protein Bar",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -4467,6 +4549,7 @@
    "unique_id": "c3c86fbfe4d057b4098486bf464a9686",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Cinchona Powder",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4479,6 +4562,7 @@
    "unique_id": "9f0e9b4467f307a4fac1be7c7954427b",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Quinine Sulfate",
+   "teaches": false,
    "hint": "Quinine Powder Needed",
    "challenge": false,
    "rule": {
@@ -4493,6 +4577,7 @@
    "unique_id": "b63db6ecab6c23648923d0e32214f147",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Quiver",
+   "teaches": false,
    "hint": "More Archery Needed",
    "challenge": false,
    "rule": {
@@ -4507,6 +4592,7 @@
    "unique_id": "aa3fcc0e69dd7d14982a8891f3827b0a",
    "research_days": 3,
    "vanilla_item": "Blueprint: Raft",
+   "teaches": false,
    "hint": "Destiny Not Fullfilled Yet",
    "challenge": true,
    "rule": true
@@ -4519,6 +4605,7 @@
    "unique_id": "0be3caea94600e3478d5f11845c78c50",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Fish Trap (RaftFishTrap)",
+   "teaches": false,
    "hint": "Raft Needed",
    "challenge": false,
    "rule": {
@@ -4533,6 +4620,7 @@
    "unique_id": "ccb7b0aee9b4e8e4393af50f74aed4d9",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Raft Shelter",
+   "teaches": false,
    "hint": "Raft Needed",
    "challenge": false,
    "rule": {
@@ -4547,6 +4635,7 @@
    "unique_id": "b52dcd01b0c4e5a4db10da320181a959",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Raincatcher",
+   "teaches": false,
    "hint": "Plastic Sheet Needed",
    "challenge": false,
    "rule": true
@@ -4559,6 +4648,7 @@
    "unique_id": "565102ec1ffbfa941abc27c8cc73b108",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Raincoat",
+   "teaches": false,
    "hint": "Plastic Sheet Needed",
    "challenge": false,
    "rule": true
@@ -4571,6 +4661,7 @@
    "unique_id": "0758a261bd0978541943d4ad12696b90",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Rice Paddy",
+   "teaches": false,
    "hint": "Rice Grains Needed",
    "challenge": false,
    "rule": true
@@ -4583,6 +4674,7 @@
    "unique_id": "f37aaf7dd3fb87f4aaca3c23269e2d7e",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Sack",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4595,6 +4687,7 @@
    "unique_id": "452001197dd48bd418d6caa4e0606aae",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Sago Cake",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -4607,6 +4700,7 @@
    "unique_id": "bbcfff5560ff1fc4d9449f3fe30c7572",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Sago Slime",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -4619,6 +4713,7 @@
    "unique_id": "a5fdd6f91689be547b94d2c41c461c61",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Salt Bed",
+   "teaches": false,
    "hint": "Water Reservoir Needed",
    "challenge": false,
    "rule": {
@@ -4633,6 +4728,7 @@
    "unique_id": "92f5e76e52ef04d448eaa159d210dc63",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Satchel",
+   "teaches": false,
    "hint": "Cured Skin Needed",
    "challenge": false,
    "rule": true
@@ -4645,6 +4741,7 @@
    "unique_id": "1c0265eab5677c845bb4a280a85e1088",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Scarecrow",
+   "teaches": false,
    "hint": "More Herbology Needed",
    "challenge": false,
    "rule": true
@@ -4657,6 +4754,7 @@
    "unique_id": "d3af2a3785e2ac24e938011b477708e4",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Scrap Axe",
+   "teaches": false,
    "hint": "Metal Scrap Needed",
    "challenge": false,
    "rule": true
@@ -4669,6 +4767,7 @@
    "unique_id": "2490fb8ffe2f5a342aca02e904883b59",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Scrap Knife",
+   "teaches": false,
    "hint": "Metal Scrap Needed",
    "challenge": false,
    "rule": true
@@ -4681,6 +4780,7 @@
    "unique_id": "422760b87eaef9c48a1ac6c8702cf628",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Scrap Shovel",
+   "teaches": false,
    "hint": "Metal Scrap Needed",
    "challenge": false,
    "rule": true
@@ -4693,6 +4793,7 @@
    "unique_id": "3421ea19d1ae4404c8e0ff9d7bff1921",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Scrap Spear",
+   "teaches": false,
    "hint": "Metal Scrap Needed",
    "challenge": false,
    "rule": true
@@ -4705,6 +4806,7 @@
    "unique_id": "e70325777bc915244b05b362adbe17f1",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Seafood Cup",
+   "teaches": false,
    "hint": "Urchin Meat Needed",
    "challenge": false,
    "rule": true
@@ -4717,6 +4819,7 @@
    "unique_id": "a947d16744b62704ea17daf0105abe4c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Seashell Necklace",
+   "teaches": false,
    "hint": "Pretty Seashells Needed",
    "challenge": false,
    "rule": true
@@ -4729,6 +4832,7 @@
    "unique_id": "f393d468f87e5564d96360f0709d86d8",
    "research_days": 1,
    "vanilla_item": "Blueprint: Shed",
+   "teaches": false,
    "hint": "Basket Needed",
    "challenge": false,
    "rule": {
@@ -4750,6 +4854,7 @@
    "unique_id": "f0390f10ecb516d40a13289dc3f508d9",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Shelf",
+   "teaches": false,
    "hint": "Plank Needed",
    "challenge": false,
    "rule": {
@@ -4763,7 +4868,8 @@
    "ap_id": 1694430163,
    "unique_id": "1d4ce488ac2e4774c982cec382294d2b",
    "research_days": 0.125,
-   "vanilla_item": "Blueprint: Shelter",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "Long Stick Needed",
    "challenge": false,
    "rule": true
@@ -4776,6 +4882,7 @@
    "unique_id": "57d11df298a449a4087e3a007c5d6942",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Shield",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -4788,6 +4895,7 @@
    "unique_id": "59beb89b17d25be47a036a525fa9a916",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Shirt",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4800,6 +4908,7 @@
    "unique_id": "e6dae52bf01c47f449b11038217d2ee9",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Shower",
+   "teaches": false,
    "hint": "Clay Vase Needed",
    "challenge": false,
    "rule": {
@@ -4814,6 +4923,7 @@
    "unique_id": "475821007f0925e4eacfe90ea9b2268c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Sling",
+   "teaches": false,
    "hint": "More Rock Throwing Needed",
    "challenge": false,
    "rule": true
@@ -4826,6 +4936,7 @@
    "unique_id": "294fe8d80cfdcfd4996b27ae06971a29",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Snare Trap",
+   "teaches": false,
    "hint": "More Trapping Needed",
    "challenge": false,
    "rule": {
@@ -4840,6 +4951,7 @@
    "unique_id": "2eb595a65e1a00f46878793c1db819ee",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Soap",
+   "teaches": false,
    "hint": "Fat/Oil Needed",
    "challenge": false,
    "rule": true
@@ -4852,6 +4964,7 @@
    "unique_id": "224ab07e91750fd4a9cece1d0cdbb168",
    "research_days": 1,
    "vanilla_item": "Blueprint: Solar Still",
+   "teaches": false,
    "hint": "Plastic Sheet Needed",
    "challenge": false,
    "rule": true
@@ -4864,6 +4977,7 @@
    "unique_id": "feea879a171597f43a4088efdb9ef80f",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Spindle",
+   "teaches": false,
    "hint": "More Tailoring Needed",
    "challenge": false,
    "rule": true
@@ -4875,7 +4989,8 @@
    "ap_id": 1694430172,
    "unique_id": "2c9fbb50201807b4c92d83e350a5dc35",
    "research_days": 0.25,
-   "vanilla_item": "Blueprint: Splint",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "Long Stick Needed",
    "challenge": false,
    "rule": true
@@ -4888,6 +5003,7 @@
    "unique_id": "f89c81a1e9e93cf44ab34a844979c4f7",
    "research_days": 5,
    "vanilla_item": "Blueprint: Stone Hut",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": true,
    "rule": true
@@ -4900,6 +5016,7 @@
    "unique_id": "5364e92982b80d54f8cdefb4b5903519",
    "research_days": 1,
    "vanilla_item": "Blueprint: Stove",
+   "teaches": false,
    "hint": "Kiln Needed",
    "challenge": false,
    "rule": {
@@ -4921,6 +5038,7 @@
    "unique_id": "8e070305d939c2742a85e0acd1606e30",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Straw Cape",
+   "teaches": false,
    "hint": "Rice Straw Needed",
    "challenge": false,
    "rule": true
@@ -4933,6 +5051,7 @@
    "unique_id": "b7b84484c0c0ada4da487cb6c65d8be4",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Supply Chest",
+   "teaches": false,
    "hint": "Raft Needed",
    "challenge": false,
    "rule": {
@@ -4947,6 +5066,7 @@
    "unique_id": "69b392e6912eab545a79ae6c21ecb978",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Sushi",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -4959,6 +5079,7 @@
    "unique_id": "727d1372f17ebf746aeb3591cf0f89b7",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Table",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -4971,6 +5092,7 @@
    "unique_id": "01333dcc887d0764686756d2f3385a8b",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Tonic Water",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -4982,7 +5104,8 @@
    "ap_id": 1694430180,
    "unique_id": "d7ffe30617d4c9e4ca348dd7449551e7",
    "research_days": 0.125,
-   "vanilla_item": "Blueprint: Torch",
+   "vanilla_item": null,
+   "teaches": true,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -4995,6 +5118,7 @@
    "unique_id": "31c70193952a683449727e958f4a2f1e",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Trapping Pit",
+   "teaches": false,
    "hint": "More Trapping Needed",
    "challenge": false,
    "rule": {
@@ -5009,6 +5133,7 @@
    "unique_id": "77f10175ba786e740b31dc0d8718dd1c",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Travois",
+   "teaches": false,
    "hint": "More Crafting Needed",
    "challenge": false,
    "rule": true
@@ -5021,6 +5146,7 @@
    "unique_id": "1945949cf5b5bfc4caa4b34fce56da42",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Treenails",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -5033,6 +5159,7 @@
    "unique_id": "a996fb1f53133864b8393a381fb14417",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Vitriol",
+   "teaches": false,
    "hint": "Brimstone Needed",
    "challenge": false,
    "rule": true
@@ -5045,6 +5172,7 @@
    "unique_id": "7c07772ee53c81949ba1f8aec730354d",
    "research_days": 1,
    "vanilla_item": "Blueprint: Water Filter",
+   "teaches": false,
    "hint": "Stove Needed",
    "challenge": false,
    "rule": {
@@ -5059,6 +5187,7 @@
    "unique_id": "aa3216ebb569b8c4aaeee3bb8c4921c2",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Water Reservoir",
+   "teaches": false,
    "hint": "Clay Vase Needed",
    "challenge": false,
    "rule": {
@@ -5073,6 +5202,7 @@
    "unique_id": "4df519984d0af1c44a710d698e5156ac",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Watering Trough",
+   "teaches": false,
    "hint": "Goat Needed",
    "challenge": false,
    "rule": {
@@ -5100,6 +5230,7 @@
    "unique_id": "8a1202acf944e3d44b8eaaeb39753d5b",
    "research_days": 1,
    "vanilla_item": "Blueprint: Waterskin",
+   "teaches": false,
    "hint": "Cured Skin Needed",
    "challenge": false,
    "rule": true
@@ -5112,6 +5243,7 @@
    "unique_id": "ddc91498198124740b1c8f2f606f5d09",
    "research_days": 2,
    "vanilla_item": "Blueprint: Well",
+   "teaches": false,
    "hint": "Shovel Needed",
    "challenge": false,
    "rule": {
@@ -5136,6 +5268,7 @@
    "unique_id": "20cbe9d4b29f8f54aa3454f85fb48fe9",
    "research_days": 0.125,
    "vanilla_item": "Blueprint: Weston",
+   "teaches": false,
    "hint": "More Loneliness Needed",
    "challenge": false,
    "rule": true
@@ -5148,6 +5281,7 @@
    "unique_id": "7d4b182dddb9cec45a136ca19a116a70",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Wood Carvings",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -5160,6 +5294,7 @@
    "unique_id": "44cf15086132f6c4c9cb61aebf99dd96",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Wood Shavings",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -5172,6 +5307,7 @@
    "unique_id": "e6c24fece0a05a541addec676ab5d56e",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Wooden Needles",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -5184,6 +5320,7 @@
    "unique_id": "03ddd3f93d6b153429c3095df16bd8da",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Wooden Shovel",
+   "teaches": false,
    "hint": "More Woodworking Needed",
    "challenge": false,
    "rule": true
@@ -5196,6 +5333,7 @@
    "unique_id": "db75991a4553b3f4780bfe3195a8e1f1",
    "research_days": 0.25,
    "vanilla_item": "Blueprint: Woven Backpack",
+   "teaches": false,
    "hint": "Basket Needed",
    "challenge": false,
    "rule": {
@@ -5210,6 +5348,7 @@
    "unique_id": "6cc428969c478424482fd8b55c2e005a",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Woven Basket",
+   "teaches": false,
    "hint": "Woven Palm Needed",
    "challenge": false,
    "rule": true
@@ -5222,6 +5361,7 @@
    "unique_id": "b0eec3ad1253cdf43a19e34f18c95c95",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Woven Hat",
+   "teaches": false,
    "hint": "Basket Needed",
    "challenge": false,
    "rule": {
@@ -5236,6 +5376,7 @@
    "unique_id": "4828895adc0fd174a8b05c5cd401adb8",
    "research_days": 0.5,
    "vanilla_item": "Blueprint: Yam Curry",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -5248,6 +5389,7 @@
    "unique_id": "b348bc230285f0f44bf54bffec1c8878",
    "research_days": 0.75,
    "vanilla_item": "Blueprint: Yam Jam",
+   "teaches": false,
    "hint": "More Cooking Needed",
    "challenge": false,
    "rule": true
@@ -5320,9 +5462,7 @@
    "unique_id": "da36fdd9bcc3dc641999c8487afb2e30",
    "build_hours": 0.25,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Ash Dressing"
-   }
+   "rule": true
   },
   {
    "key": "Bp_BedRustic",
@@ -5712,9 +5852,7 @@
    "unique_id": "090cea96fab32934da8fd67ef4e80f65",
    "build_hours": 0.5,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Clay Bowl"
-   }
+   "rule": true
   },
   {
    "key": "Bp_ClayFirePit",
@@ -6584,9 +6722,7 @@
    "unique_id": "a20c00d387c339244bc13d8a33a51646",
    "build_hours": 0.5,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Leaf Bed"
-   }
+   "rule": true
   },
   {
    "key": "Bp_LeatherBackpack",
@@ -7276,9 +7412,7 @@
    "unique_id": "1d4ce488ac2e4774c982cec382294d2b",
    "build_hours": 1.0,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Shelter"
-   }
+   "rule": true
   },
   {
    "key": "Bp_Shield",
@@ -7384,9 +7518,7 @@
    "unique_id": "2c9fbb50201807b4c92d83e350a5dc35",
    "build_hours": 1.0,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Splint"
-   }
+   "rule": true
   },
   {
    "key": "Bp_StoneAxe",
@@ -7490,9 +7622,7 @@
    "unique_id": "d7ffe30617d4c9e4ca348dd7449551e7",
    "build_hours": 0.25,
    "challenge": false,
-   "rule": {
-    "event": "Can Build Torch"
-   }
+   "rule": true
   },
   {
    "key": "Bp_Tourniquet",
@@ -8172,13 +8302,6 @@
    }
   },
   {
-   "name": "Can Build Ash Dressing",
-   "blueprint": "Bp_AshDressing",
-   "rule": {
-    "item": "Blueprint: Ash Dressing"
-   }
-  },
-  {
    "name": "Can Build Axe Mold",
    "blueprint": "Bp_MoldAxe",
    "rule": {
@@ -8610,13 +8733,6 @@
    "blueprint": "Bp_CandlesCitronella",
    "rule": {
     "item": "Blueprint: Citronella Candle"
-   }
-  },
-  {
-   "name": "Can Build Clay Bowl",
-   "blueprint": "Bp_ClayBowl",
-   "rule": {
-    "item": "Blueprint: Clay Bowl"
    }
   },
   {
@@ -9382,13 +9498,6 @@
    }
   },
   {
-   "name": "Can Build Leaf Bed",
-   "blueprint": "Bp_Leafbed",
-   "rule": {
-    "item": "Blueprint: Leaf Bed"
-   }
-  },
-  {
    "name": "Can Build Leaf Skirt",
    "blueprint": "Bp_LeafSkirt",
    "rule": {
@@ -9891,13 +10000,6 @@
    }
   },
   {
-   "name": "Can Build Shelter",
-   "blueprint": "Bp_Shelter",
-   "rule": {
-    "item": "Blueprint: Shelter"
-   }
-  },
-  {
    "name": "Can Build Shield",
    "blueprint": "Bp_Shield",
    "rule": {
@@ -10020,13 +10122,6 @@
    }
   },
   {
-   "name": "Can Build Splint",
-   "blueprint": "Bp_Splint",
-   "rule": {
-    "item": "Blueprint: Splint"
-   }
-  },
-  {
    "name": "Can Build Stone Hut",
    "blueprint": "Bp_StoneHut",
    "rule": {
@@ -10128,13 +10223,6 @@
       ]
      }
     ]
-   }
-  },
-  {
-   "name": "Can Build Torch",
-   "blueprint": "Bp_Torch",
-   "rule": {
-    "item": "Blueprint: Torch"
    }
   },
   {
