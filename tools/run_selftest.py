@@ -40,6 +40,7 @@ def main() -> None:
     parser.add_argument("--python", default=sys.executable, help="Python that runs Archipelago (3.11-3.13)")
     parser.add_argument("--seed", default="7")
     parser.add_argument("--timeout", type=int, default=600)
+    parser.add_argument("--game-dir", type=Path, default=DEV_GAME, help="Modded game copy (default: the dev copy)")
     args = parser.parse_args()
 
     work = LOCAL / "selftest"
@@ -82,9 +83,9 @@ def main() -> None:
             config.write_text(json.dumps({"host": f"127.0.0.1:{port}", "slot": "CSTI_Test",
                                           "report": str(report)}), encoding="utf-8")
             before = save_fingerprint()
-            game = subprocess.Popen([str(DEV_GAME / GAME_EXE), "-logFile", str(work / "Player.log"),
+            game = subprocess.Popen([str(args.game_dir / GAME_EXE), "-logFile", str(work / "Player.log"),
                                      "-screen-fullscreen", "0", "-screen-width", "1280", "-screen-height", "720"],
-                                    cwd=DEV_GAME, env=dict(os.environ, CSAP_SELFTEST=str(config), CSAP_TEST_SAVES="1"))
+                                    cwd=args.game_dir, env=dict(os.environ, CSAP_SELFTEST=str(config), CSAP_TEST_SAVES="1"))
             try:
                 game.wait(timeout=args.timeout)
             except subprocess.TimeoutExpired:
