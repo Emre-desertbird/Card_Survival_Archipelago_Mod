@@ -23,7 +23,16 @@ from common import AUDITED_BUILD_ID, DUMP, WORLD
 GAME = "Card Survival: Tropical Island"
 ITEM_BASE = 1694420000        # Steam app id * 1000
 LOCATION_BASE = 1694430000
-FILLER = "Washed-Up Supplies"
+# Filler items: everyday supplies handed out once. Cards are named by their game object
+# name and resolved to UniqueIDs from the dump, so a typo or a game update fails loudly.
+FILLERS = [
+    ("Washed-Up Supplies", 9000, {"Coconut": 1, "Sticks": 2, "Fibers": 2}),
+    ("Fresh Coconuts", 9001, {"Coconut": 3}),
+    ("Bundle of Sticks", 9002, {"Sticks": 3, "StickLong": 1}),
+    ("Stones and Flint", 9003, {"Stone": 2, "Flint": 1}),
+    ("Water Ration", 9004, {"WaterRation": 1}),
+    ("Rope and Fibers", 9005, {"Rope": 1, "Fibers": 2}),
+]
 EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprints
 GOAL_BLUEPRINT = "Bp_Raft"                             # provisional goal route, see docs/plan.md
 
@@ -155,18 +164,24 @@ def main() -> None:
     # Events nothing depends on would only be unreachable clutter (their blueprint is not progression).
     events = [event for event in events if event["name"] in needed_events]
 
-    items = [{"key": name, "name": item_name(name), "ap_id": ITEM_BASE + index, "quantity": 1,
+    items = [{"key": name, "name": item_name(name), "ap_id": ITEM_BASE + index, "quantity": 1, "kind": "blueprint",
               "unique_id": blueprints[name]["UniqueID"],
               "classification": "progression" if item_name(name) in used_items else "useful"}
              for index, name in enumerate(randomized)]
-    items.append({"key": "filler_supplies", "name": FILLER, "ap_id": ITEM_BASE + 9000, "quantity": 0,
-                  "classification": "filler"})
+    for filler_name, offset, contents in FILLERS:
+        missing = [card for card in contents if card not in cards]
+        if missing:
+            raise SystemExit(f"Filler {filler_name!r} names unknown cards: {missing}")
+        items.append({"key": "filler_" + filler_name.lower().replace(" ", "_").replace("-", "_"), "name": filler_name,
+                      "ap_id": ITEM_BASE + offset, "quantity": 0, "kind": "filler", "classification": "filler",
+                      "contents": [{"card": card, "unique_id": cards[card]["UniqueID"], "count": count}
+                                   for card, count in contents.items()]})
 
-    registry = {"game_name": GAME, "registry_version": 1, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 2, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "starting_blueprints": [title(name) for name in starting],
                 "character_only_blueprints": [title(name) for name in character_only],
-                "filler": {"name": FILLER}, "items": items, "locations": locations, "events": events}
+                "filler": [name for name, _, _ in FILLERS], "items": items, "locations": locations, "events": events}
     target = WORLD / "registry.json"
     rendered = json.dumps(registry, indent=1, ensure_ascii=False) + "\n"
     if args.check:
@@ -174,7 +189,7 @@ def main() -> None:
             raise SystemExit("registry.json is out of date; run tools/build_registry.py")
     else:
         target.write_text(rendered, encoding="utf-8", newline="\n")
-    print(json.dumps({"registry": str(target), "items": len(items) - 1, "locations": len(locations),
+    print(json.dumps({"registry": str(target), "items": len(items) - len(FILLERS), "locations": len(locations),
                       "progression": sum(entry["classification"] == "progression" for entry in items),
                       "useful": sum(entry["classification"] == "useful" for entry in items),
                       "starting": len(starting), "character_only": len(character_only)}))

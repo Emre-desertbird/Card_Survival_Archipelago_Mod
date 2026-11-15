@@ -13,7 +13,12 @@ namespace CardSurvivalArchipelago
     [HarmonyPatch(typeof(Application), "persistentDataPath", MethodType.Getter)]
     internal static class SaveIsolation
     {
-        public const string Suffix = " (Archipelago)";
+        /// <summary>
+        /// " (Archipelago)", or " (Archipelago Test)" when CSAP_TEST_SAVES is set, so automated
+        /// test runs never touch the dev saves either.
+        /// </summary>
+        public static readonly string Suffix = string.IsNullOrEmpty(System.Environment.GetEnvironmentVariable("CSAP_TEST_SAVES"))
+            ? " (Archipelago)" : " (Archipelago Test)";
 
         public static bool IsIsolated
         {

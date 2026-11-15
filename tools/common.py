@@ -27,6 +27,11 @@ BEPINEX = ("BepInEx_win_x64_5.4.23.2.zip",
 ROSLYN = ("Microsoft.Net.Compilers.Toolset.4.8.0.zip",
           "https://www.nuget.org/api/v2/package/Microsoft.Net.Compilers.Toolset/4.8.0",
           "37333f4f1e2ce55e621355d6da651dc23d4cb5f94a8f76b9478816e87f110ad9")
+# Archipelago client library (MIT). The net45 build uses the game's own Newtonsoft.Json.
+MULTICLIENT = ("Archipelago.MultiClient.Net.6.7.0.zip",
+               "https://www.nuget.org/api/v2/package/Archipelago.MultiClient.Net/6.7.0",
+               "b31023610626c524126099a3974588f8a3e1d117f36d375895ea59b7964acdc8")
+MULTICLIENT_DLL = TOOLS / "multiclient" / "pkg" / "lib" / "net45" / "Archipelago.MultiClient.Net.dll"
 ILSPY = ("ilspycmd.9.1.0.7988.zip",
          "https://www.nuget.org/api/v2/package/ilspycmd/9.1.0.7988",
          "2b5058f5ccc164c33b7aabf1a5eb0cf3d3a6af6c145aaf58efd3ed891443af7c")

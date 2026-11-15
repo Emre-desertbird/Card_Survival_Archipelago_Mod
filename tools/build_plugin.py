@@ -12,7 +12,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from common import DATA_DIR, DEV_GAME, PROJECT, TOOLS
+from common import DATA_DIR, DEV_GAME, MULTICLIENT_DLL, PROJECT, TOOLS, WORLD
 
 PLUGIN_NAME = "CardSurvivalArchipelago"
 
@@ -26,10 +26,10 @@ def main() -> None:
     compiler = TOOLS / "roslyn" / "pkg" / "tasks" / "net472" / "csc.exe"
     managed = args.game_dir / DATA_DIR / "Managed"
     core = args.game_dir / "BepInEx" / "core"
-    if not compiler.is_file() or not managed.is_dir() or not core.is_dir():
+    if not compiler.is_file() or not managed.is_dir() or not core.is_dir() or not MULTICLIENT_DLL.is_file():
         raise SystemExit("Run tools/setup_dev.py first.")
 
-    references = sorted(managed.glob("*.dll")) + [core / "BepInEx.dll", core / "0Harmony.dll"]
+    references = sorted(managed.glob("*.dll")) + [core / "BepInEx.dll", core / "0Harmony.dll", MULTICLIENT_DLL]
     sources = sorted((PROJECT / "game_plugin").rglob("*.cs"))
     output = PROJECT / "build" / f"{PLUGIN_NAME}.dll"
     output.parent.mkdir(exist_ok=True)
@@ -46,6 +46,10 @@ def main() -> None:
         installed = args.game_dir / "BepInEx" / "plugins" / PLUGIN_NAME / output.name
         installed.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(output, installed)
+        # The client library and the id registry ship next to the plugin. The game's own
+        # Newtonsoft.Json is used, so the package's copy is not installed.
+        shutil.copy2(MULTICLIENT_DLL, installed.parent / MULTICLIENT_DLL.name)
+        shutil.copy2(WORLD / "registry.json", installed.parent / "registry.json")
     print(json.dumps({"plugin": str(output), "bytes": output.stat().st_size,
                       "installed": str(installed) if installed else None}))
 

@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 1,
+ "registry_version": 2,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -22,15 +22,21 @@
   "Seagull Charm",
   "Shark Headpiece"
  ],
- "filler": {
-  "name": "Washed-Up Supplies"
- },
+ "filler": [
+  "Washed-Up Supplies",
+  "Fresh Coconuts",
+  "Bundle of Sticks",
+  "Stones and Flint",
+  "Water Ration",
+  "Rope and Fibers"
+ ],
  "items": [
   {
    "key": "Bp_Alembic",
    "name": "Blueprint: Alembic",
    "ap_id": 1694420000,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "84fb7452dba593b479bab5e4eeb48161",
    "classification": "useful"
   },
@@ -39,6 +45,7 @@
    "name": "Blueprint: Aloe Gel",
    "ap_id": 1694420001,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "30bb105b39e8d6343bd318f8a10bfe9a",
    "classification": "useful"
   },
@@ -47,6 +54,7 @@
    "name": "Blueprint: Arrows",
    "ap_id": 1694420002,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "3d2a3fb85bfa7d042b0388308b2b1fd5",
    "classification": "useful"
   },
@@ -55,6 +63,7 @@
    "name": "Blueprint: Bone Arrows",
    "ap_id": 1694420003,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "9bf1e4505c37fb6459ad884372959836",
    "classification": "useful"
   },
@@ -63,6 +72,7 @@
    "name": "Blueprint: Flint Arrows",
    "ap_id": 1694420004,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "cac14bfc7b2bc2943acdaa5397b28a2d",
    "classification": "useful"
   },
@@ -71,6 +81,7 @@
    "name": "Blueprint: Ash Dressing",
    "ap_id": 1694420005,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "da36fdd9bcc3dc641999c8487afb2e30",
    "classification": "useful"
   },
@@ -79,6 +90,7 @@
    "name": "Blueprint: Rustic Bed",
    "ap_id": 1694420006,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0614f3ab0059ddc438f6d161ff5e47a8",
    "classification": "useful"
   },
@@ -87,6 +99,7 @@
    "name": "Blueprint: Wooden Bed",
    "ap_id": 1694420007,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ee174f9ccc158dc42a8847af15ee3d6f",
    "classification": "useful"
   },
@@ -95,6 +108,7 @@
    "name": "Blueprint: Bedroll",
    "ap_id": 1694420008,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2ee163f0172c26a419e7e2442bb1dcbc",
    "classification": "useful"
   },
@@ -103,6 +117,7 @@
    "name": "Blueprint: Bee Skep",
    "ap_id": 1694420009,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0eb7addff318e4c469461760937a2406",
    "classification": "progression"
   },
@@ -111,6 +126,7 @@
    "name": "Blueprint: Empty Skep",
    "ap_id": 1694420010,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a48d98488acce704f80c9813193ee631",
    "classification": "progression"
   },
@@ -119,6 +135,7 @@
    "name": "Blueprint: Bee Smoker",
    "ap_id": 1694420011,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "8d21aa699b2f4034eb213d51b37004c6",
    "classification": "useful"
   },
@@ -127,6 +144,7 @@
    "name": "Blueprint: Bee Suit",
    "ap_id": 1694420012,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b06298eb2fdf7a847bdb81620e056024",
    "classification": "useful"
   },
@@ -135,6 +153,7 @@
    "name": "Blueprint: Bellows",
    "ap_id": 1694420013,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "04c16758dfcfbbc44b8c49f75a97ffc3",
    "classification": "useful"
   },
@@ -143,6 +162,7 @@
    "name": "Blueprint: Boar Feeder",
    "ap_id": 1694420014,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "9eb58a8514fe86a4db5c39d77d495dce",
    "classification": "useful"
   },
@@ -151,6 +171,7 @@
    "name": "Blueprint: Bone Broth",
    "ap_id": 1694420015,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e468a43773b60c940ab93feac50ce888",
    "classification": "useful"
   },
@@ -159,6 +180,7 @@
    "name": "Blueprint: Bone Knife",
    "ap_id": 1694420016,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2d1409d1bfbb04f44a39dbb8dbce1a70",
    "classification": "useful"
   },
@@ -167,6 +189,7 @@
    "name": "Blueprint: Bookshelf",
    "ap_id": 1694420017,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "24326f158154a8441874778ca4d6b600",
    "classification": "useful"
   },
@@ -175,6 +198,7 @@
    "name": "Blueprint: Bow",
    "ap_id": 1694420018,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "97d3eedb64aec914bb90d5feb50e7e86",
    "classification": "useful"
   },
@@ -183,6 +207,7 @@
    "name": "Blueprint: Composite bow",
    "ap_id": 1694420019,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "829275b73d6396e408f04793d11a22e3",
    "classification": "useful"
   },
@@ -191,6 +216,7 @@
    "name": "Blueprint: Bow Drill",
    "ap_id": 1694420020,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ac714f698cf3d974482d30dd6350e05a",
    "classification": "useful"
   },
@@ -199,6 +225,7 @@
    "name": "Blueprint: Brimstone Gel",
    "ap_id": 1694420021,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b52008ac678dd4541bdf5e0e1e34398f",
    "classification": "useful"
   },
@@ -207,6 +234,7 @@
    "name": "Blueprint: Bug Repellent",
    "ap_id": 1694420022,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fd0712236546c77478c9b48367a9795c",
    "classification": "useful"
   },
@@ -215,6 +243,7 @@
    "name": "Blueprint: Butter",
    "ap_id": 1694420023,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e3513b137c19ce040bd852baeea4ff88",
    "classification": "useful"
   },
@@ -223,6 +252,7 @@
    "name": "Blueprint: Butter Baked Oysters",
    "ap_id": 1694420024,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "bd966e4e61e694143b8a49c8d51cf865",
    "classification": "useful"
   },
@@ -231,6 +261,7 @@
    "name": "Blueprint: Cage Trap",
    "ap_id": 1694420025,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fef4c2ea123b4b447883a53a25ebc0e8",
    "classification": "useful"
   },
@@ -239,6 +270,7 @@
    "name": "Blueprint: Candied Ginger",
    "ap_id": 1694420026,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6fb228ce50726b04099b6b66609c0071",
    "classification": "useful"
   },
@@ -247,6 +279,7 @@
    "name": "Blueprint: Candle",
    "ap_id": 1694420027,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f1c5253873c055d4592fb3c1dba631a1",
    "classification": "progression"
   },
@@ -255,6 +288,7 @@
    "name": "Blueprint: Citronella Candle",
    "ap_id": 1694420028,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "4febbb3fb75141243882ba03963bd32c",
    "classification": "useful"
   },
@@ -263,6 +297,7 @@
    "name": "Blueprint: Jasmine Candle",
    "ap_id": 1694420029,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "048459b08d8eb3d41940e950429a6caa",
    "classification": "useful"
   },
@@ -271,6 +306,7 @@
    "name": "Blueprint: Cellar",
    "ap_id": 1694420030,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b58ad38d9672870468be7fd2391c4623",
    "classification": "useful"
   },
@@ -279,6 +315,7 @@
    "name": "Blueprint: Chair",
    "ap_id": 1694420031,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d1073139f4fc0f84db3d11418a4ef6e7",
    "classification": "useful"
   },
@@ -287,6 +324,7 @@
    "name": "Blueprint: Cheese",
    "ap_id": 1694420032,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fc09f021215c6104e876267c110ce68e",
    "classification": "useful"
   },
@@ -295,6 +333,7 @@
    "name": "Blueprint: Chest",
    "ap_id": 1694420033,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "36c82cd136170674bae84a6f70755126",
    "classification": "useful"
   },
@@ -303,6 +342,7 @@
    "name": "Blueprint: Chicken Sandwich",
    "ap_id": 1694420034,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e94d702d3d7a40a42b130087b6fa779f",
    "classification": "useful"
   },
@@ -311,6 +351,7 @@
    "name": "Blueprint: Cistern",
    "ap_id": 1694420035,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "448196ad3ccc19641b7b8088d93b1457",
    "classification": "useful"
   },
@@ -319,6 +360,7 @@
    "name": "Blueprint: Clay Bowl",
    "ap_id": 1694420036,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "090cea96fab32934da8fd67ef4e80f65",
    "classification": "useful"
   },
@@ -327,6 +369,7 @@
    "name": "Blueprint: Clay Fire Pit",
    "ap_id": 1694420037,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f783b98c0d114b349b14f75754d99ce2",
    "classification": "useful"
   },
@@ -335,6 +378,7 @@
    "name": "Blueprint: Clay Jar",
    "ap_id": 1694420038,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "1f15f3bd82a791e419e8110af9ecf510",
    "classification": "useful"
   },
@@ -343,6 +387,7 @@
    "name": "Blueprint: Clay Pot Cooler",
    "ap_id": 1694420039,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "67922062d74019641b34ea09597f76b7",
    "classification": "useful"
   },
@@ -351,6 +396,7 @@
    "name": "Blueprint: Clay Vase",
    "ap_id": 1694420040,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "5b4c32c8bb221c44997350d0674d8aac",
    "classification": "useful"
   },
@@ -359,6 +405,7 @@
    "name": "Blueprint: Serrated Club",
    "ap_id": 1694420041,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d3e5dce0fc6628c42afe7279e40998ad",
    "classification": "useful"
   },
@@ -367,6 +414,7 @@
    "name": "Blueprint: Coconut Fish",
    "ap_id": 1694420042,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d5233fafbeed90c4ba9b73e3d27c7691",
    "classification": "useful"
   },
@@ -375,6 +423,7 @@
    "name": "Blueprint: Coconut Milk",
    "ap_id": 1694420043,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b3f48dd154d442f408254ef5e858dd2e",
    "classification": "useful"
   },
@@ -383,6 +432,7 @@
    "name": "Blueprint: Coconut Sandals",
    "ap_id": 1694420044,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "83f174f7f221e3f42925f7a407e28d55",
    "classification": "useful"
   },
@@ -391,6 +441,7 @@
    "name": "Blueprint: Compost Bin",
    "ap_id": 1694420045,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fa22b479d7177ad4ea110f441dfa917b",
    "classification": "useful"
   },
@@ -399,6 +450,7 @@
    "name": "Blueprint: Cooking Pot",
    "ap_id": 1694420046,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f2fcb0ab88e5c1c47a130a9dbac4a1cf",
    "classification": "useful"
   },
@@ -407,6 +459,7 @@
    "name": "Blueprint: Copper Axe",
    "ap_id": 1694420047,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f18e8a5267bc0dd488213d4ca34eb996",
    "classification": "useful"
   },
@@ -415,6 +468,7 @@
    "name": "Blueprint: Copper Bottle",
    "ap_id": 1694420048,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d33d0691739f9724284f50a7a8ede933",
    "classification": "useful"
   },
@@ -423,6 +477,7 @@
    "name": "Blueprint: Copper Jar",
    "ap_id": 1694420049,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e7ef2d2a838d4d749b3939cd92c71ce4",
    "classification": "useful"
   },
@@ -431,6 +486,7 @@
    "name": "Blueprint: Copper Necklace",
    "ap_id": 1694420050,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "043ec5a82ffa6b5439d61e886fb8060b",
    "classification": "useful"
   },
@@ -439,6 +495,7 @@
    "name": "Blueprint: Copper Needles",
    "ap_id": 1694420051,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "85ab8a296406759439207fbef575574d",
    "classification": "useful"
   },
@@ -447,6 +504,7 @@
    "name": "Blueprint: Copper Sheet",
    "ap_id": 1694420052,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "09b5d28e3dd3171438be126ba5fdf0af",
    "classification": "progression"
   },
@@ -455,6 +513,7 @@
    "name": "Blueprint: Copper Shovel",
    "ap_id": 1694420053,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "5a1293f40d7a10047a6c1c774d2c5c6c",
    "classification": "progression"
   },
@@ -463,6 +522,7 @@
    "name": "Blueprint: Copper Spear",
    "ap_id": 1694420054,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "94b82e53a955175458bf265342274f45",
    "classification": "useful"
   },
@@ -471,6 +531,7 @@
    "name": "Blueprint: Crop Plot",
    "ap_id": 1694420055,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fa19441c35c9bff418c409e8100f895d",
    "classification": "useful"
   },
@@ -479,6 +540,7 @@
    "name": "Blueprint: Deadfall Trap",
    "ap_id": 1694420056,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "590d6aadabfadae4ca77511f7691ddf4",
    "classification": "useful"
   },
@@ -487,6 +549,7 @@
    "name": "Blueprint: Drum",
    "ap_id": 1694420057,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "162e9585121c41c4a9ba3087fc9fae4c",
    "classification": "useful"
   },
@@ -495,6 +558,7 @@
    "name": "Blueprint: Drunken Crab",
    "ap_id": 1694420058,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fa5b94aeac6d2a342a106ae935909ce9",
    "classification": "useful"
   },
@@ -503,6 +567,7 @@
    "name": "Blueprint: Drying Rack",
    "ap_id": 1694420059,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d7cc249ec6c41f44c88245b7b86f12be",
    "classification": "useful"
   },
@@ -511,6 +576,7 @@
    "name": "Blueprint: Dynamite",
    "ap_id": 1694420060,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2e1598af4ce24754da9dc4505dd83845",
    "classification": "useful"
   },
@@ -519,6 +585,7 @@
    "name": "Blueprint: Copper Eating Utensils",
    "ap_id": 1694420061,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6cf0adb3c8e41394d818465c6b376631",
    "classification": "useful"
   },
@@ -527,6 +594,7 @@
    "name": "Blueprint: Wooden Eating Utensils",
    "ap_id": 1694420062,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fb1fb222faafb7e44b0de55c4590c0e3",
    "classification": "useful"
   },
@@ -535,6 +603,7 @@
    "name": "Blueprint: Egg Fried Rice",
    "ap_id": 1694420063,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "9ee67c0b0616c5c4492fb1f673e46039",
    "classification": "useful"
   },
@@ -543,6 +612,7 @@
    "name": "Blueprint: Enclosure",
    "ap_id": 1694420064,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "52c9e2e0b910c354a8b0dbe11745fb59",
    "classification": "useful"
   },
@@ -551,6 +621,7 @@
    "name": "Blueprint: Bird Feed",
    "ap_id": 1694420065,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f703a6c7869d25b4fa4abecd31dc6806",
    "classification": "useful"
   },
@@ -559,6 +630,7 @@
    "name": "Blueprint: Boar Feed",
    "ap_id": 1694420066,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "66902a1359eaeba49ba398a7a43e0c57",
    "classification": "useful"
   },
@@ -567,6 +639,7 @@
    "name": "Blueprint: Goat Feed",
    "ap_id": 1694420067,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "cc4b2a45030fb724ca254af10f8a00e5",
    "classification": "useful"
   },
@@ -575,6 +648,7 @@
    "name": "Blueprint: Fiber Armor",
    "ap_id": 1694420068,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e0c1037701567354195b4b5d22bcc572",
    "classification": "useful"
   },
@@ -583,6 +657,7 @@
    "name": "Blueprint: Fiber Bracers",
    "ap_id": 1694420069,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "9ab8d831d93ebe84ca683d07dbf7b802",
    "classification": "useful"
   },
@@ -591,6 +666,7 @@
    "name": "Blueprint: Fiber Cuirass",
    "ap_id": 1694420070,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "72a5995a46be1dc41b377aedfc7d930c",
    "classification": "useful"
   },
@@ -599,6 +675,7 @@
    "name": "Blueprint: Fiber Helmet",
    "ap_id": 1694420071,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0ea2f026e076ecc44af9b46f74e0282c",
    "classification": "useful"
   },
@@ -607,6 +684,7 @@
    "name": "Blueprint: Fish Bait",
    "ap_id": 1694420072,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "48cbb40ddab2dd44ca6f726dd99f054d",
    "classification": "useful"
   },
@@ -615,6 +693,7 @@
    "name": "Blueprint: Fish N' Chips",
    "ap_id": 1694420073,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a8981793bbab94544b4f9971f1efdb3f",
    "classification": "useful"
   },
@@ -623,6 +702,7 @@
    "name": "Blueprint: Fish Omelette",
    "ap_id": 1694420074,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a6e9e237d7bcdb946ad9ae304d20ea94",
    "classification": "useful"
   },
@@ -631,6 +711,7 @@
    "name": "Blueprint: Salted Fish Meat",
    "ap_id": 1694420075,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7b63c4f6cc7ae8e49ba9d027a92ac328",
    "classification": "useful"
   },
@@ -639,6 +720,7 @@
    "name": "Blueprint: Fish Taco",
    "ap_id": 1694420076,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "18ebd2fb4418a834990722f46339b6ab",
    "classification": "useful"
   },
@@ -647,6 +729,7 @@
    "name": "Blueprint: Fish Trap (FishTrap)",
    "ap_id": 1694420077,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "cf25437c5eed5484ea781c69b64cac65",
    "classification": "useful"
   },
@@ -655,6 +738,7 @@
    "name": "Blueprint: Fishing Line",
    "ap_id": 1694420078,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d4f93a70d7c6d0047a88b69002f9a764",
    "classification": "useful"
   },
@@ -663,6 +747,7 @@
    "name": "Blueprint: Fishing Rod",
    "ap_id": 1694420079,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6d5fc0884ff1364439712ef1af277c7e",
    "classification": "useful"
   },
@@ -671,6 +756,7 @@
    "name": "Blueprint: Fishing Spear",
    "ap_id": 1694420080,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "57fb4767ec1e425428229b49db6d8e0e",
    "classification": "useful"
   },
@@ -679,6 +765,7 @@
    "name": "Blueprint: Flint Axe",
    "ap_id": 1694420081,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7eb469ad0fd626243893c56604c2e1d6",
    "classification": "useful"
   },
@@ -687,6 +774,7 @@
    "name": "Blueprint: Flint Knife",
    "ap_id": 1694420082,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a78ab24ed932fb947a32e123bcff16e4",
    "classification": "useful"
   },
@@ -695,6 +783,7 @@
    "name": "Blueprint: Flint Spear",
    "ap_id": 1694420083,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "bee40d2c75b877247ad2c370fc4a632c",
    "classification": "useful"
   },
@@ -703,6 +792,7 @@
    "name": "Blueprint: Flower Necklace",
    "ap_id": 1694420084,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7165366ddd489664f9b9f5c81d047530",
    "classification": "useful"
   },
@@ -711,6 +801,7 @@
    "name": "Blueprint: Bone Flute",
    "ap_id": 1694420085,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "1d83061dc0e386c40a4a0691eff762d0",
    "classification": "useful"
   },
@@ -719,6 +810,7 @@
    "name": "Blueprint: Wooden Flute",
    "ap_id": 1694420086,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "03db30a464b58a0498341cbf72a492e6",
    "classification": "useful"
   },
@@ -727,6 +819,7 @@
    "name": "Blueprint: Forge",
    "ap_id": 1694420087,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "4ba3ae846fb321441b9a788ba2f9bfaf",
    "classification": "useful"
   },
@@ -735,6 +828,7 @@
    "name": "Blueprint: Fried Bananas",
    "ap_id": 1694420088,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "3573af7a7ebe78d4887cfbdd98603f8f",
    "classification": "useful"
   },
@@ -743,6 +837,7 @@
    "name": "Blueprint: Fried Puffballs",
    "ap_id": 1694420089,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "effd44cda91d1eb4085c2c4971ca618f",
    "classification": "useful"
   },
@@ -751,6 +846,7 @@
    "name": "Blueprint: Gas Mask",
    "ap_id": 1694420090,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7891e1c1608ef48418247a103803511c",
    "classification": "useful"
   },
@@ -759,6 +855,7 @@
    "name": "Blueprint: Glazed Vase",
    "ap_id": 1694420091,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e30b572e7ebcba1419505a6186b7956b",
    "classification": "useful"
   },
@@ -767,6 +864,7 @@
    "name": "Blueprint: Glue",
    "ap_id": 1694420092,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "88786cc5df4699e4eba9ab247602acca",
    "classification": "useful"
   },
@@ -775,6 +873,7 @@
    "name": "Blueprint: Goat Feeder",
    "ap_id": 1694420093,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f4b39ac0b75703740a8ae3fdc64c8402",
    "classification": "useful"
   },
@@ -783,6 +882,7 @@
    "name": "Blueprint: Goat Stew",
    "ap_id": 1694420094,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "970dbfb128a0c8b4b87bec79f7559f19",
    "classification": "useful"
   },
@@ -791,6 +891,7 @@
    "name": "Blueprint: Hammock",
    "ap_id": 1694420095,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0dacaa6204a34544cb66f3224fcdc7e0",
    "classification": "useful"
   },
@@ -799,6 +900,7 @@
    "name": "Blueprint: Harpoon",
    "ap_id": 1694420096,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6668683e3695084428b02e09996a101a",
    "classification": "useful"
   },
@@ -807,6 +909,7 @@
    "name": "Blueprint: Hearty Feast",
    "ap_id": 1694420097,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6c8314217d7eaba429ad6eed280d05cd",
    "classification": "useful"
   },
@@ -815,6 +918,7 @@
    "name": "Blueprint: Honey",
    "ap_id": 1694420098,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2002ac10e82bae247bd463d826d76509",
    "classification": "useful"
   },
@@ -823,6 +927,7 @@
    "name": "Blueprint: Honey Candy",
    "ap_id": 1694420099,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d26542ce70d889543b5e3b6ef1674647",
    "classification": "useful"
   },
@@ -831,6 +936,7 @@
    "name": "Blueprint: Honey Glazed Pork",
    "ap_id": 1694420100,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "02f62884295c1114c8c68e5b9f6302fd",
    "classification": "useful"
   },
@@ -839,6 +945,7 @@
    "name": "Blueprint: Island Chicken",
    "ap_id": 1694420101,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "765ddcdddd10e4d449b44425b646bfdd",
    "classification": "useful"
   },
@@ -847,6 +954,7 @@
    "name": "Blueprint: Cloth Jacket",
    "ap_id": 1694420102,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "3aa676c424ff6384c962a7a0cba873c1",
    "classification": "useful"
   },
@@ -855,6 +963,7 @@
    "name": "Blueprint: Jungle Salad",
    "ap_id": 1694420103,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "14728277fe5b59b4183b68d88d95e2f7",
    "classification": "useful"
   },
@@ -863,6 +972,7 @@
    "name": "Blueprint: Kiln",
    "ap_id": 1694420104,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ee509187c1671214797a5c08d576232a",
    "classification": "useful"
   },
@@ -871,6 +981,7 @@
    "name": "Blueprint: Advanced Kiln",
    "ap_id": 1694420105,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "fd537078d14906d49bfe32c9845c4b22",
    "classification": "useful"
   },
@@ -879,6 +990,7 @@
    "name": "Blueprint: Leaf Skirt",
    "ap_id": 1694420106,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "33178eddd3613a44a8942f0f983f04a9",
    "classification": "useful"
   },
@@ -887,6 +999,7 @@
    "name": "Blueprint: Leaf Bed",
    "ap_id": 1694420107,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a20c00d387c339244bc13d8a33a51646",
    "classification": "useful"
   },
@@ -895,6 +1008,7 @@
    "name": "Blueprint: Leather Backpack",
    "ap_id": 1694420108,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "c8e1313cfd62a8144844b1a1115dc996",
    "classification": "useful"
   },
@@ -903,6 +1017,7 @@
    "name": "Blueprint: Leather Bracers",
    "ap_id": 1694420109,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0fc560cefb9b2c1449d1760abc93cba4",
    "classification": "useful"
   },
@@ -911,6 +1026,7 @@
    "name": "Blueprint: Leather Gloves",
    "ap_id": 1694420110,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "5aa94886449ef4944b8cc9cd63211893",
    "classification": "useful"
   },
@@ -919,6 +1035,7 @@
    "name": "Blueprint: Leather Helmet",
    "ap_id": 1694420111,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d6134e60c07c0524783d1c4f3e7fb71e",
    "classification": "useful"
   },
@@ -927,6 +1044,7 @@
    "name": "Blueprint: Leather Jacket",
    "ap_id": 1694420112,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "75dda7f37c6d97946824876f11d5cd44",
    "classification": "useful"
   },
@@ -935,6 +1053,7 @@
    "name": "Blueprint: Leather Pants",
    "ap_id": 1694420113,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ebec99b2465ca7247bf8e14268044b16",
    "classification": "progression"
   },
@@ -943,6 +1062,7 @@
    "name": "Blueprint: Leather Shoes",
    "ap_id": 1694420114,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e2bd8cf1288913e4f976ec85ad158c53",
    "classification": "useful"
   },
@@ -951,6 +1071,7 @@
    "name": "Blueprint: Leather Vest",
    "ap_id": 1694420115,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "da1eb79b612b85f4ba54885a61075926",
    "classification": "useful"
   },
@@ -959,6 +1080,7 @@
    "name": "Blueprint: Lizard Fry",
    "ap_id": 1694420116,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e8a55b5507f41d54093e1ad654631644",
    "classification": "useful"
   },
@@ -967,6 +1089,7 @@
    "name": "Blueprint: Log Trap",
    "ap_id": 1694420117,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "c8df8cf266ceb7544a83ad9f1e3d1257",
    "classification": "useful"
   },
@@ -975,6 +1098,7 @@
    "name": "Blueprint: Loom",
    "ap_id": 1694420118,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "c32a7cb6c936c2b4f9f78f62833113ac",
    "classification": "useful"
   },
@@ -983,6 +1107,7 @@
    "name": "Blueprint: Macaque Skewers",
    "ap_id": 1694420119,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "66dc9d54bd94018489a6ca550b243ba8",
    "classification": "useful"
   },
@@ -991,6 +1116,7 @@
    "name": "Blueprint: Salted Meat",
    "ap_id": 1694420120,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "8c1dcdf1b0d276b498ac55e61b77f9e0",
    "classification": "useful"
   },
@@ -999,6 +1125,7 @@
    "name": "Blueprint: Axe Mold",
    "ap_id": 1694420121,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "86756ac5483d4c247a74c0e9dcbe24b0",
    "classification": "useful"
   },
@@ -1007,6 +1134,7 @@
    "name": "Blueprint: Decoration Mold",
    "ap_id": 1694420122,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ba0be83b536004043b1d25844c12d05b",
    "classification": "useful"
   },
@@ -1015,6 +1143,7 @@
    "name": "Blueprint: Knife Mold",
    "ap_id": 1694420123,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "24794e7b53d421c48a03ae14efcd3243",
    "classification": "useful"
   },
@@ -1023,6 +1152,7 @@
    "name": "Blueprint: Shovel Mold",
    "ap_id": 1694420124,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f5c6a096daf7f8e4e91df4ff69e7affc",
    "classification": "useful"
   },
@@ -1031,6 +1161,7 @@
    "name": "Blueprint: Spear Mold",
    "ap_id": 1694420125,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "cbea52a73e0828b43b4fadaeb454bb2c",
    "classification": "useful"
   },
@@ -1039,6 +1170,7 @@
    "name": "Blueprint: Mortar",
    "ap_id": 1694420126,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6ac4eabe985e4734c97883e6b768cf9a",
    "classification": "progression"
   },
@@ -1047,6 +1179,7 @@
    "name": "Blueprint: Mud Hut",
    "ap_id": 1694420127,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "5bd5b478122e8744a85fd6c44354632a",
    "classification": "useful"
   },
@@ -1055,6 +1188,7 @@
    "name": "Blueprint: Mushroom Bed",
    "ap_id": 1694420128,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "c309ad17e2e37ba4f813d69c95cd30d6",
    "classification": "useful"
   },
@@ -1063,6 +1197,7 @@
    "name": "Blueprint: Niter Bed",
    "ap_id": 1694420129,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ade5b188934a01545aae99c0f9eea099",
    "classification": "useful"
   },
@@ -1071,6 +1206,7 @@
    "name": "Blueprint: Obsidian Knife",
    "ap_id": 1694420130,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "800f1fc8215885044903e207c37b7bd4",
    "classification": "useful"
   },
@@ -1079,6 +1215,7 @@
    "name": "Blueprint: Obsidian Spear",
    "ap_id": 1694420131,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "44fc53078aea32a48b2f8b422cfedc0c",
    "classification": "useful"
   },
@@ -1087,6 +1224,7 @@
    "name": "Blueprint: Cloth Pants",
    "ap_id": 1694420132,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "cc40813ce9b1d644e97c817249b336db",
    "classification": "useful"
   },
@@ -1095,6 +1233,7 @@
    "name": "Blueprint: Partridge Feeder",
    "ap_id": 1694420133,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "efd3608e159d4e74cb5fadafcb2678f6",
    "classification": "useful"
   },
@@ -1103,6 +1242,7 @@
    "name": "Blueprint: Pearl Necklace",
    "ap_id": 1694420134,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b384dfa26a0e42c4d8188fb6a2db21d7",
    "classification": "useful"
   },
@@ -1111,6 +1251,7 @@
    "name": "Blueprint: Brimstone Pesticide",
    "ap_id": 1694420135,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6e1a1aaae97ddc44a974e80d9f13ad0f",
    "classification": "useful"
   },
@@ -1119,6 +1260,7 @@
    "name": "Blueprint: Chilli Pesticide",
    "ap_id": 1694420136,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2146edc8d30a98b45afa6ff7f22131d7",
    "classification": "useful"
   },
@@ -1127,6 +1269,7 @@
    "name": "Blueprint: Wooden Planks",
    "ap_id": 1694420137,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "86833afdb17fb0843a8addb60e238060",
    "classification": "progression"
   },
@@ -1135,6 +1278,7 @@
    "name": "Blueprint: Pottery Wheel",
    "ap_id": 1694420138,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a5b75861aa486374fbf91afbe57234a1",
    "classification": "useful"
   },
@@ -1143,6 +1287,7 @@
    "name": "Blueprint: Protein Bar",
    "ap_id": 1694420139,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "884122b96ea355c40a72fce88e77e422",
    "classification": "useful"
   },
@@ -1151,6 +1296,7 @@
    "name": "Blueprint: Cinchona Powder",
    "ap_id": 1694420140,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "c3c86fbfe4d057b4098486bf464a9686",
    "classification": "progression"
   },
@@ -1159,6 +1305,7 @@
    "name": "Blueprint: Quinine Sulfate",
    "ap_id": 1694420141,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "9f0e9b4467f307a4fac1be7c7954427b",
    "classification": "useful"
   },
@@ -1167,6 +1314,7 @@
    "name": "Blueprint: Quiver",
    "ap_id": 1694420142,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b63db6ecab6c23648923d0e32214f147",
    "classification": "useful"
   },
@@ -1175,6 +1323,7 @@
    "name": "Blueprint: Raft",
    "ap_id": 1694420143,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "aa3fcc0e69dd7d14982a8891f3827b0a",
    "classification": "progression"
   },
@@ -1183,6 +1332,7 @@
    "name": "Blueprint: Fish Trap (RaftFishTrap)",
    "ap_id": 1694420144,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0be3caea94600e3478d5f11845c78c50",
    "classification": "useful"
   },
@@ -1191,6 +1341,7 @@
    "name": "Blueprint: Raft Shelter",
    "ap_id": 1694420145,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ccb7b0aee9b4e8e4393af50f74aed4d9",
    "classification": "useful"
   },
@@ -1199,6 +1350,7 @@
    "name": "Blueprint: Raincatcher",
    "ap_id": 1694420146,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b52dcd01b0c4e5a4db10da320181a959",
    "classification": "useful"
   },
@@ -1207,6 +1359,7 @@
    "name": "Blueprint: Raincoat",
    "ap_id": 1694420147,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "565102ec1ffbfa941abc27c8cc73b108",
    "classification": "useful"
   },
@@ -1215,6 +1368,7 @@
    "name": "Blueprint: Rice Paddy",
    "ap_id": 1694420148,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "0758a261bd0978541943d4ad12696b90",
    "classification": "useful"
   },
@@ -1223,6 +1377,7 @@
    "name": "Blueprint: Sack",
    "ap_id": 1694420149,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f37aaf7dd3fb87f4aaca3c23269e2d7e",
    "classification": "useful"
   },
@@ -1231,6 +1386,7 @@
    "name": "Blueprint: Sago Cake",
    "ap_id": 1694420150,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "452001197dd48bd418d6caa4e0606aae",
    "classification": "useful"
   },
@@ -1239,6 +1395,7 @@
    "name": "Blueprint: Sago Slime",
    "ap_id": 1694420151,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "bbcfff5560ff1fc4d9449f3fe30c7572",
    "classification": "useful"
   },
@@ -1247,6 +1404,7 @@
    "name": "Blueprint: Salt Bed",
    "ap_id": 1694420152,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a5fdd6f91689be547b94d2c41c461c61",
    "classification": "useful"
   },
@@ -1255,6 +1413,7 @@
    "name": "Blueprint: Satchel",
    "ap_id": 1694420153,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "92f5e76e52ef04d448eaa159d210dc63",
    "classification": "useful"
   },
@@ -1263,6 +1422,7 @@
    "name": "Blueprint: Scarecrow",
    "ap_id": 1694420154,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "1c0265eab5677c845bb4a280a85e1088",
    "classification": "useful"
   },
@@ -1271,6 +1431,7 @@
    "name": "Blueprint: Scrap Axe",
    "ap_id": 1694420155,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d3af2a3785e2ac24e938011b477708e4",
    "classification": "useful"
   },
@@ -1279,6 +1440,7 @@
    "name": "Blueprint: Scrap Knife",
    "ap_id": 1694420156,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2490fb8ffe2f5a342aca02e904883b59",
    "classification": "useful"
   },
@@ -1287,6 +1449,7 @@
    "name": "Blueprint: Scrap Shovel",
    "ap_id": 1694420157,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "422760b87eaef9c48a1ac6c8702cf628",
    "classification": "progression"
   },
@@ -1295,6 +1458,7 @@
    "name": "Blueprint: Scrap Spear",
    "ap_id": 1694420158,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "3421ea19d1ae4404c8e0ff9d7bff1921",
    "classification": "useful"
   },
@@ -1303,6 +1467,7 @@
    "name": "Blueprint: Seafood Cup",
    "ap_id": 1694420159,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e70325777bc915244b05b362adbe17f1",
    "classification": "useful"
   },
@@ -1311,6 +1476,7 @@
    "name": "Blueprint: Seashell Necklace",
    "ap_id": 1694420160,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a947d16744b62704ea17daf0105abe4c",
    "classification": "useful"
   },
@@ -1319,6 +1485,7 @@
    "name": "Blueprint: Shed",
    "ap_id": 1694420161,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f393d468f87e5564d96360f0709d86d8",
    "classification": "useful"
   },
@@ -1327,6 +1494,7 @@
    "name": "Blueprint: Shelf",
    "ap_id": 1694420162,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f0390f10ecb516d40a13289dc3f508d9",
    "classification": "useful"
   },
@@ -1335,6 +1503,7 @@
    "name": "Blueprint: Shelter",
    "ap_id": 1694420163,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "1d4ce488ac2e4774c982cec382294d2b",
    "classification": "useful"
   },
@@ -1343,6 +1512,7 @@
    "name": "Blueprint: Shield",
    "ap_id": 1694420164,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "57d11df298a449a4087e3a007c5d6942",
    "classification": "useful"
   },
@@ -1351,6 +1521,7 @@
    "name": "Blueprint: Shirt",
    "ap_id": 1694420165,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "59beb89b17d25be47a036a525fa9a916",
    "classification": "useful"
   },
@@ -1359,6 +1530,7 @@
    "name": "Blueprint: Shower",
    "ap_id": 1694420166,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e6dae52bf01c47f449b11038217d2ee9",
    "classification": "useful"
   },
@@ -1367,6 +1539,7 @@
    "name": "Blueprint: Sling",
    "ap_id": 1694420167,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "475821007f0925e4eacfe90ea9b2268c",
    "classification": "useful"
   },
@@ -1375,6 +1548,7 @@
    "name": "Blueprint: Snare Trap",
    "ap_id": 1694420168,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "294fe8d80cfdcfd4996b27ae06971a29",
    "classification": "useful"
   },
@@ -1383,6 +1557,7 @@
    "name": "Blueprint: Soap",
    "ap_id": 1694420169,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2eb595a65e1a00f46878793c1db819ee",
    "classification": "useful"
   },
@@ -1391,6 +1566,7 @@
    "name": "Blueprint: Solar Still",
    "ap_id": 1694420170,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "224ab07e91750fd4a9cece1d0cdbb168",
    "classification": "useful"
   },
@@ -1399,6 +1575,7 @@
    "name": "Blueprint: Spindle",
    "ap_id": 1694420171,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "feea879a171597f43a4088efdb9ef80f",
    "classification": "useful"
   },
@@ -1407,6 +1584,7 @@
    "name": "Blueprint: Splint",
    "ap_id": 1694420172,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "2c9fbb50201807b4c92d83e350a5dc35",
    "classification": "useful"
   },
@@ -1415,6 +1593,7 @@
    "name": "Blueprint: Stone Hut",
    "ap_id": 1694420173,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "f89c81a1e9e93cf44ab34a844979c4f7",
    "classification": "useful"
   },
@@ -1423,6 +1602,7 @@
    "name": "Blueprint: Stove",
    "ap_id": 1694420174,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "5364e92982b80d54f8cdefb4b5903519",
    "classification": "progression"
   },
@@ -1431,6 +1611,7 @@
    "name": "Blueprint: Straw Cape",
    "ap_id": 1694420175,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "8e070305d939c2742a85e0acd1606e30",
    "classification": "useful"
   },
@@ -1439,6 +1620,7 @@
    "name": "Blueprint: Supply Chest",
    "ap_id": 1694420176,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b7b84484c0c0ada4da487cb6c65d8be4",
    "classification": "useful"
   },
@@ -1447,6 +1629,7 @@
    "name": "Blueprint: Sushi",
    "ap_id": 1694420177,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "69b392e6912eab545a79ae6c21ecb978",
    "classification": "useful"
   },
@@ -1455,6 +1638,7 @@
    "name": "Blueprint: Table",
    "ap_id": 1694420178,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "727d1372f17ebf746aeb3591cf0f89b7",
    "classification": "useful"
   },
@@ -1463,6 +1647,7 @@
    "name": "Blueprint: Tonic Water",
    "ap_id": 1694420179,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "01333dcc887d0764686756d2f3385a8b",
    "classification": "useful"
   },
@@ -1471,6 +1656,7 @@
    "name": "Blueprint: Torch",
    "ap_id": 1694420180,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "d7ffe30617d4c9e4ca348dd7449551e7",
    "classification": "useful"
   },
@@ -1479,6 +1665,7 @@
    "name": "Blueprint: Trapping Pit",
    "ap_id": 1694420181,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "31c70193952a683449727e958f4a2f1e",
    "classification": "useful"
   },
@@ -1487,6 +1674,7 @@
    "name": "Blueprint: Travois",
    "ap_id": 1694420182,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "77f10175ba786e740b31dc0d8718dd1c",
    "classification": "useful"
   },
@@ -1495,6 +1683,7 @@
    "name": "Blueprint: Treenails",
    "ap_id": 1694420183,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "1945949cf5b5bfc4caa4b34fce56da42",
    "classification": "useful"
   },
@@ -1503,6 +1692,7 @@
    "name": "Blueprint: Vitriol",
    "ap_id": 1694420184,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "a996fb1f53133864b8393a381fb14417",
    "classification": "useful"
   },
@@ -1511,6 +1701,7 @@
    "name": "Blueprint: Water Filter",
    "ap_id": 1694420185,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7c07772ee53c81949ba1f8aec730354d",
    "classification": "useful"
   },
@@ -1519,6 +1710,7 @@
    "name": "Blueprint: Water Reservoir",
    "ap_id": 1694420186,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "aa3216ebb569b8c4aaeee3bb8c4921c2",
    "classification": "progression"
   },
@@ -1527,6 +1719,7 @@
    "name": "Blueprint: Watering Trough",
    "ap_id": 1694420187,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "4df519984d0af1c44a710d698e5156ac",
    "classification": "useful"
   },
@@ -1535,6 +1728,7 @@
    "name": "Blueprint: Waterskin",
    "ap_id": 1694420188,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "8a1202acf944e3d44b8eaaeb39753d5b",
    "classification": "useful"
   },
@@ -1543,6 +1737,7 @@
    "name": "Blueprint: Well",
    "ap_id": 1694420189,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "ddc91498198124740b1c8f2f606f5d09",
    "classification": "progression"
   },
@@ -1551,6 +1746,7 @@
    "name": "Blueprint: Weston",
    "ap_id": 1694420190,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "20cbe9d4b29f8f54aa3454f85fb48fe9",
    "classification": "useful"
   },
@@ -1559,6 +1755,7 @@
    "name": "Blueprint: Wood Carvings",
    "ap_id": 1694420191,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "7d4b182dddb9cec45a136ca19a116a70",
    "classification": "useful"
   },
@@ -1567,6 +1764,7 @@
    "name": "Blueprint: Wood Shavings",
    "ap_id": 1694420192,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "44cf15086132f6c4c9cb61aebf99dd96",
    "classification": "useful"
   },
@@ -1575,6 +1773,7 @@
    "name": "Blueprint: Wooden Needles",
    "ap_id": 1694420193,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "e6c24fece0a05a541addec676ab5d56e",
    "classification": "useful"
   },
@@ -1583,6 +1782,7 @@
    "name": "Blueprint: Wooden Shovel",
    "ap_id": 1694420194,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "03ddd3f93d6b153429c3095df16bd8da",
    "classification": "progression"
   },
@@ -1591,6 +1791,7 @@
    "name": "Blueprint: Woven Backpack",
    "ap_id": 1694420195,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "db75991a4553b3f4780bfe3195a8e1f1",
    "classification": "useful"
   },
@@ -1599,6 +1800,7 @@
    "name": "Blueprint: Woven Basket",
    "ap_id": 1694420196,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "6cc428969c478424482fd8b55c2e005a",
    "classification": "progression"
   },
@@ -1607,6 +1809,7 @@
    "name": "Blueprint: Woven Hat",
    "ap_id": 1694420197,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b0eec3ad1253cdf43a19e34f18c95c95",
    "classification": "useful"
   },
@@ -1615,6 +1818,7 @@
    "name": "Blueprint: Yam Curry",
    "ap_id": 1694420198,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "4828895adc0fd174a8b05c5cd401adb8",
    "classification": "useful"
   },
@@ -1623,15 +1827,124 @@
    "name": "Blueprint: Yam Jam",
    "ap_id": 1694420199,
    "quantity": 1,
+   "kind": "blueprint",
    "unique_id": "b348bc230285f0f44bf54bffec1c8878",
    "classification": "useful"
   },
   {
-   "key": "filler_supplies",
+   "key": "filler_washed_up_supplies",
    "name": "Washed-Up Supplies",
    "ap_id": 1694429000,
    "quantity": 0,
-   "classification": "filler"
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Coconut",
+     "unique_id": "9a53c7766c482b94a9ce1b2148ddb522",
+     "count": 1
+    },
+    {
+     "card": "Sticks",
+     "unique_id": "fa8834c3111a71f47bdd23d66b33cf61",
+     "count": 2
+    },
+    {
+     "card": "Fibers",
+     "unique_id": "b8885e78517570b4293c573871625e11",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "key": "filler_fresh_coconuts",
+   "name": "Fresh Coconuts",
+   "ap_id": 1694429001,
+   "quantity": 0,
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Coconut",
+     "unique_id": "9a53c7766c482b94a9ce1b2148ddb522",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "key": "filler_bundle_of_sticks",
+   "name": "Bundle of Sticks",
+   "ap_id": 1694429002,
+   "quantity": 0,
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Sticks",
+     "unique_id": "fa8834c3111a71f47bdd23d66b33cf61",
+     "count": 3
+    },
+    {
+     "card": "StickLong",
+     "unique_id": "3db4c94184af274409f0d3eb16870f64",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "filler_stones_and_flint",
+   "name": "Stones and Flint",
+   "ap_id": 1694429003,
+   "quantity": 0,
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Stone",
+     "unique_id": "a7384e5147b23a642809451cc4ef24fb",
+     "count": 2
+    },
+    {
+     "card": "Flint",
+     "unique_id": "bef002cfd45b3e8459864746f403cf73",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "filler_water_ration",
+   "name": "Water Ration",
+   "ap_id": 1694429004,
+   "quantity": 0,
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "WaterRation",
+     "unique_id": "ec508d4615d42884d9ce1d64efbc80b5",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "filler_rope_and_fibers",
+   "name": "Rope and Fibers",
+   "ap_id": 1694429005,
+   "quantity": 0,
+   "kind": "filler",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Rope",
+     "unique_id": "a7a58aa687df66e47a42fc13e0fdbeaa",
+     "count": 1
+    },
+    {
+     "card": "Fibers",
+     "unique_id": "b8885e78517570b4293c573871625e11",
+     "count": 2
+    }
+   ]
   }
  ],
  "locations": [

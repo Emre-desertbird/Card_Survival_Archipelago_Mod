@@ -1,0 +1,76 @@
+using HarmonyLib;
+
+namespace CardSurvivalArchipelago
+{
+    /// <summary>
+    /// Binds saves to their Archipelago slot and keeps the "applied items" counter in step with
+    /// the game's main save and checkpoint copy. Randomized games always use Safe Mode, the
+    /// game's own checkpoint system: a death offers "Load checkpoint" instead of ending the run.
+    /// </summary>
+    [HarmonyPatch(typeof(GameLoad), nameof(GameLoad.StartNewGame))]
+    internal static class NewGamePatch
+    {
+        private static void Prefix(int _Index, ref bool _SafeMode)
+        {
+            ApGame.OnNewGame(_Index);
+            BlueprintRando.Reset();
+            if (ApGame.Active) _SafeMode = true;
+        }
+    }
+
+    [HarmonyPatch(typeof(GameLoad), nameof(GameLoad.LoadGame))]
+    internal static class LoadGamePatch
+    {
+        private static void Prefix(int _Index)
+        {
+            ApGame.OnLoadGame(_Index);
+            BlueprintRando.Reset();
+        }
+    }
+
+    [HarmonyPatch(typeof(GameLoad), nameof(GameLoad.LoadCheckpoint))]
+    internal static class LoadCheckpointPatch
+    {
+        private static void Prefix()
+        {
+            ApGame.OnLoadCheckpoint();
+        }
+    }
+
+    [HarmonyPatch(typeof(GameLoad), nameof(GameLoad.SaveGame))]
+    internal static class SaveGamePatch
+    {
+        private static void Postfix(bool __result, bool _Checkpoint)
+        {
+            if (__result) ApGame.OnSaved(_Checkpoint);
+        }
+    }
+
+    [HarmonyPatch(typeof(GameLoad), nameof(GameLoad.DeleteGameData))]
+    internal static class DeleteGamePatch
+    {
+        private static void Postfix(int _Index)
+        {
+            ApGame.OnDeleted(_Index);
+        }
+    }
+
+    /// <summary>Any real ending completes the goal. After it, "Load checkpoint" lets the player go on.</summary>
+    [HarmonyPatch(typeof(EndgameMenu), nameof(EndgameMenu.Setup))]
+    internal static class EndingPatch
+    {
+        private static void Prefix(bool _GameOver, bool _KeepPlaying)
+        {
+            // _KeepPlaying is only used by the cheat menu's journal view, never by a real ending.
+            if (!_GameOver && !_KeepPlaying) ApGame.CompleteGoal();
+        }
+
+        private static void Postfix(EndgameMenu __instance, bool _GameOver, bool _KeepPlaying)
+        {
+            GameManager gm = MBSingleton<GameManager>.Instance;
+            if (!ApGame.Active || _GameOver || _KeepPlaying || gm == null || !gm.IsSafeMode) return;
+            UnityEngine.GameObject button = Traverse.Create(__instance).Field("LoadCheckpointButton").GetValue<UnityEngine.GameObject>();
+            if (button != null) button.SetActive(true);
+        }
+    }
+}

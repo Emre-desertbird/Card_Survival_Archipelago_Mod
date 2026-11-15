@@ -2,9 +2,9 @@
 
 from dataclasses import dataclass
 
-from Options import DeathLink, PerGameCommonOptions
+from Options import PerGameCommonOptions
 
 
 @dataclass
 class CardSurvivalOptions(PerGameCommonOptions):
-    death_link: DeathLink
+    pass

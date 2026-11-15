@@ -3,7 +3,8 @@
 1. Finds the Steam installation (read-only, never modified).
 2. Copies it to .local/game, the separate modded copy used for development.
 3. Installs BepInEx 5 into that copy.
-4. Downloads the C# compiler used by tools/build_plugin.py.
+4. Downloads the C# compiler used by tools/build_plugin.py and the Archipelago
+   client library (Archipelago.MultiClient.Net) the plugin is built against.
 With --decompile it also decompiles the game code into .local/decompiled for reading.
 """
 
@@ -15,7 +16,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from common import (BEPINEX, DATA_DIR, DEV_GAME, GAME_EXE, ILSPY, LOCAL, MOD_SAVES, ROSLYN, TOOLS,
+from common import (BEPINEX, DATA_DIR, DEV_GAME, GAME_EXE, ILSPY, LOCAL, MOD_SAVES, MULTICLIENT, MULTICLIENT_DLL,
+                    ROSLYN, TOOLS,
                     extract, fetch, find_steam_game)
 
 
@@ -37,6 +39,9 @@ def main() -> None:
     compiler = TOOLS / "roslyn" / "pkg" / "tasks" / "net472" / "csc.exe"
     if not compiler.is_file():
         extract(fetch(ROSLYN, TOOLS / "roslyn"), TOOLS / "roslyn" / "pkg")
+
+    if not MULTICLIENT_DLL.is_file():
+        extract(fetch(MULTICLIENT, TOOLS / "multiclient"), TOOLS / "multiclient" / "pkg")
 
     decompiled = LOCAL / "decompiled" / "Assembly-CSharp"
     if args.decompile and not any(decompiled.glob("*.cs")):

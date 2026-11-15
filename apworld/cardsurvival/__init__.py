@@ -12,7 +12,7 @@ from .options import CardSurvivalOptions
 DATA = json.loads(resources.files(__package__).joinpath("registry.json").read_text(encoding="utf-8"))
 REGISTRY = Registry(DATA)
 GAME = DATA["game_name"]
-FILLER = DATA["filler"]["name"]
+FILLERS = DATA["filler"]
 CLASSIFICATIONS = {"progression": ItemClassification.progression, "useful": ItemClassification.useful,
                    "filler": ItemClassification.filler}
 
@@ -49,11 +49,6 @@ class CardSurvivalWorld(World):
     # Universal Tracker rebuilds this world from the seed's slot data (no YAML).
     ut_can_gen_without_yaml = True
 
-    def generate_early(self) -> None:
-        passthrough = getattr(self.multiworld, "re_gen_passthrough", {}).get(self.game)
-        if passthrough and "death_link" in passthrough:
-            self.options.death_link.value = int(bool(passthrough["death_link"]))
-
     @staticmethod
     def interpret_slot_data(slot_data: dict) -> dict:
         return slot_data
@@ -77,7 +72,7 @@ class CardSurvivalWorld(World):
 
     def create_items(self) -> None:
         pool = [self.create_item(entry["name"]) for entry in DATA["items"] for _ in range(entry["quantity"])]
-        pool += [self.create_item(FILLER) for _ in range(len(DATA["locations"]) - len(pool))]
+        pool += [self.create_filler() for _ in range(len(DATA["locations"]) - len(pool))]
         self.multiworld.itempool.extend(pool)
 
     def create_item(self, name: str) -> CardSurvivalItem:
@@ -85,7 +80,7 @@ class CardSurvivalWorld(World):
                                 self.item_name_to_id[name], self.player)
 
     def get_filler_item_name(self) -> str:
-        return FILLER
+        return self.random.choice(FILLERS)
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = (
@@ -98,5 +93,4 @@ class CardSurvivalWorld(World):
             "registry_version": DATA["registry_version"],
             "audited_build_id": DATA["audited_build_id"],
             "audited_game_version": DATA["audited_game_version"],
-            "death_link": bool(self.options.death_link),
         }

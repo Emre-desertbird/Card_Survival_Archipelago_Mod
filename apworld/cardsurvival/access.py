@@ -77,8 +77,8 @@ class Registry:
                 raise ValueError(f"Duplicate {key} in {group}")
         if self.items.keys() & self.events.keys() or data["goal_event"] not in self.events:
             raise ValueError("Event names collide with items, or the goal event is missing")
-        if data["filler"]["name"] not in self.items:
-            raise ValueError("The filler item is not in the item list")
+        if not data["filler"] or any(self.items.get(name, {}).get("classification") != "filler" for name in data["filler"]):
+            raise ValueError("Every filler name must be a filler item in the item list")
         for rule in list(self.location_rules.values()) + list(self.event_rules.values()):
             for atom in rule.atoms():
                 if atom.kind == "event":
