@@ -13,7 +13,7 @@ namespace CardSurvivalArchipelago
     {
         public const string Guid = "archipelago.cardsurvival.tropicalisland";
         public const string Name = "Card Survival Archipelago";
-        public const string Version = "0.1.0";
+        public const string Version = "0.2.0";
 
         internal static ManualLogSource Log;
         internal static ConfigFile Settings;
@@ -34,6 +34,7 @@ namespace CardSurvivalArchipelago
                 Log.LogError(Registry.Error);
             }
             new Harmony(Guid).PatchAll(typeof(Plugin).Assembly);
+            Checks.Install();
             SaveIsolation.EnsureFolder();
             gameObject.AddComponent<Overlay>();
 

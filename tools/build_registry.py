@@ -1,8 +1,15 @@
 """Build apworld/cardsurvival/registry.json from the game data dump (.local/dump).
 
-Registry 1 randomizes blueprints:
-  item      "Blueprint: X"  - makes blueprint X buildable
-  location  "Research - X"  - finishing the research of X in the blueprint screen
+Items:
+  "Blueprint: X"        makes blueprint X buildable; for equipment also one finished copy
+  "Progressive <Skill>" raises a skill (3 per skill, +25 each = one skill perk)
+  "Perk: <Name>"        a helpful passive perk of the game (no cards, no blueprints)
+  filler                everyday supplies
+Locations:
+  "Research - X"        finishing the research of X in the blueprint screen
+  "Build - X"           finishing blueprint X for the first time (crafting or construction)
+  "Visit - <Area>"      entering an area for the first time
+Long checks are marked "challenge"; by default they never hold progression or useful items.
 
 Logic comes from the game data (tools/card_graph.py, explained in docs/logic.md).
 Every way to get a card is a recipe: actions, tools, cooking, time, exploring,
@@ -41,6 +48,10 @@ EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprint
 # cards (raft, sailing, rescue). Home depends on comfort and days survived, Weston on its quest
 # line and Mermaid on the character, so the logic does not rely on them (docs/logic.md).
 GOAL_ENDING = "Event_ShipEscape"
+SKILL_COPIES, SKILL_STEP = 3, 25          # the game's skill perks give +75
+EXCLUDED_SKILLS = {"Skill_Insight"}       # tied to endings, see docs/plan.md
+CHALLENGE_RESEARCH_DAYS = 3               # research taking this many days or more
+CHALLENGE_BUILD_HOURS = 12                # construction taking this many in-game hours or more
 
 
 def text(value) -> str:
@@ -149,10 +160,31 @@ def main() -> None:
         rule = all_rule(card_graph.unlock_needs(card))
         if rule is None:
             raise SystemExit(f"The research of {name} can never be revealed")
-        locations.append({"key": name, "name": f"Research - {title(name)}", "ap_id": LOCATION_BASE + index,
-                          "unique_id": card["UniqueID"], "research_days": card.get("BlueprintUnlockSunsCost", 0),
+        days = card.get("BlueprintUnlockSunsCost", 0) or 0
+        locations.append({"key": name, "kind": "research", "name": f"Research - {title(name)}",
+                          "ap_id": LOCATION_BASE + index, "unique_id": card["UniqueID"], "research_days": days,
                           "vanilla_item": item_name(name), "hint": text(card.get("UnlockConditionsDesc")),
-                          "rule": rule})
+                          "challenge": days >= CHALLENGE_RESEARCH_DAYS, "rule": rule})
+
+    # Building: the first time a blueprint is finished (an AP item never counts, see game_plugin/Checks.cs).
+    for index, name in enumerate(sorted(set(starting) | set(randomized))):
+        card = blueprints[name]
+        hours = (card.get("BuildingDaytimeCost", 0) or 0) * len(card.get("BlueprintStages") or []) / 4
+        locations.append({"key": name, "kind": "build", "name": f"Build - {title(name)}",
+                          "ap_id": LOCATION_BASE + 1000 + index, "unique_id": card["UniqueID"],
+                          "build_hours": hours, "challenge": hours >= CHALLENGE_BUILD_HOURS,
+                          "rule": need_rule(Need("build", name))})
+
+    # Areas: entering one for the first time. Only areas the logic can reach (not character-only ones).
+    areas = sorted(name for name, card in cards.items() if card.get("CardType") == "Environment" and name in full.cards)
+    area_titles = Counter(text(cards[name].get("CardName")) for name in areas)
+    for index, name in enumerate(areas):
+        label = text(cards[name].get("CardName")) or name
+        if area_titles[label] > 1:
+            label = f"{label} ({name.removeprefix('Env_')})"
+        locations.append({"key": name, "kind": "visit", "name": f"Visit - {label}",
+                          "ap_id": LOCATION_BASE + 2000 + index, "unique_id": cards[name]["UniqueID"],
+                          "challenge": False, "rule": need_rule(Need("card", name))})
     goal = need_rule(Need("card", "victory:" + GOAL_ENDING))
     if goal is None or goal is True:
         raise SystemExit(f"The goal ending {GOAL_ENDING} is unreachable or needs no item: {goal}")
@@ -203,10 +235,44 @@ def main() -> None:
     # Events nothing depends on would only be unreachable clutter (their blueprint is not progression).
     events = [event for event in events if event["name"] in needed_events]
 
-    items = [{"key": name, "name": item_name(name), "ap_id": ITEM_BASE + index, "quantity": 1, "kind": "blueprint",
-              "unique_id": blueprints[name]["UniqueID"],
-              "classification": "progression" if item_name(name) in used_items else "useful"}
-             for index, name in enumerate(randomized)]
+    def equipment(name: str) -> list[dict]:
+        """Results the game itself treats as equipment (weapon, armor or an equipment slot)."""
+        result = []
+        for drop in blueprints[name].get("BlueprintResult") or []:
+            card = cards.get(((drop or {}).get("DroppedCard") or {}).get("$ref"))
+            if card and card.get("CardType") == "Item" and (card.get("IsWeapon") or card.get("IsArmor")
+                                                            or card.get("EquipmentTags")):
+                result.append({"card": card["$name"], "unique_id": card["UniqueID"]})
+        return result
+
+    items = []
+    for index, name in enumerate(randomized):
+        entry = {"key": name, "name": item_name(name), "ap_id": ITEM_BASE + index, "quantity": 1, "kind": "blueprint",
+                 "unique_id": blueprints[name]["UniqueID"],
+                 "classification": "progression" if item_name(name) in used_items else "useful"}
+        if equipment(name):
+            entry["equipment"] = equipment(name)
+        items.append(entry)
+
+    # Skills the player can train (some card raises them), except ending-related ones.
+    stats = {stat["$name"]: stat for stat in load("GameStat")}
+    skills = sorted(name for name in stats if name.startswith("Skill_") and name not in EXCLUDED_SKILLS
+                    and "stat:" + name in full.cards)
+    for index, name in enumerate(skills):
+        items.append({"key": name, "name": f"Progressive {text(stats[name].get('GameName')) or name[6:]}",
+                      "ap_id": ITEM_BASE + 3000 + index, "quantity": SKILL_COPIES, "kind": "skill",
+                      "stat_id": stats[name]["UniqueID"], "amount": SKILL_STEP, "classification": "useful"})
+
+    # Helpful vanilla perks that only change stats passively (no cards, no blueprints, no start changes).
+    perks = sorted((perk for perk in load("CharacterPerk")
+                    if perk.get("PassiveStatModifiers") and (perk.get("DifficultyRating") or 0) < 0
+                    and not any(perk.get(key) for key in ("AddedCards", "EquippedCards", "OverrideEnvironment",
+                                                          "OverrideWeather", "StartingStatModifiers"))),
+                   key=lambda perk: perk["$name"])
+    for index, perk in enumerate(perks):
+        items.append({"key": perk["$name"], "name": f"Perk: {text(perk.get('PerkName')) or perk['$name']}",
+                      "ap_id": ITEM_BASE + 4000 + index, "quantity": 1, "kind": "perk",
+                      "perk_id": perk["UniqueID"], "classification": "useful"})
     for filler_name, offset, contents in FILLERS:
         missing = [card for card in contents if card not in cards]
         if missing:
@@ -216,7 +282,7 @@ def main() -> None:
                       "contents": [{"card": card, "unique_id": cards[card]["UniqueID"], "count": count}
                                    for card, count in contents.items()]})
 
-    registry = {"game_name": GAME, "registry_version": 3, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 4, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "starting_blueprints": [title(name) for name in starting],
                 "character_only_blueprints": [title(name) for name in character_only],
@@ -228,7 +294,10 @@ def main() -> None:
             raise SystemExit("registry.json is out of date; run tools/build_registry.py")
     else:
         target.write_text(rendered, encoding="utf-8", newline="\n")
-    print(json.dumps({"registry": str(target), "items": len(items) - len(FILLERS), "locations": len(locations),
+    print(json.dumps({"registry": str(target), "item_kinds": Counter(entry["kind"] for entry in items),
+                      "pool": sum(entry["quantity"] for entry in items), "locations": len(locations),
+                      "location_kinds": Counter(entry["kind"] for entry in locations),
+                      "challenge": sum(entry["challenge"] for entry in locations),
                       "progression": sum(entry["classification"] == "progression" for entry in items),
                       "useful": sum(entry["classification"] == "useful" for entry in items),
                       "starting": len(starting), "character_only": len(character_only)}))

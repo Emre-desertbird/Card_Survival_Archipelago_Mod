@@ -35,17 +35,41 @@ class RegistryTests(unittest.TestCase):
         self.registry.validate()
 
     def test_one_blueprint_item_per_research_check(self):
-        blueprints = [entry for entry in DATA["items"] if entry["quantity"]]
-        self.assertEqual(len(blueprints), len(DATA["locations"]))
-        self.assertEqual({entry["name"] for entry in blueprints},
-                         {entry["vanilla_item"] for entry in DATA["locations"]})
+        blueprints = [entry for entry in DATA["items"] if entry["kind"] == "blueprint"]
+        research = [entry for entry in DATA["locations"] if entry["kind"] == "research"]
+        self.assertEqual(len(blueprints), len(research))
+        self.assertEqual({entry["name"] for entry in blueprints}, {entry["vanilla_item"] for entry in research})
+
+    def test_every_shuffled_and_starting_blueprint_has_a_build_check(self):
+        builds = {entry["key"] for entry in DATA["locations"] if entry["kind"] == "build"}
+        research = {entry["key"] for entry in DATA["locations"] if entry["kind"] == "research"}
+        self.assertTrue(research <= builds)
+        self.assertEqual(len(builds), len(research) + len(DATA["starting_blueprints"]))
+
+    def test_location_and_item_ids_are_unique_and_kinds_known(self):
+        self.assertEqual(len({entry["ap_id"] for entry in DATA["locations"]}), len(DATA["locations"]))
+        self.assertEqual(len({entry["ap_id"] for entry in DATA["items"]}), len(DATA["items"]))
+        self.assertLessEqual({entry["kind"] for entry in DATA["locations"]}, {"research", "build", "visit"})
+        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "filler"})
+
+    def test_challenge_checks_leave_room_for_important_items(self):
+        important = sum(entry["quantity"] for entry in DATA["items"] if entry["classification"] != "filler")
+        standard = sum(not entry["challenge"] for entry in DATA["locations"])
+        self.assertLessEqual(important, standard)
+
+    def test_skill_items_add_up_to_one_skill_perk(self):
+        for entry in DATA["items"]:
+            if entry["kind"] == "skill":
+                self.assertEqual(entry["quantity"] * entry["amount"], 75, entry["name"])
+                self.assertNotIn("Insight", entry["name"])
 
     def test_some_checks_are_open_from_the_start(self):
         open_checks, _ = self.registry.sweep({})
         self.assertGreater(len(open_checks), 20)
 
     def test_vanilla_order_has_no_deadlock(self):
-        # If every research check held its own blueprint, everything must still be reachable.
+        # If every research check held its own blueprint and every other check held nothing,
+        # everything must still be reachable: nothing depends on skills, perks or filler.
         reached = {name for sphere in self.registry.spheres() for name in sphere}
         self.assertEqual(reached, set(self.registry.locations))
 

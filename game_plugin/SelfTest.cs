@@ -95,6 +95,11 @@ namespace CardSurvivalArchipelago
             };
         }
 
+        private static int CountCards(GameManager gm, CardData card)
+        {
+            return gm.AllCards.Count(c => c != null && c.CardModel == card && !c.Destroyed);
+        }
+
         private static IEnumerator Body(JObject config)
         {
             Check("registry loaded", Registry.Error == null, new { version = Registry.Version, locations = Registry.Locations.Count });
@@ -128,6 +133,12 @@ namespace CardSurvivalArchipelago
             });
             Check("safe mode forced on", gm.IsSafeMode);
             Check("research uses time", gm.BlueprintPurchasing && gm.PurchasingWithTime);
+            // A character perk can start the game in an area outside the logic (e.g. the crashed plane);
+            // such an area has no check. Every area that is a check must be sent on arrival.
+            Registry.Entry startArea;
+            bool startIsCheck = Registry.VisitByCard.TryGetValue(gm.CurrentEnvironment.UniqueID, out startArea);
+            Check("starting area sends its visit check if it is one", !startIsCheck || ApGame.State.IsChecked(startArea.Id),
+                  new { area = gm.CurrentEnvironment.name, startIsCheck });
 
             // 3. Pick a blueprint whose research holds another blueprint for this slot.
             var shuffled = BlueprintRando.Shuffled;
@@ -203,6 +214,49 @@ namespace CardSurvivalArchipelago
             Check("researching a received recipe sends its check and keeps the recipe",
                   ApGame.State.IsChecked(rewardLocation) && gm.BlueprintModelStates[reward] == BlueprintModelState.Available,
                   Describe(reward));
+            // 8b. A build check fires only on the final construction step.
+            var build = Registry.BuildByCard.Values.First(entry => !ApGame.State.IsChecked(entry.Id));
+            CardData buildCard = UniqueIDScriptable.GetFromID<CardData>(build.CardId);
+            GameManager.OnActionPerformed(new ActionReport { FromCard = buildCard, Action = new CardAction
+                { ProducedCards = new CardsDropCollection[0] } });
+            bool earlyStep = ApGame.State.IsChecked(build.Id);
+            GameManager.OnActionPerformed(new ActionReport { FromCard = buildCard, Action = new CardAction
+                { ProducedCards = new[] { new CardsDropCollection { CollectionName = buildCard.name + "_blueprint" } } } });
+            Check("build check only on the final step", !earlyStep && ApGame.State.IsChecked(build.Id), build.Name);
+
+            // 8c. Receive a skill, a perk and an equipment blueprint.
+            Registry.Entry skill = null, perk = null, equipment = null;
+            long skillAt = 0, perkAt = 0, equipmentAt = 0;
+            foreach (var pair in ApConnection.Scouted)
+            {
+                Registry.Entry item;
+                if (ApGame.State.IsChecked(pair.Key) || pair.Value.Player.Slot != ApConnection.Slot ||
+                    !Registry.Items.TryGetValue(pair.Value.ItemId, out item)) continue;
+                if (item.Kind == "skill" && skill == null) { skill = item; skillAt = pair.Key; }
+                else if (item.Kind == "perk" && perk == null) { perk = item; perkAt = pair.Key; }
+                else if (item.Equipment.Count > 0 && equipment == null) { equipment = item; equipmentAt = pair.Key; }
+            }
+            Check("seed has a skill, a perk and an equipment item for this slot", skill != null && perk != null && equipment != null,
+                  new { skill = skill?.Name, perk = perk?.Name, equipment = equipment?.Name });
+            if (skill == null || perk == null || equipment == null) yield break;
+            GameStat skillStat = UniqueIDScriptable.GetFromID<GameStat>(skill.StatId);
+            CardData equipmentCard = UniqueIDScriptable.GetFromID<CardData>(equipment.Equipment[0]);
+            float skillBefore = gm.StatsDict[skillStat].CurrentBaseValue;
+            int equipmentBefore = CountCards(gm, equipmentCard);
+            int perksBefore = ItemEffects.ActivePerks;
+            foreach (long location in new[] { skillAt, perkAt, equipmentAt }) ApGame.CompleteLocation(location);
+            yield return WaitFor(() => ApGame.State.HasReceived(skill.Id) && ApGame.State.HasReceived(perk.Id) &&
+                                       ApGame.State.HasReceived(equipment.Id), 15f);
+            yield return Wait(3f);
+            float skillAfter = gm.StatsDict[skillStat].CurrentBaseValue;
+            int equipmentAfter = CountCards(gm, equipmentCard);
+            Check("skill item raises the skill", Mathf.Approximately(skillAfter, Mathf.Min(skillBefore + skill.Amount, skillStat.MinMaxValue.y)),
+                  new { skill.Name, skillBefore, skillAfter });
+            Check("perk item becomes active", ItemEffects.ActivePerks == perksBefore + 1, perk.Name);
+            Check("equipment blueprint gives one finished copy", equipmentAfter == equipmentBefore + 1,
+                  new { equipment.Name, equipmentBefore, equipmentAfter });
+            Check("receiving equipment does not complete its build check",
+                  !Registry.BuildByCard.ContainsKey(equipment.CardId) || !ApGame.State.IsChecked(Registry.BuildByCard[equipment.CardId].Id));
             GameLoad.Instance.AutoSaveGame(false);
             yield return Wait(2f);
 
@@ -217,6 +271,10 @@ namespace CardSurvivalArchipelago
             Check("after reload: received recipe still buildable", gm.BlueprintModelStates[reward] == BlueprintModelState.Available &&
                   !gm.PurchasableBlueprintCards.Contains(reward), Describe(reward));
             int serverCount = ApConnection.Session.Items.AllItemsReceived.Count;
+            Check("after reload: skill, perk and equipment exactly once",
+                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillAfter) && ItemEffects.ActivePerks == perksBefore + 1 &&
+                  CountCards(gm, equipmentCard) == equipmentAfter,
+                  new { skill = gm.StatsDict[skillStat].CurrentBaseValue, perks = ItemEffects.ActivePerks, equipment = CountCards(gm, equipmentCard) });
             Check("after reload: ledger matches the server, nothing doubled", ApGame.State.Received.Count == serverCount &&
                   ApGame.AppliedNow == serverCount, new { ledger = ApGame.State.Received.Count, server = serverCount, ApGame.AppliedNow });
 
@@ -231,6 +289,11 @@ namespace CardSurvivalArchipelago
             Check("after checkpoint: research already done is not offered again",
                   !gm.PurchasableBlueprintCards.Contains(reward) && gm.BlueprintModelStates[reward] == BlueprintModelState.Available,
                   Describe(reward));
+            yield return Wait(2f);
+            Check("after checkpoint: items received since then come back exactly once",
+                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillAfter) && ItemEffects.ActivePerks == perksBefore + 1 &&
+                  CountCards(gm, equipmentCard) == equipmentAfter,
+                  new { skill = gm.StatsDict[skillStat].CurrentBaseValue, perks = ItemEffects.ActivePerks, equipment = CountCards(gm, equipmentCard) });
             Check("after checkpoint: applied counter restored", ApGame.AppliedNow == ApGame.State.Received.Count,
                   new { ApGame.AppliedNow, received = ApGame.State.Received.Count });
 

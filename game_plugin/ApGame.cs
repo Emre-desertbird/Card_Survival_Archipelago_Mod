@@ -131,8 +131,11 @@ namespace CardSurvivalArchipelago
             }
             if (InGame)
             {
+                GameManager gm = MBSingleton<GameManager>.Instance;
+                ItemEffects.ApplyPermanent(gm, State.Received);
                 ApplyNewItems();
                 BlueprintRando.Reconcile(false);
+                Checks.Update(gm);
             }
         }
 
@@ -199,9 +202,5 @@ namespace CardSurvivalArchipelago
             get { return State == null ? 0 : State.Checked.Count; }
         }
 
-        public static IEnumerable<long> ReceivedBlueprintCards()
-        {
-            return State == null ? Enumerable.Empty<long>() : State.Received;
-        }
     }
 }

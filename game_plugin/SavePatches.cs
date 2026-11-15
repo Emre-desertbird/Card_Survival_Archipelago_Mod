@@ -14,6 +14,7 @@ namespace CardSurvivalArchipelago
         {
             ApGame.OnNewGame(_Index);
             BlueprintRando.Reset();
+            Checks.Reset();
             if (ApGame.Active) _SafeMode = true;
         }
     }
@@ -25,6 +26,7 @@ namespace CardSurvivalArchipelago
         {
             ApGame.OnLoadGame(_Index);
             BlueprintRando.Reset();
+            Checks.Reset();
         }
     }
 

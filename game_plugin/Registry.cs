@@ -17,7 +17,12 @@ namespace CardSurvivalArchipelago
             public string Name;
             public string Key;        // the game's object name, e.g. "Bp_Kiln"
             public string CardId;     // the game's UniqueID of the card
-            public string Kind;       // item kind: "blueprint" or "filler"
+            public string Kind;       // item: blueprint, skill, perk, filler; location: research, build, visit
+            public string StatId;     // skill items: the GameStat to raise
+            public float Amount;      // skill items: by how much
+            public string PerkId;     // perk items: the CharacterPerk
+            public List<string> Equipment = new List<string>();   // blueprint items: finished copies to hand out once
+            public bool Challenge;    // locations: long check, excluded from important items by default
         }
 
         public static int Version { get; private set; }
@@ -27,6 +32,10 @@ namespace CardSurvivalArchipelago
         public static readonly Dictionary<long, Entry> Locations = new Dictionary<long, Entry>();
         /// <summary>Blueprint card UniqueID -> its research location.</summary>
         public static readonly Dictionary<string, Entry> ResearchByCard = new Dictionary<string, Entry>();
+        /// <summary>Blueprint card UniqueID -> its "build for the first time" location.</summary>
+        public static readonly Dictionary<string, Entry> BuildByCard = new Dictionary<string, Entry>();
+        /// <summary>Environment card UniqueID -> its "visit" location.</summary>
+        public static readonly Dictionary<string, Entry> VisitByCard = new Dictionary<string, Entry>();
         /// <summary>Blueprint card UniqueID -> the item that unlocks its recipe.</summary>
         public static readonly Dictionary<string, Entry> BlueprintItemByCard = new Dictionary<string, Entry>();
         /// <summary>Filler item id -> list of (card UniqueID, count) it hands out.</summary>
@@ -49,7 +58,13 @@ namespace CardSurvivalArchipelago
                 {
                     Id = (long)raw["ap_id"], Name = (string)raw["name"], Key = (string)raw["key"],
                     CardId = (string)raw["unique_id"], Kind = (string)raw["kind"] ?? "blueprint",
+                    StatId = (string)raw["stat_id"], Amount = (float?)raw["amount"] ?? 0f, PerkId = (string)raw["perk_id"],
                 };
+                JArray equipment = raw["equipment"] as JArray;
+                if (equipment != null)
+                {
+                    foreach (JObject card in equipment) entry.Equipment.Add((string)card["unique_id"]);
+                }
                 Items[entry.Id] = entry;
                 if (entry.Kind == "blueprint" && entry.CardId != null)
                 {
@@ -71,10 +86,13 @@ namespace CardSurvivalArchipelago
                 var entry = new Entry
                 {
                     Id = (long)raw["ap_id"], Name = (string)raw["name"], Key = (string)raw["key"],
-                    CardId = (string)raw["unique_id"],
+                    CardId = (string)raw["unique_id"], Kind = (string)raw["kind"] ?? "research",
+                    Challenge = (bool?)raw["challenge"] ?? false,
                 };
                 Locations[entry.Id] = entry;
-                ResearchByCard[entry.CardId] = entry;
+                if (entry.Kind == "research") ResearchByCard[entry.CardId] = entry;
+                else if (entry.Kind == "build") BuildByCard[entry.CardId] = entry;
+                else if (entry.Kind == "visit") VisitByCard[entry.CardId] = entry;
             }
             Error = null;
             return true;
