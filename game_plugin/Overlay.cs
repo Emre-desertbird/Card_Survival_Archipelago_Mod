@@ -79,7 +79,7 @@ namespace CardSurvivalArchipelago
 
         private void DrawPanel()
         {
-            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 280 : 215);
+            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 320 : 215);
             GUILayout.BeginArea(area, "Archipelago", GUI.skin.window);
             if (Registry.Error != null)
             {
@@ -119,7 +119,15 @@ namespace CardSurvivalArchipelago
                 {
                     GUILayout.Label("New games start as " + CharacterLock.CharacterName + ", the Archipelago character.", small);
                 }
-                else if (ApGame.Active && ApGame.State.LocationKinds.Contains("logbook") &&
+                if (ApGame.Active)
+                {
+                    string perks = string.Join(", ", Registry.Items.Values.Where(entry => entry.Kind == "newperk")
+                        .GroupBy(entry => entry.Key).Select(group => group.First())
+                        .Where(entry => NewPerks.Level(entry.Key) > 0)
+                        .Select(entry => entry.Name.Replace("Progressive ", "") + " " + NewPerks.Level(entry.Key)).ToArray());
+                    if (perks.Length > 0) GUILayout.Label("New perks: " + perks, small);
+                }
+                if (ApGame.Active && ApGame.State.LocationKinds.Contains("logbook") &&
                          GUILayout.Button(logbookOpen ? "Hide logbook" : "Logbook"))
                 {
                     logbookOpen = !logbookOpen;
@@ -153,7 +161,7 @@ namespace CardSurvivalArchipelago
         private void DrawBuffer()
         {
             int count = Finds.Buffer.Count;
-            var area = new Rect(10, 290, 360, Mathf.Min(90 + 24 * count, Screen.height * 0.5f));
+            var area = new Rect(10, 360, 360, Mathf.Min(90 + 24 * count, Screen.height * 0.45f));
             GUILayout.BeginArea(area, "Finds buffer (" + count + ")", GUI.skin.window);
             if (count == 0)
             {

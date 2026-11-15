@@ -1,6 +1,22 @@
 # Plan: neue Checks, Logbuch, neue Perks, Items und Balance
 
-Status: **Vorschlag, noch nicht gebaut** (Version 3).
+Status: **Phasen A bis C sind gebaut** (Mod-Version 0.6.0, je Phase im echten Spiel getestet).
+Phase D (Ausbau-Set, Stauraum, Extras, Fallen) ist noch offen.
+
+Abweichungen beim Bau, jeweils aus den Daten begründet:
+
+- Logbuch: **44 Aufgaben** statt 40. Der Säuresee ist ein eigenes Erkundungsziel im Spiel,
+  und „Bote“ hat drei Stufen (50/100/200). Summe 5.300 Determination, mindestens 4.000 auch
+  ohne die optionalen Check-Arten.
+- Logbuch „Vorrat“ (trocknen) heißt jetzt „Smokehouse“ (räuchern): Getrocknetes Fleisch ist
+  ein Fundstück und hätte die Aufgabe sonst von selbst erledigt.
+- Pantry Keeper (Vorratshalter) wirkt auf **alles**, was verdirbt, nicht nur im Lager. Das
+  Spiel unterscheidet „eigenes Lager“ nicht sauber.
+- Die Charaktersperre lenkt den Start auf Normal Guy um. Er steht nicht in der
+  Charakterliste des Spiels, er ist nur die Vorlage für eigene Charaktere.
+- Item-Namen sind englisch wie alle Archipelago-Namen: Pack Mule (Lastenträger), Nimble
+  Hands (Geschickte Hände), Pathfinder (Pfadfinder), Careful Hands (Sorgsam), Inquisitive
+  Mind (Forschergeist), Pantry Keeper (Vorratshalter).
 
 - Zahlen und Kartennamen stammen aus dem Daten-Dump (`.local/dump`), dem dekompilierten
   Code und `tools/card_graph.py`.

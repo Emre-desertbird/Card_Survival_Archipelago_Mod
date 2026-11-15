@@ -170,6 +170,7 @@ namespace CardSurvivalArchipelago
                 BlueprintRando.Reconcile(false);
                 Checks.Update(gm);
                 Checks.ScanCards(gm);
+                NewPerks.Update(gm);
             }
         }
 

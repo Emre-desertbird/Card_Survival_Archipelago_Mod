@@ -42,7 +42,7 @@ python tools/run_selftest.py ... --game-dir "C:\ProgramData\Archipelago\Card Sur
 It generates a solo seed, hosts it on a local Archipelago server, and starts the game with
 `CSAP_SELFTEST`. The plugin then plays a scripted session and writes a report. Saves go to
 `...(Archipelago Test)`; the tool checksums the normal saves before and after and stops if
-they changed. 56 steps at the moment (the test seed switches all optional checks and the logbook on):
+they changed. 64 steps at the moment (the test seed switches every option on):
 
 - connect, scout all locations, bind a new save, the character lock starts Normal Guy
   (the test picks another character), Safe Mode on, starting area check;
@@ -57,6 +57,9 @@ they changed. 56 steps at the moment (the test seed switches all optional checks
   check; "three different crops" needs the third crop;
 - logbook: a card task, an action task (needs both actions), a task counting sent checks;
   Determination given once, the journal's reward for the same thing skipped;
+- all ten new perk levels arrive through real checks; each effect is measured (carried
+  weight x0.7, 30 min travel -> 15, 15 stays 15, 45 min building -> 30, tool wear -30 %,
+  research ticks -30 %, spoilage x0.85); levels are kept after reload;
 - 14 finds at once: 10 land on the ground (a liquid one as a filled coconut shell), the
   rest waits in the buffer; taking one from the buffer works;
 - after reloading: the game finishes loading (events the game shows on load, such as a

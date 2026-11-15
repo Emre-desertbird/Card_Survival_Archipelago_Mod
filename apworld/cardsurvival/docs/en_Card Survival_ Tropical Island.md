@@ -11,7 +11,9 @@ You survive on the island as usual, but your **knowledge** is shuffled.
   checks too.
 - Optional checks: the first catch of each fish, the first carcass of each animal, each
   cooking pot dish, and a few farming milestones.
-- Other items: progressive skills (+25 each) and helpful perks of the base game.
+- Other items: progressive skills (+25 each) and helpful perks of the base game. With
+  `new_perks`, also perks the game does not have, in small steps: carry more, build and
+  travel faster, tools wear slower, research faster, food spoils slower.
   Equipment blueprints also come with one finished copy.
 - Filler items are **finds**: long-lasting food, drinks, cooking ingredients or common
   materials that appear on the ground where you are (at most 10 per in-game hour; the rest
@@ -48,5 +50,5 @@ only finds unless you turn off `exclude_challenge_checks`.
 
 ## Item and location groups
 
-Items: `Blueprints`, `Skills`, `Perks`, `Finds`. Locations: `Research`, `Build`, `Visit`,
+Items: `Blueprints`, `Skills`, `Perks`, `New Perks`, `Finds`. Locations: `Research`, `Build`, `Visit`,
 `Fishing`, `Hunting`, `Cooking`, `Farming`, `Logbook`.

@@ -73,6 +73,7 @@ by default they only hold filler (`exclude_challenge_checks`, on by default).
 | Blueprint: X | 194 | Recipe X, permanently. 53 equipment blueprints also give one finished copy. |
 | Progressive Skill | 66 (22 skills × 3) | +25 on that skill (3 × 25 = the game's own skill perk). Insight is excluded. |
 | Perk: X | 11 | A helpful vanilla perk with passive bonuses only (e.g. Slow Metabolism). |
+| New perks (option `new_perks`) | 10 | Perks the game does not have, in small steps: Progressive Pack Mule (carried weight -10 % per level, 3), Nimble Hands (building -33 %), Pathfinder (travel -33 %), Progressive Careful Hands (tool wear -15 % per level, 2), Progressive Inquisitive Mind (research -15 % per level, 2), Pantry Keeper (spoilage -15 %). Times are whole 15-minute ticks: rounded, never under one tick. |
 | Find: X | the rest (180 to 223) | Filler: long-lasting food, drinks, cooking ingredients or common materials, left on the ground where you are (see below). |
 
 **Finds** come in five categories with fixed shares of the filler pool: material 35 %,
@@ -119,7 +120,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.5.0)
+## Current state (version 0.6.0)
 
 | Part | State |
 | --- | --- |
@@ -132,10 +133,11 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 | Skills, perks, equipment copies | Work, tested including reload and checkpoint. |
 | Finds, hourly limit, buffer | Work, tested in the real game: ground row, filled coconut shells, buffer across reload and checkpoint. |
 | Fishing, hunting, cooking, farming checks | Work, tested in the real game (first-time and counting checks). |
+| New perks | Work, tested in the real game: each effect measured, levels kept after reload. |
 | Character lock, logbook | Work, tested in the real game: Normal Guy start, card, action and check-counting tasks, Determination exactly once across reload and checkpoint, journal rewards skipped. The logbook is shown in the F8 panel, not yet in the game's journal book. |
 | Ending detection, goal, checkpoint after victory | Work, tested. |
 | Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
-| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 19 unit tests. |
+| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 20 unit tests. |
 | Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
 | Release | `tools/package.py` builds `cardsurvival.apworld` and a release zip. |
 
@@ -145,10 +147,11 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 2. **First playable (research).** Done.
 3. **Real logic from data.** Done (see logic.md for what is approximated).
 4. **More checks.** Build and visit: done. Fishing, hunting, cooking, farming: done (0.4.0,
-   optional). Archipelago logbook and character lock: done (0.5.0). Next: new perks
+   optional). Archipelago logbook and character lock: done (0.5.0)
    ([plan_erweiterung.md](plan_erweiterung.md)).
-5. **More items.** Skills, perks, equipment copies, supplies: done. Next, optional:
-   hybrid skill caps, new custom perks (less tool wear, faster crafting).
+5. **More items.** Skills, perks, equipment copies: done. Finds (0.4.0) and new perks
+   (0.6.0, optional): done. Next, optional: upgrade kit and storage extension for huts,
+   extras (achievements, survival days, animals) and mild traps (plan_erweiterung.md, phase D).
 6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a
    multiworld seed, then balancing (skill step size, supplies, challenge thresholds).
 

@@ -145,6 +145,17 @@ objectives (`Objective.OnComplete` for journal objectives), so Determination nev
 `CharacterLock` sets `GameManager.CurrentPlayerCharacter` to the Archipelago character
 right before `GameLoad.StartNewGame` when the connected seed asks for it.
 
+### New perks: `NewPerks`
+
+A new perk's level is the number of its copies in the received-item ledger (cached), so
+like the game's own perks it is derived anew every session. Each acts through one patch:
+Pack Mule replaces `GameManager.CalculateCarryWeight` with the same routine and a factor
+on the carried sum; Pathfinder and Nimble Hands shorten `CardAction.TotalDaytimeCost` after
+`CollectActionModifiers` (travelling actions, the "Build" action), rounded and never under
+one tick; Careful Hands adds back part of a negative usage change through the action's
+durability changes; Inquisitive Mind scales `GameManager.DaysToTicks` (used for research
+only); Pantry Keeper scales a negative `InGameCardBase.CurrentSpoilageRate`.
+
 ### Finds: `Finds`
 
 A find is a one-time effect like supplies were. When it is applied it lands on the base row

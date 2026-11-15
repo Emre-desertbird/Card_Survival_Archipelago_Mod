@@ -27,6 +27,18 @@ namespace CardSurvivalArchipelago
             typeof(CardData), typeof(InGameCardBase), typeof(bool), typeof(TransferedDurabilities), typeof(bool),
             typeof(SpawningLiquid), typeof(Vector2Int), typeof(bool),
         });
+        private static readonly MethodInfo AddCardFull = AccessTools.GetDeclaredMethods(typeof(GameManager))
+            .First(method => method.Name == "AddCard" && method.GetParameters().Length == 21);
+
+        /// <summary>Puts a card into the player's hand (the item row that counts as carried).</summary>
+        private static IEnumerator SpawnInHand(GameManager gm, CardData card)
+        {
+            yield return gm.StartCoroutine((IEnumerator)AddCardFull.Invoke(gm, new object[]
+            {
+                card, new SlotInfo(SlotsTypes.Item, -2), gm.CurrentEnvironment, null, true, null, null, null, null, null,
+                Vector3.zero, true, SpawningLiquid.DefaultLiquid, false, false, new Vector2Int(gm.CurrentTickInfo.z, 0), null, 0, -1, false, "",
+            }));
+        }
 
         private static void Check(string name, bool ok, object detail = null)
         {
@@ -373,6 +385,54 @@ namespace CardSurvivalArchipelago
                   Mathf.Abs(determinationNow - (determinationStart + determinationGiven)) < 2f,
                   new { determinationStart, determinationGiven, determinationNow });
 
+            // 8d3. New perks (Phase C): receive all of them through real checks, then measure each effect.
+            CardAction[] allActions = GameLoad.Instance.DataBase.AllData.OfType<CardData>()
+                .Where(card => card.DismantleActions != null).SelectMany(card => card.DismantleActions).ToArray();
+            CardAction travelTwo = allActions.FirstOrDefault(action => action.IsTravellingAction && action.UnmodifiedDaytimeCost == 2);
+            CardAction travelOne = allActions.FirstOrDefault(action => action.IsTravellingAction && action.UnmodifiedDaytimeCost == 1);
+            var buildAction = new CardAction(LocalizedString.Build, default(LocalizedString), 3, null, null, null);
+            var toolAction = new CardOnCardAction();
+            toolAction.GivenCardChanges = new CardStateChange { ModType = CardModifications.DurabilityChanges, UsageChange = new Vector2(-2f, -2f) };
+            InGameCardBase food = gm.AllCards.FirstOrDefault(card => card != null && !card.Destroyed && card.CardModel != null &&
+                                                                      card.CardModel.CardType == CardTypes.Item && card.CurrentSpoilageRate < 0f);
+            int researchTicks = GameManager.DaysToTicks(1f);
+            var perkLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) && pair.Value.Player.Slot == ApConnection.Slot &&
+                    Registry.Items.ContainsKey(pair.Value.ItemId) && Registry.Items[pair.Value.ItemId].Kind == "newperk").ToList();
+            int perksAlready = ApGame.State.Received.Count(id => Registry.Items.ContainsKey(id) && Registry.Items[id].Kind == "newperk");
+            Check("seed has every new perk level for this slot", perkLocations.Count + perksAlready == 10,
+                  new { open = perkLocations.Count, received = perksAlready });
+            foreach (var pair in perkLocations) ApGame.CompleteLocation(pair.Key);
+            yield return WaitFor(() => NewPerks.Level("pack_mule") == 3 && NewPerks.Level("pantry_keeper") == 1 &&
+                                       NewPerks.Level("inquisitive_mind") == 2 && NewPerks.Level("careful_hands") == 2, 15f);
+            yield return Wait(1f);
+            CardData stone = GameLoad.Instance.DataBase.AllData.OfType<CardData>().First(card => card.name == "Stone");
+            for (int i = 0; i < 3; i++) yield return SpawnInHand(gm, stone);
+            gm.CalculateCarryWeight();
+            yield return Wait(1f);
+            GraphicsManager graphics = MBSingleton<GraphicsManager>.Instance;
+            float carriedSum = graphics.GetHandCards(false).Concat(graphics.GetEquippedCards(false)).Sum(card => card.CurrentWeight);
+            float carriedStat = gm.InGamePlayerWeight.CurrentValue(gm.NotInBase);
+            Check("Pack Mule 3: carried weight counts 70%", carriedSum > 0f && Mathf.Abs(carriedStat - carriedSum * 0.7f) < 0.5f,
+                  new { carriedSum, carriedStat });
+            travelTwo.CollectActionModifiers(null, null);
+            travelOne.CollectActionModifiers(null, null);
+            Check("Pathfinder: 30 minutes of travel become 15, 15 stay 15",
+                  travelTwo.TotalDaytimeCost == 1 && travelOne.TotalDaytimeCost == 1,
+                  new { two = travelTwo.TotalDaytimeCost, one = travelOne.TotalDaytimeCost });
+            buildAction.CollectActionModifiers(null, null);
+            Check("Nimble Hands: a 45-minute building step takes 30", buildAction.TotalDaytimeCost == 2, buildAction.TotalDaytimeCost);
+            toolAction.CollectActionModifiers(null, null);
+            Check("Careful Hands 2: tools wear 30% slower", Mathf.Abs(toolAction.GivenDurabilityChanges.Usage.FloatValue - 0.6f) < 0.01f,
+                  toolAction.GivenDurabilityChanges.Usage.FloatValue);
+            Check("Inquisitive Mind 2: research takes 30% fewer ticks",
+                  GameManager.DaysToTicks(1f) == Mathf.CeilToInt(researchTicks * 0.7f), new { before = researchTicks, now = GameManager.DaysToTicks(1f) });
+            float spoilWith = food != null ? food.CurrentSpoilageRate : 0f;
+            NewPerks.Suspended = true;
+            float spoilWithout = food != null ? food.CurrentSpoilageRate : 0f;
+            NewPerks.Suspended = false;
+            Check("Pantry Keeper: food spoils 15% slower", food != null && Mathf.Abs(spoilWith - spoilWithout * 0.85f) < 0.0001f,
+                  new { card = food != null ? food.CardModel.name : null, spoilWith, spoilWithout });
+
             // 8e. Finds: they land on the ground; beyond 10 per in-game hour they wait in the buffer.
             var findLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) &&
                     pair.Value.Player.Slot == ApConnection.Slot && Registry.Items.ContainsKey(pair.Value.ItemId) &&
@@ -430,6 +490,8 @@ namespace CardSurvivalArchipelago
 
             Check("after reload: the finds buffer is as saved", Finds.Buffer.Count == bufferBeforeSave,
                   new { now = Finds.Buffer.Count, saved = bufferBeforeSave });
+            Check("after reload: new perk levels are kept", NewPerks.Level("pack_mule") == 3 && NewPerks.Level("pathfinder") == 1 &&
+                  NewPerks.Level("careful_hands") == 2, new { packMule = NewPerks.Level("pack_mule") });
             Check("after reload: logbook Determination exactly once",
                   Mathf.Abs(gm.StatsDict[determination].CurrentBaseValue - determinationSaved) < 2f,
                   new { now = gm.StatsDict[determination].CurrentBaseValue, determinationSaved });

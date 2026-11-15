@@ -39,6 +39,23 @@ ist ein Check und gibt Determination wie das normale Journal, dessen Belohnungen
 ersetzt. Zusammen reicht das für das Home-Ending. Du öffnest das Logbuch mit F8 →
 „Logbook“.
 
+## Neue Perks (Option `new_perks`)
+
+Perks, die es im Spiel nicht gibt, in kleinen Stufen:
+
+| Perk | Wirkung |
+| --- | --- |
+| Progressive Pack Mule (3 Stufen) | Getragenes Gewicht zählt je Stufe 10 % weniger. |
+| Nimble Hands | Bauen von Blueprints 33 % schneller. |
+| Pathfinder | Reisen 33 % schneller. |
+| Progressive Careful Hands (2 Stufen) | Werkzeuge nutzen sich je Stufe 15 % langsamer ab. |
+| Progressive Inquisitive Mind (2 Stufen) | Forschung je Stufe 15 % schneller. |
+| Pantry Keeper | Essen und Getränke verderben 15 % langsamer. |
+
+Zeiten rechnet das Spiel in 15-Minuten-Schritten. Deshalb wird gerundet, und nichts wird
+kürzer als 15 Minuten: Eine 15-Minuten-Reise bleibt 15 Minuten. Das F8-Fenster zeigt die
+aktiven neuen Perks.
+
 ## Ziel
 
 Jedes echte Ende zählt: Rettung auf See, „Accept your new Life“, das Weston-Ende oder die
@@ -83,6 +100,7 @@ Randomizer-Spielstände liegen im eigenen Ordner
      farming_checks: true
      finds_amount: normal      # less / normal / more
      logbook: true             # optional, Standard: aus
+     new_perks: true           # optional, Standard: aus
    ```
 
    Der Spielname enthält einen Doppelpunkt und muss deshalb in Anführungszeichen stehen.

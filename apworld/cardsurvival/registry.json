@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 7,
+ "registry_version": 8,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -2462,6 +2462,60 @@
    "quantity": 1,
    "kind": "perk",
    "perk_id": "10b251206358f384a9753e89990abd63",
+   "classification": "useful"
+  },
+  {
+   "key": "pack_mule",
+   "name": "Progressive Pack Mule",
+   "ap_id": 1694425000,
+   "quantity": 3,
+   "kind": "newperk",
+   "effect": "carried weight counts 10% less per level",
+   "classification": "useful"
+  },
+  {
+   "key": "nimble_hands",
+   "name": "Nimble Hands",
+   "ap_id": 1694425001,
+   "quantity": 1,
+   "kind": "newperk",
+   "effect": "building blueprints takes 33% less time, never under 15 minutes",
+   "classification": "useful"
+  },
+  {
+   "key": "pathfinder",
+   "name": "Pathfinder",
+   "ap_id": 1694425002,
+   "quantity": 1,
+   "kind": "newperk",
+   "effect": "travelling takes 33% less time, never under 15 minutes",
+   "classification": "useful"
+  },
+  {
+   "key": "careful_hands",
+   "name": "Progressive Careful Hands",
+   "ap_id": 1694425003,
+   "quantity": 2,
+   "kind": "newperk",
+   "effect": "tools wear 15% slower per level",
+   "classification": "useful"
+  },
+  {
+   "key": "inquisitive_mind",
+   "name": "Progressive Inquisitive Mind",
+   "ap_id": 1694425004,
+   "quantity": 2,
+   "kind": "newperk",
+   "effect": "research is 15% faster per level",
+   "classification": "useful"
+  },
+  {
+   "key": "pantry_keeper",
+   "name": "Pantry Keeper",
+   "ap_id": 1694425005,
+   "quantity": 1,
+   "kind": "newperk",
+   "effect": "food and drinks spoil 15% slower",
    "classification": "useful"
   },
   {

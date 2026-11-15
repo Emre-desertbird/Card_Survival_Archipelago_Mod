@@ -57,7 +57,14 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(len({entry["ap_id"] for entry in DATA["items"]}), len(DATA["items"]))
         self.assertLessEqual({entry["kind"] for entry in DATA["locations"]},
                              {"research", "build", "visit", "fish", "hunt", "cook", "farm", "logbook"})
-        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "find"})
+        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "newperk", "find"})
+
+    def test_new_perks_are_small_and_never_logic(self):
+        perks = [entry for entry in DATA["items"] if entry["kind"] == "newperk"]
+        self.assertEqual(sum(entry["quantity"] for entry in perks), 10)
+        for entry in perks:
+            self.assertEqual(entry["classification"], "useful", entry["name"])
+            self.assertLessEqual(entry["quantity"], 3, entry["name"])
 
     def test_first_time_checks_watch_cards(self):
         watched = set()

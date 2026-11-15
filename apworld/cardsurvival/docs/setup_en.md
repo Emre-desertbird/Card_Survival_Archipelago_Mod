@@ -40,6 +40,8 @@ game: "Card Survival: Tropical Island"
   # New games start as Normal Guy (on by default); the logbook needs it.
   character_lock: true
   logbook: true
+  # Perks the base game does not have (off by default).
+  new_perks: true
 ```
 
 The game name contains a colon, so it must be in quotes.

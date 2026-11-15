@@ -35,13 +35,14 @@ class CardSurvivalWebWorld(WebWorld):
     )]
 
 
-GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "find": "Finds"}
+GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "newperk": "New Perks", "find": "Finds"}
 LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit", "fish": "Fishing",
                    "hunt": "Hunting", "cook": "Cooking", "farm": "Farming", "logbook": "Logbook"}
 # Optional location kinds and the option that turns each on.
 OPTIONAL_KINDS = {"fish": "fishing_checks", "hunt": "hunting_checks", "cook": "cooking_checks",
                   "farm": "farming_checks"}
-PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "character_lock", "logbook", *OPTIONAL_KINDS.values()]
+PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "character_lock", "logbook", "new_perks",
+               *OPTIONAL_KINDS.values()]
 
 
 class CardSurvivalWorld(World):
@@ -108,7 +109,8 @@ class CardSurvivalWorld(World):
             island.locations.append(location)
 
     def create_items(self) -> None:
-        pool = [self.create_item(entry["name"]) for entry in DATA["items"] for _ in range(entry["quantity"])]
+        pool = [self.create_item(entry["name"]) for entry in DATA["items"] for _ in range(entry["quantity"])
+                if entry["kind"] != "newperk" or self.options.new_perks]
         pool += [self.create_filler() for _ in range(len(self.included_locations()) - len(pool))]
         self.multiworld.itempool.extend(pool)
 
@@ -138,5 +140,6 @@ class CardSurvivalWorld(World):
             "finds_amount": int(self.options.finds_amount),
             "location_kinds": self.enabled_kinds(),
             "character_lock": bool(self.options.character_lock),
+            "new_perks": bool(self.options.new_perks),
             **{option: int(getattr(self.options, option)) for option in OPTIONAL_KINDS.values()},
         }

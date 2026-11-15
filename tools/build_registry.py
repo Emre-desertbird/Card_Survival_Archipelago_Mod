@@ -132,6 +132,16 @@ LOGBOOK = [
     ("Departure", "Set Sail", 500, ("objective", "Obj6_MakeRaft")),
 ]
 BASE_KINDS = ["research", "build", "visit"]
+# New perks that the base game does not have (option new_perks, off by default). Small steps,
+# so the game stays a survival game (docs/plan_erweiterung.md, 3). (key, name, levels, what one level does)
+NEW_PERKS = [
+    ("pack_mule", "Progressive Pack Mule", 3, "carried weight counts 10% less per level"),
+    ("nimble_hands", "Nimble Hands", 1, "building blueprints takes 33% less time, never under 15 minutes"),
+    ("pathfinder", "Pathfinder", 1, "travelling takes 33% less time, never under 15 minutes"),
+    ("careful_hands", "Progressive Careful Hands", 2, "tools wear 15% slower per level"),
+    ("inquisitive_mind", "Progressive Inquisitive Mind", 2, "research is 15% faster per level"),
+    ("pantry_keeper", "Pantry Keeper", 1, "food and drinks spoil 15% slower"),
+]
 CROP_TAG, CROP_EXCLUDED = "tag_Crop", {"CropPlotEmpty", "CropPlotRuined", "MushroomBedEmpty"}
 EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprints
 # The ending the logic guarantees. Every ending wins in the game; this one is fully modelled by
@@ -504,6 +514,10 @@ def main() -> None:
         items.append({"key": perk["$name"], "name": f"Perk: {text(perk.get('PerkName')) or perk['$name']}",
                       "ap_id": ITEM_BASE + 4000 + index, "quantity": 1, "kind": "perk",
                       "perk_id": perk["UniqueID"], "classification": "useful"})
+    for index, (key, perk_name, levels, effect) in enumerate(NEW_PERKS):
+        items.append({"key": key, "name": perk_name, "ap_id": ITEM_BASE + 5000 + index, "quantity": levels,
+                      "kind": "newperk", "effect": effect, "classification": "useful"})
+
     # A find must never complete a "first time" check by itself.
     watched_cards = {card for _, _, _, names, _ in watched for card in names} | logbook_cards
     for category, find_name, offset, contents in FINDS:
@@ -525,7 +539,7 @@ def main() -> None:
                       "ap_id": ITEM_BASE + offset, "quantity": 0, "kind": "find", "category": category,
                       "classification": "filler", "contents": parts})
 
-    registry = {"game_name": GAME, "registry_version": 7, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 8, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
                 "archipelago_character": {"name": ARCHIPELAGO_CHARACTER, "unique_id": next(
                     character["UniqueID"] for character in load("PlayerCharacter") if character["$name"] == ARCHIPELAGO_CHARACTER)},

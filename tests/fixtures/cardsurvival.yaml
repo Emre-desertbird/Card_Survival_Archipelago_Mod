@@ -6,3 +6,4 @@ game: "Card Survival: Tropical Island"
   cooking_checks: true
   farming_checks: true
   logbook: true
+  new_perks: true

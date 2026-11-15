@@ -46,6 +46,14 @@ class Logbook(Toggle):
     display_name = "Logbook"
 
 
+class NewPerks(Toggle):
+    """New perks the base game does not have, as useful items: Progressive Pack Mule (carry
+    more, 3 levels), Nimble Hands (faster building), Pathfinder (faster travel), Progressive
+    Careful Hands (tools wear slower, 2 levels), Progressive Inquisitive Mind (faster research,
+    2 levels), Pantry Keeper (food spoils slower). The logic never needs them."""
+    display_name = "New Perks"
+
+
 class FindsAmount(Choice):
     """How generous the finds (filler) are. Finds are long-lasting food, drinks, cooking ingredients
     and common materials left on the ground where you are.
@@ -67,3 +75,4 @@ class CardSurvivalOptions(PerGameCommonOptions):
     finds_amount: FindsAmount
     character_lock: CharacterLock
     logbook: Logbook
+    new_perks: NewPerks
