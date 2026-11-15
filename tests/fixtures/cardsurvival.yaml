@@ -1,0 +1,5 @@
+name: CardSurvival_Test
+game: "Card Survival: Tropical Island"
+"Card Survival: Tropical Island":
+  # Share deaths with the room. Off by default.
+  death_link: false
