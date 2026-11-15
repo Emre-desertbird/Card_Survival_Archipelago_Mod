@@ -26,6 +26,19 @@ Immer verfügbar sind die neun Start-Blueprints (Steinaxt, Lagerfeuer …) und d
 **Grundversorgung**: Shelter, Leaf Bed, Torch, Clay Bowl, Splint und Ash Dressing. Diese
 sechs erforschst du wie im normalen Spiel, und dabei schicken sie zusätzlich ihren Check.
 
+## Charakter und Logbuch
+
+Archipelago-Spiele starten immer als **Normal Guy**: keine Perks, keine Startausrüstung,
+Start am Strand. Die Logik ist auf ihn zugeschnitten. Wählst du im Menü einen anderen
+Charakter, startet das Spiel trotzdem als Normal Guy; das Archipelago-Fenster sagt das an.
+(Abschaltbar mit `character_lock: false`.)
+
+Mit `logbook: true` bekommt Normal Guy das **Archipelago-Logbuch**: 44 Aufgaben in sechs
+Kapiteln (Gestrandet, Überleben, Die Insel, Handwerk, Multiworld, Aufbruch). Jede Aufgabe
+ist ein Check und gibt Determination wie das normale Journal, dessen Belohnungen sie
+ersetzt. Zusammen reicht das für das Home-Ending. Du öffnest das Logbuch mit F8 →
+„Logbook“.
+
 ## Ziel
 
 Jedes echte Ende zählt: Rettung auf See, „Accept your new Life“, das Weston-Ende oder die
@@ -69,6 +82,7 @@ Randomizer-Spielstände liegen im eigenen Ordner
      cooking_checks: true
      farming_checks: true
      finds_amount: normal      # less / normal / more
+     logbook: true             # optional, Standard: aus
    ```
 
    Der Spielname enthält einen Doppelpunkt und muss deshalb in Anführungszeichen stehen.

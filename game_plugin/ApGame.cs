@@ -17,6 +17,9 @@ namespace CardSurvivalArchipelago
         /// <summary>Received items whose one-time effect is already in the running game.</summary>
         public static int AppliedNow;
 
+        /// <summary>Logbook rewards whose Determination is already in the running game.</summary>
+        public static int RewardsNow;
+
         private static bool syncedThisSession;
 
         public static bool Active
@@ -59,6 +62,7 @@ namespace CardSurvivalArchipelago
             ReadSeedOptions();
             State.Write();
             AppliedNow = 0;
+            RewardsNow = 0;
             Finds.Reset();
             syncedThisSession = false;
             Messages.Add("New Archipelago game for " + State.SlotName + " (seed " + State.SeedName + ").");
@@ -69,6 +73,7 @@ namespace CardSurvivalArchipelago
         {
             State = SlotState.Load(index);
             AppliedNow = State != null ? State.AppliedMain : 0;
+            RewardsNow = State != null ? State.RewardsMain : 0;
             Finds.OnLoad(State != null ? State.BufferMain : null);
             syncedThisSession = false;
             if (State != null && ApConnection.IsConnected && !MatchesConnection())
@@ -84,6 +89,7 @@ namespace CardSurvivalArchipelago
             if (State == null) return;
             State.AppliedMain = State.AppliedCheckpoint;   // mirrors MainData = CheckpointData.Copy()
             State.BufferMain = new List<int>(State.BufferCheckpoint);
+            State.RewardsMain = State.RewardsCheckpoint;
             State.Write();
         }
 
@@ -92,8 +98,10 @@ namespace CardSurvivalArchipelago
             if (State == null) return;
             State.AppliedMain = AppliedNow;
             State.BufferMain = new List<int>(Finds.Buffer);
+            State.RewardsMain = RewardsNow;
             if (checkpoint)
             {
+                State.RewardsCheckpoint = RewardsNow;
                 State.AppliedCheckpoint = AppliedNow;
                 State.BufferCheckpoint = new List<int>(Finds.Buffer);
             }
@@ -121,6 +129,7 @@ namespace CardSurvivalArchipelago
                 State.LocationKinds = kinds.Select(kind => (string)kind).ToList();
             }
             if (data.TryGetValue("finds_amount", out value)) State.FindsAmount = System.Convert.ToInt32(value);
+            if (data.TryGetValue("character_lock", out value)) State.CharacterLock = System.Convert.ToBoolean(value);
         }
 
         public static bool MatchesConnection()
@@ -157,6 +166,7 @@ namespace CardSurvivalArchipelago
                 GameManager gm = MBSingleton<GameManager>.Instance;
                 ItemEffects.ApplyPermanent(gm, State.Received);
                 ApplyNewItems();
+                ApplyRewards(gm);
                 BlueprintRando.Reconcile(false);
                 Checks.Update(gm);
                 Checks.ScanCards(gm);
@@ -200,15 +210,40 @@ namespace CardSurvivalArchipelago
             }
         }
 
+        /// <summary>Gives the Determination of logbook tasks that is not in the running game yet.</summary>
+        private static void ApplyRewards(GameManager gm)
+        {
+            if (RewardsNow >= State.Rewards.Count) return;
+            GameStat determination = UniqueIDScriptable.GetFromID<GameStat>(Registry.DeterminationStatId);
+            while (RewardsNow < State.Rewards.Count)
+            {
+                Registry.Entry task;
+                if (determination != null && Registry.Locations.TryGetValue(State.Rewards[RewardsNow], out task) && task.Determination > 0f)
+                {
+                    var modifier = new StatModifier { Stat = determination, ValueModifier = new Vector2(task.Determination, task.Determination) };
+                    gm.ApplyStatModifier(modifier, StatModification.Permanent, "Archipelago logbook", null);
+                }
+                RewardsNow++;
+            }
+        }
+
         /// <summary>A check was completed in the game.</summary>
         public static void CompleteLocation(long location)
         {
             if (State == null || !State.AddChecked(location)) return;
             Registry.Entry entry;
-            string name = Registry.Locations.TryGetValue(location, out entry) ? entry.Name : location.ToString();
+            bool known = Registry.Locations.TryGetValue(location, out entry);
+            string name = known ? entry.Name : location.ToString();
             string holds = ApConnection.Describe(location);
+            if (known && entry.Kind == "logbook")
+            {
+                State.Rewards.Add(location);
+                State.Write();
+                Messages.Add("Logbook: " + name.Replace("Logbook - ", "") + " done (+" + entry.Determination + " Determination).");
+            }
             Messages.Add(holds != null ? name + ": found " + holds + "." : name + " completed.");
             ApConnection.SendChecks(new[] { location });
+            Checks.EvaluateWatched();   // logbook tasks that count checks
         }
 
         public static void CompleteGoal()

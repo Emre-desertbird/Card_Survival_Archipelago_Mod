@@ -25,13 +25,14 @@ namespace CardSurvivalArchipelago
     ///   menu and toggled with F8 in a game;
     /// - a status line and the latest messages;
     /// - in the research tab, what each available research holds and for whom;
-    /// - with the panel, the finds buffer: what waits, from whom, and buttons to take it.
+    /// - with the panel, the finds buffer: what waits, from whom, and buttons to take it;
+    /// - the Archipelago logbook: chapters, tasks, progress and Determination.
     /// </summary>
     internal sealed class Overlay : MonoBehaviour
     {
-        private bool panelOpen;
+        private bool panelOpen, logbookOpen;
         private string chat = "";
-        private Vector2 researchScroll, bufferScroll;
+        private Vector2 researchScroll, bufferScroll, logbookScroll;
         private GUIStyle box, small;
 
         private static bool InMainMenu
@@ -54,6 +55,7 @@ namespace CardSurvivalArchipelago
             DrawStatus();
             if (InMainMenu || panelOpen) DrawPanel();
             if (panelOpen && ApGame.Active && ApGame.InGame) DrawBuffer();
+            if (panelOpen && logbookOpen && ApGame.Active && ApGame.State.LocationKinds.Contains("logbook")) DrawLogbook();
             DrawMessages();
             if (BlueprintRando.ResearchViewOpen && ApGame.Active) DrawResearchPreview();
         }
@@ -77,7 +79,7 @@ namespace CardSurvivalArchipelago
 
         private void DrawPanel()
         {
-            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 250 : 215);
+            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 280 : 215);
             GUILayout.BeginArea(area, "Archipelago", GUI.skin.window);
             if (Registry.Error != null)
             {
@@ -113,6 +115,15 @@ namespace CardSurvivalArchipelago
                 }
                 GUILayout.EndHorizontal();
                 GUILayout.Label("Chat and commands, e.g. !hint <item>", small);
+                if (InMainMenu && CharacterLock.Active)
+                {
+                    GUILayout.Label("New games start as " + CharacterLock.CharacterName + ", the Archipelago character.", small);
+                }
+                else if (ApGame.Active && ApGame.State.LocationKinds.Contains("logbook") &&
+                         GUILayout.Button(logbookOpen ? "Hide logbook" : "Logbook"))
+                {
+                    logbookOpen = !logbookOpen;
+                }
             }
             GUILayout.EndArea();
         }
@@ -163,6 +174,35 @@ namespace CardSurvivalArchipelago
                 }
                 GUILayout.EndScrollView();
             }
+            GUILayout.EndArea();
+        }
+
+        private void DrawLogbook()
+        {
+            var area = new Rect(380, 30, 440, Screen.height * 0.6f);
+            int done = Registry.Watched.Count(entry => entry.Kind == "logbook" && Checks.Enabled(entry) && ApGame.State.IsChecked(entry.Id));
+            int total = Registry.Watched.Count(entry => entry.Kind == "logbook" && Checks.Enabled(entry));
+            GUILayout.BeginArea(area, "Archipelago logbook (" + done + "/" + total + ")", GUI.skin.window);
+            logbookScroll = GUILayout.BeginScrollView(logbookScroll);
+            string chapter = null;
+            foreach (Registry.Entry task in Registry.Watched)
+            {
+                if (task.Kind != "logbook" || !Checks.Enabled(task)) continue;
+                if (task.Chapter != chapter)
+                {
+                    chapter = task.Chapter;
+                    GUILayout.Label("<b>" + chapter + "</b>", small);
+                }
+                bool finished = ApGame.State.IsChecked(task.Id);
+                string progress = "";
+                if (!finished && task.Watch.Count == 1 && task.Watch[0].Count > 1)
+                {
+                    progress = "  " + Mathf.Min(Checks.Progress(task.Watch[0]), task.Watch[0].Count) + "/" + task.Watch[0].Count;
+                }
+                GUILayout.Label((finished ? "[x] " : "[  ] ") + task.Name.Replace("Logbook - ", "") + progress +
+                                "  (+" + task.Determination + " Determination)", small);
+            }
+            GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace CardSurvivalArchipelago
@@ -26,6 +27,9 @@ namespace CardSurvivalArchipelago
             public string Category;   // find items: material, ingredient, provision, drink, treat, keepsake
             public List<FindPart> Contents = new List<FindPart>();   // find items: what lands on the ground
             public List<WatchPart> Watch = new List<WatchPart>();    // "first time" locations: all parts must hold
+            public string Chapter;       // logbook tasks
+            public float Determination;  // logbook tasks: Determination given once
+            public List<string> RequiresKinds = new List<string>();  // logbook tasks counting checks of a kind
         }
 
         /// <summary>One card of a find: <see cref="Count"/> copies, or a container filled with a liquid.</summary>
@@ -38,14 +42,23 @@ namespace CardSurvivalArchipelago
             public string LiquidName;
         }
 
-        /// <summary>A condition of a "first time" location: at least Count of these cards were ever seen.</summary>
+        /// <summary>
+        /// A condition of a watched location, one of: at least Count of these cards were ever seen;
+        /// one of these actions ("card id|action name") was performed; Count checks of these kinds
+        /// were sent (no kinds: every kind except the logbook).
+        /// </summary>
         public sealed class WatchPart
         {
             public HashSet<string> Cards = new HashSet<string>();
+            public HashSet<string> Actions = new HashSet<string>();
+            public List<string> CheckKinds;
             public int Count = 1;
         }
 
         public static int Version { get; private set; }
+        /// <summary>The Archipelago character (PlayerCharacter UniqueID) and the Determination stat.</summary>
+        public static string CharacterId { get; private set; }
+        public static string DeterminationStatId { get; private set; }
         public static string Error { get; private set; }
 
         public static readonly Dictionary<long, Entry> Items = new Dictionary<long, Entry>();
@@ -62,6 +75,8 @@ namespace CardSurvivalArchipelago
         public static readonly List<Entry> Watched = new List<Entry>();
         /// <summary>Every card UniqueID some "first time" check waits for.</summary>
         public static readonly HashSet<string> WatchedCards = new HashSet<string>();
+        /// <summary>Every "card id|action name" some logbook task waits for.</summary>
+        public static readonly HashSet<string> WatchedActions = new HashSet<string>();
 
         public static bool Load(string folder)
         {
@@ -73,6 +88,8 @@ namespace CardSurvivalArchipelago
             }
             JObject data = JObject.Parse(File.ReadAllText(path));
             Version = (int)data["registry_version"];
+            CharacterId = (string)data["archipelago_character"]?["unique_id"];
+            DeterminationStatId = (string)data["determination_stat"];
             foreach (JObject raw in data["items"])
             {
                 var entry = new Entry
@@ -112,7 +129,10 @@ namespace CardSurvivalArchipelago
                     Id = (long)raw["ap_id"], Name = (string)raw["name"], Key = (string)raw["key"],
                     CardId = (string)raw["unique_id"], Kind = (string)raw["kind"] ?? "research",
                     Challenge = (bool?)raw["challenge"] ?? false,
+                    Chapter = (string)raw["chapter"], Determination = (float?)raw["determination"] ?? 0f,
                 };
+                JArray requires = raw["requires_kinds"] as JArray;
+                if (requires != null) foreach (JToken kind in requires) entry.RequiresKinds.Add((string)kind);
                 Locations[entry.Id] = entry;
                 JArray watch = raw["watch"] as JArray;
                 if (watch != null)
@@ -120,8 +140,21 @@ namespace CardSurvivalArchipelago
                     foreach (JObject part in watch)
                     {
                         var condition = new WatchPart { Count = (int?)part["count"] ?? 1 };
-                        foreach (JToken card in (JArray)part["cards"]) condition.Cards.Add((string)card);
+                        if (part["cards"] is JArray watchedCards)
+                        {
+                            foreach (JToken card in watchedCards) condition.Cards.Add((string)card);
+                        }
+                        if (part["actions"] is JArray actions)
+                        {
+                            foreach (JObject action in actions) condition.Actions.Add((string)action["card"] + "|" + (string)action["action"]);
+                        }
+                        if (part["checks"] is JObject checks)
+                        {
+                            condition.CheckKinds = ((JArray)checks["kinds"]).Select(kind => (string)kind).ToList();
+                            condition.Count = (int)checks["count"];
+                        }
                         WatchedCards.UnionWith(condition.Cards);
+                        WatchedActions.UnionWith(condition.Actions);
                         entry.Watch.Add(condition);
                     }
                     Watched.Add(entry);

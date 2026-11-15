@@ -17,6 +17,12 @@ You survive on the island as usual, but your **knowledge** is shuffled.
   materials that appear on the ground where you are (at most 10 per in-game hour; the rest
   waits in a buffer you open with F8).
 
+## Which character?
+
+Archipelago games start as Normal Guy: no perks, no starting kit, the Beach. With the
+`logbook` option he keeps an Archipelago logbook: 44 tasks that are checks and give the
+Determination the normal journal would give.
+
 ## What stays the same?
 
 Survival itself: hunger, thirst, weather, wounds, exploration, cooking and combat are
@@ -43,4 +49,4 @@ only finds unless you turn off `exclude_challenge_checks`.
 ## Item and location groups
 
 Items: `Blueprints`, `Skills`, `Perks`, `Finds`. Locations: `Research`, `Build`, `Visit`,
-`Fishing`, `Hunting`, `Cooking`, `Farming`.
+`Fishing`, `Hunting`, `Cooking`, `Farming`, `Logbook`.

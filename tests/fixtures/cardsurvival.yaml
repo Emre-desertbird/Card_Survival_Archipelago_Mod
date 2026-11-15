@@ -5,3 +5,4 @@ game: "Card Survival: Tropical Island"
   hunting_checks: true
   cooking_checks: true
   farming_checks: true
+  logbook: true

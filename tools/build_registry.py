@@ -92,6 +92,46 @@ HUNTING = [
 ]
 # Cooking: every dish of the game's two meal tags. Planting: a few milestones, not every crop.
 COOKING_TAGS = ["tag_MealCookingpot", "tag_MealCoconutShell"]
+# The Archipelago character: the game's neutral character (no perks, no kit, starts on the Beach).
+# It is the base model of custom characters and not in the character list of the game mode.
+ARCHIPELAGO_CHARACTER = "NormalGuy"
+# The Archipelago logbook (docs/plan_erweiterung.md, 1.4): new tasks for the Archipelago character.
+# It replaces the rewards of the normal journal, so its Determination adds up like the original
+# (the Home ending needs 4000). Sources:
+#   ("objective", name)        the conditions of a game objective (cards, tags, actions)
+#   ("cards", [names], n)      n different of these cards existed
+#   ("tags", [tags])           any card with one of these tags existed
+#   ("checks", [kinds], n)     n checks of these kinds sent (empty list: research, build, visit)
+#   ("explore",)               one task per "Explore the ..." objective of the game
+LOGBOOK = [
+    ("Stranded", "First Refreshment", 50, ("objective", "Obj1_EatDrinkCoconut")),
+    ("Stranded", "Spark", 50, ("objective", "Obj2_MakeCampfire")),
+    ("Stranded", "Sharp Mind", 50, ("objective", "Obj1_MakeSharpenedStone")),
+    ("Stranded", "Water Hole", 50, ("objective", "Obj3_FindPuddle")),
+    ("Stranded", "A Roof Overhead", 50, ("objective", "Obj3_MakeShelter")),
+    ("Survival", "Clean Water", 100, ("objective", "ObjT2_BoilWater")),
+    ("Survival", "Smokehouse", 100, ("cards", "*Smoked", 1)),
+    ("Survival", "First Aid", 100, ("objective", "Obj_WoundDressing")),
+    ("Survival", "Cool Head", 100, ("cards", ["ClayPotCoolerUndeployed", "ClayPotCoolerOff", "ClayPotCoolerOn"], 1)),
+    ("Survival", "A Real Meal", 100, ("tags", ["tag_MealCookingpot", "tag_MealCoconutShell"])),
+    ("The Island", None, 100, ("explore",)),
+    ("Craft", "Potter", 250, ("objective", "Obj4_MakeKiln")),
+    ("Craft", "Weaver", 250, ("objective", "Obj4_MakeLoom")),
+    ("Craft", "Ropemaker", 250, ("cards", ["Rope"], 1)),
+    ("Craft", "Copper Age", 250, ("objective", "Ach_MakeCopperTool")),
+    ("Craft", "Angler", 250, ("cards", ["FishingRod"], 1)),
+    ("Multiworld", "Catch of the Day", 100, ("checks", ["fish"], 10)),
+    ("Multiworld", "Hunter's Tally", 100, ("checks", ["hunt"], 5)),
+    ("Multiworld", "Head Chef", 100, ("checks", ["cook"], 8)),
+    ("Multiworld", "Scholar", 100, ("checks", ["research"], 25)),
+    ("Multiworld", "Master Builder", 100, ("checks", ["build"], 25)),
+    ("Multiworld", "Wanderer", 100, ("checks", ["visit"], 15)),
+    ("Multiworld", "Messenger I", 100, ("checks", [], 50)),
+    ("Multiworld", "Messenger II", 100, ("checks", [], 100)),
+    ("Multiworld", "Messenger III", 100, ("checks", [], 200)),
+    ("Departure", "Set Sail", 500, ("objective", "Obj6_MakeRaft")),
+]
+BASE_KINDS = ["research", "build", "visit"]
 CROP_TAG, CROP_EXCLUDED = "tag_Crop", {"CropPlotEmpty", "CropPlotRuined", "MushroomBedEmpty"}
 EXCLUDED = {"BP_TestBox1", "BlueprintModelTest"}      # developer test blueprints
 # The ending the logic guarantees. Every ending wins in the game; this one is fully modelled by
@@ -292,6 +332,85 @@ def main() -> None:
                           "watch": [{"cards": [cards[card]["UniqueID"] for card in names], "count": count}],
                           "challenge": False, "rule": rule})
 
+    # The Archipelago logbook: each task is a check and gives Determination (see LOGBOOK).
+    objectives = {objective["$name"]: objective for objective in load("Objective")}
+    logbook_cards: set[str] = set()
+
+    def objective_parts(name: str) -> list[dict]:
+        """Watch parts from a game objective: conditions sharing a name are alternatives."""
+        objective = objectives[name]
+        if objective.get("StatsObjectives") or objective.get("NestedObjectives"):
+            raise SystemExit(f"Objective {name} has conditions the logbook cannot watch")
+        groups: dict[tuple, list] = {}
+        for entry in objective.get("CardsOnBoardObjectives") or []:
+            groups.setdefault(("cards", entry.get("ObjectiveName")), []).append(entry["Card"]["$ref"])
+        for entry in objective.get("TagsOnBoardObjectives") or []:
+            groups.setdefault(("cards", entry.get("ObjectiveName")), []).extend(graph.tags.get(entry["Tag"]["$ref"], []))
+        for entry in objective.get("ActionObjectives") or []:
+            groups.setdefault(("actions", entry.get("ObjectiveName")), []).append((entry["OnCard"]["$ref"], entry["ActionName"]))
+        parts = []
+        for (kind, _), values in groups.items():
+            if kind == "cards":
+                parts.append({"cards": card_names(sorted(set(values))), "count": 1})
+            else:
+                parts.append({"actions": [{"card": card, "action": action} for card, action in values]})
+        return parts
+
+    def part_rule(part: dict, location_rules: dict):
+        if "cards" in part:
+            return at_least(part["count"], [[card] for card in part["cards"]])
+        if "actions" in part:
+            return any_rule([Need("card", entry["card"]) for entry in part["actions"]])
+        kinds = part["checks"]["kinds"] or BASE_KINDS
+        rules = [rule for entry, rule in location_rules.items() if entry in kinds]
+        return at_least_rules(part["checks"]["count"], [rule for group in rules for rule in group])
+
+    def at_least_rules(count: int, rules: list):
+        if len(rules) < count:
+            return None
+        free_count = sum(rule is True for rule in rules)
+        if free_count >= count:
+            return True
+        rest = [rule for rule in rules if rule is not True]
+        return simplify("any", rest) if count - free_count == 1 else {"atleast": count - free_count, "of": rest}
+
+    rules_by_kind: dict[str, list] = {}
+    for entry in locations:
+        rules_by_kind.setdefault(entry["kind"], []).append(entry["rule"])
+    tasks = []
+    for chapter, title_text, determination, source in LOGBOOK:
+        if source[0] == "explore":
+            for name in sorted(objective for objective in objectives if objective.startswith("ObjExplore_")):
+                label = text(objectives[name].get("ObjectiveDescription")) or name
+                tasks.append((chapter, label, determination, objective_parts(name), []))
+            continue
+        if source[0] == "objective":
+            parts = objective_parts(source[1])
+        elif source[0] == "cards":
+            names = source[1] if isinstance(source[1], list) else sorted(
+                name for name, card in cards.items() if card.get("CardType") == "Item" and name.endswith(source[1][1:]))
+            parts = [{"cards": card_names(names), "count": source[2]}]
+        elif source[0] == "tags":
+            parts = [{"cards": sorted({name for tag in source[1] for name in graph.tags.get(tag, [])}), "count": 1}]
+        else:
+            parts = [{"checks": {"kinds": source[1], "count": source[2]}}]
+        tasks.append((chapter, title_text, determination, parts, source[1] if source[0] == "checks" else []))
+    for index, (chapter, label, determination, parts, requires) in enumerate(tasks):
+        rules = [part_rule(part, rules_by_kind) for part in parts]
+        if any(rule is None for rule in rules):
+            print(f"Logbook task {label!r} is impossible in this game mode; dropped")
+            continue
+        for part in parts:
+            logbook_cards.update(part.get("cards", []))
+            if "cards" in part:
+                part["cards"] = [cards[card]["UniqueID"] for card in part["cards"]]
+            for entry in part.get("actions", []):
+                entry["card"] = cards[entry["card"]]["UniqueID"]
+        locations.append({"key": f"logbook_{index}", "kind": "logbook", "name": f"Logbook - {label}",
+                          "ap_id": LOCATION_BASE + 4000 + index, "chapter": chapter, "determination": determination,
+                          "requires_kinds": requires, "watch": parts, "challenge": False,
+                          "rule": simplify("all", rules)})
+
     goal = need_rule(Need("card", "victory:" + GOAL_ENDING))
     if goal is None or goal is True:
         raise SystemExit(f"The goal ending {GOAL_ENDING} is unreachable or needs no item: {goal}")
@@ -386,7 +505,7 @@ def main() -> None:
                       "ap_id": ITEM_BASE + 4000 + index, "quantity": 1, "kind": "perk",
                       "perk_id": perk["UniqueID"], "classification": "useful"})
     # A find must never complete a "first time" check by itself.
-    watched_cards = {card for _, _, _, names, _ in watched for card in names}
+    watched_cards = {card for _, _, _, names, _ in watched for card in names} | logbook_cards
     for category, find_name, offset, contents in FINDS:
         if isinstance(contents, tuple):
             container, liquid = contents
@@ -406,8 +525,11 @@ def main() -> None:
                       "ap_id": ITEM_BASE + offset, "quantity": 0, "kind": "find", "category": category,
                       "classification": "filler", "contents": parts})
 
-    registry = {"game_name": GAME, "registry_version": 6, "audited_build_id": AUDITED_BUILD_ID,
+    registry = {"game_name": GAME, "registry_version": 7, "audited_build_id": AUDITED_BUILD_ID,
                 "audited_game_version": manifest["game_version"], "goal_event": "Victory",
+                "archipelago_character": {"name": ARCHIPELAGO_CHARACTER, "unique_id": next(
+                    character["UniqueID"] for character in load("PlayerCharacter") if character["$name"] == ARCHIPELAGO_CHARACTER)},
+                "determination_stat": stats["Determination"]["UniqueID"],
                 "starting_blueprints": [title(name) for name in starting],
                 "survival_basics": [title(name) for name in SURVIVAL_BASICS],
                 "character_only_blueprints": [title(name) for name in character_only],

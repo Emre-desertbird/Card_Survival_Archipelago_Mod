@@ -12,6 +12,7 @@ namespace CardSurvivalArchipelago
     {
         private static void Prefix(int _Index, ref bool _SafeMode)
         {
+            CharacterLock.Apply();
             ApGame.OnNewGame(_Index);
             BlueprintRando.Reset();
             Checks.Reset();
@@ -73,6 +74,67 @@ namespace CardSurvivalArchipelago
             if (!ApGame.Active || _GameOver || _KeepPlaying || gm == null || !gm.IsSafeMode) return;
             UnityEngine.GameObject button = Traverse.Create(__instance).Field("LoadCheckpointButton").GetValue<UnityEngine.GameObject>();
             if (button != null) button.SetActive(true);
+        }
+    }
+}
+
+namespace CardSurvivalArchipelago
+{
+    /// <summary>
+    /// The Archipelago character: with the seed's "character_lock" (on by default), every new
+    /// Archipelago game starts as Normal Guy, the game's neutral character. He is not in the
+    /// character list (he is the base of custom characters), so the start is redirected to him.
+    /// </summary>
+    internal static class CharacterLock
+    {
+        public static bool Active
+        {
+            get
+            {
+                object value;
+                return ApConnection.IsConnected && ApConnection.SlotData != null &&
+                       ApConnection.SlotData.TryGetValue("character_lock", out value) && System.Convert.ToBoolean(value);
+            }
+        }
+
+        public static string CharacterName
+        {
+            get
+            {
+                PlayerCharacter character = UniqueIDScriptable.GetFromID<PlayerCharacter>(Registry.CharacterId);
+                return character != null ? (string)character.CharacterName : "Normal Guy";
+            }
+        }
+
+        public static void Apply()
+        {
+            if (!Active) return;
+            PlayerCharacter character = UniqueIDScriptable.GetFromID<PlayerCharacter>(Registry.CharacterId);
+            if (character == null)
+            {
+                Plugin.Log.LogError("The Archipelago character is missing from this game build.");
+                return;
+            }
+            if (GameManager.CurrentPlayerCharacter != character)
+            {
+                string chosen = GameManager.CurrentPlayerCharacter != null ? (string)GameManager.CurrentPlayerCharacter.CharacterName : "?";
+                GameManager.CurrentPlayerCharacter = character;
+                Messages.Add("Archipelago games start as " + (string)character.CharacterName + " (chosen: " + chosen + ").");
+            }
+            GameManager.CurrentModifierPackages = new System.Collections.Generic.List<GameModifierPackage>();
+        }
+    }
+
+    /// <summary>
+    /// With the logbook on, the logbook gives the Determination. The normal journal's tasks still
+    /// show as done, but their rewards (Determination, less stress) are skipped so nothing doubles.
+    /// </summary>
+    [HarmonyPatch(typeof(Objective), "OnComplete")]
+    internal static class JournalRewardPatch
+    {
+        private static bool Prefix(Objective __instance, bool _Init)
+        {
+            return _Init || !__instance.JournalObjective || !ApGame.Active || !ApGame.State.LocationKinds.Contains("logbook");
         }
     }
 }

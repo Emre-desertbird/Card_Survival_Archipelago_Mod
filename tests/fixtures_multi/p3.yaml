@@ -7,3 +7,4 @@ game: "Card Survival: Tropical Island"
   farming_checks: true
   exclude_challenge_checks: false
   finds_amount: more
+  logbook: true

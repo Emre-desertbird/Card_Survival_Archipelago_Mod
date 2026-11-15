@@ -32,6 +32,20 @@ class FarmingChecks(Toggle):
     display_name = "Farming Checks"
 
 
+class CharacterLock(DefaultOnToggle):
+    """New Archipelago games always start as Normal Guy, the game's neutral character (no perks,
+    no starting kit, the Beach). The logic is made for him. Turn off to play any character;
+    the logbook then has no checks."""
+    display_name = "Character Lock"
+
+
+class Logbook(Toggle):
+    """The Archipelago logbook: 44 tasks for Normal Guy in six chapters (stranded, survival, the
+    island, craft, multiworld, departure). Each task is a check and gives Determination like the
+    normal journal, which it replaces. Needs Character Lock."""
+    display_name = "Logbook"
+
+
 class FindsAmount(Choice):
     """How generous the finds (filler) are. Finds are long-lasting food, drinks, cooking ingredients
     and common materials left on the ground where you are.
@@ -51,3 +65,5 @@ class CardSurvivalOptions(PerGameCommonOptions):
     cooking_checks: CookingChecks
     farming_checks: FarmingChecks
     finds_amount: FindsAmount
+    character_lock: CharacterLock
+    logbook: Logbook

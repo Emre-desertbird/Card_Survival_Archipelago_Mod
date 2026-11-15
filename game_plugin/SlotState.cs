@@ -43,12 +43,21 @@ namespace CardSurvivalArchipelago
         public List<string> ReceivedFrom = new List<string>();
         /// <summary>Every watched card UniqueID that ever existed in this game (never rolled back).</summary>
         public List<string> Seen = new List<string>();
+        /// <summary>Every watched action ("card id|action name") ever performed (never rolled back).</summary>
+        public List<string> Actions = new List<string>();
+        /// <summary>Completed logbook tasks in completion order; each gives its Determination once.</summary>
+        public List<long> Rewards = new List<long>();
+        /// <summary>Rewards whose Determination is in the main save / the checkpoint copy.</summary>
+        public int RewardsMain;
+        public int RewardsCheckpoint;
 
         // ---- Options of the seed (slot data), stored so they also hold while offline ----
         /// <summary>Location kinds in this seed (base kinds plus optional ones switched on).</summary>
         public List<string> LocationKinds = new List<string> { "research", "build", "visit" };
         /// <summary>0 = less, 1 = normal, 2 = more.</summary>
         public int FindsAmount = 1;
+        /// <summary>New games start as the Archipelago character.</summary>
+        public bool CharacterLock = true;
 
         /// <summary>
         /// Finds waiting in the buffer (indices into <see cref="Received"/>). A buffered find is not on
@@ -74,6 +83,16 @@ namespace CardSurvivalArchipelago
             if (HasSeen(card)) return;
             Seen.Add(card);
             seenSet.Add(card);
+        }
+
+        public bool HasAction(string action)
+        {
+            return Actions.Contains(action);
+        }
+
+        public void AddAction(string action)
+        {
+            if (!Actions.Contains(action)) Actions.Add(action);
         }
 
         public string SenderOf(int index)

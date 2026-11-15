@@ -1,9 +1,14 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 6,
+ "registry_version": 7,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
+ "archipelago_character": {
+  "name": "NormalGuy",
+  "unique_id": "5a85a4cd74a8042479821d4a543721ce"
+ },
+ "determination_stat": "f2dfbaa2bf3a3d446a9109747932accb",
  "starting_blueprints": [
   "Broom",
   "Campfire",
@@ -9654,6 +9659,2604 @@
      }
     ]
    }
+  },
+  {
+   "key": "logbook_0",
+   "kind": "logbook",
+   "name": "Logbook - First Refreshment",
+   "ap_id": 1694434000,
+   "chapter": "Stranded",
+   "determination": 50,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "actions": [
+      {
+       "card": "e82395e1cdeeb924cb724a41060afce1",
+       "action": "Eat"
+      }
+     ]
+    },
+    {
+     "actions": [
+      {
+       "card": "8181b39749c241a45b2197486eab3447",
+       "action": "Drink"
+      }
+     ]
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_1",
+   "kind": "logbook",
+   "name": "Logbook - Spark",
+   "ap_id": 1694434001,
+   "chapter": "Stranded",
+   "determination": 50,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "7408fa4e89aa405468e5acb994c6f3a6"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_2",
+   "kind": "logbook",
+   "name": "Logbook - Sharp Mind",
+   "ap_id": 1694434002,
+   "chapter": "Stranded",
+   "determination": 50,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "4722087bd24e3b840adcc8886119fa3e"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_3",
+   "kind": "logbook",
+   "name": "Logbook - Water Hole",
+   "ap_id": 1694434003,
+   "chapter": "Stranded",
+   "determination": 50,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "fd31819b0f27db44d840aa4c0bf6bb8e"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_4",
+   "kind": "logbook",
+   "name": "Logbook - A Roof Overhead",
+   "ap_id": 1694434004,
+   "chapter": "Stranded",
+   "determination": 50,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "046ac1678aa82594c9817e57122ee900"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_5",
+   "kind": "logbook",
+   "name": "Logbook - Clean Water",
+   "ap_id": 1694434005,
+   "chapter": "Survival",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "782eb58b5bfd5d94dad5798de67584ed"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_6",
+   "kind": "logbook",
+   "name": "Logbook - Smokehouse",
+   "ap_id": 1694434006,
+   "chapter": "Survival",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "65216ae166f62634d8f29b5ae0ef7dc6",
+      "3d87720877b3cdd41beefb8504267022",
+      "35eb1b9c956f030478d232db638f07c0",
+      "0f66e0b7c03831e46b6887660d8d6e8e",
+      "95b915a992aaf5b4db1519cd00bbe854",
+      "a9066cce7a0f66a4d8f65ad16719ba54",
+      "56990bd3e2d39fd439ca7cea4702ec17",
+      "ecf76ea609f37214f85e8b11538f5476",
+      "d84aded965c4a1e4ba9e7334f4e6fd5d",
+      "7fb5ac42b97250c419a9fa79eebf87d8",
+      "565666d0e25e11a4688f8993a141aa91",
+      "eee89498fd05cd642bcc52c066f65c45"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have BirdMeatSmoked"
+     },
+     {
+      "event": "Have BoarMeatSmoked"
+     },
+     {
+      "event": "Have BonefishSmoked"
+     },
+     {
+      "event": "Have GoatMeatSmoked"
+     },
+     {
+      "event": "Have GoatfishSmoked"
+     },
+     {
+      "event": "Have MacaqueMeatSmoked"
+     },
+     {
+      "event": "Have MonitorMeatSmoked"
+     },
+     {
+      "event": "Have ParrotFishSmoked"
+     },
+     {
+      "event": "Have SharkSmoked"
+     },
+     {
+      "event": "Have ThreadfinSmoked"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_7",
+   "kind": "logbook",
+   "name": "Logbook - First Aid",
+   "ap_id": 1694434007,
+   "chapter": "Survival",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "actions": [
+      {
+       "card": "4b7b8de26435a0a4dbe92a2535bfbcaf",
+       "action": "Apply dressing"
+      },
+      {
+       "card": "ab926cc09718a244296c2adb4cd52f87",
+       "action": "Apply dressing"
+      }
+     ]
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_8",
+   "kind": "logbook",
+   "name": "Logbook - Cool Head",
+   "ap_id": 1694434008,
+   "chapter": "Survival",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "fc709fc6a0f5d3446b49560805d3a5c8",
+      "bb241b7b828e3544696297d0ef7c012e",
+      "a2db9701acc7a4b449a73e713e23600a"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have ClayPotCoolerUndeployed"
+     },
+     {
+      "event": "Have ClayPotCoolerOff"
+     },
+     {
+      "event": "Have ClayPotCoolerOn"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_9",
+   "kind": "logbook",
+   "name": "Logbook - A Real Meal",
+   "ap_id": 1694434009,
+   "chapter": "Survival",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "1525eb3d7d4063a4aae610c6f673565a",
+      "ee106dd0ba9e48e45b62360d832a5ecc",
+      "3373c6f085d04874583551249678c6f6",
+      "569ca05e911be7c40b41043a4947908d",
+      "a1278a81f561df44cb5051e42077b8d0",
+      "eda67b50f7c958047a0e15bf72da5d5c",
+      "eb35566aa8d980f4db35f55acfbcaf87",
+      "ea60f4255a8e977489af1c5fde7353f5",
+      "1d4bd206535912d46aeca8e58790b019",
+      "4882b19c248f5ae439e86e357674c90d",
+      "8c5ba68a7662e164891f60d35623f4d9",
+      "f1eb518d9e7b19d41918d16aa9dff6e3",
+      "4d4c5ccd15eb295459a12d9a422508d9",
+      "ecde38f41e193ae48ad6d16f6e9bf5b7",
+      "f1a2cb504e1755e48b1c77e36ca651c2",
+      "adeb5544d943e864e8edf282cbfe5215",
+      "db3889abcc6518a46a79ebe1199104d9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoneBroth"
+     },
+     {
+      "event": "Have CoconutFish"
+     },
+     {
+      "event": "Have DrunkenCrab"
+     },
+     {
+      "event": "Have EggFriedRice"
+     },
+     {
+      "event": "Have FishNChips"
+     },
+     {
+      "event": "Have FishOmelette"
+     },
+     {
+      "event": "Have FriedPuffballs"
+     },
+     {
+      "event": "Have GoatStew"
+     },
+     {
+      "event": "Have HeartyFeast"
+     },
+     {
+      "event": "Have HoneyGlazedPork"
+     },
+     {
+      "event": "Have IslandChicken"
+     },
+     {
+      "event": "Have JungleSalad"
+     },
+     {
+      "event": "Have LizardFry"
+     },
+     {
+      "event": "Have MacaqueSkewers"
+     },
+     {
+      "event": "Have SagoCake"
+     },
+     {
+      "event": "Have SeafoodCup"
+     },
+     {
+      "event": "Have YamCurry"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_10",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Acid Lake",
+   "ap_id": 1694434010,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "dc33b34261d7018408007447961d21e4"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_11",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Bay",
+   "ap_id": 1694434011,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "4d91f7853658a574d974cd44496db5ed"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_12",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Beach",
+   "ap_id": 1694434012,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "6b0850d80c4e98643918b5c5625a2d86"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_13",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Bird Rock",
+   "ap_id": 1694434013,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "9d9dd92a1259c0c43bef6f49237c7fd9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_14",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Cove",
+   "ap_id": 1694434014,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "8c5d72109a5e17144b8a917234012046"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_15",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Deep Jungle",
+   "ap_id": 1694434015,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "be67be02dafd10b438c93b888207a0be"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_16",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Desolate Beach",
+   "ap_id": 1694434016,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "26a2839ecee045b4ab29c941e2f1a6c0"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_17",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Eastern Grasslands",
+   "ap_id": 1694434017,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "71ce2cc20ebf97047b2ef2d01b15b6c8"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_18",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Western Grasslands",
+   "ap_id": 1694434018,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "a101349143b62dd429a6d35ee7e6e615"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_19",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Jungle Highlands",
+   "ap_id": 1694434019,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "e73201e8446c6494a88faf75df0e58d2"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_20",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Eastern Highlands",
+   "ap_id": 1694434020,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "bc426ce743942d04bbf606354bc78785"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_21",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Western Highlands",
+   "ap_id": 1694434021,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "24a184692cae398418fa7856fe8aa2f9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_22",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Jungle",
+   "ap_id": 1694434022,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "05e77cf9c72253149b10b2f732fd14ac"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_23",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Mangroves",
+   "ap_id": 1694434023,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "00b81791e11d83040bf57b7d1fbae8e1"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_24",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Outskirts",
+   "ap_id": 1694434024,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "b1bc10d6bea58d147bd9395801bce546"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_25",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Rocks",
+   "ap_id": 1694434025,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "a960617d85812b84bb7bfaf476f6d160"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_26",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Secret Valley",
+   "ap_id": 1694434026,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "0a1003e4d6ad3df4c9ef4ce27174baab"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_27",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Volcano",
+   "ap_id": 1694434027,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "5eb087395d6c6a5488819386ad2b9f06"
+     ],
+     "count": 1
+    },
+    {
+     "cards": [
+      "dc33b34261d7018408007447961d21e4"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_28",
+   "kind": "logbook",
+   "name": "Logbook - Explore the Wetlands",
+   "ap_id": 1694434028,
+   "chapter": "The Island",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "1f09cd7724827b74daf072fbe0d048f0"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_29",
+   "kind": "logbook",
+   "name": "Logbook - Potter",
+   "ap_id": 1694434029,
+   "chapter": "Craft",
+   "determination": 250,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "5440d1cf6a48fad44b5d5229b3ed93d1"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have KilnExtinguished"
+   }
+  },
+  {
+   "key": "logbook_30",
+   "kind": "logbook",
+   "name": "Logbook - Weaver",
+   "ap_id": 1694434030,
+   "chapter": "Craft",
+   "determination": 250,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "2131b26df4baba144b3fcd047dae976b"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have LoomEmpty"
+   }
+  },
+  {
+   "key": "logbook_31",
+   "kind": "logbook",
+   "name": "Logbook - Ropemaker",
+   "ap_id": 1694434031,
+   "chapter": "Craft",
+   "determination": 250,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "a7a58aa687df66e47a42fc13e0fdbeaa"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_32",
+   "kind": "logbook",
+   "name": "Logbook - Copper Age",
+   "ap_id": 1694434032,
+   "chapter": "Craft",
+   "determination": 250,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "968d89b358ccf624a9e34f659166a0a1",
+      "22858c679a340ae4f84c7e9a20e8a4e7",
+      "3587432ac7e29784991ff2cccf92891d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have AxeCopper"
+     },
+     {
+      "event": "Have KnifeCopper"
+     },
+     {
+      "event": "Have ShovelCopper"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_33",
+   "kind": "logbook",
+   "name": "Logbook - Angler",
+   "ap_id": 1694434033,
+   "chapter": "Craft",
+   "determination": 250,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "65153cfb5e4d1da49aaad460924e7ef9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have FishingRod"
+   }
+  },
+  {
+   "key": "logbook_34",
+   "kind": "logbook",
+   "name": "Logbook - Catch of the Day",
+   "ap_id": 1694434034,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "fish"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "fish"
+      ],
+      "count": 10
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_35",
+   "kind": "logbook",
+   "name": "Logbook - Hunter's Tally",
+   "ap_id": 1694434035,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "hunt"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "hunt"
+      ],
+      "count": 5
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_36",
+   "kind": "logbook",
+   "name": "Logbook - Head Chef",
+   "ap_id": 1694434036,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "cook"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "cook"
+      ],
+      "count": 8
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "atleast": 8,
+    "of": [
+     {
+      "event": "Have BoneBroth"
+     },
+     {
+      "event": "Have CoconutFish"
+     },
+     {
+      "event": "Have DrunkenCrab"
+     },
+     {
+      "event": "Have EggFriedRice"
+     },
+     {
+      "event": "Have FishNChips"
+     },
+     {
+      "event": "Have FishOmelette"
+     },
+     {
+      "event": "Have FriedPuffballs"
+     },
+     {
+      "event": "Have GoatStew"
+     },
+     {
+      "event": "Have HeartyFeast"
+     },
+     {
+      "event": "Have HoneyGlazedPork"
+     },
+     {
+      "event": "Have IslandChicken"
+     },
+     {
+      "event": "Have JungleSalad"
+     },
+     {
+      "event": "Have LizardFry"
+     },
+     {
+      "event": "Have MacaqueSkewers"
+     },
+     {
+      "event": "Have SagoCake"
+     },
+     {
+      "event": "Have SeafoodCup"
+     },
+     {
+      "event": "Have YamCurry"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_37",
+   "kind": "logbook",
+   "name": "Logbook - Scholar",
+   "ap_id": 1694434037,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "research"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "research"
+      ],
+      "count": 25
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_38",
+   "kind": "logbook",
+   "name": "Logbook - Master Builder",
+   "ap_id": 1694434038,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "build"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "build"
+      ],
+      "count": 25
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "atleast": 10,
+    "of": [
+     {
+      "event": "Can Build Alembic"
+     },
+     {
+      "event": "Can Build Aloe Gel"
+     },
+     {
+      "event": "Can Build Arrows"
+     },
+     {
+      "event": "Can Build Bone Arrows"
+     },
+     {
+      "event": "Can Build Flint Arrows"
+     },
+     {
+      "event": "Can Build Rustic Bed"
+     },
+     {
+      "event": "Can Build Wooden Bed"
+     },
+     {
+      "event": "Can Build Bedroll"
+     },
+     {
+      "event": "Can Build Bee Skep"
+     },
+     {
+      "event": "Can Build Empty Skep"
+     },
+     {
+      "event": "Can Build Bee Smoker"
+     },
+     {
+      "event": "Can Build Bee Suit"
+     },
+     {
+      "event": "Can Build Bellows"
+     },
+     {
+      "event": "Can Build Boar Feeder"
+     },
+     {
+      "event": "Can Build Bone Broth"
+     },
+     {
+      "event": "Can Build Bone Knife"
+     },
+     {
+      "event": "Can Build Bookshelf"
+     },
+     {
+      "event": "Can Build Bow"
+     },
+     {
+      "event": "Can Build Composite bow"
+     },
+     {
+      "event": "Can Build Bow Drill"
+     },
+     {
+      "event": "Can Build Brimstone Gel"
+     },
+     {
+      "event": "Can Build Bug Repellent"
+     },
+     {
+      "event": "Can Build Butter"
+     },
+     {
+      "event": "Can Build Butter Baked Oysters"
+     },
+     {
+      "event": "Can Build Cage Trap"
+     },
+     {
+      "event": "Can Build Candied Ginger"
+     },
+     {
+      "event": "Can Build Candle"
+     },
+     {
+      "event": "Can Build Citronella Candle"
+     },
+     {
+      "event": "Can Build Jasmine Candle"
+     },
+     {
+      "event": "Can Build Cellar"
+     },
+     {
+      "event": "Can Build Chair"
+     },
+     {
+      "event": "Can Build Cheese"
+     },
+     {
+      "event": "Can Build Chest"
+     },
+     {
+      "event": "Can Build Chicken Sandwich"
+     },
+     {
+      "event": "Can Build Cistern"
+     },
+     {
+      "event": "Can Build Clay Fire Pit"
+     },
+     {
+      "event": "Can Build Clay Jar"
+     },
+     {
+      "event": "Can Build Clay Pot Cooler"
+     },
+     {
+      "event": "Can Build Clay Vase"
+     },
+     {
+      "event": "Can Build Serrated Club"
+     },
+     {
+      "event": "Can Build Coconut Fish"
+     },
+     {
+      "event": "Can Build Coconut Milk"
+     },
+     {
+      "event": "Can Build Coconut Sandals"
+     },
+     {
+      "event": "Can Build Compost Bin"
+     },
+     {
+      "event": "Can Build Cooking Pot"
+     },
+     {
+      "event": "Can Build Copper Axe"
+     },
+     {
+      "event": "Can Build Copper Bottle"
+     },
+     {
+      "event": "Can Build Copper Jar"
+     },
+     {
+      "event": "Can Build Copper Necklace"
+     },
+     {
+      "event": "Can Build Copper Needles"
+     },
+     {
+      "event": "Can Build Copper Sheet"
+     },
+     {
+      "event": "Can Build Copper Shovel"
+     },
+     {
+      "event": "Can Build Copper Spear"
+     },
+     {
+      "event": "Can Build Crop Plot"
+     },
+     {
+      "event": "Can Build Deadfall Trap"
+     },
+     {
+      "event": "Can Build Drum"
+     },
+     {
+      "event": "Can Build Drunken Crab"
+     },
+     {
+      "event": "Can Build Drying Rack"
+     },
+     {
+      "event": "Can Build Dynamite"
+     },
+     {
+      "event": "Can Build Copper Eating Utensils"
+     },
+     {
+      "event": "Can Build Wooden Eating Utensils"
+     },
+     {
+      "event": "Can Build Egg Fried Rice"
+     },
+     {
+      "event": "Can Build Enclosure"
+     },
+     {
+      "event": "Can Build Bird Feed"
+     },
+     {
+      "event": "Can Build Boar Feed"
+     },
+     {
+      "event": "Can Build Goat Feed"
+     },
+     {
+      "event": "Can Build Fiber Armor"
+     },
+     {
+      "event": "Can Build Fiber Bracers"
+     },
+     {
+      "event": "Can Build Fiber Cuirass"
+     },
+     {
+      "event": "Can Build Fiber Helmet"
+     },
+     {
+      "event": "Can Build Fish Bait"
+     },
+     {
+      "event": "Can Build Fish N' Chips"
+     },
+     {
+      "event": "Can Build Fish Omelette"
+     },
+     {
+      "event": "Can Build Salted Fish Meat"
+     },
+     {
+      "event": "Can Build Fish Taco"
+     },
+     {
+      "event": "Can Build Fish Trap (FishTrap)"
+     },
+     {
+      "event": "Can Build Fishing Line"
+     },
+     {
+      "event": "Can Build Fishing Rod"
+     },
+     {
+      "event": "Can Build Fishing Spear"
+     },
+     {
+      "event": "Can Build Flint Axe"
+     },
+     {
+      "event": "Can Build Flint Knife"
+     },
+     {
+      "event": "Can Build Flint Spear"
+     },
+     {
+      "event": "Can Build Flower Necklace"
+     },
+     {
+      "event": "Can Build Bone Flute"
+     },
+     {
+      "event": "Can Build Wooden Flute"
+     },
+     {
+      "event": "Can Build Forge"
+     },
+     {
+      "event": "Can Build Fried Bananas"
+     },
+     {
+      "event": "Can Build Fried Puffballs"
+     },
+     {
+      "event": "Can Build Gas Mask"
+     },
+     {
+      "event": "Can Build Glazed Vase"
+     },
+     {
+      "event": "Can Build Glue"
+     },
+     {
+      "event": "Can Build Goat Feeder"
+     },
+     {
+      "event": "Can Build Goat Stew"
+     },
+     {
+      "event": "Can Build Hammock"
+     },
+     {
+      "event": "Can Build Harpoon"
+     },
+     {
+      "event": "Can Build Hearty Feast"
+     },
+     {
+      "event": "Can Build Honey"
+     },
+     {
+      "event": "Can Build Honey Candy"
+     },
+     {
+      "event": "Can Build Honey Glazed Pork"
+     },
+     {
+      "event": "Can Build Island Chicken"
+     },
+     {
+      "event": "Can Build Cloth Jacket"
+     },
+     {
+      "event": "Can Build Jungle Salad"
+     },
+     {
+      "event": "Can Build Kiln"
+     },
+     {
+      "event": "Can Build Advanced Kiln"
+     },
+     {
+      "event": "Can Build Leaf Skirt"
+     },
+     {
+      "event": "Can Build Leather Backpack"
+     },
+     {
+      "event": "Can Build Leather Bracers"
+     },
+     {
+      "event": "Can Build Leather Gloves"
+     },
+     {
+      "event": "Can Build Leather Helmet"
+     },
+     {
+      "event": "Can Build Leather Jacket"
+     },
+     {
+      "event": "Can Build Leather Pants"
+     },
+     {
+      "event": "Can Build Leather Shoes"
+     },
+     {
+      "event": "Can Build Leather Vest"
+     },
+     {
+      "event": "Can Build Lizard Fry"
+     },
+     {
+      "event": "Can Build Log Trap"
+     },
+     {
+      "event": "Can Build Loom"
+     },
+     {
+      "event": "Can Build Macaque Skewers"
+     },
+     {
+      "event": "Can Build Salted Meat"
+     },
+     {
+      "event": "Can Build Axe Mold"
+     },
+     {
+      "event": "Can Build Decoration Mold"
+     },
+     {
+      "event": "Can Build Knife Mold"
+     },
+     {
+      "event": "Can Build Shovel Mold"
+     },
+     {
+      "event": "Can Build Spear Mold"
+     },
+     {
+      "event": "Can Build Mortar"
+     },
+     {
+      "event": "Can Build Mud Hut"
+     },
+     {
+      "event": "Can Build Mushroom Bed"
+     },
+     {
+      "event": "Can Build Niter Bed"
+     },
+     {
+      "event": "Can Build Obsidian Knife"
+     },
+     {
+      "event": "Can Build Obsidian Spear"
+     },
+     {
+      "event": "Can Build Cloth Pants"
+     },
+     {
+      "event": "Can Build Partridge Feeder"
+     },
+     {
+      "event": "Can Build Pearl Necklace"
+     },
+     {
+      "event": "Can Build Brimstone Pesticide"
+     },
+     {
+      "event": "Can Build Chilli Pesticide"
+     },
+     {
+      "event": "Can Build Wooden Planks"
+     },
+     {
+      "event": "Can Build Pottery Wheel"
+     },
+     {
+      "event": "Can Build Protein Bar"
+     },
+     {
+      "event": "Can Build Cinchona Powder"
+     },
+     {
+      "event": "Can Build Quinine Sulfate"
+     },
+     {
+      "event": "Can Build Quiver"
+     },
+     {
+      "event": "Can Build Raft"
+     },
+     {
+      "event": "Can Build Fish Trap (RaftFishTrap)"
+     },
+     {
+      "event": "Can Build Raft Shelter"
+     },
+     {
+      "event": "Can Build Raincatcher"
+     },
+     {
+      "event": "Can Build Raincoat"
+     },
+     {
+      "event": "Can Build Rice Paddy"
+     },
+     {
+      "event": "Can Build Sack"
+     },
+     {
+      "event": "Can Build Sago Cake"
+     },
+     {
+      "event": "Can Build Sago Slime"
+     },
+     {
+      "event": "Can Build Salt Bed"
+     },
+     {
+      "event": "Can Build Satchel"
+     },
+     {
+      "event": "Can Build Scarecrow"
+     },
+     {
+      "event": "Can Build Scrap Axe"
+     },
+     {
+      "event": "Can Build Scrap Knife"
+     },
+     {
+      "event": "Can Build Scrap Shovel"
+     },
+     {
+      "event": "Can Build Scrap Spear"
+     },
+     {
+      "event": "Can Build Seafood Cup"
+     },
+     {
+      "event": "Can Build Seashell Necklace"
+     },
+     {
+      "event": "Can Build Shed"
+     },
+     {
+      "event": "Can Build Shelf"
+     },
+     {
+      "event": "Can Build Shield"
+     },
+     {
+      "event": "Can Build Shirt"
+     },
+     {
+      "event": "Can Build Shower"
+     },
+     {
+      "event": "Can Build Sling"
+     },
+     {
+      "event": "Can Build Snare Trap"
+     },
+     {
+      "event": "Can Build Soap"
+     },
+     {
+      "event": "Can Build Solar Still"
+     },
+     {
+      "event": "Can Build Spindle"
+     },
+     {
+      "event": "Can Build Stone Hut"
+     },
+     {
+      "event": "Can Build Stove"
+     },
+     {
+      "event": "Can Build Straw Cape"
+     },
+     {
+      "event": "Can Build Supply Chest"
+     },
+     {
+      "event": "Can Build Sushi"
+     },
+     {
+      "event": "Can Build Table"
+     },
+     {
+      "event": "Can Build Tonic Water"
+     },
+     {
+      "event": "Can Build Trapping Pit"
+     },
+     {
+      "event": "Can Build Travois"
+     },
+     {
+      "event": "Can Build Treenails"
+     },
+     {
+      "event": "Can Build Vitriol"
+     },
+     {
+      "event": "Can Build Water Filter"
+     },
+     {
+      "event": "Can Build Water Reservoir"
+     },
+     {
+      "event": "Can Build Watering Trough"
+     },
+     {
+      "event": "Can Build Waterskin"
+     },
+     {
+      "event": "Can Build Well"
+     },
+     {
+      "event": "Can Build Weston"
+     },
+     {
+      "event": "Can Build Wood Carvings"
+     },
+     {
+      "event": "Can Build Wood Shavings"
+     },
+     {
+      "event": "Can Build Wooden Needles"
+     },
+     {
+      "event": "Can Build Wooden Shovel"
+     },
+     {
+      "event": "Can Build Woven Backpack"
+     },
+     {
+      "event": "Can Build Woven Basket"
+     },
+     {
+      "event": "Can Build Woven Hat"
+     },
+     {
+      "event": "Can Build Yam Curry"
+     },
+     {
+      "event": "Can Build Yam Jam"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_39",
+   "kind": "logbook",
+   "name": "Logbook - Wanderer",
+   "ap_id": 1694434039,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [
+    "visit"
+   ],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [
+       "visit"
+      ],
+      "count": 15
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_40",
+   "kind": "logbook",
+   "name": "Logbook - Messenger I",
+   "ap_id": 1694434040,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [],
+      "count": 50
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_41",
+   "kind": "logbook",
+   "name": "Logbook - Messenger II",
+   "ap_id": 1694434041,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [],
+      "count": 100
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "logbook_42",
+   "kind": "logbook",
+   "name": "Logbook - Messenger III",
+   "ap_id": 1694434042,
+   "chapter": "Multiworld",
+   "determination": 100,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "checks": {
+      "kinds": [],
+      "count": 200
+     }
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "atleast": 13,
+    "of": [
+     {
+      "event": "Have ClayPotCoolerUndeployed"
+     },
+     {
+      "event": "Can Raise Skill_Archery"
+     },
+     {
+      "event": "Can Raise Skill_Archery"
+     },
+     {
+      "event": "Have LeatherPants"
+     },
+     {
+      "event": "Have BeeSkepEmpty"
+     },
+     {
+      "event": "Have BeeSkep"
+     },
+     {
+      "event": "Have BeeSmokerOff"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have KilnExtinguished"
+       },
+       {
+        "event": "Have KilnAdvanced"
+       },
+       {
+        "event": "Have KilnAdvancedExtinguished"
+       },
+       {
+        "event": "Have Forge"
+       },
+       {
+        "event": "Have ForgeExtinguished"
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have BoarEnclosureFemale"
+       },
+       {
+        "event": "Have BoarEnclosureMale"
+       }
+      ]
+     },
+     {
+      "event": "Have CookingPot"
+     },
+     {
+      "event": "Have LQ_MilkWhole"
+     },
+     {
+      "event": "Can Raise Skill_Trapping"
+     },
+     {
+      "event": "Have CandleOff"
+     },
+     {
+      "event": "Have CandleOff"
+     },
+     {
+      "event": "Have LQ_MilkWhole"
+     },
+     {
+      "any": [
+       {
+        "event": "Have ShovelCopper"
+       },
+       {
+        "event": "Have ShovelScrap"
+       },
+       {
+        "event": "Have ShovelWooden"
+       }
+      ]
+     },
+     {
+      "event": "Have RaftEntrance"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have KilnExtinguished"
+       }
+      ]
+     },
+     {
+      "event": "Have ClayVase"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have KilnExtinguished"
+       }
+      ]
+     },
+     {
+      "event": "Have CookingPot"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have KilnExtinguished"
+       }
+      ]
+     },
+     {
+      "event": "Have AxeHead"
+     },
+     {
+      "event": "Have CopperSheet"
+     },
+     {
+      "event": "Have CopperSheet"
+     },
+     {
+      "event": "Have CopperSheet"
+     },
+     {
+      "event": "Have ShovelHead"
+     },
+     {
+      "event": "Have SpearHead"
+     },
+     {
+      "any": [
+       {
+        "event": "Have PartridgeFeederEmpty"
+       },
+       {
+        "event": "Have PartridgeFeeder"
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have BoarFeeder"
+       },
+       {
+        "event": "Have BoarFeederEmpty"
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have GoatFeeder"
+       },
+       {
+        "event": "Have GoatFeederEmpty"
+       }
+      ]
+     },
+     {
+      "event": "Can Raise Skill_Fishing"
+     },
+     {
+      "any": [
+       {
+        "event": "Can Raise Skill_Fishing"
+       },
+       {
+        "event": "Can Raise Skill_Trapping"
+       }
+      ]
+     },
+     {
+      "event": "Can Raise Skill_Fishing"
+     },
+     {
+      "event": "Have ClayVase"
+     },
+     {
+      "event": "Have Quicklime"
+     },
+     {
+      "any": [
+       {
+        "event": "Have GoatEnclosureFemale"
+       },
+       {
+        "event": "Have GoatEnclosureMale"
+       }
+      ]
+     },
+     {
+      "event": "Have CookingPot"
+     },
+     {
+      "event": "Have Mortar"
+     },
+     {
+      "event": "Have Satchel"
+     },
+     {
+      "event": "Can Raise Skill_Trapping"
+     },
+     {
+      "event": "Have Copper"
+     },
+     {
+      "event": "Have Copper"
+     },
+     {
+      "event": "Have KnifeCopper"
+     },
+     {
+      "event": "Have Quicklime"
+     },
+     {
+      "event": "Have QuininePowder"
+     },
+     {
+      "event": "Can Raise Skill_Archery"
+     },
+     {
+      "event": "Have RaftEntrance"
+     },
+     {
+      "event": "Have RaftEntrance"
+     },
+     {
+      "event": "Have WaterReservoir"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Basket"
+       },
+       {
+        "event": "Have BasketPlaced"
+       }
+      ]
+     },
+     {
+      "event": "Have Plank"
+     },
+     {
+      "event": "Have ClayVase"
+     },
+     {
+      "event": "Can Raise Skill_Trapping"
+     },
+     {
+      "any": [
+       {
+        "event": "Have Kiln"
+       },
+       {
+        "event": "Have KilnExtinguished"
+       }
+      ]
+     },
+     {
+      "event": "Have RaftEntrance"
+     },
+     {
+      "event": "Can Raise Skill_Trapping"
+     },
+     {
+      "event": "Have StoveExtinguished"
+     },
+     {
+      "event": "Have ClayVase"
+     },
+     {
+      "any": [
+       {
+        "event": "Have GoatEnclosureFemale"
+       },
+       {
+        "event": "Have GoatEnclosureMale"
+       },
+       {
+        "event": "Have BoarEnclosureFemale"
+       },
+       {
+        "event": "Have BoarEnclosureMale"
+       }
+      ]
+     },
+     {
+      "any": [
+       {
+        "event": "Have ShovelCopper"
+       },
+       {
+        "event": "Have ShovelScrap"
+       },
+       {
+        "event": "Have ShovelWooden"
+       }
+      ]
+     },
+     {
+      "event": "Have Basket"
+     },
+     {
+      "event": "Have Basket"
+     },
+     {
+      "event": "Can Build Alembic"
+     },
+     {
+      "event": "Can Build Aloe Gel"
+     },
+     {
+      "event": "Can Build Arrows"
+     },
+     {
+      "event": "Can Build Bone Arrows"
+     },
+     {
+      "event": "Can Build Flint Arrows"
+     },
+     {
+      "event": "Can Build Rustic Bed"
+     },
+     {
+      "event": "Can Build Wooden Bed"
+     },
+     {
+      "event": "Can Build Bedroll"
+     },
+     {
+      "event": "Can Build Bee Skep"
+     },
+     {
+      "event": "Can Build Empty Skep"
+     },
+     {
+      "event": "Can Build Bee Smoker"
+     },
+     {
+      "event": "Can Build Bee Suit"
+     },
+     {
+      "event": "Can Build Bellows"
+     },
+     {
+      "event": "Can Build Boar Feeder"
+     },
+     {
+      "event": "Can Build Bone Broth"
+     },
+     {
+      "event": "Can Build Bone Knife"
+     },
+     {
+      "event": "Can Build Bookshelf"
+     },
+     {
+      "event": "Can Build Bow"
+     },
+     {
+      "event": "Can Build Composite bow"
+     },
+     {
+      "event": "Can Build Bow Drill"
+     },
+     {
+      "event": "Can Build Brimstone Gel"
+     },
+     {
+      "event": "Can Build Bug Repellent"
+     },
+     {
+      "event": "Can Build Butter"
+     },
+     {
+      "event": "Can Build Butter Baked Oysters"
+     },
+     {
+      "event": "Can Build Cage Trap"
+     },
+     {
+      "event": "Can Build Candied Ginger"
+     },
+     {
+      "event": "Can Build Candle"
+     },
+     {
+      "event": "Can Build Citronella Candle"
+     },
+     {
+      "event": "Can Build Jasmine Candle"
+     },
+     {
+      "event": "Can Build Cellar"
+     },
+     {
+      "event": "Can Build Chair"
+     },
+     {
+      "event": "Can Build Cheese"
+     },
+     {
+      "event": "Can Build Chest"
+     },
+     {
+      "event": "Can Build Chicken Sandwich"
+     },
+     {
+      "event": "Can Build Cistern"
+     },
+     {
+      "event": "Can Build Clay Fire Pit"
+     },
+     {
+      "event": "Can Build Clay Jar"
+     },
+     {
+      "event": "Can Build Clay Pot Cooler"
+     },
+     {
+      "event": "Can Build Clay Vase"
+     },
+     {
+      "event": "Can Build Serrated Club"
+     },
+     {
+      "event": "Can Build Coconut Fish"
+     },
+     {
+      "event": "Can Build Coconut Milk"
+     },
+     {
+      "event": "Can Build Coconut Sandals"
+     },
+     {
+      "event": "Can Build Compost Bin"
+     },
+     {
+      "event": "Can Build Cooking Pot"
+     },
+     {
+      "event": "Can Build Copper Axe"
+     },
+     {
+      "event": "Can Build Copper Bottle"
+     },
+     {
+      "event": "Can Build Copper Jar"
+     },
+     {
+      "event": "Can Build Copper Necklace"
+     },
+     {
+      "event": "Can Build Copper Needles"
+     },
+     {
+      "event": "Can Build Copper Sheet"
+     },
+     {
+      "event": "Can Build Copper Shovel"
+     },
+     {
+      "event": "Can Build Copper Spear"
+     },
+     {
+      "event": "Can Build Crop Plot"
+     },
+     {
+      "event": "Can Build Deadfall Trap"
+     },
+     {
+      "event": "Can Build Drum"
+     },
+     {
+      "event": "Can Build Drunken Crab"
+     },
+     {
+      "event": "Can Build Drying Rack"
+     },
+     {
+      "event": "Can Build Dynamite"
+     },
+     {
+      "event": "Can Build Copper Eating Utensils"
+     },
+     {
+      "event": "Can Build Wooden Eating Utensils"
+     },
+     {
+      "event": "Can Build Egg Fried Rice"
+     },
+     {
+      "event": "Can Build Enclosure"
+     },
+     {
+      "event": "Can Build Bird Feed"
+     },
+     {
+      "event": "Can Build Boar Feed"
+     },
+     {
+      "event": "Can Build Goat Feed"
+     },
+     {
+      "event": "Can Build Fiber Armor"
+     },
+     {
+      "event": "Can Build Fiber Bracers"
+     },
+     {
+      "event": "Can Build Fiber Cuirass"
+     },
+     {
+      "event": "Can Build Fiber Helmet"
+     },
+     {
+      "event": "Can Build Fish Bait"
+     },
+     {
+      "event": "Can Build Fish N' Chips"
+     },
+     {
+      "event": "Can Build Fish Omelette"
+     },
+     {
+      "event": "Can Build Salted Fish Meat"
+     },
+     {
+      "event": "Can Build Fish Taco"
+     },
+     {
+      "event": "Can Build Fish Trap (FishTrap)"
+     },
+     {
+      "event": "Can Build Fishing Line"
+     },
+     {
+      "event": "Can Build Fishing Rod"
+     },
+     {
+      "event": "Can Build Fishing Spear"
+     },
+     {
+      "event": "Can Build Flint Axe"
+     },
+     {
+      "event": "Can Build Flint Knife"
+     },
+     {
+      "event": "Can Build Flint Spear"
+     },
+     {
+      "event": "Can Build Flower Necklace"
+     },
+     {
+      "event": "Can Build Bone Flute"
+     },
+     {
+      "event": "Can Build Wooden Flute"
+     },
+     {
+      "event": "Can Build Forge"
+     },
+     {
+      "event": "Can Build Fried Bananas"
+     },
+     {
+      "event": "Can Build Fried Puffballs"
+     },
+     {
+      "event": "Can Build Gas Mask"
+     },
+     {
+      "event": "Can Build Glazed Vase"
+     },
+     {
+      "event": "Can Build Glue"
+     },
+     {
+      "event": "Can Build Goat Feeder"
+     },
+     {
+      "event": "Can Build Goat Stew"
+     },
+     {
+      "event": "Can Build Hammock"
+     },
+     {
+      "event": "Can Build Harpoon"
+     },
+     {
+      "event": "Can Build Hearty Feast"
+     },
+     {
+      "event": "Can Build Honey"
+     },
+     {
+      "event": "Can Build Honey Candy"
+     },
+     {
+      "event": "Can Build Honey Glazed Pork"
+     },
+     {
+      "event": "Can Build Island Chicken"
+     },
+     {
+      "event": "Can Build Cloth Jacket"
+     },
+     {
+      "event": "Can Build Jungle Salad"
+     },
+     {
+      "event": "Can Build Kiln"
+     },
+     {
+      "event": "Can Build Advanced Kiln"
+     },
+     {
+      "event": "Can Build Leaf Skirt"
+     },
+     {
+      "event": "Can Build Leather Backpack"
+     },
+     {
+      "event": "Can Build Leather Bracers"
+     },
+     {
+      "event": "Can Build Leather Gloves"
+     },
+     {
+      "event": "Can Build Leather Helmet"
+     },
+     {
+      "event": "Can Build Leather Jacket"
+     },
+     {
+      "event": "Can Build Leather Pants"
+     },
+     {
+      "event": "Can Build Leather Shoes"
+     },
+     {
+      "event": "Can Build Leather Vest"
+     },
+     {
+      "event": "Can Build Lizard Fry"
+     },
+     {
+      "event": "Can Build Log Trap"
+     },
+     {
+      "event": "Can Build Loom"
+     },
+     {
+      "event": "Can Build Macaque Skewers"
+     },
+     {
+      "event": "Can Build Salted Meat"
+     },
+     {
+      "event": "Can Build Axe Mold"
+     },
+     {
+      "event": "Can Build Decoration Mold"
+     },
+     {
+      "event": "Can Build Knife Mold"
+     },
+     {
+      "event": "Can Build Shovel Mold"
+     },
+     {
+      "event": "Can Build Spear Mold"
+     },
+     {
+      "event": "Can Build Mortar"
+     },
+     {
+      "event": "Can Build Mud Hut"
+     },
+     {
+      "event": "Can Build Mushroom Bed"
+     },
+     {
+      "event": "Can Build Niter Bed"
+     },
+     {
+      "event": "Can Build Obsidian Knife"
+     },
+     {
+      "event": "Can Build Obsidian Spear"
+     },
+     {
+      "event": "Can Build Cloth Pants"
+     },
+     {
+      "event": "Can Build Partridge Feeder"
+     },
+     {
+      "event": "Can Build Pearl Necklace"
+     },
+     {
+      "event": "Can Build Brimstone Pesticide"
+     },
+     {
+      "event": "Can Build Chilli Pesticide"
+     },
+     {
+      "event": "Can Build Wooden Planks"
+     },
+     {
+      "event": "Can Build Pottery Wheel"
+     },
+     {
+      "event": "Can Build Protein Bar"
+     },
+     {
+      "event": "Can Build Cinchona Powder"
+     },
+     {
+      "event": "Can Build Quinine Sulfate"
+     },
+     {
+      "event": "Can Build Quiver"
+     },
+     {
+      "event": "Can Build Raft"
+     },
+     {
+      "event": "Can Build Fish Trap (RaftFishTrap)"
+     },
+     {
+      "event": "Can Build Raft Shelter"
+     },
+     {
+      "event": "Can Build Raincatcher"
+     },
+     {
+      "event": "Can Build Raincoat"
+     },
+     {
+      "event": "Can Build Rice Paddy"
+     },
+     {
+      "event": "Can Build Sack"
+     },
+     {
+      "event": "Can Build Sago Cake"
+     },
+     {
+      "event": "Can Build Sago Slime"
+     },
+     {
+      "event": "Can Build Salt Bed"
+     },
+     {
+      "event": "Can Build Satchel"
+     },
+     {
+      "event": "Can Build Scarecrow"
+     },
+     {
+      "event": "Can Build Scrap Axe"
+     },
+     {
+      "event": "Can Build Scrap Knife"
+     },
+     {
+      "event": "Can Build Scrap Shovel"
+     },
+     {
+      "event": "Can Build Scrap Spear"
+     },
+     {
+      "event": "Can Build Seafood Cup"
+     },
+     {
+      "event": "Can Build Seashell Necklace"
+     },
+     {
+      "event": "Can Build Shed"
+     },
+     {
+      "event": "Can Build Shelf"
+     },
+     {
+      "event": "Can Build Shield"
+     },
+     {
+      "event": "Can Build Shirt"
+     },
+     {
+      "event": "Can Build Shower"
+     },
+     {
+      "event": "Can Build Sling"
+     },
+     {
+      "event": "Can Build Snare Trap"
+     },
+     {
+      "event": "Can Build Soap"
+     },
+     {
+      "event": "Can Build Solar Still"
+     },
+     {
+      "event": "Can Build Spindle"
+     },
+     {
+      "event": "Can Build Stone Hut"
+     },
+     {
+      "event": "Can Build Stove"
+     },
+     {
+      "event": "Can Build Straw Cape"
+     },
+     {
+      "event": "Can Build Supply Chest"
+     },
+     {
+      "event": "Can Build Sushi"
+     },
+     {
+      "event": "Can Build Table"
+     },
+     {
+      "event": "Can Build Tonic Water"
+     },
+     {
+      "event": "Can Build Trapping Pit"
+     },
+     {
+      "event": "Can Build Travois"
+     },
+     {
+      "event": "Can Build Treenails"
+     },
+     {
+      "event": "Can Build Vitriol"
+     },
+     {
+      "event": "Can Build Water Filter"
+     },
+     {
+      "event": "Can Build Water Reservoir"
+     },
+     {
+      "event": "Can Build Watering Trough"
+     },
+     {
+      "event": "Can Build Waterskin"
+     },
+     {
+      "event": "Can Build Well"
+     },
+     {
+      "event": "Can Build Weston"
+     },
+     {
+      "event": "Can Build Wood Carvings"
+     },
+     {
+      "event": "Can Build Wood Shavings"
+     },
+     {
+      "event": "Can Build Wooden Needles"
+     },
+     {
+      "event": "Can Build Wooden Shovel"
+     },
+     {
+      "event": "Can Build Woven Backpack"
+     },
+     {
+      "event": "Can Build Woven Basket"
+     },
+     {
+      "event": "Can Build Woven Hat"
+     },
+     {
+      "event": "Can Build Yam Curry"
+     },
+     {
+      "event": "Can Build Yam Jam"
+     },
+     {
+      "event": "Have Env_Atoll"
+     },
+     {
+      "event": "Have Env_Cellar"
+     },
+     {
+      "event": "Have Env_Enclosure"
+     },
+     {
+      "event": "Have Env_MudHut"
+     },
+     {
+      "event": "Have Env_Raft"
+     },
+     {
+      "event": "Have Env_Shed"
+     },
+     {
+      "event": "Have Env_StoneHut"
+     }
+    ]
+   }
+  },
+  {
+   "key": "logbook_43",
+   "kind": "logbook",
+   "name": "Logbook - Set Sail",
+   "ap_id": 1694434043,
+   "chapter": "Departure",
+   "determination": 500,
+   "requires_kinds": [],
+   "watch": [
+    {
+     "cards": [
+      "ab6acef018824ce42a6466e3422fef09"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have RaftEntrance"
+   }
   }
  ],
  "events": [
@@ -12477,6 +15080,13 @@
    }
   },
   {
+   "name": "Have BirdMeatSmoked",
+   "card": "BirdMeatSmoked",
+   "rule": {
+    "event": "Have Stove"
+   }
+  },
+  {
    "name": "Have BoarCarcassPiglet",
    "card": "BoarCarcassPiglet",
    "rule": {
@@ -12595,6 +15205,13 @@
    }
   },
   {
+   "name": "Have BoarMeatSmoked",
+   "card": "BoarMeatSmoked",
+   "rule": {
+    "event": "Have Stove"
+   }
+  },
+  {
    "name": "Have BoarTiedFemale",
    "card": "BoarTiedFemale",
    "rule": {
@@ -12668,6 +15285,13 @@
    "card": "BoneBrothUncooked",
    "rule": {
     "event": "Can Build Bone Broth"
+   }
+  },
+  {
+   "name": "Have BonefishSmoked",
+   "card": "BonefishSmoked",
+   "rule": {
+    "event": "Have Stove"
    }
   },
   {
@@ -14865,6 +17489,13 @@
    }
   },
   {
+   "name": "Have GoatMeatSmoked",
+   "card": "GoatMeatSmoked",
+   "rule": {
+    "event": "Have Stove"
+   }
+  },
+  {
    "name": "Have GoatStew",
    "card": "GoatStew",
    "rule": {
@@ -14951,6 +17582,13 @@
       "event": "Have TrappingPit"
      }
     ]
+   }
+  },
+  {
+   "name": "Have GoatfishSmoked",
+   "card": "GoatfishSmoked",
+   "rule": {
+    "event": "Have Stove"
    }
   },
   {
@@ -15380,6 +18018,13 @@
    }
   },
   {
+   "name": "Have MacaqueMeatSmoked",
+   "card": "MacaqueMeatSmoked",
+   "rule": {
+    "event": "Have Stove"
+   }
+  },
+  {
    "name": "Have MacaqueSkewers",
    "card": "MacaqueSkewers",
    "rule": {
@@ -15457,6 +18102,13 @@
    "card": "MoldSpear",
    "rule": {
     "event": "Can Build Spear Mold"
+   }
+  },
+  {
+   "name": "Have MonitorMeatSmoked",
+   "card": "MonitorMeatSmoked",
+   "rule": {
+    "event": "Have Stove"
    }
   },
   {
@@ -15564,6 +18216,13 @@
    "card": "NiterBed",
    "rule": {
     "event": "Can Build Niter Bed"
+   }
+  },
+  {
+   "name": "Have ParrotFishSmoked",
+   "card": "ParrotFishSmoked",
+   "rule": {
+    "event": "Have Stove"
    }
   },
   {
@@ -15941,6 +18600,13 @@
    }
   },
   {
+   "name": "Have SharkSmoked",
+   "card": "SharkSmoked",
+   "rule": {
+    "event": "Have Stove"
+   }
+  },
+  {
    "name": "Have ShedEntrance",
    "card": "ShedEntrance",
    "rule": {
@@ -16161,6 +18827,13 @@
    "card": "SupplyChestRaft",
    "rule": {
     "event": "Can Build Supply Chest"
+   }
+  },
+  {
+   "name": "Have ThreadfinSmoked",
+   "card": "ThreadfinSmoked",
+   "rule": {
+    "event": "Have Stove"
    }
   },
   {

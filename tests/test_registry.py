@@ -56,22 +56,39 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(len({entry["ap_id"] for entry in DATA["locations"]}), len(DATA["locations"]))
         self.assertEqual(len({entry["ap_id"] for entry in DATA["items"]}), len(DATA["items"]))
         self.assertLessEqual({entry["kind"] for entry in DATA["locations"]},
-                             {"research", "build", "visit", "fish", "hunt", "cook", "farm"})
+                             {"research", "build", "visit", "fish", "hunt", "cook", "farm", "logbook"})
         self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "find"})
 
     def test_first_time_checks_watch_cards(self):
         watched = set()
         for entry in DATA["locations"]:
-            if entry["kind"] in ("fish", "hunt", "cook", "farm"):
-                self.assertTrue(entry["watch"] and all(part["cards"] for part in entry["watch"]), entry["name"])
+            if entry["kind"] in ("fish", "hunt", "cook", "farm", "logbook"):
+                self.assertTrue(entry["watch"], entry["name"])
                 for part in entry["watch"]:
-                    self.assertLessEqual(part["count"], len(part["cards"]))
-                    watched.update(part["cards"])
+                    if "cards" in part:
+                        self.assertLessEqual(part["count"], len(part["cards"]))
+                        watched.update(part["cards"])
         # A find never completes a check by itself.
         for entry in DATA["items"]:
             if entry["kind"] == "find":
                 ids = {part["unique_id"] for part in entry["contents"]} | {part.get("liquid_id") for part in entry["contents"]}
                 self.assertFalse(ids & watched, entry["name"])
+
+    def test_logbook_gives_enough_determination(self):
+        # The Home ending needs 4000 Determination; the logbook replaces the journal's rewards,
+        # so even with only the base check kinds it must give at least that much.
+        tasks = [entry for entry in DATA["locations"] if entry["kind"] == "logbook"]
+        base_only = sum(entry["determination"] for entry in tasks
+                        if set(entry["requires_kinds"]) <= {"research", "build", "visit"})
+        self.assertGreaterEqual(base_only, 4000)
+        for entry in tasks:
+            self.assertTrue(entry["watch"] and entry["chapter"], entry["name"])
+            for part in entry["watch"]:
+                self.assertEqual(len(part.keys() & {"cards", "actions", "checks"}), 1, entry["name"])
+
+    def test_archipelago_character_is_known(self):
+        self.assertEqual(DATA["archipelago_character"]["name"], "NormalGuy")
+        self.assertTrue(DATA["archipelago_character"]["unique_id"] and DATA["determination_stat"])
 
     def test_finds_are_cheap_and_shares_add_up(self):
         self.assertEqual(sum(DATA["filler_shares"].values()), 100)

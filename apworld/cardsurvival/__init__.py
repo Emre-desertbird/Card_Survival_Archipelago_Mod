@@ -37,11 +37,11 @@ class CardSurvivalWebWorld(WebWorld):
 
 GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "find": "Finds"}
 LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit", "fish": "Fishing",
-                   "hunt": "Hunting", "cook": "Cooking", "farm": "Farming"}
+                   "hunt": "Hunting", "cook": "Cooking", "farm": "Farming", "logbook": "Logbook"}
 # Optional location kinds and the option that turns each on.
 OPTIONAL_KINDS = {"fish": "fishing_checks", "hunt": "hunting_checks", "cook": "cooking_checks",
                   "farm": "farming_checks"}
-PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", *OPTIONAL_KINDS.values()]
+PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "character_lock", "logbook", *OPTIONAL_KINDS.values()]
 
 
 class CardSurvivalWorld(World):
@@ -72,12 +72,17 @@ class CardSurvivalWorld(World):
 
     def enabled_kinds(self) -> list[str]:
         """Location kinds in this slot: the base ones plus the optional ones switched on."""
-        base = [kind for kind in LOCATION_GROUPS if kind not in OPTIONAL_KINDS]
-        return base + [kind for kind, option in OPTIONAL_KINDS.items() if getattr(self.options, option)]
+        base = [kind for kind in LOCATION_GROUPS if kind not in OPTIONAL_KINDS and kind != "logbook"]
+        kinds = base + [kind for kind, option in OPTIONAL_KINDS.items() if getattr(self.options, option)]
+        if self.options.logbook and self.options.character_lock:
+            kinds.append("logbook")   # the logbook is written for the Archipelago character
+        return kinds
 
     def included_locations(self) -> list[dict]:
         kinds = set(self.enabled_kinds())
-        return [entry for entry in DATA["locations"] if entry["kind"] in kinds]
+        # A logbook task counting checks of a kind exists only when that kind does.
+        return [entry for entry in DATA["locations"] if entry["kind"] in kinds
+                and set(entry.get("requires_kinds", [])) <= kinds]
 
     @staticmethod
     def interpret_slot_data(slot_data: dict) -> dict:
@@ -132,5 +137,6 @@ class CardSurvivalWorld(World):
             "exclude_challenge_checks": bool(self.options.exclude_challenge_checks),
             "finds_amount": int(self.options.finds_amount),
             "location_kinds": self.enabled_kinds(),
+            "character_lock": bool(self.options.character_lock),
             **{option: int(getattr(self.options, option)) for option in OPTIONAL_KINDS.values()},
         }

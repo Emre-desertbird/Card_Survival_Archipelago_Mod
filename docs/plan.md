@@ -47,7 +47,7 @@ Related documents:
 
 ## What the randomizer does
 
-### Locations (451, up to 494 with the optional ones)
+### Locations (451, up to 538 with the optional ones)
 
 | Kind | Count | Sent when |
 | --- | --- | --- |
@@ -58,6 +58,7 @@ Related documents:
 | Hunt - X (option `hunting_checks`) | 10 | The first carcass of an animal exists. |
 | Cook - X (option `cooking_checks`) | 17 | A cooking pot or coconut shell dish exists for the first time. |
 | Plant - ... (option `farming_checks`) | 5 | First crop, three and six different crops, first tree, first mushroom bed. |
+| Logbook - ... (option `logbook`) | 44 | A task of the Archipelago logbook is done (see below). |
 
 The optional kinds are off by default. Kinds nothing can reach in this game mode (Grouper,
 Seahound) are dropped by the registry tool.
@@ -81,6 +82,21 @@ in a coconut shell. At most 10 finds land per in-game hour; the rest waits in a 
 in the F8 panel (contents and sender listed, taken on demand). `finds_amount`:
 `less` (half of them are worthless keepsakes), `normal`, `more` (50 % larger amounts).
 
+### The Archipelago character and the logbook
+
+`character_lock` (on by default): every new Archipelago game starts as **Normal Guy**, the
+game's neutral character (no perks, no kit, the Beach). He is the base model of custom
+characters and not in the character list, so the start is redirected to him; the F8 panel
+says so in the main menu. The logic is made for him.
+
+`logbook` (off by default, needs the character lock): 44 new tasks in six chapters
+(Stranded, Survival, The Island, Craft, Multiworld, Departure). Each task is a check and
+gives Determination like the normal journal, whose rewards it replaces (the journal still
+shows its tasks). Together 5,300 Determination, at least 4,000 with only the base check
+kinds, so the Home ending (4,000) stays possible. Tasks never ask to *receive* items; the
+Multiworld chapter counts checks you sent (e.g. 10 fishing checks, 50/100/200 checks).
+The logbook is a page of the F8 panel.
+
 ### Not shuffled
 
 - The nine starting blueprints: Broom, Campfire, Fire, Hand Drill, Rustic Spear,
@@ -103,7 +119,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.4.0)
+## Current state (version 0.5.0)
 
 | Part | State |
 | --- | --- |
@@ -116,9 +132,10 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 | Skills, perks, equipment copies | Work, tested including reload and checkpoint. |
 | Finds, hourly limit, buffer | Work, tested in the real game: ground row, filled coconut shells, buffer across reload and checkpoint. |
 | Fishing, hunting, cooking, farming checks | Work, tested in the real game (first-time and counting checks). |
+| Character lock, logbook | Work, tested in the real game: Normal Guy start, card, action and check-counting tasks, Determination exactly once across reload and checkpoint, journal rewards skipped. The logbook is shown in the F8 panel, not yet in the game's journal book. |
 | Ending detection, goal, checkpoint after victory | Work, tested. |
 | Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
-| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 17 unit tests. |
+| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 19 unit tests. |
 | Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
 | Release | `tools/package.py` builds `cardsurvival.apworld` and a release zip. |
 
@@ -128,7 +145,8 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 2. **First playable (research).** Done.
 3. **Real logic from data.** Done (see logic.md for what is approximated).
 4. **More checks.** Build and visit: done. Fishing, hunting, cooking, farming: done (0.4.0,
-   optional). Next: the Archipelago logbook ([plan_erweiterung.md](plan_erweiterung.md)).
+   optional). Archipelago logbook and character lock: done (0.5.0). Next: new perks
+   ([plan_erweiterung.md](plan_erweiterung.md)).
 5. **More items.** Skills, perks, equipment copies, supplies: done. Next, optional:
    hybrid skill caps, new custom perks (less tool wear, faster crafting).
 6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a

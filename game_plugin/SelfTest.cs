@@ -99,6 +99,30 @@ namespace CardSurvivalArchipelago
             }
         }
 
+        /// <summary>Clicks away event popups, like a player would.</summary>
+        private static IEnumerator ConfirmEvents()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                GraphicsManager graphics = MBSingleton<GraphicsManager>.Instance;
+                InGameCardBase inspected = graphics != null ? graphics.InspectedCard : null;
+                if (inspected == null || inspected.CardModel == null || inspected.CardModel.CardType != CardTypes.Event ||
+                    graphics.CurrentInspectionPopup == null) yield break;
+                graphics.CurrentInspectionPopup.OnButtonClicked(0, false);
+                yield return Wait(1f);
+            }
+        }
+
+        /// <summary>Reports an action on a card the way the game does when the player performs it.</summary>
+        private static void ReportAction(string cardId, string actionName)
+        {
+            GameManager.OnActionPerformed(new ActionReport
+            {
+                FromCard = UniqueIDScriptable.GetFromID<CardData>(cardId),
+                Action = new CardAction { ActionName = new LocalizedString { DefaultText = actionName } },
+            });
+        }
+
         private static GameManager GM
         {
             get { return MBSingleton<GameManager>.Instance; }
@@ -154,6 +178,9 @@ namespace CardSurvivalArchipelago
                 character = GameManager.CurrentPlayerCharacter.name,
                 offered = modes[0].PlayableCharacters.Select(c => c.name).ToArray(),
             });
+            Check("character lock: the game starts as the Archipelago character",
+                  GameManager.CurrentPlayerCharacter != null && GameManager.CurrentPlayerCharacter.UniqueID == Registry.CharacterId,
+                  GameManager.CurrentPlayerCharacter != null ? GameManager.CurrentPlayerCharacter.name : null);
             Check("safe mode forced on", gm.IsSafeMode);
             Check("research uses time", gm.BlueprintPurchasing && gm.PurchasingWithTime);
             // A character perk can start the game in an area outside the logic (e.g. the crashed plane);
@@ -314,6 +341,38 @@ namespace CardSurvivalArchipelago
             Check("counting check: three different crops needs the third", !afterTwo && ApGame.State.IsChecked(three.Id) &&
                   ApGame.State.IsChecked(first.Id), new { afterTwo, three = ApGame.State.IsChecked(three.Id) });
 
+            // 8d2. The logbook (Phase B): tasks complete from cards, actions and sent checks, and give
+            // their Determination once; the normal journal's reward for the same thing is skipped.
+            GameStat determination = UniqueIDScriptable.GetFromID<GameStat>(Registry.DeterminationStatId);
+            float determinationStart = gm.StatsDict[determination].CurrentBaseValue;
+            int rewardsStart = ApGame.State.Rewards.Count;
+            Registry.Entry explore = Registry.Watched.First(entry => entry.Name == "Logbook - Explore the Beach");
+            GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(explore.Watch[0].Cards.First()), true);
+            yield return WaitFor(() => ApGame.State.IsChecked(explore.Id), 5f);
+            yield return ConfirmEvents();
+            Check("logbook: a card task completes", ApGame.State.IsChecked(explore.Id), explore.Name);
+            Registry.Entry refreshment = Registry.Watched.First(entry => entry.Name == "Logbook - First Refreshment");
+            var actions = refreshment.Watch.Select(part => part.Actions.First().Split('|')).ToList();
+            ReportAction(actions[0][0], actions[0][1]);
+            bool afterOne = ApGame.State.IsChecked(refreshment.Id);
+            ReportAction(actions[1][0], actions[1][1]);
+            Check("logbook: an action task needs every action", !afterOne && ApGame.State.IsChecked(refreshment.Id),
+                  actions.Select(action => action[1]).ToArray());
+            Registry.Entry tally = Registry.Watched.First(entry => entry.Name == "Logbook - Hunter's Tally");
+            foreach (Registry.Entry animal in Registry.Watched.Where(entry => entry.Kind == "hunt" && !ApGame.State.IsChecked(entry.Id)).Take(4))
+            {
+                GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(animal.Watch[0].Cards.First()), true);
+            }
+            yield return WaitFor(() => ApGame.State.IsChecked(tally.Id), 8f);
+            Check("logbook: a task counting sent checks", ApGame.State.IsChecked(tally.Id),
+                  new { hunts = Checks.Progress(tally.Watch[0]) });
+            yield return Wait(1f);
+            float determinationGiven = ApGame.State.Rewards.Skip(rewardsStart).Sum(id => Registry.Locations[id].Determination);
+            float determinationNow = gm.StatsDict[determination].CurrentBaseValue;
+            Check("logbook: Determination given once, the normal journal's reward skipped",
+                  Mathf.Abs(determinationNow - (determinationStart + determinationGiven)) < 2f,
+                  new { determinationStart, determinationGiven, determinationNow });
+
             // 8e. Finds: they land on the ground; beyond 10 per in-game hour they wait in the buffer.
             var findLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) &&
                     pair.Value.Player.Slot == ApConnection.Slot && Registry.Items.ContainsKey(pair.Value.ItemId) &&
@@ -341,6 +400,12 @@ namespace CardSurvivalArchipelago
             Finds.Release(firstIndex);
             Check("taking one find from the buffer", Finds.Buffer.Count == buffered - 1 && !Finds.Buffer.Contains(firstIndex));
             int bufferBeforeSave = Finds.Buffer.Count;
+            float determinationSaved = gm.StatsDict[determination].CurrentBaseValue;
+            // Later checks may have delivered more copies (a second skill level, another perk);
+            // after reload and checkpoint everything must be exactly as it was when saved.
+            float skillSaved = gm.StatsDict[skillStat].CurrentBaseValue;
+            int perksSaved = ItemEffects.ActivePerks;
+            int equipmentSaved = CountCards(gm, equipmentCard);
             GameLoad.Instance.AutoSaveGame(false);
             yield return Wait(2f);
 
@@ -357,14 +422,17 @@ namespace CardSurvivalArchipelago
                   !gm.PurchasableBlueprintCards.Contains(reward), Describe(reward));
             int serverCount = ApConnection.Session.Items.AllItemsReceived.Count;
             Check("after reload: skill, perk and equipment exactly once",
-                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillAfter) && ItemEffects.ActivePerks == perksBefore + 1 &&
-                  CountCards(gm, equipmentCard) == equipmentAfter,
+                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillSaved) && ItemEffects.ActivePerks == perksSaved &&
+                  CountCards(gm, equipmentCard) == equipmentSaved,
                   new { skill = gm.StatsDict[skillStat].CurrentBaseValue, perks = ItemEffects.ActivePerks, equipment = CountCards(gm, equipmentCard) });
             Check("after reload: ledger matches the server, nothing doubled", ApGame.State.Received.Count == serverCount &&
                   ApGame.AppliedNow == serverCount, new { ledger = ApGame.State.Received.Count, server = serverCount, ApGame.AppliedNow });
 
             Check("after reload: the finds buffer is as saved", Finds.Buffer.Count == bufferBeforeSave,
                   new { now = Finds.Buffer.Count, saved = bufferBeforeSave });
+            Check("after reload: logbook Determination exactly once",
+                  Mathf.Abs(gm.StatsDict[determination].CurrentBaseValue - determinationSaved) < 2f,
+                  new { now = gm.StatsDict[determination].CurrentBaseValue, determinationSaved });
 
             // 10. Load the checkpoint (taken before the second research).
             int checkpointApplied = ApGame.State.AppliedCheckpoint;
@@ -383,13 +451,16 @@ namespace CardSurvivalArchipelago
                   Describe(reward));
             yield return Wait(2f);
             Check("after checkpoint: items received since then come back exactly once",
-                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillAfter) && ItemEffects.ActivePerks == perksBefore + 1 &&
-                  CountCards(gm, equipmentCard) == equipmentAfter,
+                  Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillSaved) && ItemEffects.ActivePerks == perksSaved &&
+                  CountCards(gm, equipmentCard) == equipmentSaved,
                   new { skill = gm.StatsDict[skillStat].CurrentBaseValue, perks = ItemEffects.ActivePerks, equipment = CountCards(gm, equipmentCard) });
             Check("after checkpoint: finds since then land again, the rest waits (no duplicates)",
                   Finds.Buffer.Count == Mathf.Max(0, findsSinceCheckpoint - Finds.PerHour) && Finds.Buffer.Distinct().Count() == Finds.Buffer.Count,
                   new { buffer = Finds.Buffer.Count, findsSinceCheckpoint });
             Check("after checkpoint: first-time checks stay done", ApGame.State.IsChecked(hunt.Id) && ApGame.State.IsChecked(three.Id));
+            Check("after checkpoint: logbook rewards since then come back exactly once",
+                  Mathf.Abs(gm.StatsDict[determination].CurrentBaseValue - determinationSaved) < 2f && ApGame.RewardsNow == ApGame.State.Rewards.Count,
+                  new { now = gm.StatsDict[determination].CurrentBaseValue, determinationSaved, ApGame.RewardsNow });
             Check("after checkpoint: applied counter restored", ApGame.AppliedNow == ApGame.State.Received.Count,
                   new { ApGame.AppliedNow, received = ApGame.State.Received.Count });
 

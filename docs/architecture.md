@@ -128,6 +128,23 @@ checkpoints never undo it. Only kinds switched on in the seed (`location_kinds` 
 slot data, stored with the save) are completed. Finds never contain a watched card; the
 registry tool refuses that, so an item can never complete one of these checks.
 
+### The logbook and the character lock
+
+Logbook tasks are watched locations like the first-time checks, with two more kinds of
+condition: an action on a card (recorded from `GameManager.OnActionPerformed`, kept in
+`SlotState.Actions`) and a number of sent checks of some kinds. After every completed check
+the watched locations are evaluated again, so counting tasks follow at once.
+
+A finished task's Determination is a one-time effect: the task goes into `SlotState.Rewards`
+(never rolled back), and `ApGame.RewardsNow` counts how many are in the running game. Like
+the applied-items counter it is kept for the main save and the checkpoint copy, so after
+loading an older checkpoint each reward since then is given exactly once more.
+
+With the logbook on, `JournalRewardPatch` skips the rewards of the normal journal's
+objectives (`Objective.OnComplete` for journal objectives), so Determination never doubles.
+`CharacterLock` sets `GameManager.CurrentPlayerCharacter` to the Archipelago character
+right before `GameLoad.StartNewGame` when the connected seed asks for it.
+
 ### Finds: `Finds`
 
 A find is a one-time effect like supplies were. When it is applied it lands on the base row

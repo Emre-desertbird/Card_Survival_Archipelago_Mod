@@ -4,3 +4,5 @@ game: "Card Survival: Tropical Island"
   fishing_checks: true
   hunting_checks: true
   finds_amount: less
+  logbook: true
+  character_lock: false

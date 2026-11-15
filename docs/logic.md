@@ -57,6 +57,8 @@ Only events something depends on are kept (440 at the moment).
 | Visit - Area | `Have <area>` |
 | Catch, Hunt, Cook - X | `Have` any card of the group |
 | Plant - N different crops | `{"atleast": N, "of": [Have crop, ...]}` |
+| Logbook - card or action task | `Have` a card of the task (an action needs its card) |
+| Logbook - "send N checks" | at least N of those checks' own rules (research, build and visit only for the totals) |
 | Goal | `Can Play Ending Event_ShipEscape` |
 
 An item is **progression** when a check or the goal depends on it, directly or through
@@ -91,6 +93,8 @@ In `tools/build_registry.py`, each with its reason in a comment:
 - `GOAL_ENDING`: the ending the logic guarantees.
 - `EXCLUDED_SKILLS`: Insight (tied to endings).
 - `FINDS`, `FIND_SHARES`: what finds contain and their share of the filler pool.
+- `LOGBOOK`: the logbook tasks; most reuse the conditions of a game objective.
+- `ARCHIPELAGO_CHARACTER`: Normal Guy.
 - `FISHING`, `HUNTING`: which cards count as a catch or a carcass of each kind (cooking
   and farming come from the game's own tags).
 - `CHALLENGE_RESEARCH_DAYS`, `CHALLENGE_BUILD_HOURS`: thresholds for challenge checks.

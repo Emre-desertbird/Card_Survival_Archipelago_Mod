@@ -26,9 +26,19 @@ namespace CardSurvivalArchipelago
             GameManager.OnActionPerformed += OnActionPerformed;
         }
 
+        private static bool evaluating;
+
         private static void OnActionPerformed(ActionReport report)
         {
             if (!ApGame.Active || report.Cancelled || report.FromCard == null || report.Action == null) return;
+            // Logbook tasks such as "eat and drink from a coconut" wait for actions on a card.
+            string action = report.FromCard.UniqueID + "|" + report.Action.ActionName.DefaultText;
+            if (Registry.WatchedActions.Contains(action) && !ApGame.State.HasAction(action))
+            {
+                ApGame.State.AddAction(action);
+                ApGame.State.Write();
+                EvaluateWatched();
+            }
             if (report.FromCard.CardType != CardTypes.Blueprint && report.FromCard.CardType != CardTypes.EnvImprovement) return;
             Registry.Entry location;
             if (!Registry.BuildByCard.TryGetValue(report.FromCard.UniqueID, out location)) return;
@@ -71,17 +81,59 @@ namespace CardSurvivalArchipelago
             EvaluateWatched();
         }
 
-        /// <summary>Completes every enabled "first time" check whose conditions hold.</summary>
+        /// <summary>Completes every enabled watched check (first-time checks, logbook tasks) whose conditions hold.</summary>
         public static void EvaluateWatched()
         {
-            foreach (Registry.Entry location in Registry.Watched)
+            if (evaluating || !ApGame.Active) return;
+            evaluating = true;
+            try
             {
-                if (ApGame.State.IsChecked(location.Id) || !ApGame.State.LocationKinds.Contains(location.Kind)) continue;
-                if (location.Watch.All(part => part.Cards.Count(ApGame.State.HasSeen) >= part.Count))
+                bool completed = true;
+                while (completed)   // a completed check can finish a logbook task counting checks
                 {
-                    ApGame.CompleteLocation(location.Id);
+                    completed = false;
+                    foreach (Registry.Entry location in Registry.Watched)
+                    {
+                        if (ApGame.State.IsChecked(location.Id) || !Enabled(location)) continue;
+                        if (location.Watch.All(Holds))
+                        {
+                            ApGame.CompleteLocation(location.Id);
+                            completed = true;
+                        }
+                    }
                 }
             }
+            finally
+            {
+                evaluating = false;
+            }
+        }
+
+        /// <summary>The location exists in this seed (its kind, and every kind a logbook task counts).</summary>
+        public static bool Enabled(Registry.Entry location)
+        {
+            return ApGame.State.LocationKinds.Contains(location.Kind) && location.RequiresKinds.All(ApGame.State.LocationKinds.Contains);
+        }
+
+        public static bool Holds(Registry.WatchPart part)
+        {
+            return Progress(part) >= part.Count;
+        }
+
+        /// <summary>How far a condition is: cards seen, an action done (0 or 1), checks sent.</summary>
+        public static int Progress(Registry.WatchPart part)
+        {
+            if (part.CheckKinds != null)
+            {
+                return ApGame.State.Checked.Count(id =>
+                {
+                    Registry.Entry entry;
+                    return Registry.Locations.TryGetValue(id, out entry) && entry.Kind != "logbook" &&
+                           (part.CheckKinds.Count == 0 || part.CheckKinds.Contains(entry.Kind));
+                });
+            }
+            if (part.Actions.Count > 0) return part.Actions.Any(ApGame.State.HasAction) ? part.Count : 0;
+            return part.Cards.Count(ApGame.State.HasSeen);
         }
 
         public static void Reset()

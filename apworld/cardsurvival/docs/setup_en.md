@@ -37,6 +37,9 @@ game: "Card Survival: Tropical Island"
   farming_checks: true
   # Finds (filler): less / normal / more
   finds_amount: normal
+  # New games start as Normal Guy (on by default); the logbook needs it.
+  character_lock: true
+  logbook: true
 ```
 
 The game name contains a colon, so it must be in quotes.
@@ -45,7 +48,8 @@ The game name contains a colon, so it must be in quotes.
 
 1. Start the copy. The **Archipelago** panel is in the main menu.
 2. Enter the server (`host:port`), your slot name and the password, then **Connect**.
-3. Start a **new game**. Any character works; the logic assumes a start on the Beach.
+3. Start a **new game**. With `character_lock` (default) it starts as Normal Guy, the
+   game's neutral character, whatever you picked.
 4. To continue later, load the save. Connect first or later with **F8**; checks found
    while offline are sent when you connect.
 
