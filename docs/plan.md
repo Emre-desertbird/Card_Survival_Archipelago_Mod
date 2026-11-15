@@ -1,243 +1,132 @@
 # Plan
 
-How this mod turns Card Survival: Tropical Island into an Archipelago game, what
-already works, and what comes next. Game build `21268943` (version `v1.05ae`).
+How this mod turns Card Survival: Tropical Island into an Archipelago game: the design,
+what works today, what comes next and the open decisions. Game build `21268943`
+(version `v1.05ae`).
 
-Design motto: **randomize progression, preserve survival.** Archipelago items open
-up possibilities; checks reward actually using them.
+Design motto: **randomize progression, preserve survival.** Archipelago items open up
+possibilities; checks reward actually using them.
+
+Related documents:
+
+| Document | For |
+| --- | --- |
+| [architecture.md](architecture.md) | How the plugin and the APWorld work inside, and why. |
+| [logic.md](logic.md) | How the logic is derived from the game data, and its known limits. |
+| [testing.md](testing.md) | Unit tests, seed generation and the in-game self-test. |
+| [anleitung_de.md](anleitung_de.md) | Player guide in German (install, connect, play). |
+| [../apworld/cardsurvival/docs/](../apworld/cardsurvival/docs/) | Game page and setup guide shown by Archipelago. |
 
 ## Principles
 
 - **Keep the original game.** Hunger, thirst, weather, wounds, combat, cooking and
-  exploration are untouched. No blanket difficulty reduction. New features are
-  optional and off by default.
-- **Separate modded copy.** The Steam installation stays vanilla. The randomizer
-  runs in its own copy with its own save folder.
-- **Logic comes from the game's data, not from memory.** A tool reads the real game
-  data and builds the list of items and checks. Every release is tied to one game
-  build. Item and location counts follow from the data, never from target numbers.
-- **Every seed can be finished, in theory and in practice.** Missable, luck-based or
-  very long checks never hold progression or useful items. Any real ending wins.
-- **Safe saves.** A save belongs to one seed and slot. Checks found offline are sent
-  later. Saving, loading, reconnecting or loading a checkpoint never duplicates an
-  item or a check.
+  exploration are untouched. No blanket difficulty reduction. New features are optional
+  and off by default.
+- **Separate modded copy.** The Steam installation stays vanilla. The randomizer runs in
+  its own copy with its own save folder.
+- **Logic comes from the game's data, not from memory.** A tool reads the real game data
+  and builds the items, checks and rules. Every release is tied to one game build.
+- **Every seed can be finished**, in theory and in practice. Long checks hold no
+  important items. Any real ending wins.
+- **Safe saves.** A save belongs to one seed and slot. Checks found offline are sent later.
+  Saving, loading, reconnecting or loading a checkpoint never doubles an item or a check.
 - **No separate client.** The game connects to the Archipelago server itself.
 - **Try it for real.** Real seed generation and in-game test runs, not only unit tests.
 
 ## Hard rules
 
 1. Receiving an AP item never completes a check.
-2. Finishing a research and unlocking a recipe are two separate states. Setting one
-   never sets the other.
+2. Finishing a research and unlocking a recipe are separate states.
 3. A received blueprint never removes or blocks its research check.
-4. No progression can be lost forever. One-time items (a finished tool, resources)
-   never count as permanent progression unless they can be replaced reliably.
+4. No progression can be lost forever; one-time items are never logic.
 5. No required check can become unreachable forever.
-6. Basic survival never depends on AP items (see "Survival basics").
-7. Long or unreliable checks hold no important items (Archipelago exclusion).
-8. Every alternative vanilla way to get a card is part of the logic.
+6. Basic survival never depends on AP items.
+7. Long checks hold no important items (Archipelago exclusion).
+8. Alternative vanilla ways to learn a blueprint are respected.
 9. Items and locations are counted from the data; filler makes up the difference.
 
-## How the game maps to Archipelago
+## What the randomizer does
 
-Card Survival has no fixed pickups: it is an open survival sandbox, and its real
-progression is **knowledge**. You discover a blueprint, spend days researching it,
-then you can build it. That makes it close to Factorio or Subnautica in Archipelago.
+### Locations (451)
 
-### Research and recipes (the core)
+| Kind | Count | Sent when |
+| --- | --- | --- |
+| Research - X | 200 | The research of blueprint X finishes (or X is learned in another vanilla way). |
+| Build - X | 209 | Blueprint X is finished for the first time (crafted or constructed). |
+| Visit - Area | 42 | You enter that area for the first time. |
 
-Each shuffled blueprint has two independent states:
-
-| State | Set by |
-| --- | --- |
-| `research_completed` | Finishing its research in the research menu. Sends the check "Research - Kiln". Does **not** teach the recipe. |
-| `recipe_unlocked` | Receiving the item "Blueprint: Kiln", from yourself or another player. |
-
-- The vanilla conditions for a blueprint to appear for research stay
-  ("Clay Pot Cooler needed").
-- The research menu shows what the check holds and for whom (LocationScouts).
-- A blueprint you already received stays researchable until its check is sent.
-  Vanilla hides known blueprints from research, so the mod has to change that.
-- 33 blueprints are learned the moment they are discovered (no research time).
-  Their check is sent at that moment.
-
-### Survival basics
-
-The nine blueprints every character starts with stay theirs and are not shuffled:
-Sharpened Stone, Fire, Campfire, Hand Drill, Rustic Spear, Stone Axe, Broom and both
-Tourniquets.
-
-**Gap found in the data:** a shelter, water containers and basic medicine
-(`Shelter`, `Waterskin`, `Splint`, ...) are not in that kit; they are normal
-researched blueprints. Rule 6 asks for them to be independent of AP items. Default:
-a short, data-checked list of **survival blueprints** keeps its vanilla behaviour
-(research teaches it as usual) *and* still sends a check. The exact list is decided
-in milestone 3 by looking at what an early-game character really needs.
+8 long checks (research of 3+ days, construction of 12+ hours) are **challenge checks**:
+by default they only hold filler (`exclude_challenge_checks`, on by default).
 
 ### Items
 
-| Kind | What the player gets | Notes |
+| Kind | Count | Effect |
 | --- | --- | --- |
-| **Blueprint** | The recipe, permanently. | Buildings, consumables and intermediate products are not handed out finished. |
-| **Equipment blueprint** | The recipe, permanently, plus one finished copy once. | Tools, weapons, clothing. Does not complete the craft or research check. The copy is one-time and never logic. |
-| **Progressive skill** | Raises one skill right away (skills run 0-150). | Normal training stays. Never a check. Skills tied to an ending are checked before they are shuffled. |
-| **Perk** | A permanent passive bonus. | See below. |
-| **Unique card** | A card no blueprint makes. | Never progression if it can be lost. |
-| **Filler** | Food, water, building materials, medicine, rare resources, tool replacements. | No traps in the default mode. |
+| Blueprint: X | 194 | Recipe X, permanently. 53 equipment blueprints also give one finished copy. |
+| Progressive Skill | 66 (22 skills × 3) | +25 on that skill (3 × 25 = the game's own skill perk). Insight is excluded. |
+| Perk: X | 11 | A helpful vanilla perk with passive bonuses only (e.g. Slow Metabolism). |
+| Supplies | the rest (180) | Coconuts, sticks, stones and flint, a water ration, rope and fibers. |
 
-**Perks, as found in the data.** The 89 character perks are creation-screen perks.
-Many are negative or are starting scenarios (weather, locations, injuries). The
-usable positive ones work in three different ways:
+### Not shuffled
 
-- `PassiveStatModifiers` (for example Slow Metabolism: hunger rate x0.5). These can
-  be granted mid-game and are the main perk items.
-- `StartingStatModifiers` (the skill perks such as Woodworker give skill levels).
-  These overlap with skill items; treat them as skill items, not perks.
-- `AddedCards` (the skill perks also add **blueprints**, e.g. Woodworker adds Planks
-  and Treenails). This would bypass the randomizer, so perk items never add cards.
-
-New custom perks (less tool wear, faster crafting, ...) come after the vanilla ones,
-and must stay noticeable without making a survival mechanic meaningless.
-
-Optional hybrid skill mode (off by default): skills start with a lower cap; each
-skill item raises the cap and the level.
-
-### Locations
-
-Every check is one-time and comes only from a real action in the game, never from
-receiving an item. AP resources do not count as "gathered yourself"; an AP tool does
-not count as "crafted yourself". This follows naturally if checks hook the action,
-not the inventory.
-
-| Category | Trigger | Default |
-| --- | --- | --- |
-| Research | Finish a research | On |
-| Crafting | Craft an item for the first time | On |
-| Construction | Finish a building or an upgrade | On |
-| Exploration | Discover an area or special place (the journal already tracks 19 areas) | On |
-| Resources / processing / cooking | First time producing a material or dish | On, list from data |
-| Farming, fishing, hunting, animal keeping | First harvest / catch / kill / tame per species | On, rare species are challenge checks |
-| Journal | Suitable vanilla objectives | Option |
-| Expeditions, events | Special exploration actions and events | Option, luck-based ones are challenge checks |
-
-- **Standard checks** may hold progression and useful items.
-- **Challenge checks** (long, rare, luck-based) are excluded from important items.
-- **Not implemented:** survival-day counters, skill-level milestones, grinding,
-  forced deaths or injuries.
-
-Rough size, to be confirmed by the data: 200 research checks + about as many first
-crafts, plus the other categories, for roughly 300-550 checks.
-
-### Areas
-
-All areas stay reachable through their vanilla routes. There are no area-lock items.
-The logic still models areas, because an area's checks may need tools, equipment or
-skills to be done safely.
+- The nine starting blueprints: Broom, Campfire, Fire, Hand Drill, Rustic Spear,
+  Sharpened Stone, Stone Axe and both Tourniquets.
+- **Survival basics** (rule 6): Shelter, Leaf Bed, Torch, Clay Bowl, Splint, Ash Dressing.
+  Their research teaches the recipe as in vanilla *and* sends its check. They have no item.
+- Five blueprints that only exist in a character's starting kit, and two test blueprints.
 
 ### Goal
 
-Any real ending wins (`any_ending`). The game has exactly four victory actions
-(found in the card data, `VictorySettings.Victory`):
+Any real ending completes the goal: Escape (rescue at sea), Home ("Accept your new
+Life"), the Weston ending, or the Mermaid's return to the sea. These are the only four
+victory actions in the game data. The **logic** guarantees the Escape ending, the only one
+fully described by cards (raft, sailing, rescue); see [logic.md](logic.md). After the
+ending screen, "Load checkpoint" lets you keep collecting checks.
 
-| Ending | Card | Action |
-| --- | --- | --- |
-| Escape | `Event_ShipEscape` | Return to civilization |
-| Home | `Imp_HomeSign` | Accept your new Life |
-| Weston (special ending) | `Event_WestonSpecial5c` | It's working. |
-| Mermaid | `Sea_*` (7 sea locations) | Return to the sea |
+### Death
 
-There is no separate victory action for "Insight". Whether the Weston ending is the
-Insight path (Skill_Insight) is checked in milestone 3. The original requirements of
-each ending stay. No victory fragments and no simplified raft goal in the final
-logic (registry 1 still uses "can build the Raft" as a stand-in).
+Randomized games always use the game's own **Safe Mode**: every day change writes a
+checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
+goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-Victory detection: `GameManager` calls `EndgameMenu.Setup` for a victory action. The
-goal is sent there. After the goal the player must be able to keep collecting checks:
-the mod adds a "Load checkpoint" button to the victory screen.
-
-### Death and checkpoints
-
-The game already has this built in: **Safe Mode**. With Safe Mode on, every autosave
-at a day change also writes a checkpoint, and the game-over screen offers
-"Load checkpoint" (`GameLoad.LoadCheckpoint`, `EndgameMenu.SetupCover`). The mod
-turns Safe Mode on for every Archipelago save instead of writing its own system.
-
-How items survive a rollback without duplication:
-
-- **Outside the game save** (per seed and slot): checks sent, checks waiting to be
-  sent, goal reached. A rollback never takes these back, so a check can't fire twice.
-- **Inside the game save**: the index of the last received item that was applied.
-  A rollback restores the old index together with the old inventory.
-- **On every load** the mod re-applies all permanent items (blueprints, skill items,
-  perks) idempotently, then gives one-time items (finished tools, filler) only for
-  indexes after the saved one. So a tool lost by a rollback comes back once, and a
-  tool still in the save is not given again.
-
-DeathLink: not planned.
-
-### Characters
-
-First, characters that start on the Beach with the standard kit (Normal Guy,
-Survivalist, Tourist, custom characters). Farmer, Hunter and Mermaid start elsewhere
-with different blueprints and come later; the Mermaid ending needs the Mermaid.
-Five blueprints exist only in a character's starting kit and are not shuffled.
-
-## What works today
+## Current state (version 0.3.0)
 
 | Part | State |
 | --- | --- |
-| Dev setup (`tools/setup_dev.py`) | Works. Finds the Steam game, makes the modded copy, installs BepInEx 5.4.23.2, fetches the compiler. All downloads are checksum-pinned. |
-| Plugin build (`tools/build_plugin.py`) | Works. No .NET SDK or Visual Studio needed. |
-| Plugin loads in the game | Verified in the game. |
-| Save isolation | Verified. The copy saves to `...\Card Survival - Tropical Island (Archipelago)`. If the redirect ever fails, the game closes before touching any save. |
-| Steam isolation | Verified. The copy starts without Steam and can save. No Steam achievements. |
-| Data dump (`tools/dump_game_data.py`) | Works. 1,908 cards, 303 objectives, 361 stats, 89 perks and more, as JSON. |
-| Registry (`tools/build_registry.py`) | Works. 200 research checks and 200 blueprint items. |
-| APWorld | Generates real seeds with Archipelago 0.6.7. 8 unit tests pass. |
-| Playing a seed | **Not possible yet.** The plugin does not talk to Archipelago yet. |
-
-Known limits of registry 1: cards no blueprint makes count as always obtainable,
-skill requirements count as reachable, the island is one region, and the goal is
-"can build the Raft". Only 16 of 200 blueprints are progression so far.
+| Dev setup, plugin build, data dump | Work. All downloads checksum-pinned. |
+| Save and Steam isolation | Verified; normal saves are checksum-compared around every test run. |
+| Connection (Archipelago.MultiClient.Net 6.7.0) | Works: panel in the main menu and in game (F8), chat and commands (!hint). |
+| Save binding, offline queue, reconnect | Works and is tested. |
+| Research split, blueprint items, survival basics | Work, tested in the real game. |
+| Build and visit checks | Work. The build hook is tested with the game's own action report; a full manual playthrough is still due. |
+| Skills, perks, equipment copies, supplies | Work, tested including reload and checkpoint. |
+| Ending detection, goal, checkpoint after victory | Work, tested. |
+| Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
+| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 13 unit tests. |
+| Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
+| Release | `tools/package.py` builds `cardsurvival.apworld` and a release zip. |
 
 ## Milestones
 
-The order puts a small playable slice first, so the risky game hooks are proven
-before the large data work. Each step is tested in the dev copy.
-
-1. **Connect.** Archipelago.MultiClient.Net in the plugin, a connection screen in the
-   game menu, each save bound to its seed and slot, checks queued while offline,
-   the received-item ledger.
-2. **First playable (research only).** Research sends a check and shows what it
-   holds; received blueprints become buildable; known blueprints stay researchable;
-   Safe Mode forced on and rollback re-application; victory sends the goal; a
-   checkpoint button after victory. Play one small seed start to finish.
-   Hooks found so far: `BlueprintModelsScreen.FinishBlueprintResearch`,
-   `GameManager.MakeBlueprintAvailable`, the blueprint branch of `GameManager.AddCard`,
-   `EndgameMenu.Setup`, `GameLoad.LoadCheckpoint`.
-3. **Real logic.** Where every card comes from (drops, cooking, exploration,
-   animals), which tools, skills and areas each research and craft needs, how the
-   areas connect, each ending's real requirements, the survival-blueprint list.
-   Automated check: every generated seed is beatable with this logic.
-4. **More checks.** Crafting, construction, exploration, resources, cooking,
-   processing, farming, fishing, hunting, animals; then journal, expeditions and
-   events as options. Challenge-check classification.
-5. **More items.** Equipment copies, progressive skills, perks, unique cards, filler.
-   Optional hybrid skill caps.
-6. **Release.** An installer that builds the playable copy in
-   `C:\ProgramData\Archipelago\Card Survival`, a release ZIP without game files, an
-   in-game tracker / Universal Tracker support, and full multiworld playthroughs for
-   balancing.
+1. **Connect.** Done.
+2. **First playable (research).** Done.
+3. **Real logic from data.** Done (see logic.md for what is approximated).
+4. **More checks.** Build and visit: done. Next, optional and off by default: cooking,
+   fishing, hunting and harvesting "first time" checks, journal objectives.
+5. **More items.** Skills, perks, equipment copies, supplies: done. Next, optional:
+   hybrid skill caps, new custom perks (less tool wear, faster crafting).
+6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a
+   multiworld seed, then balancing (skill step size, supplies, challenge thresholds).
 
 ## Open decisions
 
 Each has a default that work continues with until decided otherwise.
 
-1. **Survival blueprints.** Default: a short list (shelter, water container, basic
-   medicine) keeps vanilla research behaviour and also sends a check. List fixed in
-   milestone 3.
-2. **Research with no time cost.** Default: the check is sent on discovery.
-3. **Skill items per skill.** Default: a few steps per skill (e.g. +25 each), count
-   set so skills still need some training. Balanced in milestone 6.
-4. **Game name.** The world is called `Card Survival: Tropical Island`. The colon
-   means the name must be quoted in a YAML. It cannot change after the first release.
+1. **Survival basics list.** Default: the six listed above.
+2. **Logic goal.** Default: Escape. Home could be added once comfort can be modelled.
+3. **Characters.** Default: the logic starts at the Beach (the game mode's start). Hunter
+   and Farmer start elsewhere but share the island; a perk start (Plane Crash) has no visit
+   check. The Mermaid ending works but the logic never relies on it.
+4. **More check categories.** Default: off until each has a reliable hook and a data list.
+5. **Game name.** `Card Survival: Tropical Island`. The colon means the name must be
+   quoted in a YAML. It cannot change after the first public release.

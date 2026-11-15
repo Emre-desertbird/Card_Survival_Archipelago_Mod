@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -272,7 +273,7 @@ def main() -> None:
     skills = sorted(name for name in stats if name.startswith("Skill_") and name not in EXCLUDED_SKILLS
                     and "stat:" + name in full.cards)
     for index, name in enumerate(skills):
-        items.append({"key": name, "name": f"Progressive {text(stats[name].get('GameName')) or name[6:]}",
+        items.append({"key": name, "name": "Progressive " + re.sub(r"(?<=[a-z])(?=[A-Z])", " ", text(stats[name].get("GameName")) or name[6:]),
                       "ap_id": ITEM_BASE + 3000 + index, "quantity": SKILL_COPIES, "kind": "skill",
                       "stat_id": stats[name]["UniqueID"], "amount": SKILL_STEP, "classification": "useful"})
 

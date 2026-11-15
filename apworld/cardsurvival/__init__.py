@@ -1,4 +1,4 @@
-"""Card Survival: Tropical Island development APWorld (blueprint research randomizer)."""
+"""Card Survival: Tropical Island APWorld: research, build and explore to find your blueprints, skills and perks."""
 
 import json
 from importlib import resources
@@ -29,7 +29,7 @@ class CardSurvivalWebWorld(WebWorld):
     game = GAME
     theme = "jungle"
     tutorials = [Tutorial(
-        "Development Setup Guide", "Set up the Card Survival: Tropical Island development randomizer.",
+        "Setup Guide", "Install the Card Survival: Tropical Island randomizer and connect to a game.",
         "English", "setup_en.md", "setup/en", ["Card Survival Archipelago Mod contributors"],
     )]
 
@@ -46,7 +46,7 @@ class CardSurvivalWorld(World):
     web = CardSurvivalWebWorld()
     options_dataclass = CardSurvivalOptions
     options: CardSurvivalOptions
-    hidden = True  # development build: not listed until a full playthrough is verified
+    hidden = True  # not listed on the website until a full manual playthrough is done (docs/plan.md)
     item_name_to_id = {entry["name"]: entry["ap_id"] for entry in DATA["items"]}
     location_name_to_id = {entry["name"]: entry["ap_id"] for entry in DATA["locations"]}
     item_name_groups = {group: {entry["name"] for entry in DATA["items"] if entry["kind"] == kind}
