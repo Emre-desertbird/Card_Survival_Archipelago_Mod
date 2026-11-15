@@ -165,11 +165,24 @@ Sie sind **Nützlich**, die Logik verlässt sich nie auf sie, und sie sind über
 | Perk | Stufen | Wirkung | Technik | Machbarkeit |
 | --- | --- | --- | --- | --- |
 | **Lastenträger** (progressiv) | 3 | Getragenes Gewicht zählt nur 90 / 80 / 70 %. Die Belastungsgrenze (heute ab 2.000) liegt dann bei 2.222 / 2.500 / 2.857. | Das Spiel rechnet das Gewicht in `GameManager.CalculateCarryWeight` in einen Wert um; die Mod setzt dort den Faktor an. | gut, klar im Code |
-| **Geschickte Hände** | 1 | Handwerk-Aktionen dauern 15 Min. kürzer, nie unter 15 Min. | eigenes Perk-System des Spiels: `ActionModifier` mit Aktionstyp `CraftAction` und Dauer −1 | gut, Bordmittel |
-| **Pfadfinder** | 1 | Reisen zwischen Gebieten dauert 15 Min. kürzer | `ActionModifier` mit `TravelAction` | gut, Bordmittel |
+| **Geschickte Hände** | 1 | Bauschritte von Blueprints dauern 33 % kürzer, gerundet, nie unter 15 Min. | Patch an der Bauzeit (`BuildingDaytimeCost`) | gut |
+| **Pfadfinder** | 1 | Reisen 33 % schneller, gerundet, nie unter 15 Min. | Patch an der Reisezeit (`TotalDaytimeCost` bei `TravelAction`) | gut |
 | **Sorgsam** (progressiv) | 2 | Werkzeuge nutzen sich 15 / 30 % langsamer ab | `ActionModifier.GivenDurabilities` oder Patch an der Abnutzung | prüfen |
 | **Forschergeist** (progressiv) | 2 | Forschung 15 / 30 % schneller, also mehr Checks pro Tag | Patch am Forschungsfortschritt | prüfen |
 | **Vorratshalter** | 1 | Essen im eigenen Lager verdirbt 15 % langsamer | Patch an der Verderb-Rate | prüfen |
+
+**Warum Prozent statt fester Minuten:**
+
+- Das Spiel rechnet Dauer in ganzen Ticks à 15 Min. und begrenzt sie unten auf 0.
+- 34 von 42 Reisen dauern genau 1 Tick. Mit „−1 Tick“ wären sie sofort.
+- Deshalb gilt für beide Perks: Dauer × 0,67, normal gerundet, mindestens 1 Tick.
+  - 1 Tick bleibt 1 Tick.
+  - 2 Ticks werden 1 Tick.
+  - 3 Ticks werden 2 Ticks.
+  - 6 Ticks werden 4 Ticks.
+- Kurze Wege bleiben also unverändert, lange werden spürbar kürzer.
+- Gebaut wird als eigener kleiner Patch statt mit `ActionModifier`. Denn `ActionModifier`
+  kennt nur feste Tick-Abzüge, und das Merkmal `CraftAction` tragen nur 5 Aktionen.
 
 Zusammen sind das **10 Perk-Items**. Weitere Stufen sind bewusst klein gehalten, damit das
 Spiel ein Überlebensspiel bleibt. „Prüfen“ heißt: Die Stelle im Code muss ich vor dem Bau
