@@ -150,11 +150,14 @@ namespace CardSurvivalArchipelago
             GameManager gm = MBSingleton<GameManager>.Instance;
             if (gm == null) return;
             var lines = new List<string>();
-            foreach (var pair in BlueprintRando.Shuffled)
+            // Every researchable blueprint with an open check: shuffled ones and survival basics.
+            foreach (CardData card in gm.PurchasableBlueprintCards)
             {
-                if (!gm.PurchasableBlueprintCards.Contains(pair.Key) || ApGame.State.IsChecked(pair.Value.Id)) continue;
-                string holds = ApConnection.Describe(pair.Value.Id) ?? "(connect to see)";
-                lines.Add((string)pair.Key.CardName + ": " + holds);
+                Registry.Entry location;
+                if (card == null || !Registry.ResearchByCard.TryGetValue(card.UniqueID, out location) ||
+                    ApGame.State.IsChecked(location.Id)) continue;
+                string holds = ApConnection.Describe(location.Id) ?? "(connect to see)";
+                lines.Add((string)card.CardName + ": " + holds);
             }
             lines.Sort();
             var area = new Rect(Screen.width - 430, 30, 420, Mathf.Min(40 + 20 * lines.Count, Screen.height * 0.45f));
