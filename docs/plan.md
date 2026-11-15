@@ -128,5 +128,7 @@ Each has a default that work continues with until decided otherwise.
    and Farmer start elsewhere but share the island; a perk start (Plane Crash) has no visit
    check. The Mermaid ending works but the logic never relies on it.
 4. **More check categories.** Default: off until each has a reliable hook and a data list.
+   The proposal (checks and matching items, with numbers from the dump) is in
+   [plan_erweiterung.md](plan_erweiterung.md).
 5. **Game name.** `Card Survival: Tropical Island`. The colon means the name must be
    quoted in a YAML. It cannot change after the first public release.
