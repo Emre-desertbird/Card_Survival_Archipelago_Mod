@@ -34,7 +34,7 @@ class FarmingChecks(Toggle):
 
 class ExtraChecks(Toggle):
     """Extra checks: achievements of the game that no other check covers (carve five figurines,
-    find a shipwreck, hatch an egg, ...), keeping animals, and surviving 7, 14, 30, 60 and 100 days
+    find a shipwreck, hatch an egg, ...), keeping animals, and surviving 7, 14 and 30 days
     (60 and 100 are challenge checks)."""
     display_name = "Extra Checks"
 

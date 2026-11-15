@@ -1,6 +1,6 @@
 # Plan: neue Checks, Logbuch, neue Perks, Items und Balance
 
-Status: **Alle Phasen A bis D sind gebaut** (Mod-Version 0.7.0, je Phase im echten Spiel
+Status: **Alle Phasen A bis D sind gebaut** (Mod-Version 0.7.1, je Phase im echten Spiel
 getestet). Das Logbuch steht auch im Journal-Buch des Spiels.
 
 Abweichungen beim Bau, jeweils aus den Daten begründet:
@@ -17,7 +17,7 @@ Abweichungen beim Bau, jeweils aus den Daten begründet:
 - Extras: **11 Spielerfolge** statt etwa 25. Die übrigen sind Doppelte zu anderen Checks,
   verlangen Schaden (gebissen werden, Bienenschwarm), hängen an Charakter, Tod, Sieg oder
   Maximal-Skills, oder sind für Normal Guy unerreichbar („Defeat the Hunter“, automatisch
-  weggelassen). Dazu 3 Tierhaltungs- und 5 Überlebenstage-Checks: zusammen 19.
+  weggelassen). Dazu 3 Tierhaltungs- und 3 Überlebenstage-Checks (7/14/30; 60 und 100 Tage später gestrichen, weil sie nur Warten verlangen): zusammen 17.
 - Ausbau-Set: geht nur bei genau einer Hütte dieser Art und noch keiner der nächsten Art
   (sonst wären die gespeicherten Innenräume nicht eindeutig). Die Mod speichert dafür kurz
   und lädt neu.

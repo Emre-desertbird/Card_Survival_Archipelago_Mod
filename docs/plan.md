@@ -47,7 +47,7 @@ Related documents:
 
 ## What the randomizer does
 
-### Locations (451, up to 557 with the optional ones)
+### Locations (451, up to 555 with the optional ones)
 
 | Kind | Count | Sent when |
 | --- | --- | --- |
@@ -59,7 +59,7 @@ Related documents:
 | Cook - X (option `cooking_checks`) | 17 | A cooking pot or coconut shell dish exists for the first time. |
 | Plant - ... (option `farming_checks`) | 5 | First crop, three and six different crops, first tree, first mushroom bed. |
 | Logbook - ... (option `logbook`) | 44 | A task of the Archipelago logbook is done (see below). |
-| Extra - ... (option `extra_checks`) | 19 | 11 achievements no other check covers (figurines, dynamite, a prepared meal, the cave system, a shipwreck, goat birth, a hatched egg, a macaque friend, a pearl necklace, Weston), keeping a goat, partridges or a boar, surviving 7/14/30/60/100 days. Cave system, day 60 and day 100 are challenge checks. |
+| Extra - ... (option `extra_checks`) | 17 | 11 achievements no other check covers (figurines, dynamite, a prepared meal, the cave system, a shipwreck, goat birth, a hatched egg, a macaque friend, a pearl necklace, Weston), keeping a goat, partridges or a boar, surviving 7/14/30 days. The cave system is a challenge check. |
 
 The optional kinds are off by default. Kinds nothing can reach in this game mode (Grouper,
 Seahound) are dropped by the registry tool.
@@ -131,7 +131,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.7.0)
+## Current state (version 0.7.1)
 
 | Part | State |
 | --- | --- |

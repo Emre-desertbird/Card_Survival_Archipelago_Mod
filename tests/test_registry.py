@@ -73,8 +73,8 @@ class RegistryTests(unittest.TestCase):
         extras = [entry for entry in DATA["locations"] if entry["kind"] == "extra"]
         self.assertGreaterEqual(len(extras), 15)
         days = [entry for entry in extras if "day" in entry["watch"][0]]
-        self.assertEqual([entry["watch"][0]["day"] for entry in days], [7, 14, 30, 60, 100])
-        self.assertTrue(all(entry["challenge"] for entry in days if entry["watch"][0]["day"] >= 60))
+        self.assertEqual([entry["watch"][0]["day"] for entry in days], [7, 14, 30])
+        self.assertFalse(any(entry["challenge"] for entry in days))
 
     def test_new_perks_are_small_and_never_logic(self):
         perks = [entry for entry in DATA["items"] if entry["kind"] == "newperk"]

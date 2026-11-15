@@ -44,7 +44,7 @@ zusätzlich im F8-Fenster unter „Logbook“.
 
 - **Extras** (`extra_checks`): 11 Spielerfolge, die kein anderer Check abdeckt (z. B. fünf
   Figuren schnitzen, ein Schiffswrack finden, ein Ei ausbrüten), Tiere halten (Ziege,
-  Rebhühner, Wildschwein) und 7/14/30/60/100 Tage überleben.
+  Rebhühner, Wildschwein) und 7/14/30 Tage überleben.
 - **Hütten-Upgrades** (`hut_upgrades`): 2 Ausbau-Sets und 3 Stauraum-Erweiterungen. Du setzt
   sie im F8-Fenster ein, während du **in** einer Hütte stehst. Das Ausbau-Set macht aus dem
   Schuppen eine Lehmhütte bzw. aus der Lehmhütte eine Steinhütte; alles darin bleibt. Dafür

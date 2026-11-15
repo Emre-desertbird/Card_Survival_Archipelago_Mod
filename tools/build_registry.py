@@ -156,8 +156,7 @@ EXTRAS = [
     ("Survive 7 Days", ("day", 7), False),
     ("Survive 14 Days", ("day", 14), False),
     ("Survive 30 Days", ("day", 30), False),
-    ("Survive 60 Days", ("day", 60), True),
-    ("Survive 100 Days", ("day", 100), True),
+    # 60 and 100 days were dropped: they only ask the player to wait (ids stay stable as they were last).
 ]
 # Traps (options trap_percentage, trap_limit): mild only, the worst is a light wound.
 # (name, offset, effect): ("card", name) adds the card (a wound, or a weather that replaces the

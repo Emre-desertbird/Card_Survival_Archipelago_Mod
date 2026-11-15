@@ -13061,32 +13061,6 @@
    ],
    "challenge": false,
    "rule": true
-  },
-  {
-   "key": "extra_18",
-   "kind": "extra",
-   "name": "Extra - Survive 60 Days",
-   "ap_id": 1694435018,
-   "watch": [
-    {
-     "day": 60
-    }
-   ],
-   "challenge": true,
-   "rule": true
-  },
-  {
-   "key": "extra_19",
-   "kind": "extra",
-   "name": "Extra - Survive 100 Days",
-   "ap_id": 1694435019,
-   "watch": [
-    {
-     "day": 100
-    }
-   ],
-   "challenge": true,
-   "rule": true
   }
  ],
  "events": [
