@@ -1,214 +1,279 @@
-# Plan: neue Checks und neue Items
+# Plan: neue Checks, Archipelago-Charakter, Items und Balance
 
-Status: **Vorschlag, noch nicht gebaut.** Alle Zahlen stammen aus dem Daten-Dump
-(`.local/dump`) und aus `tools/card_graph.py`, nicht aus dem Gedächtnis.
+Status: **Vorschlag, noch nicht gebaut** (Version 2 des Plans).
 
-- „frei“ heißt: ohne ein einziges Archipelago-Item erreichbar.
-- „Items“ heißt: erst mit Items erreichbar.
-- „nie“ heißt: mit diesem Spielmodus gar nicht erreichbar (z. B. nur als Meerjungfrau).
-  Solche Checks lässt das Werkzeug automatisch weg.
+- Zahlen und Kartennamen stammen aus dem Daten-Dump (`.local/dump`), dem dekompilierten
+  Code und `tools/card_graph.py`.
+- „frei“ heißt: ohne ein Archipelago-Item erreichbar.
+- 1 Spieltag hat 96 Ticks à 15 Minuten.
 
-## 1. Grundidee
+---
 
-Fast alle neuen Checks folgen dem Muster **„zum ersten Mal X“**. Dafür reicht **ein**
-gemeinsamer Mechanismus statt einer eigenen Lösung pro Kategorie:
+## 1. Antworten auf die Fragen
 
-| Art | Wann der Check zählt | Haken im Spiel | Logik |
-| --- | --- | --- | --- |
-| `obtain` | Karte X entsteht zum ersten Mal | `GameManager.AddCard` (schon gepatcht) | `Have X` aus dem Kartengraphen (gibt es schon) |
-| `objective` | ein Spielziel ist erfüllt | `Objective.OnComplete` | Bedingungen des Ziels: Karten, Tags, Werte, Aktionen |
-| `stat` | ein Wert erreicht eine Schwelle | Abfrage wie beim Visit-Check | `Can Raise <Wert>` |
+### 1.1 „Progressive Hut“ und „Storage Upgrade“: geht das?
 
-Wichtige Regeln dabei:
+**Ja, in zwei Formen.** Was die Daten zeigen:
 
-- **Karten, die die Mod selbst gibt, zählen nicht.** Sonst würde ein Vorratspaket mit
-  gebratenem Fisch sofort den Koch-Check auslösen. Die Mod markiert ihre eigenen Karten.
-- **Karten aus der Startausrüstung zählen nicht.** Das betrifft Startinventar und Charakterkit.
-- **Jede Kategorie ist eine eigene YAML-Option und standardmäßig aus.**
-- **Die Belohnungen des Spiels bleiben.** Journal-Ziele geben im Spiel *Determination*.
-  Das brauchen die Endings, also schickt die Mod den Check **zusätzlich**.
-
-## 2. Neue Checks
-
-### 2.1 Fischen: „Catch - X“ (13 Checks)
-
-Der erste Fang jeder Art.
-
-- **Frei (12):** Goatfish, Parrot Fish, Bonefish, Mudskipper, King Threadfin, Shark Meat,
-  Prawns, Conch, Oyster, Urchin. Dazu Bonefish- und Threadfin-Fleisch; vielleicht
-  zusammenlegen.
-- **Mit Items (1):** Herring, nur mit der Floß-Fischfalle.
-- **Nie:** Grouper, fällt weg.
-
-Fast alles ist frei. Das ist gut für einen frühen Start in Multiworlds.
-
-### 2.2 Jagd: „Hunt - X“ (10 bis 15 Checks)
-
-Der erste Kadaver je Tierart, genau wie bei den Jagd-Zielen des Spiels
-(`ObjH5_Hunt*` prüft auch auf den Kadaver).
-
-| Status | Tiere |
-| --- | --- |
-| frei | Wildschwein, Kobra, Ziegenbock, Makak, Waran, Rebhuhn, Seeschlange, Möwe, Hai |
-| Items | Ferkel, Ziege (weiblich), Zicklein (brauchen Gehege oder Tiere halten) |
-| nie | Seehund (nur Meerjungfrau) |
-
-Vorschlag: eine Tierart = ein Check, also 10. Varianten wie die drei Rebhuhn-Karten
-zählen gemeinsam.
-
-### 2.3 Kochen: „Cook - X“ (17 bis 74 Checks)
-
-Das erste Mal, dass ein Gericht entsteht.
-
-- **Gerichte (17):** Topf- und Kokosschalen-Gerichte wie Yam Curry, Goat Stew,
-  Hearty Feast oder Seafood Cup. Alle brauchen Items, meist den Kochtopf.
-- **Alles Gegarte (74):** dazu gebraten, geräuchert, getrocknet und gekocht.
-  32 davon sind frei, 42 brauchen Items, 6 sind „nie“ und fallen weg.
-
-Vorschlag für die Option `cooking_checks: off / meals / all`.
-
-### 2.4 Anbau: „Plant - X“ (25 Checks)
-
-Das erste Beet jeder Pflanze: 22 Pflanzenbeete und 3 Pilzbeete. Alle brauchen Items,
-weil das Beet ein Blueprint ist. Damit verteilen sich gute Items auch in die spätere
-Spielphase.
-
-### 2.5 Erkunden: „Explore - Gebiet“ (19 Checks)
-
-Ein Gebiet vollständig erkundet, also der Erkundungsbalken ist voll.
-
-- Das ist mehr als „Visit“ (nur betreten).
-- Das Spiel hat dafür 19 Ziele (`ObjExplore_*`).
-- Diese Ziele laufen im Spiel nur im Standard-Journal mit. Die Mod prüft ihre Bedingungen
-  deshalb selbst, und so funktioniert die Kategorie mit **jedem** Charakter.
-
-### 2.6 Journal: „Journal - Aufgabe“ (23 bis 63 Checks, je nach Charakter)
-
-Jeder Charakter hat ein eigenes Journal. Das Spiel verfolgt nur die Aufgaben im Journal
-des gewählten Charakters:
-
-| Journal | Aufgaben | Beispiele |
+| Linie | Stufen im Spiel | Platz |
 | --- | --- | --- |
-| Standard (Survivalist, Normal Guy) | 35 | 19 Erkundungen, 7 Skills auf Maximum, Floß, Komfort |
-| Farmer | 63 | Pflanzen, Großvater bekochen, Hof wieder aufbauen |
-| Hunter | 40 | 9 Tiere jagen, Ausrüstung, Schamane/Krieger |
-| Mermaid | 23 | Nest, Schwangerschaft, Seehunde |
-| Tourist | 32 | Fotos, Souvenirs, Party |
+| Unterkunft | Shelter → Shed → Mud Hut → Stone Hut | Innenraum 15.000 → 60.000 → 70.000 |
+| Tragen | Satchel (350) → Woven Basket (1.000) | – |
+| Lager | Chest (4.000) → Cellar (Innenraum 30.000, kühl) | – |
+| Kühlen | Clay Pot Cooler | halbiert den Verderb, **nur eine Stufe** |
+
+Shed, Mud Hut, Stone Hut und Cellar sind **eigene kleine Gebiete** mit Eingangskarte. Der
+Inhalt gehört zu diesem Innenraum und wird mit dessen ID gespeichert
+(`CardData.EnvironmentDictionaryKey`). Ein Ausbau an Ort und Stelle muss deshalb den
+Innenraum umziehen: Eingangskarte tauschen und die Speicherdaten unter die neue ID setzen.
+Das ist machbar, aber mittlerer Aufwand und braucht gründliche Tests mit Checkpoints.
 
 Vorschlag:
 
-- Eine YAML-Option `journal: off / on`. Dazu kommt die neue Option `character`, die den
-  Charakter festlegt.
-- Generiert wird nur dieses eine Journal.
-- Die Mod warnt, wenn ein anderer Charakter gewählt wird.
-- Aufgaben, die schon eine andere Kategorie abdeckt (Erkunden, Jagd), werden nicht doppelt
-  gezählt.
-- Ziel-Aufgaben (Zivilisation erreichen, 120 Tage) werden ausgeschlossen.
-- „Skill auf Maximum“ (Wert 150) wird ein **Challenge-Check**.
+1. **Progressive Unterkunft**: die übliche Archipelago-Lösung, standardmäßig an. Die drei
+   Blueprint-Items Shed, Mud Hut und Stone Hut werden zu dreimal „Progressive Unterkunft“.
+   Du bekommst sie immer in der richtigen Reihenfolge, bauen musst du sie weiter selbst.
+   Genauso geht es mit **Progressives Bett** (Rustic Bed → Wooden Bed) und
+   **Progressives Lager** (Woven Basket → Chest → Cellar).
+2. **Ausbau-Set** (Verbrauchs-Item, deine Idee, optional):
+   - Einlösen: über das F8-Fenster, während du in oder vor deiner Hütte stehst.
+   - Wirkung: Die Hütte steigt eine Stufe auf, ohne Material, und der Inhalt bleibt.
+   - Menge im Pool: 2 (Shed → Mud Hut → Stone Hut).
+   - Die Logik verlässt sich nie darauf.
+3. **Stauraum-Erweiterung** (Verbrauchs-Item, optional):
+   - Wirkung: +25 % Platz für den Innenraum, in dem du stehst (Hütte oder Keller).
+   - Menge im Pool: 3.
+   - Technik: Die Mod merkt sich den Bonus und setzt ihn nach jedem Laden neu.
+4. **Kein Kühlschrank-Upgrade.** Das Spiel kennt nur eine Kühlstufe. Eine neue Stufe
+   wäre eine erfundene Spielmechanik.
 
-### 2.7 Weitere, kleinere Kategorien (alle optional)
+### 1.2 Eigener Archipelago-Charakter statt YAML-Eintrag
 
-| Kategorie | Checks | Beispiele | Anmerkung |
+**Ja, das ist die bessere Lösung.**
+
+- Das Spiel hat mit **Normal Guy** schon einen neutralen Charakter: keine Perks, kein Kit,
+  normale Kleidung, Start am Strand.
+- Der neue Charakter „**Archipelago-Reisender**“ ist eine Kopie davon, mit eigenem Namen und
+  eigenem **Logbuch**.
+- Die Logik kann sich genau auf ihn verlassen.
+
+Technik:
+
+- Die Mod erzeugt beim Start eine Kopie von Normal Guy und hängt sie in die
+  Charakterliste.
+- Im Spielstand steht die ID von Normal Guy, damit die Datei auch ohne Mod lesbar bleibt.
+  Dass es der Archipelago-Charakter ist, steht in der Slot-Datei der Mod.
+
+Wichtig für die Balance: Im Standard-Journal sammelt man **Determination**:
+
+| Stufe | Determination je Aufgabe |
+| --- | --- |
+| frühe Aufgaben | 50, 100, 250, 500 |
+| ein Gebiet ganz erkundet | 100 |
+| ein Skill auf Maximum | 250 |
+| Hütten bauen | 100 bis 250 |
+
+Das **Home-Ending braucht 4.000**. Das Logbuch muss also ähnlich viel geben, sonst fehlt
+ein Ending.
+
+Das **Logbuch** (eigenes Journal) hat etwa 30 Aufgaben in Kapiteln:
+
+| Kapitel | Beispiele | Determination |
+| --- | --- | --- |
+| Gestrandet | Kokosnuss trinken, Feuer machen, Werkzeug schärfen | je 50 |
+| Sich einrichten | Unterkunft, Wasser abkochen, erste Mahlzeit | je 100 |
+| Die Insel | jedes Gebiet ganz erkunden (19) | je 100 |
+| Handwerk | Ofen, Webstuhl, Kupferwerkzeug, Floß | je 250 bis 500 |
+| Multiworld | 1. Item von einem anderen Spieler, 25/100 eigene Checks, einem anderen Spieler helfen | je 100 |
+| Abschied | entschlossen sein (wie im Original) | – |
+
+Die Summe liegt wie im Original über 4.000. Aufgaben, die von anderen Spielern abhängen,
+sind **keine Logik-Bedingung**. Sie geben nur etwas zusätzlich.
+
+Umsetzung in zwei Schritten:
+
+1. Das Logbuch erscheint zuerst als eigene Seite im F8-Fenster. Das ist sicher.
+2. Danach probiere ich, es in das echte Journal-Buch des Spiels einzuhängen.
+
+YAML: `character: archipelago` ist Standard. Mit `any` darf jeder Charakter gespielt
+werden; dann entfallen die Logbuch-Checks.
+
+### 1.3 Anbau: alles anbauen ist zu viel
+
+Einverstanden. Statt 25 Checks (je Pflanze einer) gibt es **5 Checks**:
+
+- erste Pflanze gesetzt
+- erste Ernte
+- erstes Pilzbeet
+- drei verschiedene Pflanzen gesetzt
+- sechs verschiedene Pflanzen gesetzt
+
+### 1.4 Kochbuch: gestrichen
+
+Im Original kannst du jedes Gericht kochen, sobald du Topf und Zutaten hast. Man lernt
+dafür nichts. Das Kochbuch hätte dafür eine neue Sperre erfunden. Gestrichen, wie
+gewünscht. Kochen bleibt nur bei den Checks („Cook - X“).
+
+### 1.5 Fallen: harmlos und gedeckelt
+
+| Falle | Wirkung | Quelle |
+| --- | --- | --- |
+| Schürfwunde | `W_Abrasion` | **das Schlimmste**, eine leichte Wunde |
+| Blauer Fleck | `W_Bruise` | – |
+| Kratzer | `W_LizardScratch` | – |
+| Regenschauer | Wetter wechselt zu leichtem Regen | `TropicalIsland_LightRain` |
+| Mückenschwarm | Mückenstiche + | Wert `BugBites` |
+| Dreck | Schmutz + | Wert `Filth` |
+| Schreck | Stress + | Wert `Stress` |
+
+Nicht dabei sind Kämpfe, Brüche, Krankheiten, Gift und Item-Verlust.
+
+Grenzen:
+
+- `trap_percentage` 0 bis 100 legt fest, wie viele Füll-Items zu Fallen werden.
+  Standard: **0 = aus**.
+- `trap_limit` deckelt die Zahl, Standard 10. Auch bei 100 % gibt es nie mehr als so
+  viele Fallen.
+- Höchstens **eine Falle pro Spieltag**. Weitere warten bis zum nächsten Tag.
+- Auf See und auf dem Floß gibt es keine Fallen.
+
+---
+
+## 2. Die Checks im Überblick
+
+| Kategorie | Checks | Was zählt | Standard |
 | --- | --- | --- | --- |
-| Erfolge (`Ach_*`) | ca. 25 von 54 | Kupferwerkzeug, Ei ausbrüten, Ziege bekommt Junges, Makaken-Freund | ohne Tod, Sieg, Charakter und Maximal-Skills |
-| Tiere und Begleiter | ca. 5 | Makaken-Freund (frei), Ziege im Gehege, Rebhuhn-Küken | überschneidet sich mit den Erfolgen |
-| Überlebenstage | 5 | Tag 7, 14, 30, 60, 100 | spätere Tage werden Challenge-Checks |
-| Skill-Meilensteine | 44 | jeder Skill auf 50 und 100 | Achtung: Skill-Items lösen sie mit aus, darum eher nicht |
+| Forschung, Bauen, Besuchen | 451 | wie heute | an |
+| Fischen | 13 | erster Fang jeder Art, 12 davon frei | aus |
+| Jagd | 10 | erster Kadaver je Tierart, 9 davon frei | aus |
+| Kochen | 17 | jedes Topf- und Kokosschalen-Gericht einmal | aus |
+| Anbau | 5 | siehe 1.3 | aus |
+| Logbuch | ca. 30 | Aufgaben des Archipelago-Charakters, inklusive 19 × Gebiet ganz erkunden | aus |
+| Extras | ca. 35 | siehe unten | aus |
 
-## 3. Was in dein Spiel geschickt werden kann
+**Extras:**
 
-Heute gibt es Blueprints, Skills, Perks und Vorräte. Mit z. B. 200 neuen Checks braucht
-das Spiel 200 neue Items. Nur mit Vorräten wird das schnell langweilig. Deshalb:
+- Spielerfolge (`Ach_*`): etwa 25 von 54, z. B. Kupferwerkzeug, Ei ausbrüten, Ziege bekommt
+  Junges, Makaken-Freund, Bienenschwarm, Dynamit. Ohne Tod, Sieg, Charakterwahl und
+  „Skill auf Maximum“.
+- Überlebenstage: 7, 14, 30, 60, 100. Ab Tag 60 zählen sie als Challenge-Check.
+- Tiere: Ziege im Gehege, Rebhuhn-Küken, Ferkel und weitere.
 
-### 3.1 Neue nützliche Items (an, sobald die neuen Checks an sind)
+Doppelte werden nur einmal gezählt. „Jage einen Wildschwein-Kadaver“ ist zum Beispiel ein
+Jagd-Check und kein zweiter Erfolg-Check.
 
-1. **Themenpakete statt allgemeiner Vorräte.** Der Mechanismus existiert schon
-   (`FILLERS`). Die genauen Karten kommen aus den Daten.
-   - Fischerpaket (gegarter Fisch, Köder)
-   - Jägerpaket (gegartes Fleisch, Fett)
-   - Kochpaket (Salz, Gewürze, Kokosnuss)
-   - Heilpaket (Verbände, Heilkräuter)
-   - Baupaket (Holz, Steine, Fasern, Lehm)
-2. **Erholung.** Das ist eine kurze Wirkung auf einen Wert, über denselben Weg wie die
-   Skills (`ApplyStatModifier`).
-   - „Gute Mahlzeit“: Sättigung +
-   - „Frisches Wasser“: Hydration +
-   - „Ruhiger Moment“: Stress −
-   - „Mut“: Courage +
+Mit allem sind es etwa **575 Checks**. Jede Kategorie kann einzeln ausgeschaltet werden.
 
-   Das sind keine dauerhaften Boni, also kein „Spiel wird leichter“.
-3. **Werkzeugkiste.** Ein neues Exemplar eines Werkzeugs, dessen Blueprint du schon hast.
-   Das ersetzt abgenutzte Werkzeuge.
-4. **Begleiter: Makaken-Freund.** Die Karte gibt es im Spiel, und sie ist frei
-   erreichbar. Sie wäre ein seltenes, nützliches Item.
+---
 
-### 3.2 Optionale Fortschritts-Items (aus, ändern das Spiel stärker)
+## 3. Was du als Spieler bekommst, und warum es die Balance nicht zerstört
 
-5. **Kochbuch: „Rezept: X“.**
-   - Was es tut: Die 17 Gerichte lassen sich erst kochen, wenn ihr Rezept-Item da ist.
-     So wird Kochen zu echtem Fortschritt.
-   - Was dabei entsteht: 17 neue Fortschritts-Items.
-   - Technik: Das Kochrezept im Topf wird gesperrt (eigener Patch).
-   - Logik: „Cook - X“ verlangt dann zusätzlich das Rezept.
+### 3.1 Die Item-Klassen
 
-### 3.3 Fallen (aus, Anteil per Option `trap_percentage`)
+| Klasse (Archipelago) | Was | Wie viele | Wirkung |
+| --- | --- | --- | --- |
+| Fortschritt | Blueprints, als Progressive-Linien wo sinnvoll | 194 | öffnen Bauen, also das eigentliche Spiel |
+| Nützlich | Skill-Stufen (+25) | 66 | wie heute |
+| Nützlich | Perks aus dem Spiel | 11 | wie heute |
+| Nützlich | Ausbau-Set, Stauraum-Erweiterung | 2 + 3 | optional |
+| Füller | **Fundstücke**, siehe 3.2 | der Rest, etwa 290 | Zeitersparnis |
+| Falle | siehe 1.5 | höchstens 10 | ärgerlich, nie gefährlich |
 
-Archipelago-üblich: Einige Füll-Items werden durch Fallen ersetzt. Die Fallen nutzen nur
-Ereignisse, die es im Spiel schon gibt:
+### 3.2 Fundstücke: das neue Füll-System
 
-| Falle | Was passiert | Quelle in den Daten |
+Statt einer Karte in der Hand legt „ein mysteriöses Wesen“ etwas **auf den Boden des
+Gebiets**, in dem du gerade bist. Eine Meldung sagt, was es war. Gewählt sind nur Dinge,
+die **im Original schon lange halten**. Die Mod muss also keine Haltbarkeit verändern.
+
+| Paket | Inhalt (je Fundstück eines davon) | Hält im Original |
 | --- | --- | --- |
-| Affenüberfall | ein Makak greift an | `Combat_EventMacaque_1_Raid` |
-| Wildschwein | ein Wildschwein greift an | `Combat_EventBoar_1_Raid` |
-| Bienenstiche | Stiche | Wert `BeeStings` |
-| Magenverstimmung | Durchfall | Wert `Diarrhoea` |
-| Müdigkeit oder Hunger | Wert sinkt | Werte für Sättigung und Ausdauer |
+| Proviant | getrocknetes Wildschwein-, Ziegen- oder Makakenfleisch; Pökelfleisch; 2 gekochte Eier; Ziegenkäse | 11 bis 21 Tage |
+| Süßes | kandierter Ingwer, Schokolade | 30 Tage |
+| Getränk | Wasser in einer Kokosschale; Ingwertee, Jasmintee | Wasser verdirbt nie, Tee 5 Tage |
+| Alkohol | Palmwein, Met | 10 Tage |
+| Kochzutaten | Salz, getrocknete Chilis, getrockneter Ingwer, Kokosnuss, Honig, Fett | lange |
+| Material | 3 Stöcke, 2 Steine, 3 Fasern, 2 Palmwedel oder 1 Lehm | verdirbt nicht |
 
-Durch den Safe Mode kann eine Falle dich nie endgültig töten. Ob ein Kampf-Ereignis sich
-per Item sauber auslösen lässt, muss ein Test im Spiel zeigen.
+Bei Flüssigkeiten wird der **Behälter mitgegeben**. Deshalb gibt es nur billige Behälter:
+Kokosschale oder Tonschale, nie Feldflasche, Kanister, Kupferflasche oder Plastikflasche.
 
-### 3.4 Bewusst nicht
+### 3.3 Leitplanken gegen kaputte Ökonomie
 
-- Gebietsschlüssel (Regel: keine Gebietssperren).
-- DeathLink.
-- Determination als Item: Es würde die Endings abkürzen.
-- Dauerhafte Werte-Boni über die Perks des Spiels hinaus.
+1. **Ein Fundstück ersetzt etwa 1 bis 2 Stunden Sammeln, nie einen Tag.** Ein Fleischstück
+   ist etwa eine Mahlzeit, eine Kokosschale Wasser etwa ein halber Tag Trinken.
+2. **Aufteilung im Pool:**
 
-## 4. Mengen im Überblick
+   | Paket | Anteil |
+   | --- | --- |
+   | Material | 35 % |
+   | Kochzutaten | 20 % |
+   | Proviant | 20 % |
+   | Getränke | 15 % |
+   | Süßes und Alkohol | 10 % |
 
-| Kategorie | Checks | davon frei |
+   Bei etwa 290 Füll-Items sind das rund 60 Mahlzeiten und 45 Getränke über das ganze
+   Spiel. Bei 60 bis 100 Spieltagen ist das etwa eine Mahlzeit jeden zweiten Tag, also
+   eine Hilfe und kein Ersatz für Jagen und Kochen.
+3. **Nichts Wertvolles als Füller.** Kein Kupfer, kein Obsidian, kein Metallschrott, kein
+   Seil, kein Stoff, keine Werkzeuge. Diese Dinge kommen nur über Blueprints und
+   Ausrüstungs-Exemplare.
+4. **Lieferbremse.** Ein `!release` eines anderen Spielers kann hunderte Items auf einmal
+   schicken. Die Grenzen dafür:
+   - Fundstücke landen höchstens **10 pro Spielstunde** auf dem Boden.
+   - Der Rest wartet im „Briefkasten“ im F8-Fenster und lässt sich dort per Knopf
+     abholen.
+   - Blueprints, Skills und Perks kommen immer sofort.
+5. **Regler in der YAML:** `fundstuecke: wenig / normal / viel`.
+   - `wenig`: halbe Mengen; ein Teil der Pakete wird zu kleinen „Erinnerungsstücken“
+     (Muschel, hübscher Stein) ohne Nutzen.
+   - `viel`: anderthalbfache Mengen.
+   - Standard: `normal`.
+6. **Keine dauerhaften Boni über das Original hinaus.** Skills bleiben bei 3 × 25 je Skill,
+   genau wie die Skill-Perks des Spiels. Perks sind nur solche, die das Spiel selbst hat.
+7. **Die Logik verlässt sich nie auf Füller, Nützliches oder Ausbau-Sets.** Ein Seed ist
+   also auch ohne Glück bei den Fundstücken schaffbar.
+
+### 3.4 So fühlt sich ein Spiel an (Beispiel, Solo, alles an)
+
+| Phase | Was du tust | Was du ungefähr bekommst |
 | --- | --- | --- |
-| Heute (Forschung, Bauen, Besuchen) | 451 | – |
-| Fischen | 13 | 12 |
-| Jagd | 10 | 9 |
-| Kochen (Gerichte / alles) | 17 / 74 | 0 / 32 |
-| Anbau | 25 | 0 |
-| Erkunden | 19 | die meisten |
-| Journal (Standard) | ca. 10 nach Abzug der Doppelten | – |
-| Erfolge, Tage, Tiere | ca. 35 | – |
+| Tag 1 bis 10 | Strand, Fischen, erste Forschung, erste Gebiete | 10 bis 15 Blueprints, 2 bis 3 Skill-Stufen, Material und Wasser |
+| Tag 10 bis 40 | Hütte, Kochtopf, Jagd, Gerichte, Erkunden | Progressive Unterkunft 1 bis 2, Werkzeuglinien, Kochzutaten, 1 bis 2 Perks |
+| Tag 40+ | Kupfer, Floß, Logbuch abschließen | späte Blueprints, Ausbau-Set, Stauraum, Rest der Skills |
 
-Mit allem sind das bis zu rund **640 Checks**. Wer kurze Runden will, lässt die
-Kategorien aus.
+---
 
-## 5. Reihenfolge der Umsetzung
+## 4. Reihenfolge der Umsetzung
 
-1. **Phase A: ein Mechanismus, vier Kategorien.**
-   - Der `obtain`-Check in Registry, APWorld und Plugin.
-   - Darauf aufbauend Fischen, Jagd, Kochen und Anbau, jeweils mit eigener YAML-Option.
-   - Dazu die Themenpakete und die Erholungs-Items.
-   - Tests: Registry, Selbsttest im Spiel, echte Seeds.
-2. **Phase B: Erkunden und Journal.**
-   - Der `objective`-Check und die Option `character`.
-3. **Phase C: Extras.**
-   - Erfolge, Tage, Fallen, Kochbuch.
-   - Skill-Meilensteine nur, wenn gewünscht.
+1. **Phase A: neue Checks.**
+   - Ein gemeinsamer Mechanismus „zum ersten Mal X“.
+   - Darauf aufbauend Fischen, Jagd, Kochen und Anbau.
+   - Dazu Fundstücke mit Lieferbremse und Briefkasten (ersetzen die heutigen Vorräte).
+2. **Phase B: Charakter und Logbuch.**
+   - Der Archipelago-Reisende mit Logbuch (zuerst im F8-Fenster), inklusive Erkunden.
+   - Option `character`.
+3. **Phase C: Progressive-Linien und Upgrades.**
+   - Unterkunft, Bett und Lager als Progressive-Linien.
+   - Ausbau-Set und Stauraum-Erweiterung.
+4. **Phase D: Extras und Fallen.**
+   - Erfolge, Überlebenstage, Tiere.
+   - Fallen mit Deckel.
 
-Jede Phase bekommt eine eigene Version (`world_version` und `Plugin.Version` zusammen).
+Jede Phase bekommt ihre eigene Version, Tests im echten Spiel und eine aktualisierte
+spielbare Kopie.
 
-## 6. Offene Entscheidungen
+---
 
-1. Welche Kategorien sollen gebaut werden? Vorschlag: Phase A komplett.
-2. Kochen als `meals` (17) oder `all` (74)? Vorschlag: beide anbieten, Standard `meals`.
-3. Kochbuch-Items (Kochen wird gesperrt): ja oder nein? Vorschlag: als Option, aus.
-4. Fallen: ja oder nein? Vorschlag: als Option, Anteil 0 %.
-5. Journal: Charakter per YAML festlegen? Vorschlag: ja, Standard „Survivalist“.
+## 5. Offene Entscheidungen
+
+1. **Progressive-Linien:** Unterkunft, Bett und Lager standardmäßig an? Weitere Linien,
+   z. B. Äxte (Stein → Feuerstein → Kupfer), auch?
+2. **Ausbau-Set:** 2 Stück im Pool. Auch ohne gebauten Vorgänger einlösbar (baut dann die
+   erste Stufe)? Vorschlag: nein, nur ein echter Ausbau.
+3. **Logbuch:** Sollen die Multiworld-Aufgaben (Items anderer Spieler) Checks sein, oder
+   nur Determination geben? Vorschlag: nur Determination, weil man sie nicht selbst in der
+   Hand hat.
+4. **Fundstücke:** Passt die Aufteilung in 3.3? Sollen sie im Gebiet liegen, in dem du
+   gerade bist, oder immer an deinem Lager (Hütte)? Vorschlag: aktuelles Gebiet, in einer
+   Hütte im Innenraum.
+5. **Fallen:** Ist die Liste in 1.5 so in Ordnung?
