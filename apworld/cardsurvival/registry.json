@@ -1,6 +1,6 @@
 {
  "game_name": "Card Survival: Tropical Island",
- "registry_version": 5,
+ "registry_version": 6,
  "audited_build_id": "21268943",
  "audited_game_version": "v1.05ae",
  "goal_event": "Victory",
@@ -30,14 +30,51 @@
   "Seagull Charm",
   "Shark Headpiece"
  ],
- "filler": [
-  "Washed-Up Supplies",
-  "Fresh Coconuts",
-  "Bundle of Sticks",
-  "Stones and Flint",
-  "Water Ration",
-  "Rope and Fibers"
- ],
+ "filler": {
+  "material": [
+   "Find: Bundle of Sticks",
+   "Find: Long Sticks",
+   "Find: Stones",
+   "Find: Fibers",
+   "Find: Palm Fronds",
+   "Find: Clay"
+  ],
+  "ingredient": [
+   "Find: Salt",
+   "Find: Dried Chilies",
+   "Find: Dried Ginger",
+   "Find: Coconuts",
+   "Find: Honey",
+   "Find: Fat"
+  ],
+  "provision": [
+   "Find: Dried Boar Meat",
+   "Find: Dried Goat Meat",
+   "Find: Dried Macaque Meat",
+   "Find: Cured Meat",
+   "Find: Boiled Eggs",
+   "Find: Goat Cheese"
+  ],
+  "drink": [
+   "Find: Fresh Water",
+   "Find: Ginger Tea",
+   "Find: Jasmine Tea"
+  ],
+  "treat": [
+   "Find: Candied Ginger",
+   "Find: Chocolate",
+   "Find: Palm Wine",
+   "Find: Mead"
+  ]
+ },
+ "filler_shares": {
+  "material": 35,
+  "ingredient": 20,
+  "provision": 20,
+  "drink": 15,
+  "treat": 10
+ },
+ "keepsake": "Keepsake: Pretty Seashells",
  "items": [
   {
    "key": "Bp_Alembic",
@@ -2423,117 +2460,430 @@
    "classification": "useful"
   },
   {
-   "key": "filler_washed_up_supplies",
-   "name": "Washed-Up Supplies",
+   "key": "find_bundle_of_sticks",
+   "name": "Find: Bundle of Sticks",
    "ap_id": 1694429000,
    "quantity": 0,
-   "kind": "filler",
+   "kind": "find",
+   "category": "material",
    "classification": "filler",
    "contents": [
     {
-     "card": "Coconut",
-     "unique_id": "9a53c7766c482b94a9ce1b2148ddb522",
-     "count": 1
-    },
-    {
      "card": "Sticks",
      "unique_id": "fa8834c3111a71f47bdd23d66b33cf61",
-     "count": 2
-    },
-    {
-     "card": "Fibers",
-     "unique_id": "b8885e78517570b4293c573871625e11",
-     "count": 2
+     "count": 3
     }
    ]
   },
   {
-   "key": "filler_fresh_coconuts",
-   "name": "Fresh Coconuts",
+   "key": "find_long_sticks",
+   "name": "Find: Long Sticks",
    "ap_id": 1694429001,
    "quantity": 0,
-   "kind": "filler",
+   "kind": "find",
+   "category": "material",
    "classification": "filler",
    "contents": [
-    {
-     "card": "Coconut",
-     "unique_id": "9a53c7766c482b94a9ce1b2148ddb522",
-     "count": 3
-    }
-   ]
-  },
-  {
-   "key": "filler_bundle_of_sticks",
-   "name": "Bundle of Sticks",
-   "ap_id": 1694429002,
-   "quantity": 0,
-   "kind": "filler",
-   "classification": "filler",
-   "contents": [
-    {
-     "card": "Sticks",
-     "unique_id": "fa8834c3111a71f47bdd23d66b33cf61",
-     "count": 3
-    },
     {
      "card": "StickLong",
      "unique_id": "3db4c94184af274409f0d3eb16870f64",
-     "count": 1
+     "count": 2
     }
    ]
   },
   {
-   "key": "filler_stones_and_flint",
-   "name": "Stones and Flint",
-   "ap_id": 1694429003,
+   "key": "find_stones",
+   "name": "Find: Stones",
+   "ap_id": 1694429002,
    "quantity": 0,
-   "kind": "filler",
+   "kind": "find",
+   "category": "material",
    "classification": "filler",
    "contents": [
     {
      "card": "Stone",
      "unique_id": "a7384e5147b23a642809451cc4ef24fb",
      "count": 2
-    },
-    {
-     "card": "Flint",
-     "unique_id": "bef002cfd45b3e8459864746f403cf73",
-     "count": 1
     }
    ]
   },
   {
-   "key": "filler_water_ration",
-   "name": "Water Ration",
-   "ap_id": 1694429004,
+   "key": "find_fibers",
+   "name": "Find: Fibers",
+   "ap_id": 1694429003,
    "quantity": 0,
-   "kind": "filler",
+   "kind": "find",
+   "category": "material",
    "classification": "filler",
    "contents": [
-    {
-     "card": "WaterRation",
-     "unique_id": "ec508d4615d42884d9ce1d64efbc80b5",
-     "count": 1
-    }
-   ]
-  },
-  {
-   "key": "filler_rope_and_fibers",
-   "name": "Rope and Fibers",
-   "ap_id": 1694429005,
-   "quantity": 0,
-   "kind": "filler",
-   "classification": "filler",
-   "contents": [
-    {
-     "card": "Rope",
-     "unique_id": "a7a58aa687df66e47a42fc13e0fdbeaa",
-     "count": 1
-    },
     {
      "card": "Fibers",
      "unique_id": "b8885e78517570b4293c573871625e11",
+     "count": 3
+    }
+   ]
+  },
+  {
+   "key": "find_palm_fronds",
+   "name": "Find: Palm Fronds",
+   "ap_id": 1694429004,
+   "quantity": 0,
+   "kind": "find",
+   "category": "material",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "PalmFronds",
+     "unique_id": "2691da3e9a1ec404480676dbd56bb2f6",
      "count": 2
+    }
+   ]
+  },
+  {
+   "key": "find_clay",
+   "name": "Find: Clay",
+   "ap_id": 1694429005,
+   "quantity": 0,
+   "kind": "find",
+   "category": "material",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Clay",
+     "unique_id": "68c14d265ea6c874ba79444d2e1ef7b3",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_salt",
+   "name": "Find: Salt",
+   "ap_id": 1694429010,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Salt",
+     "unique_id": "6f08b1d874665a848829d9dc52f73008",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_dried_chilies",
+   "name": "Find: Dried Chilies",
+   "ap_id": 1694429011,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "ChiliesDried",
+     "unique_id": "3b7e4fe1b3c393244a11348578f46ab6",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_dried_ginger",
+   "name": "Find: Dried Ginger",
+   "ap_id": 1694429012,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "GingerDried",
+     "unique_id": "c5b5f9132b7438546aa559e149a33d46",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_coconuts",
+   "name": "Find: Coconuts",
+   "ap_id": 1694429013,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Coconut",
+     "unique_id": "9a53c7766c482b94a9ce1b2148ddb522",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "key": "find_honey",
+   "name": "Find: Honey",
+   "ap_id": 1694429014,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_Honey",
+     "liquid_id": "151ebcdc07ef37e47b54b2867e2a93e7"
+    }
+   ]
+  },
+  {
+   "key": "find_fat",
+   "name": "Find: Fat",
+   "ap_id": 1694429015,
+   "quantity": 0,
+   "kind": "find",
+   "category": "ingredient",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Fat",
+     "unique_id": "0eb3634f696991b4d97b91626270e035",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_dried_boar_meat",
+   "name": "Find: Dried Boar Meat",
+   "ap_id": 1694429020,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "BoarMeatDried",
+     "unique_id": "639a7cdd9e50e664898915cb558bd3bf",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_dried_goat_meat",
+   "name": "Find: Dried Goat Meat",
+   "ap_id": 1694429021,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "GoatMeatDried",
+     "unique_id": "71e5329ddbad2eb42ab9e6b9d40d1c59",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_dried_macaque_meat",
+   "name": "Find: Dried Macaque Meat",
+   "ap_id": 1694429022,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "MacaqueMeatDried",
+     "unique_id": "723ec4f2448e89944bf03baf8d5b052a",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_cured_meat",
+   "name": "Find: Cured Meat",
+   "ap_id": 1694429023,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "MeatSaltedDried",
+     "unique_id": "8833f156f07a7314691fbb2399c6ec27",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_boiled_eggs",
+   "name": "Find: Boiled Eggs",
+   "ap_id": 1694429024,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "EggBoiled",
+     "unique_id": "23a36a84fde77434982070864b874f8e",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "key": "find_goat_cheese",
+   "name": "Find: Goat Cheese",
+   "ap_id": 1694429025,
+   "quantity": 0,
+   "kind": "find",
+   "category": "provision",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Cheese",
+     "unique_id": "13a120216bd98ac49b34462c0bac0b7c",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_fresh_water",
+   "name": "Find: Fresh Water",
+   "ap_id": 1694429030,
+   "quantity": 0,
+   "kind": "find",
+   "category": "drink",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_Water",
+     "liquid_id": "425259cb06b869d45be2e7f1b5b54aff"
+    }
+   ]
+  },
+  {
+   "key": "find_ginger_tea",
+   "name": "Find: Ginger Tea",
+   "ap_id": 1694429031,
+   "quantity": 0,
+   "kind": "find",
+   "category": "drink",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_GingerTea",
+     "liquid_id": "f7ad0bbd98d0c7948b940ac744d5dae3"
+    }
+   ]
+  },
+  {
+   "key": "find_jasmine_tea",
+   "name": "Find: Jasmine Tea",
+   "ap_id": 1694429032,
+   "quantity": 0,
+   "kind": "find",
+   "category": "drink",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_JasmineTea",
+     "liquid_id": "aae003e000b8c304eaf6eb163503ecd2"
+    }
+   ]
+  },
+  {
+   "key": "find_candied_ginger",
+   "name": "Find: Candied Ginger",
+   "ap_id": 1694429040,
+   "quantity": 0,
+   "kind": "find",
+   "category": "treat",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CandiedGinger",
+     "unique_id": "42f8ee8775baf414498362bd057bef0a",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_chocolate",
+   "name": "Find: Chocolate",
+   "ap_id": 1694429041,
+   "quantity": 0,
+   "kind": "find",
+   "category": "treat",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "Chocolate",
+     "unique_id": "5a8261ff720a21646832847b677f0e1a",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "key": "find_palm_wine",
+   "name": "Find: Palm Wine",
+   "ap_id": 1694429042,
+   "quantity": 0,
+   "kind": "find",
+   "category": "treat",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_PalmWine",
+     "liquid_id": "660a158feac027d44bc6a93b72512c41"
+    }
+   ]
+  },
+  {
+   "key": "find_mead",
+   "name": "Find: Mead",
+   "ap_id": 1694429043,
+   "quantity": 0,
+   "kind": "find",
+   "category": "treat",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "CoconutShell",
+     "unique_id": "80b480a28a4fbd544b78b5807fd999e4",
+     "count": 1,
+     "liquid": "LQ_Mead",
+     "liquid_id": "e18a771c208426245bee00f674c6b4d4"
+    }
+   ]
+  },
+  {
+   "key": "find_pretty_seashells",
+   "name": "Keepsake: Pretty Seashells",
+   "ap_id": 1694429050,
+   "quantity": 0,
+   "kind": "find",
+   "category": "keepsake",
+   "classification": "filler",
+   "contents": [
+    {
+     "card": "SeashellsPretty",
+     "unique_id": "15a1302249911d941a8945603ec46f49",
+     "count": 1
     }
    ]
   }
@@ -8263,6 +8613,1047 @@
    "unique_id": "db5df47a8556fb94fa08a275aef2d8b6",
    "challenge": false,
    "rule": true
+  },
+  {
+   "key": "Catch - Goatfish",
+   "kind": "fish",
+   "name": "Catch - Goatfish",
+   "ap_id": 1694433000,
+   "watch": [
+    {
+     "cards": [
+      "7da7f6f815c7c6f40888aabde2af77b3"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Parrot Fish",
+   "kind": "fish",
+   "name": "Catch - Parrot Fish",
+   "ap_id": 1694433001,
+   "watch": [
+    {
+     "cards": [
+      "18bac9f70cf644444ae0ace52a147791"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Bonefish",
+   "kind": "fish",
+   "name": "Catch - Bonefish",
+   "ap_id": 1694433002,
+   "watch": [
+    {
+     "cards": [
+      "fa7366696821aa04fb260cefd9257133",
+      "d6a3bdeabfda8f046b6fe7ebe0f966a2"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Mudskipper",
+   "kind": "fish",
+   "name": "Catch - Mudskipper",
+   "ap_id": 1694433003,
+   "watch": [
+    {
+     "cards": [
+      "6bdf0f4de4348274994e294f734a3fef"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Threadfin",
+   "kind": "fish",
+   "name": "Catch - Threadfin",
+   "ap_id": 1694433004,
+   "watch": [
+    {
+     "cards": [
+      "0d01e6c4647f7a446b785fd9082f7bab",
+      "272c610db081eb2408176d14f5411208"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Herring",
+   "kind": "fish",
+   "name": "Catch - Herring",
+   "ap_id": 1694433005,
+   "watch": [
+    {
+     "cards": [
+      "aade436109132a84cb640b81cebffdb3"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have Herring"
+   }
+  },
+  {
+   "key": "Catch - Prawns",
+   "kind": "fish",
+   "name": "Catch - Prawns",
+   "ap_id": 1694433007,
+   "watch": [
+    {
+     "cards": [
+      "54e7924d2d7b47a49b90b679c479ba07"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Crab",
+   "kind": "fish",
+   "name": "Catch - Crab",
+   "ap_id": 1694433008,
+   "watch": [
+    {
+     "cards": [
+      "46620746a81bd124fb0066e38db287a0"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Oyster",
+   "kind": "fish",
+   "name": "Catch - Oyster",
+   "ap_id": 1694433009,
+   "watch": [
+    {
+     "cards": [
+      "cf9fddbf3832ce048991fdf3d40fb9d7"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Sea Urchin",
+   "kind": "fish",
+   "name": "Catch - Sea Urchin",
+   "ap_id": 1694433010,
+   "watch": [
+    {
+     "cards": [
+      "7dd363a7cb093c747af4ea001ef73734"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Catch - Conch",
+   "kind": "fish",
+   "name": "Catch - Conch",
+   "ap_id": 1694433011,
+   "watch": [
+    {
+     "cards": [
+      "72b334c4f836412409f896739fa851c6"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Boar",
+   "kind": "hunt",
+   "name": "Hunt - Boar",
+   "ap_id": 1694433100,
+   "watch": [
+    {
+     "cards": [
+      "24a35218ec733854387c5a66ef3e6628"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Piglet",
+   "kind": "hunt",
+   "name": "Hunt - Piglet",
+   "ap_id": 1694433101,
+   "watch": [
+    {
+     "cards": [
+      "b770a77711ccb1246b20561781384d0b"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have BoarCarcassPiglet"
+   }
+  },
+  {
+   "key": "Hunt - Cobra",
+   "kind": "hunt",
+   "name": "Hunt - Cobra",
+   "ap_id": 1694433102,
+   "watch": [
+    {
+     "cards": [
+      "89d3f4138a34e72418c5d86edc24e768"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Goat",
+   "kind": "hunt",
+   "name": "Hunt - Goat",
+   "ap_id": 1694433103,
+   "watch": [
+    {
+     "cards": [
+      "9bbe41996c97ad4438c90e1633d1909b",
+      "7427208a72572844eaff23fe433d62f7",
+      "5db4f7a062470cc45a649c920f3f9bc3"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Macaque",
+   "kind": "hunt",
+   "name": "Hunt - Macaque",
+   "ap_id": 1694433104,
+   "watch": [
+    {
+     "cards": [
+      "9d4972b777d238249a27d8cda18f564a"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Monitor Lizard",
+   "kind": "hunt",
+   "name": "Hunt - Monitor Lizard",
+   "ap_id": 1694433105,
+   "watch": [
+    {
+     "cards": [
+      "a547948e1b6bdf84aa5076bf2b5f4cf8"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Partridge",
+   "kind": "hunt",
+   "name": "Hunt - Partridge",
+   "ap_id": 1694433106,
+   "watch": [
+    {
+     "cards": [
+      "42e9b5e9f7c9bc448a44b17e881d8925",
+      "f72ca8f6249870d4b9306c2d779c93a9",
+      "a6689631cafd2834d84d9324c9f4e2b0"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Sea Krait",
+   "kind": "hunt",
+   "name": "Hunt - Sea Krait",
+   "ap_id": 1694433107,
+   "watch": [
+    {
+     "cards": [
+      "d44b060fa57187f409f3d7359a9457ed"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Seagull",
+   "kind": "hunt",
+   "name": "Hunt - Seagull",
+   "ap_id": 1694433108,
+   "watch": [
+    {
+     "cards": [
+      "b2adb27f89053d44d8a060ed8b2ce483",
+      "7ec4b8ebf03b43345b77438480b78214"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Hunt - Shark",
+   "kind": "hunt",
+   "name": "Hunt - Shark",
+   "ap_id": 1694433109,
+   "watch": [
+    {
+     "cards": [
+      "c2cb2677af4043f4e9e62df4fb89b06d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": true
+  },
+  {
+   "key": "Cook - Bone Broth",
+   "kind": "cook",
+   "name": "Cook - Bone Broth",
+   "ap_id": 1694433200,
+   "watch": [
+    {
+     "cards": [
+      "1525eb3d7d4063a4aae610c6f673565a"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have BoneBroth"
+   }
+  },
+  {
+   "key": "Cook - Coconut Fish",
+   "kind": "cook",
+   "name": "Cook - Coconut Fish",
+   "ap_id": 1694433201,
+   "watch": [
+    {
+     "cards": [
+      "ee106dd0ba9e48e45b62360d832a5ecc"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have CoconutFish"
+   }
+  },
+  {
+   "key": "Cook - Drunken Crab",
+   "kind": "cook",
+   "name": "Cook - Drunken Crab",
+   "ap_id": 1694433202,
+   "watch": [
+    {
+     "cards": [
+      "3373c6f085d04874583551249678c6f6"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have DrunkenCrab"
+   }
+  },
+  {
+   "key": "Cook - Egg Fried Rice",
+   "kind": "cook",
+   "name": "Cook - Egg Fried Rice",
+   "ap_id": 1694433203,
+   "watch": [
+    {
+     "cards": [
+      "569ca05e911be7c40b41043a4947908d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have EggFriedRice"
+   }
+  },
+  {
+   "key": "Cook - Fish N' Chips",
+   "kind": "cook",
+   "name": "Cook - Fish N' Chips",
+   "ap_id": 1694433204,
+   "watch": [
+    {
+     "cards": [
+      "a1278a81f561df44cb5051e42077b8d0"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have FishNChips"
+   }
+  },
+  {
+   "key": "Cook - Fish Omelette",
+   "kind": "cook",
+   "name": "Cook - Fish Omelette",
+   "ap_id": 1694433205,
+   "watch": [
+    {
+     "cards": [
+      "eda67b50f7c958047a0e15bf72da5d5c"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have FishOmelette"
+   }
+  },
+  {
+   "key": "Cook - Fried Puffballs",
+   "kind": "cook",
+   "name": "Cook - Fried Puffballs",
+   "ap_id": 1694433206,
+   "watch": [
+    {
+     "cards": [
+      "eb35566aa8d980f4db35f55acfbcaf87"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have FriedPuffballs"
+   }
+  },
+  {
+   "key": "Cook - Goat Stew",
+   "kind": "cook",
+   "name": "Cook - Goat Stew",
+   "ap_id": 1694433207,
+   "watch": [
+    {
+     "cards": [
+      "ea60f4255a8e977489af1c5fde7353f5"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have GoatStew"
+   }
+  },
+  {
+   "key": "Cook - Hearty Feast",
+   "kind": "cook",
+   "name": "Cook - Hearty Feast",
+   "ap_id": 1694433208,
+   "watch": [
+    {
+     "cards": [
+      "1d4bd206535912d46aeca8e58790b019"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have HeartyFeast"
+   }
+  },
+  {
+   "key": "Cook - Honey Glazed Pork",
+   "kind": "cook",
+   "name": "Cook - Honey Glazed Pork",
+   "ap_id": 1694433209,
+   "watch": [
+    {
+     "cards": [
+      "4882b19c248f5ae439e86e357674c90d"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have HoneyGlazedPork"
+   }
+  },
+  {
+   "key": "Cook - Island Chicken",
+   "kind": "cook",
+   "name": "Cook - Island Chicken",
+   "ap_id": 1694433210,
+   "watch": [
+    {
+     "cards": [
+      "8c5ba68a7662e164891f60d35623f4d9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have IslandChicken"
+   }
+  },
+  {
+   "key": "Cook - Jungle Salad",
+   "kind": "cook",
+   "name": "Cook - Jungle Salad",
+   "ap_id": 1694433211,
+   "watch": [
+    {
+     "cards": [
+      "f1eb518d9e7b19d41918d16aa9dff6e3"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have JungleSalad"
+   }
+  },
+  {
+   "key": "Cook - Lizard Fry",
+   "kind": "cook",
+   "name": "Cook - Lizard Fry",
+   "ap_id": 1694433212,
+   "watch": [
+    {
+     "cards": [
+      "4d4c5ccd15eb295459a12d9a422508d9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have LizardFry"
+   }
+  },
+  {
+   "key": "Cook - Macaque Skewers",
+   "kind": "cook",
+   "name": "Cook - Macaque Skewers",
+   "ap_id": 1694433213,
+   "watch": [
+    {
+     "cards": [
+      "ecde38f41e193ae48ad6d16f6e9bf5b7"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have MacaqueSkewers"
+   }
+  },
+  {
+   "key": "Cook - Sago Cake",
+   "kind": "cook",
+   "name": "Cook - Sago Cake",
+   "ap_id": 1694433214,
+   "watch": [
+    {
+     "cards": [
+      "f1a2cb504e1755e48b1c77e36ca651c2"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have SagoCake"
+   }
+  },
+  {
+   "key": "Cook - Seafood Cup",
+   "kind": "cook",
+   "name": "Cook - Seafood Cup",
+   "ap_id": 1694433215,
+   "watch": [
+    {
+     "cards": [
+      "adeb5544d943e864e8edf282cbfe5215"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have SeafoodCup"
+   }
+  },
+  {
+   "key": "Cook - Yam Curry",
+   "kind": "cook",
+   "name": "Cook - Yam Curry",
+   "ap_id": 1694433216,
+   "watch": [
+    {
+     "cards": [
+      "db3889abcc6518a46a79ebe1199104d9"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "event": "Have YamCurry"
+   }
+  },
+  {
+   "key": "Plant - First Crop",
+   "kind": "farm",
+   "name": "Plant - First Crop",
+   "ap_id": 1694433300,
+   "watch": [
+    {
+     "cards": [
+      "e7d095108b79fe844a76ddf5083d2831",
+      "b2a91bb0627ba5a4bb6c09a6a12215fb",
+      "daa186a2bcfd13b47901534a2adf2c7a",
+      "263d24410cf81f4469598b533a3ffda3",
+      "8e64495df9ea2f1448cff79a20844ee6",
+      "efaf88be97d6c9a4b8484789395450e8",
+      "a559ca27b2adee745a7cbd0f7059a653",
+      "e4de648abad93c14aa17c9e2b77ba6f6",
+      "595c26c9d9c5c0e49a109115b1b9827b",
+      "36ee2b905dbad6842bb0e371ca608a75",
+      "9d497aeaa5c253c438828ac75947c4f2",
+      "b21305e8ff5b07647bd86ce642bf0d73",
+      "e4fe41b38bcd4384e8bbff71e8a14ccb",
+      "dbc1f31d84e5e2b46be33d1bd05545cd",
+      "0e65a44653e14924c81e4bcd45aa5aca",
+      "9c3cd7c055ba5f042b5448d4c4e83b23",
+      "837026c55642fdc4da9769a5827749d4",
+      "17cac879da84d134ba2dc336dcb69c13",
+      "d2506932586fc5647af077417956e96d",
+      "04281da61bf07a9449261ec710a45aa7",
+      "9fbd7ef01b4443448b8360bd381cc15c",
+      "44e417133ef1f0344a1f7728cad52339"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     }
+    ]
+   }
+  },
+  {
+   "key": "Plant - Three Different Crops",
+   "kind": "farm",
+   "name": "Plant - Three Different Crops",
+   "ap_id": 1694433301,
+   "watch": [
+    {
+     "cards": [
+      "e7d095108b79fe844a76ddf5083d2831",
+      "b2a91bb0627ba5a4bb6c09a6a12215fb",
+      "daa186a2bcfd13b47901534a2adf2c7a",
+      "263d24410cf81f4469598b533a3ffda3",
+      "8e64495df9ea2f1448cff79a20844ee6",
+      "efaf88be97d6c9a4b8484789395450e8",
+      "a559ca27b2adee745a7cbd0f7059a653",
+      "e4de648abad93c14aa17c9e2b77ba6f6",
+      "595c26c9d9c5c0e49a109115b1b9827b",
+      "36ee2b905dbad6842bb0e371ca608a75",
+      "9d497aeaa5c253c438828ac75947c4f2",
+      "b21305e8ff5b07647bd86ce642bf0d73",
+      "e4fe41b38bcd4384e8bbff71e8a14ccb",
+      "dbc1f31d84e5e2b46be33d1bd05545cd",
+      "0e65a44653e14924c81e4bcd45aa5aca",
+      "9c3cd7c055ba5f042b5448d4c4e83b23",
+      "837026c55642fdc4da9769a5827749d4",
+      "17cac879da84d134ba2dc336dcb69c13",
+      "d2506932586fc5647af077417956e96d",
+      "04281da61bf07a9449261ec710a45aa7",
+      "9fbd7ef01b4443448b8360bd381cc15c",
+      "44e417133ef1f0344a1f7728cad52339"
+     ],
+     "count": 3
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "atleast": 3,
+    "of": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     }
+    ]
+   }
+  },
+  {
+   "key": "Plant - Six Different Crops",
+   "kind": "farm",
+   "name": "Plant - Six Different Crops",
+   "ap_id": 1694433302,
+   "watch": [
+    {
+     "cards": [
+      "e7d095108b79fe844a76ddf5083d2831",
+      "b2a91bb0627ba5a4bb6c09a6a12215fb",
+      "daa186a2bcfd13b47901534a2adf2c7a",
+      "263d24410cf81f4469598b533a3ffda3",
+      "8e64495df9ea2f1448cff79a20844ee6",
+      "efaf88be97d6c9a4b8484789395450e8",
+      "a559ca27b2adee745a7cbd0f7059a653",
+      "e4de648abad93c14aa17c9e2b77ba6f6",
+      "595c26c9d9c5c0e49a109115b1b9827b",
+      "36ee2b905dbad6842bb0e371ca608a75",
+      "9d497aeaa5c253c438828ac75947c4f2",
+      "b21305e8ff5b07647bd86ce642bf0d73",
+      "e4fe41b38bcd4384e8bbff71e8a14ccb",
+      "dbc1f31d84e5e2b46be33d1bd05545cd",
+      "0e65a44653e14924c81e4bcd45aa5aca",
+      "9c3cd7c055ba5f042b5448d4c4e83b23",
+      "837026c55642fdc4da9769a5827749d4",
+      "17cac879da84d134ba2dc336dcb69c13",
+      "d2506932586fc5647af077417956e96d",
+      "04281da61bf07a9449261ec710a45aa7",
+      "9fbd7ef01b4443448b8360bd381cc15c",
+      "44e417133ef1f0344a1f7728cad52339"
+     ],
+     "count": 6
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "atleast": 6,
+    "of": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     }
+    ]
+   }
+  },
+  {
+   "key": "Plant - First Tree",
+   "kind": "farm",
+   "name": "Plant - First Tree",
+   "ap_id": 1694433303,
+   "watch": [
+    {
+     "cards": [
+      "e7d095108b79fe844a76ddf5083d2831",
+      "daa186a2bcfd13b47901534a2adf2c7a",
+      "efaf88be97d6c9a4b8484789395450e8",
+      "b21305e8ff5b07647bd86ce642bf0d73",
+      "0e65a44653e14924c81e4bcd45aa5aca"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     }
+    ]
+   }
+  },
+  {
+   "key": "Plant - First Mushroom Bed",
+   "kind": "farm",
+   "name": "Plant - First Mushroom Bed",
+   "ap_id": 1694433304,
+   "watch": [
+    {
+     "cards": [
+      "be457278857467b4d905650527124f16",
+      "847b560620bde6140a48771e48a360b5",
+      "932e6a344c231d4458f7fb65c481021a"
+     ],
+     "count": 1
+    }
+   ],
+   "challenge": false,
+   "rule": {
+    "any": [
+     {
+      "event": "Have MushroomBedAssorted"
+     },
+     {
+      "event": "Have MushroomBedMagic"
+     },
+     {
+      "event": "Have MushroomBedPuffballs"
+     }
+    ]
+   }
   }
  ],
  "events": [
@@ -11086,6 +12477,23 @@
    }
   },
   {
+   "name": "Have BoarCarcassPiglet",
+   "card": "BoarCarcassPiglet",
+   "rule": {
+    "any": [
+     {
+      "event": "Have BoarEnclosureFemale"
+     },
+     {
+      "event": "Have BoarEnclosurePiglet"
+     },
+     {
+      "event": "Have BoarTiedPiglet"
+     }
+    ]
+   }
+  },
+  {
    "name": "Have BoarEnclosureFemale",
    "card": "BoarEnclosureFemale",
    "rule": {
@@ -11503,6 +12911,13 @@
    "card": "CellarEntrance",
    "rule": {
     "event": "Can Build Cellar"
+   }
+  },
+  {
+   "name": "Have Cesspool",
+   "card": "Cesspool",
+   "rule": {
+    "event": "Have NiterBed"
    }
   },
   {
@@ -12124,6 +13539,519 @@
    "card": "CopperSheet",
    "rule": {
     "event": "Can Build Copper Sheet"
+   }
+  },
+  {
+   "name": "Have CropPlotAlmondTree",
+   "card": "CropPlotAlmondTree",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotDry"
+     },
+     {
+      "event": "Have CropPlotEmpty"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotRuined"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     },
+     {
+      "event": "Have MushroomBedAssorted"
+     },
+     {
+      "event": "Have MushroomBedDry"
+     },
+     {
+      "event": "Have MushroomBedEmpty"
+     },
+     {
+      "event": "Have MushroomBedMagic"
+     },
+     {
+      "event": "Have MushroomBedPuffballs"
+     },
+     {
+      "event": "Have NiterBed"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotAloeVera",
+   "card": "CropPlotAloeVera",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotBananaTree",
+   "card": "CropPlotBananaTree",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotChilies",
+   "card": "CropPlotChilies",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotChinaRose",
+   "card": "CropPlotChinaRose",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotCinchonaTree",
+   "card": "CropPlotCinchonaTree",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotEmpty"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotCoffee",
+   "card": "CropPlotCoffee",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotDry",
+   "card": "CropPlotDry",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Crop Plot"
+     },
+     {
+      "event": "Have Cesspool"
+     },
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotEmpty"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotRuined"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     },
+     {
+      "event": "Have NiterBed"
+     },
+     {
+      "event": "Have RicePaddyEmpty"
+     },
+     {
+      "event": "Have RicePaddy"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotEmpty",
+   "card": "CropPlotEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotDry"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotRuined"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotGinger",
+   "card": "CropPlotGinger",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotJasmine",
+   "card": "CropPlotJasmine",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotKava",
+   "card": "CropPlotKava",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotLemonGrass",
+   "card": "CropPlotLemonGrass",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotMangoTree",
+   "card": "CropPlotMangoTree",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotEmpty"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotNipaPalm",
+   "card": "CropPlotNipaPalm",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotPalmBush",
+   "card": "CropPlotPalmBush",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotEmpty"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotPalmTree",
+   "card": "CropPlotPalmTree",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotEmpty"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotRice",
+   "card": "CropPlotRice",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotRuined",
+   "card": "CropPlotRuined",
+   "rule": {
+    "any": [
+     {
+      "event": "Have CropPlotAlmondTree"
+     },
+     {
+      "event": "Have CropPlotAloeVera"
+     },
+     {
+      "event": "Have CropPlotBananaTree"
+     },
+     {
+      "event": "Have CropPlotChilies"
+     },
+     {
+      "event": "Have CropPlotChinaRose"
+     },
+     {
+      "event": "Have CropPlotCinchonaTree"
+     },
+     {
+      "event": "Have CropPlotCoffee"
+     },
+     {
+      "event": "Have CropPlotGinger"
+     },
+     {
+      "event": "Have CropPlotJasmine"
+     },
+     {
+      "event": "Have CropPlotKava"
+     },
+     {
+      "event": "Have CropPlotLemonGrass"
+     },
+     {
+      "event": "Have CropPlotMangoTree"
+     },
+     {
+      "event": "Have CropPlotNipaPalm"
+     },
+     {
+      "event": "Have CropPlotPalmBush"
+     },
+     {
+      "event": "Have CropPlotPalmTree"
+     },
+     {
+      "event": "Have CropPlotRice"
+     },
+     {
+      "event": "Have CropPlotSagoPalm"
+     },
+     {
+      "event": "Have CropPlotSnakeGrass"
+     },
+     {
+      "event": "Have CropPlotSpiderLily"
+     },
+     {
+      "event": "Have CropPlotWeevilLily"
+     },
+     {
+      "event": "Have CropPlotWildJujube"
+     },
+     {
+      "event": "Have CropPlotYam"
+     }
+    ]
+   }
+  },
+  {
+   "name": "Have CropPlotSagoPalm",
+   "card": "CropPlotSagoPalm",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotSnakeGrass",
+   "card": "CropPlotSnakeGrass",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotSpiderLily",
+   "card": "CropPlotSpiderLily",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotWeevilLily",
+   "card": "CropPlotWeevilLily",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotWildJujube",
+   "card": "CropPlotWildJujube",
+   "rule": {
+    "event": "Have CropPlotEmpty"
+   }
+  },
+  {
+   "name": "Have CropPlotYam",
+   "card": "CropPlotYam",
+   "rule": {
+    "event": "Have CropPlotEmpty"
    }
   },
   {
@@ -13085,6 +15013,13 @@
    }
   },
   {
+   "name": "Have Herring",
+   "card": "Herring",
+   "rule": {
+    "event": "Have RaftFishTrap"
+   }
+  },
+  {
    "name": "Have HoneyCandyCooked",
    "card": "HoneyCandyCooked",
    "rule": {
@@ -13220,6 +15155,13 @@
    "card": "JacketClothDisabled",
    "rule": {
     "event": "Can Build Cloth Jacket"
+   }
+  },
+  {
+   "name": "Have JungleSalad",
+   "card": "JungleSalad",
+   "rule": {
+    "event": "Can Build Jungle Salad"
    }
   },
   {
@@ -13618,6 +15560,13 @@
    }
   },
   {
+   "name": "Have NiterBed",
+   "card": "NiterBed",
+   "rule": {
+    "event": "Can Build Niter Bed"
+   }
+  },
+  {
    "name": "Have PartridgeFeeder",
    "card": "PartridgeFeeder",
    "rule": {
@@ -13786,6 +15735,27 @@
    "card": "RaftShelter",
    "rule": {
     "event": "Can Build Raft Shelter"
+   }
+  },
+  {
+   "name": "Have RicePaddy",
+   "card": "RicePaddy",
+   "rule": {
+    "event": "Have RicePaddyEmpty"
+   }
+  },
+  {
+   "name": "Have RicePaddyEmpty",
+   "card": "RicePaddyEmpty",
+   "rule": {
+    "any": [
+     {
+      "event": "Can Build Rice Paddy"
+     },
+     {
+      "event": "Have RicePaddy"
+     }
+    ]
    }
   },
   {
@@ -13961,6 +15931,13 @@
    "card": "Sea_Raft",
    "rule": {
     "event": "Have Start_Raft"
+   }
+  },
+  {
+   "name": "Have SeafoodCup",
+   "card": "SeafoodCup",
+   "rule": {
+    "event": "Can Build Seafood Cup"
    }
   },
   {

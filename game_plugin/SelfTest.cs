@@ -76,6 +76,29 @@ namespace CardSurvivalArchipelago
             Application.Quit();
         }
 
+        /// <summary>
+        /// Waits until a loaded game is running. While loading, the game shows events that crossed a
+        /// threshold (e.g. "Cooking level 1" after a skill item) and waits for a click, as for a player;
+        /// the test clicks their first button.
+        /// </summary>
+        private static IEnumerator WaitForLoaded()
+        {
+            float end = Time.realtimeSinceStartup + 120f;
+            while (!ApGame.InGame && Time.realtimeSinceStartup < end)
+            {
+                GraphicsManager graphics = MBSingleton<GraphicsManager>.Instance;
+                InGameCardBase inspected = graphics != null ? graphics.InspectedCard : null;
+                if (inspected != null && inspected.CardModel != null && inspected.CardModel.CardType == CardTypes.Event &&
+                    graphics.CurrentInspectionPopup != null)
+                {
+                    Plugin.Log.LogInfo("[SelfTest] confirming event " + inspected.CardModel.name);
+                    graphics.CurrentInspectionPopup.OnButtonClicked(0, false);
+                    yield return Wait(1f);
+                }
+                yield return null;
+            }
+        }
+
         private static GameManager GM
         {
             get { return MBSingleton<GameManager>.Instance; }
@@ -272,15 +295,62 @@ namespace CardSurvivalArchipelago
                   new { equipment.Name, equipmentBefore, equipmentAfter });
             Check("receiving equipment does not complete its build check",
                   !Registry.BuildByCard.ContainsKey(equipment.CardId) || !ApGame.State.IsChecked(Registry.BuildByCard[equipment.CardId].Id));
+            // 8d. "First time" checks (Phase A): the seed's options arrive, a watched card completes its check.
+            Check("seed options stored with the save", new[] { "fish", "hunt", "cook", "farm" }.All(ApGame.State.LocationKinds.Contains),
+                  ApGame.State.LocationKinds);
+            Registry.Entry hunt = Registry.Watched.FirstOrDefault(entry => entry.Kind == "hunt" && !ApGame.State.IsChecked(entry.Id));
+            CardData prey = UniqueIDScriptable.GetFromID<CardData>(hunt.Watch[0].Cards.First());
+            GameManager.GiveCard(prey, true);
+            yield return WaitFor(() => ApGame.State.IsChecked(hunt.Id), 5f);
+            Check("a watched card completes its first-time check", ApGame.State.IsChecked(hunt.Id), hunt.Name + " via " + prey.name);
+            Registry.Entry three = Registry.Watched.First(entry => entry.Name == "Plant - Three Different Crops");
+            Registry.Entry first = Registry.Watched.First(entry => entry.Name == "Plant - First Crop");
+            List<string> crops = three.Watch[0].Cards.Where(id => !ApGame.State.HasSeen(id)).Take(3).ToList();
+            foreach (string id in crops.Take(2)) GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(id), true);
+            yield return Wait(1.5f);
+            bool afterTwo = ApGame.State.IsChecked(three.Id);
+            GameManager.GiveCard(UniqueIDScriptable.GetFromID<CardData>(crops[2]), true);
+            yield return WaitFor(() => ApGame.State.IsChecked(three.Id), 5f);
+            Check("counting check: three different crops needs the third", !afterTwo && ApGame.State.IsChecked(three.Id) &&
+                  ApGame.State.IsChecked(first.Id), new { afterTwo, three = ApGame.State.IsChecked(three.Id) });
+
+            // 8e. Finds: they land on the ground; beyond 10 per in-game hour they wait in the buffer.
+            var findLocations = ApConnection.Scouted.Where(pair => !ApGame.State.IsChecked(pair.Key) &&
+                    pair.Value.Player.Slot == ApConnection.Slot && Registry.Items.ContainsKey(pair.Value.ItemId) &&
+                    Registry.Items[pair.Value.ItemId].Kind == "find")
+                .OrderByDescending(pair => Registry.Items[pair.Value.ItemId].Contents.Any(part => part.LiquidId != null))
+                .Take(Finds.PerHour + 4).ToList();
+            Check("seed has enough finds for this slot", findLocations.Count == Finds.PerHour + 4, findLocations.Count);
+            Registry.Entry liquidFind = Registry.Items[findLocations[0].Value.ItemId];
+            int receivedBefore = ApGame.State.Received.Count;
+            foreach (var pair in findLocations) ApGame.CompleteLocation(pair.Key);
+            yield return WaitFor(() => ApGame.State.Received.Count >= receivedBefore + findLocations.Count &&
+                                       ApGame.AppliedNow == ApGame.State.Received.Count, 15f);
+            yield return Wait(2f);
+            Check("finds beyond the hourly limit wait in the buffer", Finds.Buffer.Count >= 4 && Finds.Buffer.Distinct().Count() == Finds.Buffer.Count,
+                  new { buffered = Finds.Buffer.Count, received = findLocations.Count });
+            CardData shell = UniqueIDScriptable.GetFromID<CardData>(liquidFind.Contents[0].CardId);
+            CardData drink = liquidFind.Contents[0].LiquidId != null ? UniqueIDScriptable.GetFromID<CardData>(liquidFind.Contents[0].LiquidId) : null;
+            var shells = gm.AllCards.Where(c => c != null && !c.Destroyed && c.CardModel == shell).ToList();
+            Check("a liquid find is a filled coconut shell on the ground", drink != null && shells.Any(c =>
+                      c.ContainedLiquid != null && c.ContainedLiquid.CardModel == drink && c.CurrentSlotInfo.SlotType == SlotsTypes.Base),
+                  new { find = liquidFind.Name, shells = shells.Select(c => new { slot = c.CurrentSlotInfo.SlotType.ToString(),
+                      liquid = c.ContainedLiquid != null ? c.ContainedLiquid.CardModel.name : null }).ToArray() });
+            int buffered = Finds.Buffer.Count;
+            int firstIndex = Finds.Buffer[0];
+            Finds.Release(firstIndex);
+            Check("taking one find from the buffer", Finds.Buffer.Count == buffered - 1 && !Finds.Buffer.Contains(firstIndex));
+            int bufferBeforeSave = Finds.Buffer.Count;
             GameLoad.Instance.AutoSaveGame(false);
             yield return Wait(2f);
 
             // 9. Reload the save: everything comes back the same.
             GameLoad.Instance.LoadGame(0);
             yield return WaitFor(() => !ApGame.InGame, 30f);
-            yield return WaitFor(() => ApGame.InGame, 120f);
+            yield return WaitForLoaded();
             yield return Wait(3f);
             gm = GM;
+            Check("after reload: the game finished loading", ApGame.InGame);
             BlueprintRando.Reconcile(true);
             Check("after reload: researched-not-received stays hidden", gm.BlueprintModelStates[target] == BlueprintModelState.Hidden, Describe(target));
             Check("after reload: received recipe still buildable", gm.BlueprintModelStates[reward] == BlueprintModelState.Available &&
@@ -293,12 +363,19 @@ namespace CardSurvivalArchipelago
             Check("after reload: ledger matches the server, nothing doubled", ApGame.State.Received.Count == serverCount &&
                   ApGame.AppliedNow == serverCount, new { ledger = ApGame.State.Received.Count, server = serverCount, ApGame.AppliedNow });
 
+            Check("after reload: the finds buffer is as saved", Finds.Buffer.Count == bufferBeforeSave,
+                  new { now = Finds.Buffer.Count, saved = bufferBeforeSave });
+
             // 10. Load the checkpoint (taken before the second research).
+            int checkpointApplied = ApGame.State.AppliedCheckpoint;
+            int findsSinceCheckpoint = ApGame.State.Received.Skip(checkpointApplied)
+                .Count(id => Registry.Items.ContainsKey(id) && Registry.Items[id].Kind == "find");
             GameLoad.Instance.LoadCheckpoint();
             yield return WaitFor(() => !ApGame.InGame, 30f);
-            yield return WaitFor(() => ApGame.InGame, 120f);
+            yield return WaitForLoaded();
             yield return Wait(3f);
             gm = GM;
+            Check("after checkpoint: the game finished loading", ApGame.InGame);
             BlueprintRando.Reconcile(true);
             Check("after checkpoint: checks are not rolled back", ApGame.State.IsChecked(rewardLocation) && ApGame.State.IsChecked(targetLocation));
             Check("after checkpoint: research already done is not offered again",
@@ -309,6 +386,10 @@ namespace CardSurvivalArchipelago
                   Mathf.Approximately(gm.StatsDict[skillStat].CurrentBaseValue, skillAfter) && ItemEffects.ActivePerks == perksBefore + 1 &&
                   CountCards(gm, equipmentCard) == equipmentAfter,
                   new { skill = gm.StatsDict[skillStat].CurrentBaseValue, perks = ItemEffects.ActivePerks, equipment = CountCards(gm, equipmentCard) });
+            Check("after checkpoint: finds since then land again, the rest waits (no duplicates)",
+                  Finds.Buffer.Count == Mathf.Max(0, findsSinceCheckpoint - Finds.PerHour) && Finds.Buffer.Distinct().Count() == Finds.Buffer.Count,
+                  new { buffer = Finds.Buffer.Count, findsSinceCheckpoint });
+            Check("after checkpoint: first-time checks stay done", ApGame.State.IsChecked(hunt.Id) && ApGame.State.IsChecked(three.Id));
             Check("after checkpoint: applied counter restored", ApGame.AppliedNow == ApGame.State.Received.Count,
                   new { ApGame.AppliedNow, received = ApGame.State.Received.Count });
 

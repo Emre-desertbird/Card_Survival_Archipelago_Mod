@@ -1,7 +1,7 @@
 """Access rules read from registry.json, shared by the APWorld, the tools and the tests.
 
 A rule is JSON: {"item": name, "count": n}, {"event": name}, {"all": [...]},
-{"any": [...]}, or true for "always possible". Unknown shapes fail loudly so a
+{"any": [...]}, {"atleast": n, "of": [...]} (n of the rules hold), or true for "always possible". Unknown shapes fail loudly so a
 typo can never silently become free access.
 """
 
@@ -23,6 +23,14 @@ class Rule:
             return all(child.evaluate(has) for child in self.children)
         if self.kind == "any":
             return any(child.evaluate(has) for child in self.children)
+        if self.kind == "atleast":
+            found = 0
+            for child in self.children:
+                if child.evaluate(has):
+                    found += 1
+                    if found >= self.count:
+                        return True
+            return False
         raise ValueError(f"Unknown access rule: {self.kind}")
 
     def atoms(self):
@@ -54,6 +62,11 @@ def parse(raw) -> Rule:
             if kind == "any" and not children:
                 raise ValueError("An empty 'any' rule can never be satisfied")
             return Rule(kind, children=children)
+    if isinstance(raw, dict) and raw.keys() == {"atleast", "of"}:
+        count, children = raw["atleast"], tuple(parse(child) for child in raw["of"])
+        if not isinstance(count, int) or isinstance(count, bool) or count < 1 or count > len(children):
+            raise ValueError(f"Invalid access rule: {raw!r}")
+        return Rule("atleast", count=count, children=children)
     raise ValueError(f"Invalid access rule: {raw!r}")
 
 
@@ -77,7 +90,9 @@ class Registry:
                 raise ValueError(f"Duplicate {key} in {group}")
         if self.items.keys() & self.events.keys() or data["goal_event"] not in self.events:
             raise ValueError("Event names collide with items, or the goal event is missing")
-        if not data["filler"] or any(self.items.get(name, {}).get("classification") != "filler" for name in data["filler"]):
+        fillers = [name for names in data["filler"].values() for name in names] + [data["keepsake"]]
+        if not all(data["filler"].values()) or any(self.items.get(name, {}).get("classification") != "filler"
+                                                   for name in fillers):
             raise ValueError("Every filler name must be a filler item in the item list")
         for rule in list(self.location_rules.values()) + list(self.event_rules.values()):
             for atom in rule.atoms():

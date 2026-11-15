@@ -56,8 +56,10 @@ namespace CardSurvivalArchipelago
                 Slot = ApConnection.Slot,
                 RegistryVersion = Registry.Version,
             };
+            ReadSeedOptions();
             State.Write();
             AppliedNow = 0;
+            Finds.Reset();
             syncedThisSession = false;
             Messages.Add("New Archipelago game for " + State.SlotName + " (seed " + State.SeedName + ").");
         }
@@ -67,6 +69,7 @@ namespace CardSurvivalArchipelago
         {
             State = SlotState.Load(index);
             AppliedNow = State != null ? State.AppliedMain : 0;
+            Finds.OnLoad(State != null ? State.BufferMain : null);
             syncedThisSession = false;
             if (State != null && ApConnection.IsConnected && !MatchesConnection())
             {
@@ -80,6 +83,7 @@ namespace CardSurvivalArchipelago
         {
             if (State == null) return;
             State.AppliedMain = State.AppliedCheckpoint;   // mirrors MainData = CheckpointData.Copy()
+            State.BufferMain = new List<int>(State.BufferCheckpoint);
             State.Write();
         }
 
@@ -87,7 +91,12 @@ namespace CardSurvivalArchipelago
         {
             if (State == null) return;
             State.AppliedMain = AppliedNow;
-            if (checkpoint) State.AppliedCheckpoint = AppliedNow;
+            State.BufferMain = new List<int>(Finds.Buffer);
+            if (checkpoint)
+            {
+                State.AppliedCheckpoint = AppliedNow;
+                State.BufferCheckpoint = new List<int>(Finds.Buffer);
+            }
             State.Write();
         }
 
@@ -99,6 +108,19 @@ namespace CardSurvivalArchipelago
         public static void OnBackToMenu()
         {
             State = null;
+        }
+
+        /// <summary>Copies the seed's options from the slot data into the save's Archipelago file.</summary>
+        private static void ReadSeedOptions()
+        {
+            Dictionary<string, object> data = ApConnection.SlotData;
+            if (data == null) return;
+            object value;
+            if (data.TryGetValue("location_kinds", out value) && value is Newtonsoft.Json.Linq.JArray kinds)
+            {
+                State.LocationKinds = kinds.Select(kind => (string)kind).ToList();
+            }
+            if (data.TryGetValue("finds_amount", out value)) State.FindsAmount = System.Convert.ToInt32(value);
         }
 
         public static bool MatchesConnection()
@@ -123,6 +145,7 @@ namespace CardSurvivalArchipelago
                 if (!syncedThisSession)
                 {
                     syncedThisSession = true;
+                    ReadSeedOptions();
                     // Everything found while offline, and the goal, is sent again. The server ignores repeats.
                     ApConnection.SendChecks(State.Checked);
                     if (State.GoalDone) ApConnection.SendGoal();
@@ -136,6 +159,7 @@ namespace CardSurvivalArchipelago
                 ApplyNewItems();
                 BlueprintRando.Reconcile(false);
                 Checks.Update(gm);
+                Checks.ScanCards(gm);
             }
         }
 
@@ -157,6 +181,8 @@ namespace CardSurvivalArchipelago
             {
                 ItemInfo info = all[index];
                 State.AddReceived(info.ItemId);
+                while (State.ReceivedFrom.Count < State.Received.Count - 1) State.ReceivedFrom.Add("?");
+                State.ReceivedFrom.Add(info.Player.Slot == ApConnection.Slot ? "you" : info.Player.Name);
                 string from = info.Player.Slot == ApConnection.Slot ? "yourself" : info.Player.Name;
                 Messages.Add("Received " + info.ItemDisplayName + " from " + from + ".");
             }
@@ -168,9 +194,9 @@ namespace CardSurvivalArchipelago
         {
             while (AppliedNow < State.Received.Count)
             {
-                long id = State.Received[AppliedNow];
+                int index = AppliedNow;
                 AppliedNow++;
-                ItemEffects.ApplyOnce(id);
+                ItemEffects.ApplyOnce(index, State.Received[index]);
             }
         }
 

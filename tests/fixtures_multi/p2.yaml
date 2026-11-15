@@ -1,3 +1,6 @@
 name: CSTI_P2
 game: "Card Survival: Tropical Island"
-"Card Survival: Tropical Island": {}
+"Card Survival: Tropical Island":
+  fishing_checks: true
+  hunting_checks: true
+  finds_amount: less

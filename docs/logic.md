@@ -55,6 +55,8 @@ Only events something depends on are kept (440 at the moment).
 | Research - X | the conditions that reveal X in vanilla (`CardUnlockConditions`: conditions sharing an objective name are alternatives, different names must all hold; cards, tags, raised stats) |
 | Build - X | `Can Build X` |
 | Visit - Area | `Have <area>` |
+| Catch, Hunt, Cook - X | `Have` any card of the group |
+| Plant - N different crops | `{"atleast": N, "of": [Have crop, ...]}` |
 | Goal | `Can Play Ending Event_ShipEscape` |
 
 An item is **progression** when a check or the goal depends on it, directly or through
@@ -88,6 +90,8 @@ In `tools/build_registry.py`, each with its reason in a comment:
 - `SURVIVAL_BASICS`: six blueprints kept as in vanilla (rule 6).
 - `GOAL_ENDING`: the ending the logic guarantees.
 - `EXCLUDED_SKILLS`: Insight (tied to endings).
-- `FILLERS`: what supplies contain.
+- `FINDS`, `FIND_SHARES`: what finds contain and their share of the filler pool.
+- `FISHING`, `HUNTING`: which cards count as a catch or a carcass of each kind (cooking
+  and farming come from the game's own tags).
 - `CHALLENGE_RESEARCH_DAYS`, `CHALLENGE_BUILD_HOURS`: thresholds for challenge checks.
 - `SKILL_COPIES`, `SKILL_STEP`: 3 × 25, matching the game's skill perks (+75).

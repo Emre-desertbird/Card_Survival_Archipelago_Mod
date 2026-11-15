@@ -24,13 +24,14 @@ namespace CardSurvivalArchipelago
     /// - the Archipelago panel (server, slot, password, connect, chat), always open in the main
     ///   menu and toggled with F8 in a game;
     /// - a status line and the latest messages;
-    /// - in the research tab, what each available research holds and for whom.
+    /// - in the research tab, what each available research holds and for whom;
+    /// - with the panel, the finds buffer: what waits, from whom, and buttons to take it.
     /// </summary>
     internal sealed class Overlay : MonoBehaviour
     {
         private bool panelOpen;
         private string chat = "";
-        private Vector2 researchScroll;
+        private Vector2 researchScroll, bufferScroll;
         private GUIStyle box, small;
 
         private static bool InMainMenu
@@ -52,6 +53,7 @@ namespace CardSurvivalArchipelago
             }
             DrawStatus();
             if (InMainMenu || panelOpen) DrawPanel();
+            if (panelOpen && ApGame.Active && ApGame.InGame) DrawBuffer();
             DrawMessages();
             if (BlueprintRando.ResearchViewOpen && ApGame.Active) DrawResearchPreview();
         }
@@ -61,7 +63,8 @@ namespace CardSurvivalArchipelago
             string text = "Archipelago: " + ApConnection.StatusText;
             if (ApGame.Active)
             {
-                text += "  |  " + ApGame.CheckedCount + "/" + Registry.Locations.Count + " checks" +
+                text += "  |  " + ApGame.CheckedCount + " checks" +
+                        (Finds.Buffer.Count > 0 ? "  |  buffer: " + Finds.Buffer.Count : "") +
                         (ApGame.State.GoalDone ? "  |  goal done" : "");
             }
             else if (!InMainMenu)
@@ -134,6 +137,33 @@ namespace CardSurvivalArchipelago
             value = secret ? GUILayout.PasswordField(value ?? "", '*') : GUILayout.TextField(value ?? "");
             GUILayout.EndHorizontal();
             return value;
+        }
+
+        private void DrawBuffer()
+        {
+            int count = Finds.Buffer.Count;
+            var area = new Rect(10, 290, 360, Mathf.Min(90 + 24 * count, Screen.height * 0.5f));
+            GUILayout.BeginArea(area, "Finds buffer (" + count + ")", GUI.skin.window);
+            if (count == 0)
+            {
+                GUILayout.Label("Empty. At most " + Finds.PerHour + " finds per in-game hour land on the ground; the rest waits here.", small);
+            }
+            else
+            {
+                if (GUILayout.Button("Take " + Mathf.Min(count, Finds.PerHour) + " to this area")) Finds.Release();
+                bufferScroll = GUILayout.BeginScrollView(bufferScroll);
+                foreach (int index in Finds.Buffer.ToList())
+                {
+                    Registry.Entry entry;
+                    if (index >= ApGame.State.Received.Count || !Registry.Items.TryGetValue(ApGame.State.Received[index], out entry)) continue;
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label(Finds.Describe(entry) + "  (from " + ApGame.State.SenderOf(index) + ")", small, GUILayout.Width(270));
+                    if (GUILayout.Button("Take")) Finds.Release(index);
+                    GUILayout.EndHorizontal();
+                }
+                GUILayout.EndScrollView();
+            }
+            GUILayout.EndArea();
         }
 
         private void DrawMessages()

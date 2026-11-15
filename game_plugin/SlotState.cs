@@ -39,9 +39,47 @@ namespace CardSurvivalArchipelago
         public List<long> Checked = new List<long>();
         public bool GoalDone;
 
+        /// <summary>Who sent each received item (same index as <see cref="Received"/>).</summary>
+        public List<string> ReceivedFrom = new List<string>();
+        /// <summary>Every watched card UniqueID that ever existed in this game (never rolled back).</summary>
+        public List<string> Seen = new List<string>();
+
+        // ---- Options of the seed (slot data), stored so they also hold while offline ----
+        /// <summary>Location kinds in this seed (base kinds plus optional ones switched on).</summary>
+        public List<string> LocationKinds = new List<string> { "research", "build", "visit" };
+        /// <summary>0 = less, 1 = normal, 2 = more.</summary>
+        public int FindsAmount = 1;
+
+        /// <summary>
+        /// Finds waiting in the buffer (indices into <see cref="Received"/>). A buffered find is not on
+        /// the ground yet, so like <see cref="AppliedMain"/> this follows the game's main save and its
+        /// checkpoint copy.
+        /// </summary>
+        public List<int> BufferMain = new List<int>();
+        public List<int> BufferCheckpoint = new List<int>();
+
         [JsonIgnore] public int SaveIndex = -1;
         [JsonIgnore] private HashSet<long> checkedSet;
         [JsonIgnore] private HashSet<long> receivedSet;
+        [JsonIgnore] private HashSet<string> seenSet;
+
+        public bool HasSeen(string card)
+        {
+            if (seenSet == null) seenSet = new HashSet<string>(Seen);
+            return seenSet.Contains(card);
+        }
+
+        public void AddSeen(string card)
+        {
+            if (HasSeen(card)) return;
+            Seen.Add(card);
+            seenSet.Add(card);
+        }
+
+        public string SenderOf(int index)
+        {
+            return index >= 0 && index < ReceivedFrom.Count ? ReceivedFrom[index] : "?";
+        }
 
         public bool IsChecked(long location)
         {

@@ -21,8 +21,14 @@ class RuleTests(unittest.TestCase):
         self.assertFalse(rule.evaluate(lambda name, count: {"A": 1, "B": 1}.get(name, 0) >= count))
         self.assertEqual(parse(True), FREE)
 
+    def test_at_least(self):
+        rule = parse({"atleast": 2, "of": [{"item": "A"}, {"item": "B"}, {"item": "C"}]})
+        self.assertTrue(rule.evaluate(lambda name, count: name in {"A", "C"}))
+        self.assertFalse(rule.evaluate(lambda name, count: name == "B"))
+
     def test_bad_rules_fail_loudly(self):
-        for raw in ({"itm": "A"}, {"item": "A", "count": 0}, {"any": []}, {"all": [], "any": []}, "A", False):
+        for raw in ({"itm": "A"}, {"item": "A", "count": 0}, {"any": []}, {"all": [], "any": []}, "A", False,
+                    {"atleast": 3, "of": [{"item": "A"}]}, {"atleast": 0, "of": [{"item": "A"}]}):
             with self.assertRaises(ValueError, msg=repr(raw)):
                 parse(raw)
 
@@ -49,8 +55,33 @@ class RegistryTests(unittest.TestCase):
     def test_location_and_item_ids_are_unique_and_kinds_known(self):
         self.assertEqual(len({entry["ap_id"] for entry in DATA["locations"]}), len(DATA["locations"]))
         self.assertEqual(len({entry["ap_id"] for entry in DATA["items"]}), len(DATA["items"]))
-        self.assertLessEqual({entry["kind"] for entry in DATA["locations"]}, {"research", "build", "visit"})
-        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "filler"})
+        self.assertLessEqual({entry["kind"] for entry in DATA["locations"]},
+                             {"research", "build", "visit", "fish", "hunt", "cook", "farm"})
+        self.assertLessEqual({entry["kind"] for entry in DATA["items"]}, {"blueprint", "skill", "perk", "find"})
+
+    def test_first_time_checks_watch_cards(self):
+        watched = set()
+        for entry in DATA["locations"]:
+            if entry["kind"] in ("fish", "hunt", "cook", "farm"):
+                self.assertTrue(entry["watch"] and all(part["cards"] for part in entry["watch"]), entry["name"])
+                for part in entry["watch"]:
+                    self.assertLessEqual(part["count"], len(part["cards"]))
+                    watched.update(part["cards"])
+        # A find never completes a check by itself.
+        for entry in DATA["items"]:
+            if entry["kind"] == "find":
+                ids = {part["unique_id"] for part in entry["contents"]} | {part.get("liquid_id") for part in entry["contents"]}
+                self.assertFalse(ids & watched, entry["name"])
+
+    def test_finds_are_cheap_and_shares_add_up(self):
+        self.assertEqual(sum(DATA["filler_shares"].values()), 100)
+        valuable = {"Rope", "CopperSheet", "Obsidian", "MetalScrap", "ClothLarge", "Canteen", "Waterskin", "Jerrycan"}
+        for entry in DATA["items"]:
+            if entry["kind"] == "find":
+                self.assertFalse({part["card"] for part in entry["contents"]} & valuable, entry["name"])
+                for part in entry["contents"]:
+                    if "liquid" in part:
+                        self.assertEqual(part["card"], "CoconutShell", entry["name"])
 
     def test_challenge_checks_leave_room_for_important_items(self):
         important = sum(entry["quantity"] for entry in DATA["items"] if entry["classification"] != "filler")

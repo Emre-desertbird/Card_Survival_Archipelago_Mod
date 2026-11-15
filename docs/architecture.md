@@ -118,6 +118,26 @@ Patched game methods:
   collection `<blueprint>_blueprint`, so earlier steps and AP-given cards never count.
 - **Visit:** the current area is compared every frame, so the starting area counts too.
 
+### First-time checks: `Checks.ScanCards`
+
+Fishing, hunting, cooking and farming checks list the cards they wait for (`watch` in the
+registry: groups of card ids and how many different ones are needed). A few times per
+second the plugin scans the game's cards; every watched card that exists is remembered for
+good in `SlotState.Seen`, so "three different crops" also counts crops seen days apart and
+checkpoints never undo it. Only kinds switched on in the seed (`location_kinds` from the
+slot data, stored with the save) are completed. Finds never contain a watched card; the
+registry tool refuses that, so an item can never complete one of these checks.
+
+### Finds: `Finds`
+
+A find is a one-time effect like supplies were. When it is applied it lands on the base row
+(the ground) of the current area: plain cards through `GameManager.GiveCard`, liquids the
+way the game's own `GiveCard` does it (a coconut shell, then the liquid into it). At most
+10 land per in-game hour; the rest go to the buffer (`Finds.Buffer`, indices into the
+received-item ledger). The buffer is game progress, so like the applied counter it is kept
+twice (`BufferMain`, `BufferCheckpoint`) and follows saves and checkpoint loads. The F8
+panel lists the buffer with contents and sender and releases up to 10 at a time.
+
 ### Endings, Safe Mode
 
 - `GameLoad.StartNewGame`: Safe Mode is forced on for randomized games.

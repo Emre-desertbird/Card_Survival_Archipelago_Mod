@@ -11,9 +11,16 @@ bleiben unverändert. Gemischt wird dein **Wissen**:
   sofort bauen. Ihre Forschung bleibt trotzdem offen und ist ein eigener Check.
 - **Weitere Checks:** einen Blueprint zum ersten Mal fertig bauen („Build - …“) und ein
   Gebiet zum ersten Mal betreten („Visit - …“).
-- **Weitere Items:** Skill-Stufen (+25), hilfreiche Perks aus dem Spiel und Vorräte
-  (Kokosnüsse, Stöcke, Steine, Wasser …). Ausrüstungs-Blueprints bringen einmalig ein
-  fertiges Exemplar mit.
+- **Optionale Checks** (in der YAML einschalten): der erste Fang jeder Fischart
+  („Catch - …“), der erste Kadaver jedes Tiers („Hunt - …“), jedes Topf- und
+  Kokosschalen-Gericht einmal („Cook - …“) und ein paar Anbau-Meilensteine („Plant - …“).
+- **Weitere Items:** Skill-Stufen (+25) und hilfreiche Perks aus dem Spiel.
+  Ausrüstungs-Blueprints bringen einmalig ein fertiges Exemplar mit.
+- **Fundstücke** (Füll-Items): „Ein mysteriöses Wesen hat etwas zurückgelassen.“ Lange
+  haltbares Essen, Getränke in einer Kokosschale, Kochzutaten oder einfaches Material
+  landen auf dem Boden des Gebiets, in dem du gerade bist. Pro Spielstunde landen höchstens
+  10. Der Rest wartet im **Zwischenspeicher** (F8-Fenster). Dort siehst du Inhalt und
+  Absender und holst die Sachen per Knopf ab.
 
 Immer verfügbar sind die neun Start-Blueprints (Steinaxt, Lagerfeuer …) und die
 **Grundversorgung**: Shelter, Leaf Bed, Torch, Clay Bowl, Splint und Ash Dressing. Diese
@@ -57,6 +64,11 @@ Randomizer-Spielstände liegen im eigenen Ordner
    game: "Card Survival: Tropical Island"
    "Card Survival: Tropical Island":
      exclude_challenge_checks: true
+     fishing_checks: true      # optional, Standard: aus
+     hunting_checks: true
+     cooking_checks: true
+     farming_checks: true
+     finds_amount: normal      # less / normal / more
    ```
 
    Der Spielname enthält einen Doppelpunkt und muss deshalb in Anführungszeichen stehen.

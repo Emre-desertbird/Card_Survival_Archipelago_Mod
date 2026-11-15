@@ -23,6 +23,26 @@ namespace CardSurvivalArchipelago
             public string PerkId;     // perk items: the CharacterPerk
             public List<string> Equipment = new List<string>();   // blueprint items: finished copies to hand out once
             public bool Challenge;    // locations: long check, excluded from important items by default
+            public string Category;   // find items: material, ingredient, provision, drink, treat, keepsake
+            public List<FindPart> Contents = new List<FindPart>();   // find items: what lands on the ground
+            public List<WatchPart> Watch = new List<WatchPart>();    // "first time" locations: all parts must hold
+        }
+
+        /// <summary>One card of a find: <see cref="Count"/> copies, or a container filled with a liquid.</summary>
+        public sealed class FindPart
+        {
+            public string CardId;
+            public string Name;
+            public int Count = 1;
+            public string LiquidId;
+            public string LiquidName;
+        }
+
+        /// <summary>A condition of a "first time" location: at least Count of these cards were ever seen.</summary>
+        public sealed class WatchPart
+        {
+            public HashSet<string> Cards = new HashSet<string>();
+            public int Count = 1;
         }
 
         public static int Version { get; private set; }
@@ -38,9 +58,10 @@ namespace CardSurvivalArchipelago
         public static readonly Dictionary<string, Entry> VisitByCard = new Dictionary<string, Entry>();
         /// <summary>Blueprint card UniqueID -> the item that unlocks its recipe.</summary>
         public static readonly Dictionary<string, Entry> BlueprintItemByCard = new Dictionary<string, Entry>();
-        /// <summary>Filler item id -> list of (card UniqueID, count) it hands out.</summary>
-        public static readonly Dictionary<long, List<KeyValuePair<string, int>>> FillerContents =
-            new Dictionary<long, List<KeyValuePair<string, int>>>();
+        /// <summary>Locations completed by seeing cards ("first time" checks).</summary>
+        public static readonly List<Entry> Watched = new List<Entry>();
+        /// <summary>Every card UniqueID some "first time" check waits for.</summary>
+        public static readonly HashSet<string> WatchedCards = new HashSet<string>();
 
         public static bool Load(string folder)
         {
@@ -70,15 +91,18 @@ namespace CardSurvivalArchipelago
                 {
                     BlueprintItemByCard[entry.CardId] = entry;
                 }
+                entry.Category = (string)raw["category"];
                 JArray contents = raw["contents"] as JArray;
                 if (contents != null)
                 {
-                    var list = new List<KeyValuePair<string, int>>();
                     foreach (JObject card in contents)
                     {
-                        list.Add(new KeyValuePair<string, int>((string)card["unique_id"], (int)card["count"]));
+                        entry.Contents.Add(new FindPart
+                        {
+                            CardId = (string)card["unique_id"], Name = (string)card["card"], Count = (int?)card["count"] ?? 1,
+                            LiquidId = (string)card["liquid_id"], LiquidName = (string)card["liquid"],
+                        });
                     }
-                    FillerContents[entry.Id] = list;
                 }
             }
             foreach (JObject raw in data["locations"])
@@ -90,6 +114,18 @@ namespace CardSurvivalArchipelago
                     Challenge = (bool?)raw["challenge"] ?? false,
                 };
                 Locations[entry.Id] = entry;
+                JArray watch = raw["watch"] as JArray;
+                if (watch != null)
+                {
+                    foreach (JObject part in watch)
+                    {
+                        var condition = new WatchPart { Count = (int?)part["count"] ?? 1 };
+                        foreach (JToken card in (JArray)part["cards"]) condition.Cards.Add((string)card);
+                        WatchedCards.UnionWith(condition.Cards);
+                        entry.Watch.Add(condition);
+                    }
+                    Watched.Add(entry);
+                }
                 if (entry.Kind == "research") ResearchByCard[entry.CardId] = entry;
                 else if (entry.Kind == "build") BuildByCard[entry.CardId] = entry;
                 else if (entry.Kind == "visit") VisitByCard[entry.CardId] = entry;

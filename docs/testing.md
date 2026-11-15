@@ -42,7 +42,7 @@ python tools/run_selftest.py ... --game-dir "C:\ProgramData\Archipelago\Card Sur
 It generates a solo seed, hosts it on a local Archipelago server, and starts the game with
 `CSAP_SELFTEST`. The plugin then plays a scripted session and writes a report. Saves go to
 `...(Archipelago Test)`; the tool checksums the normal saves before and after and stops if
-they changed. 37 steps at the moment:
+they changed. 49 steps at the moment (the test seed switches all optional checks on):
 
 - connect, scout all locations, bind a new save, Safe Mode on, starting area check;
 - discover a blueprint (researchable, not buildable), research it (check sent and
@@ -52,8 +52,15 @@ they changed. 37 steps at the moment:
 - a survival basic teaches and sends its check;
 - a build check fires only on the final step;
 - a skill (+25), a perk and an equipment copy arrive;
-- after reloading: nothing lost, nothing doubled, ledger equals the server;
-- after loading an older checkpoint: checks kept, items since then applied exactly once;
+- the seed's options are stored with the save; a watched card completes its first-time
+  check; "three different crops" needs the third crop;
+- 14 finds at once: 10 land on the ground (a liquid one as a filled coconut shell), the
+  rest waits in the buffer; taking one from the buffer works;
+- after reloading: the game finishes loading (events the game shows on load, such as a
+  skill level reached, are confirmed like a player would), nothing lost, nothing doubled,
+  ledger equals the server, the buffer is as saved;
+- after loading an older checkpoint: checks kept, items since then applied exactly once,
+  finds since then land again or wait in the buffer without duplicates;
 - an ending completes the goal (the server log is checked) and offers the checkpoint.
 
 ## Still manual

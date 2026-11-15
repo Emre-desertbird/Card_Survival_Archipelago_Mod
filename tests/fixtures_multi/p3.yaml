@@ -1,3 +1,9 @@
 name: CSTI_P3
 game: "Card Survival: Tropical Island"
-"Card Survival: Tropical Island": {}
+"Card Survival: Tropical Island":
+  fishing_checks: true
+  hunting_checks: true
+  cooking_checks: true
+  farming_checks: true
+  exclude_challenge_checks: false
+  finds_amount: more

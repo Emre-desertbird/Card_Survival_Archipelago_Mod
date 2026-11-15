@@ -28,8 +28,15 @@ your normal saves are never read or written.
 name: YourName
 game: "Card Survival: Tropical Island"
 "Card Survival: Tropical Island":
-  # Long checks (3+ day research, 12+ hour construction) hold only supplies.
+  # Long checks (3+ day research, 12+ hour construction) hold only finds.
   exclude_challenge_checks: true
+  # Optional "first time" checks (all off by default).
+  fishing_checks: true
+  hunting_checks: true
+  cooking_checks: true
+  farming_checks: true
+  # Finds (filler): less / normal / more
+  finds_amount: normal
 ```
 
 The game name contains a colon, so it must be in quotes.
@@ -43,7 +50,9 @@ The game name contains a colon, so it must be in quotes.
    while offline are sent when you connect.
 
 In a game, **F8** opens the panel: connection, chat and commands (`!hint <item>`,
-`!release`, ...). Messages about items and checks appear at the bottom left. The research
+`!release`, ...). Messages about items and checks appear at the bottom left. Finds land on the ground
+where you are, at most 10 per in-game hour; the rest waits in the finds buffer of the F8
+panel, which lists contents and sender. The research
 tab lists what each available research holds and for whom.
 
 ## Troubleshooting

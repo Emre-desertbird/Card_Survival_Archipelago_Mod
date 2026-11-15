@@ -47,13 +47,20 @@ Related documents:
 
 ## What the randomizer does
 
-### Locations (451)
+### Locations (451, up to 494 with the optional ones)
 
 | Kind | Count | Sent when |
 | --- | --- | --- |
 | Research - X | 200 | The research of blueprint X finishes (or X is learned in another vanilla way). |
 | Build - X | 209 | Blueprint X is finished for the first time (crafted or constructed). |
 | Visit - Area | 42 | You enter that area for the first time. |
+| Catch - X (option `fishing_checks`) | 11 | The first fish or seafood of a kind exists. |
+| Hunt - X (option `hunting_checks`) | 10 | The first carcass of an animal exists. |
+| Cook - X (option `cooking_checks`) | 17 | A cooking pot or coconut shell dish exists for the first time. |
+| Plant - ... (option `farming_checks`) | 5 | First crop, three and six different crops, first tree, first mushroom bed. |
+
+The optional kinds are off by default. Kinds nothing can reach in this game mode (Grouper,
+Seahound) are dropped by the registry tool.
 
 8 long checks (research of 3+ days, construction of 12+ hours) are **challenge checks**:
 by default they only hold filler (`exclude_challenge_checks`, on by default).
@@ -65,7 +72,14 @@ by default they only hold filler (`exclude_challenge_checks`, on by default).
 | Blueprint: X | 194 | Recipe X, permanently. 53 equipment blueprints also give one finished copy. |
 | Progressive Skill | 66 (22 skills × 3) | +25 on that skill (3 × 25 = the game's own skill perk). Insight is excluded. |
 | Perk: X | 11 | A helpful vanilla perk with passive bonuses only (e.g. Slow Metabolism). |
-| Supplies | the rest (180) | Coconuts, sticks, stones and flint, a water ration, rope and fibers. |
+| Find: X | the rest (180 to 223) | Filler: long-lasting food, drinks, cooking ingredients or common materials, left on the ground where you are (see below). |
+
+**Finds** come in five categories with fixed shares of the filler pool: material 35 %,
+ingredients 20 %, provisions 20 %, drinks 15 %, treats 10 %. Only things the base game
+already keeps for a long time; nothing valuable (no copper, rope, cloth, tools); liquids only
+in a coconut shell. At most 10 finds land per in-game hour; the rest waits in a **buffer**
+in the F8 panel (contents and sender listed, taken on demand). `finds_amount`:
+`less` (half of them are worthless keepsakes), `normal`, `more` (50 % larger amounts).
 
 ### Not shuffled
 
@@ -89,7 +103,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.3.0)
+## Current state (version 0.4.0)
 
 | Part | State |
 | --- | --- |
@@ -99,10 +113,12 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 | Save binding, offline queue, reconnect | Works and is tested. |
 | Research split, blueprint items, survival basics | Work, tested in the real game. |
 | Build and visit checks | Work. The build hook is tested with the game's own action report; a full manual playthrough is still due. |
-| Skills, perks, equipment copies, supplies | Work, tested including reload and checkpoint. |
+| Skills, perks, equipment copies | Work, tested including reload and checkpoint. |
+| Finds, hourly limit, buffer | Work, tested in the real game: ground row, filled coconut shells, buffer across reload and checkpoint. |
+| Fishing, hunting, cooking, farming checks | Work, tested in the real game (first-time and counting checks). |
 | Ending detection, goal, checkpoint after victory | Work, tested. |
 | Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
-| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 13 unit tests. |
+| APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 17 unit tests. |
 | Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
 | Release | `tools/package.py` builds `cardsurvival.apworld` and a release zip. |
 
@@ -111,8 +127,8 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 1. **Connect.** Done.
 2. **First playable (research).** Done.
 3. **Real logic from data.** Done (see logic.md for what is approximated).
-4. **More checks.** Build and visit: done. Next, optional and off by default: cooking,
-   fishing, hunting and harvesting "first time" checks, journal objectives.
+4. **More checks.** Build and visit: done. Fishing, hunting, cooking, farming: done (0.4.0,
+   optional). Next: the Archipelago logbook ([plan_erweiterung.md](plan_erweiterung.md)).
 5. **More items.** Skills, perks, equipment copies, supplies: done. Next, optional:
    hybrid skill caps, new custom perks (less tool wear, faster crafting).
 6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a

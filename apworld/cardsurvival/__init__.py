@@ -12,7 +12,8 @@ from .options import CardSurvivalOptions
 DATA = json.loads(resources.files(__package__).joinpath("registry.json").read_text(encoding="utf-8"))
 REGISTRY = Registry(DATA)
 GAME = DATA["game_name"]
-FILLERS = DATA["filler"]
+FILLERS = DATA["filler"]               # category -> find names
+FILLER_SHARES = DATA["filler_shares"]  # category -> share of the filler pool
 CLASSIFICATIONS = {"progression": ItemClassification.progression, "useful": ItemClassification.useful,
                    "filler": ItemClassification.filler}
 
@@ -34,8 +35,13 @@ class CardSurvivalWebWorld(WebWorld):
     )]
 
 
-GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "filler": "Supplies"}
-LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit"}
+GROUPS = {"blueprint": "Blueprints", "skill": "Skills", "perk": "Perks", "find": "Finds"}
+LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit", "fish": "Fishing",
+                   "hunt": "Hunting", "cook": "Cooking", "farm": "Farming"}
+# Optional location kinds and the option that turns each on.
+OPTIONAL_KINDS = {"fish": "fishing_checks", "hunt": "hunting_checks", "cook": "cooking_checks",
+                  "farm": "farming_checks"}
+PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", *OPTIONAL_KINDS.values()]
 
 
 class CardSurvivalWorld(World):
@@ -60,8 +66,18 @@ class CardSurvivalWorld(World):
     def generate_early(self) -> None:
         # Universal Tracker regenerates from slot data instead of a YAML.
         passthrough = getattr(self.multiworld, "re_gen_passthrough", {}).get(self.game)
-        if passthrough and "exclude_challenge_checks" in passthrough:
-            self.options.exclude_challenge_checks.value = int(bool(passthrough["exclude_challenge_checks"]))
+        for name in PASSTHROUGH:
+            if passthrough and name in passthrough:
+                getattr(self.options, name).value = int(passthrough[name])
+
+    def enabled_kinds(self) -> list[str]:
+        """Location kinds in this slot: the base ones plus the optional ones switched on."""
+        base = [kind for kind in LOCATION_GROUPS if kind not in OPTIONAL_KINDS]
+        return base + [kind for kind, option in OPTIONAL_KINDS.items() if getattr(self.options, option)]
+
+    def included_locations(self) -> list[dict]:
+        kinds = set(self.enabled_kinds())
+        return [entry for entry in DATA["locations"] if entry["kind"] in kinds]
 
     @staticmethod
     def interpret_slot_data(slot_data: dict) -> dict:
@@ -73,7 +89,7 @@ class CardSurvivalWorld(World):
         island = Region("Island", self.player, self.multiworld)
         self.multiworld.regions.extend([menu, island])
         menu.connect(island)
-        for entry in DATA["locations"]:
+        for entry in self.included_locations():
             location = CardSurvivalLocation(self.player, entry["name"], entry["ap_id"], island)
             location.access_rule = REGISTRY.location_rules[entry["name"]].as_ap_rule(self.player)
             if entry.get("challenge") and self.options.exclude_challenge_checks:
@@ -88,7 +104,7 @@ class CardSurvivalWorld(World):
 
     def create_items(self) -> None:
         pool = [self.create_item(entry["name"]) for entry in DATA["items"] for _ in range(entry["quantity"])]
-        pool += [self.create_filler() for _ in range(len(DATA["locations"]) - len(pool))]
+        pool += [self.create_filler() for _ in range(len(self.included_locations()) - len(pool))]
         self.multiworld.itempool.extend(pool)
 
     def create_item(self, name: str) -> CardSurvivalItem:
@@ -96,7 +112,11 @@ class CardSurvivalWorld(World):
                                 self.item_name_to_id[name], self.player)
 
     def get_filler_item_name(self) -> str:
-        return self.random.choice(FILLERS)
+        if self.options.finds_amount == self.options.finds_amount.option_less and self.random.random() < 0.5:
+            return DATA["keepsake"]
+        categories = list(FILLER_SHARES)
+        category = self.random.choices(categories, weights=[FILLER_SHARES[name] for name in categories])[0]
+        return self.random.choice(FILLERS[category])
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = (
@@ -110,4 +130,7 @@ class CardSurvivalWorld(World):
             "audited_build_id": DATA["audited_build_id"],
             "audited_game_version": DATA["audited_game_version"],
             "exclude_challenge_checks": bool(self.options.exclude_challenge_checks),
+            "finds_amount": int(self.options.finds_amount),
+            "location_kinds": self.enabled_kinds(),
+            **{option: int(getattr(self.options, option)) for option in OPTIONAL_KINDS.values()},
         }

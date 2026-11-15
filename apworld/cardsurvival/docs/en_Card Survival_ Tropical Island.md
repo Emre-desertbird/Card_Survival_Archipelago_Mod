@@ -9,8 +9,13 @@ You survive on the island as usual, but your **knowledge** is shuffled.
   blueprint can be built right away, and its research stays open as a check of its own.
 - Finishing a blueprint for the first time and entering an area for the first time are
   checks too.
-- Other items: progressive skills (+25 each), helpful perks of the base game, and
-  supplies. Equipment blueprints also come with one finished copy.
+- Optional checks: the first catch of each fish, the first carcass of each animal, each
+  cooking pot dish, and a few farming milestones.
+- Other items: progressive skills (+25 each) and helpful perks of the base game.
+  Equipment blueprints also come with one finished copy.
+- Filler items are **finds**: long-lasting food, drinks, cooking ingredients or common
+  materials that appear on the ground where you are (at most 10 per in-game hour; the rest
+  waits in a buffer you open with F8).
 
 ## What stays the same?
 
@@ -33,8 +38,9 @@ Randomized games always use the game's Safe Mode: you go back to the last checkp
 ## Which checks can hold important items?
 
 All except a few long ones (research of 3+ days, construction of 12+ hours), which hold
-only supplies unless you turn off `exclude_challenge_checks`.
+only finds unless you turn off `exclude_challenge_checks`.
 
 ## Item and location groups
 
-Items: `Blueprints`, `Skills`, `Perks`, `Supplies`. Locations: `Research`, `Build`, `Visit`.
+Items: `Blueprints`, `Skills`, `Perks`, `Finds`. Locations: `Research`, `Build`, `Visit`,
+`Fishing`, `Hunting`, `Cooking`, `Farming`.

@@ -6,7 +6,7 @@ namespace CardSurvivalArchipelago
     /// <summary>
     /// What received items do. Two kinds of effects, chosen by where the game keeps the result:
     ///
-    /// Once (ApplyOnce, counted by ApGame.AppliedNow and stored with the save): supplies, the
+    /// Once (ApplyOnce, counted by ApGame.AppliedNow and stored with the save): finds (Finds.cs), the
     /// finished copy of an equipment blueprint, skill levels. Their result is part of the save, so
     /// after loading an older checkpoint exactly the items received since then are applied again.
     ///
@@ -19,7 +19,8 @@ namespace CardSurvivalArchipelago
         private static GameManager perksAppliedTo;
         private static readonly HashSet<long> perksApplied = new HashSet<long>();
 
-        public static void ApplyOnce(long itemId)
+        /// <param name="index">The item's position in the received-item ledger.</param>
+        public static void ApplyOnce(int index, long itemId)
         {
             Registry.Entry entry;
             if (!Registry.Items.TryGetValue(itemId, out entry))
@@ -27,13 +28,9 @@ namespace CardSurvivalArchipelago
                 Plugin.Log.LogWarning("Unknown item id " + itemId);
                 return;
             }
-            List<KeyValuePair<string, int>> contents;
-            if (Registry.FillerContents.TryGetValue(itemId, out contents))
+            if (entry.Kind == "find")
             {
-                foreach (var pair in contents)
-                {
-                    Give(pair.Key, pair.Value);
-                }
+                Finds.Receive(index, entry);
             }
             foreach (string equipment in entry.Equipment)
             {

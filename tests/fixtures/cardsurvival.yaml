@@ -1,3 +1,7 @@
 name: CSTI_Test
 game: "Card Survival: Tropical Island"
-"Card Survival: Tropical Island": {}
+"Card Survival: Tropical Island":
+  fishing_checks: true
+  hunting_checks: true
+  cooking_checks: true
+  farming_checks: true
