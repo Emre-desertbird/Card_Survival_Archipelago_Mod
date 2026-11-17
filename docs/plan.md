@@ -131,7 +131,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.8.0)
+## Current state (version 0.8.1)
 
 | Part | State |
 | --- | --- |

@@ -56,7 +56,7 @@ class CardSurvivalWorld(World):
     web = CardSurvivalWebWorld()
     options_dataclass = CardSurvivalOptions
     options: CardSurvivalOptions
-    hidden = True  # not listed on the website until a full manual playthrough is done (docs/plan.md)
+    # Not hidden: hidden worlds are left out of the Options Creator and the YAML templates.
     item_name_to_id = {entry["name"]: entry["ap_id"] for entry in DATA["items"]}
     location_name_to_id = {entry["name"]: entry["ap_id"] for entry in DATA["locations"]}
     item_name_groups = {group: {entry["name"] for entry in DATA["items"] if entry["kind"] == kind}
