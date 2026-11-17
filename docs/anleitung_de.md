@@ -14,7 +14,9 @@ bleiben unverändert. Gemischt wird dein **Wissen**:
 - **Optionale Checks** (in der YAML einschalten): der erste Fang jeder Fischart
   („Catch - …“), der erste Kadaver jedes Tiers („Hunt - …“), jedes Topf- und
   Kokosschalen-Gericht einmal („Cook - …“) und ein paar Anbau-Meilensteine („Plant - …“).
-- **Weitere Items:** Skill-Stufen (+25) und hilfreiche Perks aus dem Spiel.
+- **Weitere Items:** Skill-Stufen und hilfreiche Perks aus dem Spiel. Ein Skill geht bis 150;
+  jede der 3 Skill-Stufen gibt +25 (zusammen die Hälfte), mit `skill_boost: full` +50
+  (zusammen voll).
   Ausrüstungs-Blueprints bringen einmalig ein fertiges Exemplar mit.
 - **Fundstücke** (Füll-Items): „Ein mysteriöses Wesen hat etwas zurückgelassen.“ Lange
   haltbares Essen, Getränke in einer Kokosschale, Kochzutaten oder einfaches Material
@@ -115,6 +117,7 @@ Randomizer-Spielstände liegen im eigenen Ordner
      cooking_checks: true
      farming_checks: true
      finds_amount: normal      # less / normal / more
+     skill_boost: normal       # normal (+25 je Stufe) / full (+50)
      logbook: true             # optional, Standard: aus
      new_perks: true           # optional, Standard: aus
      extra_checks: true        # optional, Standard: aus
@@ -137,7 +140,16 @@ Im Spiel:
 - **F8** öffnet und schließt das Archipelago-Fenster. Dort gibt es auch den Chat und die
   Befehle (`!hint Blueprint: Raft`, `!release` …).
 - Unten links erscheinen Meldungen: was du erhalten hast und welcher Check was enthielt.
-- Im **Forschungs-Tab** zeigt eine Liste, was jede verfügbare Forschung enthält und für wen.
+- **Forschungskarten** zeigen direkt, was die Forschung schickt und an wen (z. B. „Blueprint:
+  Bow – for you“). Beim Anklicken steht in der Beschreibung auch, welche ursprüngliche
+  Forschung es ist. Mit offenem F8-Fenster gibt es zusätzlich die ganze Liste.
+- Ein **Archipelago-Symbol** (bunter Punktekreis) unten rechts auf einem Blueprint heißt: Sein
+  „Build - …“-Check ist noch offen. Einmal fertig bauen, dann verschwindet es.
+- Im **Charakterbogen** stehen alle erhaltenen Perks, auch die neuen der Mod (mit dem
+  Archipelago-Symbol und ihrer Stufe im Tooltip).
+- **Porträt:** Im Archipelago-Fenster mit „<“ und „>“ wählen, auch eigene Bilder des Spiels.
+  Im Hauptmenü gilt die Wahl für neue Spiele, im Spiel (F8) für diesen Spielstand. Du bleibst
+  Normal Guy, nur das Bild ändert sich.
 
 ## Wenn etwas nicht klappt
 

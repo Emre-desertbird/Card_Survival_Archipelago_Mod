@@ -46,10 +46,16 @@ namespace CardSurvivalArchipelago
                 GameManager gm = MBSingleton<GameManager>.Instance;
                 if (stat != null && gm != null)
                 {
-                    var modifier = new StatModifier { Stat = stat, ValueModifier = new Vector2(entry.Amount, entry.Amount) };
+                    var modifier = new StatModifier { Stat = stat, ValueModifier = new Vector2(SkillAmount(entry), SkillAmount(entry)) };
                     gm.ApplyStatModifier(modifier, StatModification.Permanent, "Archipelago", null);
                 }
             }
+        }
+
+        /// <summary>A skill item's step: doubled with the seed's skill_boost "full".</summary>
+        public static float SkillAmount(Registry.Entry entry)
+        {
+            return entry.Amount * (ApGame.State != null && ApGame.State.SkillBoost == 1 ? 2f : 1f);
         }
 
         /// <summary>Applies received perks once per loaded game (the game does not save perk bonuses).</summary>

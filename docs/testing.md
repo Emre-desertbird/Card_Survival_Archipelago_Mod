@@ -42,7 +42,7 @@ python tools/run_selftest.py ... --game-dir "C:\ProgramData\Archipelago\Card Sur
 It generates a solo seed, hosts it on a local Archipelago server, and starts the game with
 `CSAP_SELFTEST`. The plugin then plays a scripted session and writes a report. Saves go to
 `...(Archipelago Test)`; the tool checksums the normal saves before and after and stops if
-they changed. 73 steps at the moment (the test seed switches every option on, traps at 100 % up to 10):
+they changed. 77 steps at the moment (the test seed switches every option on, traps at 100 % up to 10):
 
 - connect, scout all locations, bind a new save, the character lock starts Normal Guy
   (the test picks another character), Safe Mode on, starting area check;
@@ -52,7 +52,7 @@ they changed. 73 steps at the moment (the test seed switches every option on, tr
   vanilla discovery opens it; research tab and build tabs both work;
 - a survival basic teaches and sends its check;
 - a build check fires only on the final step;
-- a skill (+25), a perk and an equipment copy arrive;
+- a skill (+50 with skill_boost full), a perk and an equipment copy arrive;
 - the seed's options are stored with the save; a watched card completes its first-time
   check; "three different crops" needs the third crop;
 - logbook: a card task, an action task (needs both actions), a task counting sent checks;
@@ -69,6 +69,10 @@ they changed. 73 steps at the moment (the test seed switches every option on, tr
   ledger equals the server, the buffer is as saved;
 - after loading an older checkpoint: checks kept, items since then applied exactly once,
   finds since then land again or wait in the buffer without duplicates;
+- the research tab: a research card is titled with the item it sends and for whom; an open
+  build check carries the badge; the character sheet lists every received perk; a chosen
+  portrait shows on the sheet and the HUD (screenshots `research.png`, `blueprints.png`,
+  `character.png`);
 - extras: keeping partridges completes its check, "survive 7 days" does not on day 1;
 - traps: two arrive, at most one goes off per day, the other waits;
 - a shed is built and entered, a storage extension adds 25 %, a stone is put inside, the

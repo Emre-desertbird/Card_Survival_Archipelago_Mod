@@ -195,9 +195,28 @@ panel lists the buffer with contents and sender and releases up to 10 at a time.
 ### Endings, Safe Mode
 
 - `GameLoad.StartNewGame`: Safe Mode is forced on for randomized games.
-- `EndgameMenu.Setup` with `_GameOver = false` (a victory) completes the goal. The cheat
-  menu's journal view (`_KeepPlaying`) does not. The "Load checkpoint" button is shown on
+- `EndgameMenu.Setup` completes the goal only for a real victory: `_CheckObjectives` set,
+  neither `_GameOver` nor `_KeepPlaying`. The game reuses this screen for the character
+  screen's diary (`SetupWhilePlaying`), the cheat menu's journal and the demo end; none of
+  them count. The "Load checkpoint" button is shown on
   the victory screen too.
+
+### Interface in the game's screens: `ApUi`
+
+- `InGameCardBase.CardName` / `CardDescription` postfixes: a research card in the blueprint
+  screen (blueprint slot, state Purchasable, open research location) is named after the item
+  its research sends and its owner (from the scouted locations); its description names the
+  original research. A buildable blueprint with an open build check describes what building
+  it sends.
+- `CardGraphics.Update` postfix: refreshes those titles when tabs change the state and shows a
+  badge (drawn by the mod, `ApIcon`) on blueprints with an open build check.
+- `CharacterScreen.Init` / `Open` postfixes: received perks are added to the sheet's perk row
+  with the game's own perk preview; new perks of the mod use the badge as icon. Rebuilt on
+  every opening.
+- Portrait: the game's portrait list (`GlobalCharacterInfo.AllPortraits`, including custom
+  ones). The id is stored in `SlotState.PortraitId` (new games take the preference from the
+  config) and shown on the sheet, the HUD (`ShowCharacterPortrait`) and the ending screen.
+  The character itself does not change.
 
 ### Interface: `Overlay`
 
@@ -207,7 +226,8 @@ Unity's immediate-mode GUI, so nothing depends on the game's UI prefabs:
 - A status line (connection, checks found, goal).
 - Messages: items received, checks found, chat and server messages.
 - Chat line for messages and commands (`!hint`, `!release`, ...).
-- In the research tab, a list of what each available research holds and for whom.
+- In the research tab with F8 open, a list of what each available research holds and for whom.
+- Portrait choice (main menu: for new games; in game: for this save).
 
 ## Tools
 

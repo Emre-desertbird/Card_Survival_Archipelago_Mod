@@ -97,6 +97,16 @@ class FindsAmount(Choice):
     default = 1
 
 
+class SkillBoost(Choice):
+    """How much one "Progressive <Skill>" item raises its skill. A skill goes up to 150.
+    normal: +25 per item, the 3 items give 75 (half, like the game's own skill perks).
+    full: +50 per item, the 3 items give the full 150."""
+    display_name = "Skill Boost"
+    option_normal = 0
+    option_full = 1
+    default = 0
+
+
 @dataclass
 class CardSurvivalOptions(PerGameCommonOptions):
     exclude_challenge_checks: ExcludeChallengeChecks
@@ -105,6 +115,7 @@ class CardSurvivalOptions(PerGameCommonOptions):
     cooking_checks: CookingChecks
     farming_checks: FarmingChecks
     finds_amount: FindsAmount
+    skill_boost: SkillBoost
     character_lock: CharacterLock
     logbook: Logbook
     new_perks: NewPerks

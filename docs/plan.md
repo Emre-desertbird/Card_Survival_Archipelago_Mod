@@ -131,7 +131,7 @@ Randomized games always use the game's own **Safe Mode**: every day change write
 checkpoint, and dying offers "Load checkpoint". The Archipelago progress (checks, items,
 goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink.
 
-## Current state (version 0.7.2)
+## Current state (version 0.8.0)
 
 | Part | State |
 | --- | --- |
@@ -147,7 +147,8 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
 | New perks | Work, tested in the real game: each effect measured, levels kept after reload. |
 | Extras, traps, hut upgrades | Work, tested in the real game: an extra check, one trap per day, storage +25 %, a Shed upgraded to a Mud Hut with its contents and its extension, the entrance outside changed. |
 | Character lock, logbook | Work, tested in the real game: Normal Guy start, card, action and check-counting tasks, Determination exactly once across reload and checkpoint, journal rewards skipped. The logbook is shown in the game's journal book (one page per chapter) and in the F8 panel. |
-| Ending detection, goal, checkpoint after victory | Work, tested. |
+| Ending detection, goal, checkpoint after victory | Work, tested (the character screen's diary reuses the ending screen and does not count, 0.7.2). |
+| Interface in the game's own screens | Work, tested with screenshots: research cards name the item and its owner, open build checks carry an Archipelago badge, the character sheet lists received perks, a chosen portrait (any of the game's, also custom ones) shows on the sheet, the HUD and the ending. |
 | Logic from data | 440 events from 4,573 recipes; all 194 blueprint items are progression. |
 | APWorld | Generates with Archipelago 0.6.7 (source) and the installed 0.6.8; 21 unit tests. |
 | Playable copy | Installed in `C:\ProgramData\Archipelago\Card Survival` (tools/install_playable.py). |
@@ -163,6 +164,7 @@ goal) is never rolled back; see [architecture.md](architecture.md). No DeathLink
    ([plan_erweiterung.md](plan_erweiterung.md)).
 5. **More items.** Skills, perks, equipment copies: done. Finds (0.4.0) and new perks
    (0.6.0, optional), hut upgrades, extras and mild traps (0.7.0, optional): done.
+   Option `skill_boost` (0.8.0): skill items +50 instead of +25.
 6. **Release.** Packaging and installer: done. Still due: a full manual playthrough of a
    multiworld seed, then balancing (skill step size, supplies, challenge thresholds).
 

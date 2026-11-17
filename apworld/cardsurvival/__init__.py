@@ -43,7 +43,7 @@ LOCATION_GROUPS = {"research": "Research", "build": "Build", "visit": "Visit", "
 # Optional location kinds and the option that turns each on.
 OPTIONAL_KINDS = {"fish": "fishing_checks", "hunt": "hunting_checks", "cook": "cooking_checks",
                   "farm": "farming_checks", "extra": "extra_checks"}
-PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "character_lock", "logbook", "new_perks",
+PASSTHROUGH = ["exclude_challenge_checks", "finds_amount", "skill_boost", "character_lock", "logbook", "new_perks",
                "hut_upgrades", "trap_percentage", "trap_limit",
                *OPTIONAL_KINDS.values()]
 
@@ -146,6 +146,7 @@ class CardSurvivalWorld(World):
             "audited_game_version": DATA["audited_game_version"],
             "exclude_challenge_checks": bool(self.options.exclude_challenge_checks),
             "finds_amount": int(self.options.finds_amount),
+            "skill_boost": int(self.options.skill_boost),
             "location_kinds": self.enabled_kinds(),
             "character_lock": bool(self.options.character_lock),
             "new_perks": bool(self.options.new_perks),

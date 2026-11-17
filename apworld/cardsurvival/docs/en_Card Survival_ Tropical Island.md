@@ -11,7 +11,7 @@ You survive on the island as usual, but your **knowledge** is shuffled.
   checks too.
 - Optional checks: the first catch of each fish, the first carcass of each animal, each
   cooking pot dish, and a few farming milestones.
-- Other items: progressive skills (+25 each) and helpful perks of the base game. With
+- Other items: progressive skills (+25 each, +50 with `skill_boost: full`) and helpful perks of the base game. With
   `new_perks`, also perks the game does not have, in small steps: carry more, build and
   travel faster, tools wear slower, research faster, food spoils slower.
   Equipment blueprints also come with one finished copy.

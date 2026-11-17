@@ -57,7 +57,8 @@ namespace CardSurvivalArchipelago
             if (panelOpen && ApGame.Active && ApGame.InGame) DrawBuffer();
             if (panelOpen && logbookOpen && ApGame.Active && ApGame.State.LocationKinds.Contains("logbook")) DrawLogbook();
             DrawMessages();
-            if (BlueprintRando.ResearchViewOpen && ApGame.Active) DrawResearchPreview();
+            // The research cards show what they send; the full list stays available in the F8 panel.
+            if (panelOpen && BlueprintRando.ResearchViewOpen && ApGame.Active) DrawResearchPreview();
         }
 
         private void DrawStatus()
@@ -79,7 +80,7 @@ namespace CardSurvivalArchipelago
 
         private void DrawPanel()
         {
-            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 360 : 215);
+            var area = new Rect(10, 30, 360, ApConnection.IsConnected ? 420 : 250);
             GUILayout.BeginArea(area, "Archipelago", GUI.skin.window);
             if (Registry.Error != null)
             {
@@ -138,6 +139,7 @@ namespace CardSurvivalArchipelago
                     }
                     if (Traps.Queue.Count > 0) GUILayout.Label("Traps waiting: " + Traps.Queue.Count + " (one per day)", small);
                 }
+                if (InMainMenu || (ApGame.Active && ApGame.InGame)) DrawPortraitChoice();
                 if (ApGame.Active && ApGame.State.LocationKinds.Contains("logbook") &&
                          GUILayout.Button(logbookOpen ? "Hide logbook" : "Logbook"))
                 {
@@ -145,6 +147,25 @@ namespace CardSurvivalArchipelago
                 }
             }
             GUILayout.EndArea();
+        }
+
+        /// <summary>Portrait: the character's own or any portrait of the game, with a small preview.</summary>
+        private void DrawPortraitChoice()
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(InMainMenu ? "Portrait (new games):" : "Portrait:", small, GUILayout.Width(140));
+            if (GUILayout.Button("<", GUILayout.Width(26))) Portraits.Step(-1);
+            GUILayout.Label(Portraits.Label, small, GUILayout.Width(110));
+            if (GUILayout.Button(">", GUILayout.Width(26))) Portraits.Step(1);
+            Rect place = GUILayoutUtility.GetRect(32, 32, GUILayout.Width(32), GUILayout.Height(32));
+            Sprite sprite = Portraits.SpriteOf(Portraits.Selected);
+            if (sprite != null && sprite.texture != null && Event.current.type == EventType.Repaint)
+            {
+                Rect r = sprite.textureRect;
+                float w = sprite.texture.width, h = sprite.texture.height;
+                GUI.DrawTextureWithTexCoords(place, sprite.texture, new Rect(r.x / w, r.y / h, r.width / w, r.height / h));
+            }
+            GUILayout.EndHorizontal();
         }
 
         public static void ConnectNow()

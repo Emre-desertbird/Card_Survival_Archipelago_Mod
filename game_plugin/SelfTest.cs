@@ -8,6 +8,7 @@ using HarmonyLib;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CardSurvivalArchipelago
 {
@@ -112,6 +113,20 @@ namespace CardSurvivalArchipelago
         }
 
         /// <summary>Clicks away event popups, like a player would.</summary>
+        /// <summary>Removes the queued "new blueprint" notifications so a screenshot shows the screen behind.</summary>
+        private static void ClearNotifications()
+        {
+            GraphicsManager graphics = MBSingleton<GraphicsManager>.Instance;
+            if (graphics == null) return;
+            var queued = Traverse.Create(graphics).Field("BlueprintsUnlockedFeedbacks").GetValue() as System.Collections.IList;
+            if (queued != null) queued.Clear();
+            if (graphics.BlueprintNotificationParent != null)
+            {
+                foreach (Transform child in graphics.BlueprintNotificationParent) UnityEngine.Object.Destroy(child.gameObject);
+            }
+            foreach (BlueprintResearchedPopup popup in UnityEngine.Object.FindObjectsOfType<BlueprintResearchedPopup>()) popup.Hide();
+        }
+
         private static IEnumerator ConfirmEvents()
         {
             for (int i = 0; i < 5; i++)
@@ -327,7 +342,7 @@ namespace CardSurvivalArchipelago
             yield return Wait(3f);
             float skillAfter = gm.StatsDict[skillStat].CurrentBaseValue;
             int equipmentAfter = CountCards(gm, equipmentCard);
-            Check("skill item raises the skill", Mathf.Approximately(skillAfter, Mathf.Min(skillBefore + skill.Amount, skillStat.MinMaxValue.y)),
+            Check("skill item raises the skill (skill_boost full: +50)", ApGame.State.SkillBoost == 1 && Mathf.Approximately(skillAfter, Mathf.Min(skillBefore + ItemEffects.SkillAmount(skill), skillStat.MinMaxValue.y)),
                   new { skill.Name, skillBefore, skillAfter });
             Check("perk item becomes active", ItemEffects.ActivePerks == perksBefore + 1, perk.Name);
             Check("equipment blueprint gives one finished copy", equipmentAfter == equipmentBefore + 1,
@@ -545,6 +560,87 @@ namespace CardSurvivalArchipelago
                   new { now = gm.StatsDict[determination].CurrentBaseValue, determinationSaved, ApGame.RewardsNow });
             Check("after checkpoint: applied counter restored", ApGame.AppliedNow == ApGame.State.Received.Count,
                   new { ApGame.AppliedNow, received = ApGame.State.Received.Count });
+
+            // 10a. 0.8.0: research cards name what they send, open build checks carry the badge,
+            // the character sheet lists the received perks, the portrait can be chosen.
+            {
+                gm = GM;
+                GraphicsManager uiGraphics = MBSingleton<GraphicsManager>.Instance;
+                BlueprintModelsScreen blueprints = uiGraphics.BlueprintModelsPopup;
+                AsyncLoading loadingScreen = UnityEngine.Object.FindObjectOfType<AsyncLoading>();
+                GameObject anyKey = loadingScreen != null ? Traverse.Create(loadingScreen).Field("InitLoadingVisuals").GetValue<GameObject>() : null;
+                if (anyKey != null) anyKey.SetActive(false);
+                yield return ConfirmEvents();   // an event closes every open screen, so first
+                ClearNotifications();
+                yield return Wait(1f);
+                blueprints.Show();
+                yield return Wait(1f);
+                Traverse.Create(blueprints).Method("ShowSubTab", new[] { typeof(int) }).GetValue(-1);
+                yield return Wait(2f);
+                CardLine line = Traverse.Create(blueprints).Field("BlueprintsLine").GetValue<CardLine>();
+                Plugin.Log.LogInfo("[SelfTest] UI test: line " + (line != null) + ", slots " + (line?.Slots?.Count ?? -1));
+                InGameCardBase researchCard = (line?.Slots ?? new List<DynamicLayoutSlot>()).Where(slot => slot.IsActive && slot.AssignedCard != null).Select(slot => slot.AssignedCard)
+                    .FirstOrDefault(card => BlueprintCards.OpenResearch(card) != null && ApConnection.Scouted.ContainsKey(BlueprintCards.OpenResearch(card).Id));
+                string expectedItem = researchCard != null ? ApConnection.Scouted[BlueprintCards.OpenResearch(researchCard).Id].ItemDisplayName : null;
+                if (researchCard != null && researchCard.CurrentSlot != null) line.MoveViewTo(researchCard.CurrentSlot, _ForceCenter: true, _Pulse: false);
+                yield return Wait(1.5f);
+                ClearNotifications();
+                yield return Wait(0.5f);
+                ScreenCapture.CaptureScreenshot(Path.Combine(Path.GetDirectoryName((string)config["report"]), "research.png"));
+                yield return Wait(1f);
+                Check("research card shows the item it sends and for whom",
+                      researchCard != null && researchCard.CardVisuals != null && researchCard.CardVisuals.CardTitle.text.StartsWith(expectedItem) &&
+                      researchCard.CardVisuals.CardTitle.text.Contains("for ") && researchCard.CardDescription().Contains("Original research"),
+                      new { title = researchCard?.CardVisuals?.CardTitle?.text, expectedItem, original = researchCard != null ? (string)researchCard.CardModel.CardName : null });
+
+                InGameCardBase badgeCard = null;
+                int tabs = blueprints.BlueprintTabs.Length;
+                for (int tab = 0; tab < tabs && badgeCard == null; tab++)
+                {
+                    Traverse.Create(blueprints).Method("ShowTab", new[] { typeof(int) }).GetValue(tab);
+                    yield return Wait(1f);
+                    badgeCard = (line?.Slots ?? new List<DynamicLayoutSlot>()).Where(slot => slot.IsActive && slot.AssignedCard != null).Select(slot => slot.AssignedCard)
+                        .FirstOrDefault(card => BlueprintCards.OpenBuild(card) != null && card.gameObject.activeInHierarchy);
+                }
+                if (badgeCard != null && badgeCard.CurrentSlot != null) line.MoveViewTo(badgeCard.CurrentSlot, _ForceCenter: true, _Pulse: false);
+                yield return Wait(1.5f);
+                Transform badge = badgeCard != null && badgeCard.CardVisuals != null ? badgeCard.CardVisuals.transform.Find("ArchipelagoBuildBadge") : null;
+                ClearNotifications();
+                yield return Wait(0.5f);
+                ScreenCapture.CaptureScreenshot(Path.Combine(Path.GetDirectoryName((string)config["report"]), "blueprints.png"));
+                yield return Wait(1f);
+                Check("an open build check carries the Archipelago badge",
+                      badge != null && badge.gameObject.activeInHierarchy && badgeCard.CardDescription().Contains("building this the first time"),
+                      badgeCard != null ? (string)badgeCard.CardModel.CardName : null);
+                blueprints.Hide();
+                yield return Wait(1f);
+
+                yield return ConfirmEvents();
+                CharacterScreen sheet = uiGraphics.CharacterWindow;
+                sheet.Open();
+                sheet.ChangeTab(2);
+                yield return Wait(1.5f);
+                int expectedPerks = ApGame.State.Received.Where(id => Registry.Items.ContainsKey(id) && Registry.Items[id].Kind == "perk").Distinct().Count() +
+                                    Registry.Items.Values.Where(entry => entry.Kind == "newperk").Select(entry => entry.Key).Distinct().Count(key => NewPerks.Level(key) > 0);
+                Portraits.Step(1);
+                yield return Wait(1f);
+                Image bigPortrait = Traverse.Create(sheet).Field("CharacterPortrait").GetValue<Image>();
+                ClearNotifications();
+                yield return Wait(0.5f);
+                ScreenCapture.CaptureScreenshot(Path.Combine(Path.GetDirectoryName((string)config["report"]), "character.png"));
+                yield return Wait(1f);
+                Check("character sheet lists the received perks", CharacterSheet.Added == expectedPerks && expectedPerks > 0,
+                      new { shown = CharacterSheet.Added, expectedPerks });
+                Image hudPortrait = UnityEngine.Object.FindObjectsOfType<ShowCharacterPortrait>()
+                    .Select(shown => Traverse.Create(shown).Field("PortraitImage").GetValue<Image>()).FirstOrDefault(image => image != null);
+                Check("a chosen portrait shows on the character sheet and the HUD and stays with the save",
+                      ApGame.State.PortraitId != null && Portraits.Current != null && bigPortrait != null && bigPortrait.overrideSprite == Portraits.Current &&
+                      hudPortrait != null && hudPortrait.overrideSprite == Portraits.Current,
+                      new { ApGame.State.PortraitId, hud = hudPortrait != null });
+                sheet.Close();
+                Plugin.ConfigPortrait.Value = "";
+                yield return Wait(1f);
+            }
 
             // 10b. Phase D: extras, traps, storage extension and hut upgrade kit.
             gm = GM;

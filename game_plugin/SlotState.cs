@@ -58,6 +58,12 @@ namespace CardSurvivalArchipelago
         public int FindsAmount = 1;
         /// <summary>New games start as the Archipelago character.</summary>
         public bool CharacterLock = true;
+        /// <summary>0 = normal (+25 per skill item), 1 = full (+50).</summary>
+        public int SkillBoost;
+
+        // ---- Look (not game progress) ----
+        /// <summary>Portrait chosen for this save (the game's portrait id), or null for the character's own.</summary>
+        public string PortraitId;
 
         /// <summary>
         /// Finds waiting in the buffer (indices into <see cref="Received"/>). A buffered find is not on

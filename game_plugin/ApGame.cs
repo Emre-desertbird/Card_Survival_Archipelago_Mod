@@ -60,6 +60,7 @@ namespace CardSurvivalArchipelago
                 RegistryVersion = Registry.Version,
             };
             ReadSeedOptions();
+            State.PortraitId = Portraits.Preferred;
             State.Write();
             AppliedNow = 0;
             RewardsNow = 0;
@@ -146,6 +147,7 @@ namespace CardSurvivalArchipelago
             }
             if (data.TryGetValue("finds_amount", out value)) State.FindsAmount = System.Convert.ToInt32(value);
             if (data.TryGetValue("character_lock", out value)) State.CharacterLock = System.Convert.ToBoolean(value);
+            if (data.TryGetValue("skill_boost", out value)) State.SkillBoost = System.Convert.ToInt32(value);
         }
 
         public static bool MatchesConnection()

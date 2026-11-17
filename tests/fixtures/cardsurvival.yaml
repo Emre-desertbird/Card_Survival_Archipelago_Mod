@@ -9,5 +9,6 @@ game: "Card Survival: Tropical Island"
   new_perks: true
   extra_checks: true
   hut_upgrades: true
+  skill_boost: full
   trap_percentage: 100
   trap_limit: 10

@@ -37,6 +37,8 @@ game: "Card Survival: Tropical Island"
   farming_checks: true
   # Finds (filler): less / normal / more
   finds_amount: normal
+  # Skill items: normal = +25 each (75 of 150), full = +50 each (150 of 150).
+  skill_boost: normal
   # New games start as Normal Guy (on by default); the logbook needs it.
   character_lock: true
   logbook: true

@@ -22,6 +22,7 @@ namespace CardSurvivalArchipelago
             public string StatId;     // skill items: the GameStat to raise
             public float Amount;      // skill items: by how much
             public string PerkId;     // perk items: the CharacterPerk
+            public string Effect;     // new perk items: what one level does
             public List<string> Equipment = new List<string>();   // blueprint items: finished copies to hand out once
             public bool Challenge;    // locations: long check, excluded from important items by default
             public string Category;   // find items: material, ingredient, provision, drink, treat, keepsake
@@ -108,6 +109,7 @@ namespace CardSurvivalArchipelago
                     Id = (long)raw["ap_id"], Name = (string)raw["name"], Key = (string)raw["key"],
                     CardId = (string)raw["unique_id"] ?? (string)raw["card_id"], Kind = (string)raw["kind"] ?? "blueprint",
                     StatId = (string)raw["stat_id"], Amount = (float?)raw["amount"] ?? 0f, PerkId = (string)raw["perk_id"],
+                    Effect = (string)raw["effect"],
                 };
                 JArray equipment = raw["equipment"] as JArray;
                 if (equipment != null)

@@ -13,13 +13,14 @@ namespace CardSurvivalArchipelago
     {
         public const string Guid = "archipelago.cardsurvival.tropicalisland";
         public const string Name = "Card Survival Archipelago";
-        public const string Version = "0.7.2";
+        public const string Version = "0.8.0";
 
         internal static ManualLogSource Log;
         internal static ConfigFile Settings;
         internal static ConfigEntry<string> ConfigHost;
         internal static ConfigEntry<string> ConfigSlot;
         internal static ConfigEntry<string> ConfigPassword;
+        internal static ConfigEntry<string> ConfigPortrait;
 
         private void Awake()
         {
@@ -28,6 +29,7 @@ namespace CardSurvivalArchipelago
             ConfigHost = Config.Bind("Connection", "Server", "archipelago.gg:38281", "Archipelago server address");
             ConfigSlot = Config.Bind("Connection", "Slot", "", "Your slot (player) name");
             ConfigPassword = Config.Bind("Connection", "Password", "", "Room password, if any");
+            ConfigPortrait = Config.Bind("Look", "Portrait", "", "Portrait id for new Archipelago games (empty: the character's own)");
 
             if (!Registry.Load(Path.GetDirectoryName(Info.Location)))
             {
