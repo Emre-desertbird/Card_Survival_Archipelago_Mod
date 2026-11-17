@@ -60,20 +60,29 @@ namespace CardSurvivalArchipelago
         }
     }
 
-    /// <summary>Any real ending completes the goal. After it, "Load checkpoint" lets the player go on.</summary>
+    /// <summary>
+    /// Any real ending completes the goal. After it, "Load checkpoint" lets the player go on.
+    /// The game reuses this menu for other things: the cheat menu's journal (_KeepPlaying), the
+    /// diary of the character screen (SetupWhilePlaying) and the demo end. Only a real ending
+    /// (GameManager, victory action) passes _CheckObjectives with neither game over nor keep playing.
+    /// </summary>
     [HarmonyPatch(typeof(EndgameMenu), nameof(EndgameMenu.Setup))]
     internal static class EndingPatch
     {
-        private static void Prefix(bool _GameOver, bool _KeepPlaying)
+        public static bool IsRealEnding(bool gameOver, bool keepPlaying, bool checkObjectives)
         {
-            // _KeepPlaying is only used by the cheat menu's journal view, never by a real ending.
-            if (!_GameOver && !_KeepPlaying) ApGame.CompleteGoal();
+            return checkObjectives && !gameOver && !keepPlaying;
         }
 
-        private static void Postfix(EndgameMenu __instance, bool _GameOver, bool _KeepPlaying)
+        private static void Prefix(bool _GameOver, bool _KeepPlaying, bool _CheckObjectives)
+        {
+            if (IsRealEnding(_GameOver, _KeepPlaying, _CheckObjectives)) ApGame.CompleteGoal();
+        }
+
+        private static void Postfix(EndgameMenu __instance, bool _GameOver, bool _KeepPlaying, bool _CheckObjectives)
         {
             GameManager gm = MBSingleton<GameManager>.Instance;
-            if (!ApGame.Active || _GameOver || _KeepPlaying || gm == null || !gm.IsSafeMode) return;
+            if (!ApGame.Active || !IsRealEnding(_GameOver, _KeepPlaying, _CheckObjectives) || gm == null || !gm.IsSafeMode) return;
             UnityEngine.GameObject button = Traverse.Create(__instance).Field("LoadCheckpointButton").GetValue<UnityEngine.GameObject>();
             if (button != null) button.SetActive(true);
         }

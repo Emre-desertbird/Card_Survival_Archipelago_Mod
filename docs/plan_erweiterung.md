@@ -1,6 +1,6 @@
 # Plan: neue Checks, Logbuch, neue Perks, Items und Balance
 
-Status: **Alle Phasen A bis D sind gebaut** (Mod-Version 0.7.1, je Phase im echten Spiel
+Status: **Alle Phasen A bis D sind gebaut** (Mod-Version 0.7.2, je Phase im echten Spiel
 getestet). Das Logbuch steht auch im Journal-Buch des Spiels.
 
 Abweichungen beim Bau, jeweils aus den Daten begründet:

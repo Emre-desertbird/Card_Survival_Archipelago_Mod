@@ -42,7 +42,7 @@ python tools/run_selftest.py ... --game-dir "C:\ProgramData\Archipelago\Card Sur
 It generates a solo seed, hosts it on a local Archipelago server, and starts the game with
 `CSAP_SELFTEST`. The plugin then plays a scripted session and writes a report. Saves go to
 `...(Archipelago Test)`; the tool checksums the normal saves before and after and stops if
-they changed. 72 steps at the moment (the test seed switches every option on, traps at 100 % up to 10):
+they changed. 73 steps at the moment (the test seed switches every option on, traps at 100 % up to 10):
 
 - connect, scout all locations, bind a new save, the character lock starts Normal Guy
   (the test picks another character), Safe Mode on, starting area check;
@@ -74,6 +74,7 @@ they changed. 72 steps at the moment (the test seed switches every option on, tr
 - a shed is built and entered, a storage extension adds 25 %, a stone is put inside, the
   upgrade kit turns it into a mud hut (stone and extension kept), outside the entrance is
   a mud hut;
+- the character screen's diary and the cheat journal do not complete the goal;
 - an ending completes the goal (the server log is checked) and offers the checkpoint.
 
 ## Still manual

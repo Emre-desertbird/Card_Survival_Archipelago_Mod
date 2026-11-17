@@ -563,6 +563,10 @@ namespace CardSurvivalArchipelago
             foreach (var pair in trapLocations.Concat(upgradeLocations)) ApGame.CompleteLocation(pair.Key);
             yield return WaitFor(() => ApGame.AppliedNow == ApGame.State.Received.Count && HutUpgrades.KitsLeft >= 1 && HutUpgrades.ExtensionsLeft >= 1, 15f);
             yield return Wait(2f);
+            // Items arriving together (skills) can open the game's own events; traps wait for them.
+            yield return ConfirmEvents();
+            yield return WaitFor(() => Traps.WentOff.Count > trapsBefore, 10f);
+            yield return Wait(2f);
             Check("traps: at most one per day, the rest waits", trapLocations.Count == 2 && Traps.LastDay == gm.CurrentDay &&
                   Traps.WentOff.Count - trapsBefore <= 1 && Traps.WentOff.Count >= 1 && Traps.Queue.Count >= 1,
                   new { wentOff = Traps.WentOff.ToArray(), waiting = Traps.Queue.Count, Traps.LastDay, gm.CurrentDay });
@@ -609,8 +613,19 @@ namespace CardSurvivalArchipelago
                   !gm.AllCards.Any(card => card != null && !card.Destroyed && card.CardModel != null && card.CardModel.UniqueID == shedTier[1]),
                   gm.CurrentEnvironment.name);
 
-            // 11. A real ending's screen completes the goal and offers the checkpoint.
-            MBSingleton<EndgameMenu>.Instance.Setup("Self test ending", 0, 0, GameLoad.Instance.Games[GameLoad.Instance.CurrentGameDataIndex].MainData, false, false, false, false, false);
+            // 11. The diary of the character screen and the cheat journal reuse the ending screen;
+            // they must never complete the goal (0.7.1 sent the goal from the diary).
+            EndgameMenu endMenu = MBSingleton<EndgameMenu>.Instance;
+            endMenu.SetupWhilePlaying();
+            yield return Wait(1f);
+            GM.OpenEndgameJournal(false);
+            yield return Wait(1f);
+            Check("diary and cheat journal do not complete the goal", !ApGame.State.GoalDone);
+
+            // 12. A real ending's screen (as GameManager calls it for a victory action) completes
+            // the goal and offers the checkpoint.
+            endMenu.Setup("Self test ending", 0, 0, GameLoad.Instance.Games[GameLoad.Instance.CurrentGameDataIndex].MainData,
+                          _GameOver: false, _KeepPlaying: false, _Confetti: true, _SpecialEnding: false, _CheckObjectives: true);
             yield return Wait(1f);
             GameObject button = Traverse.Create(MBSingleton<EndgameMenu>.Instance).Field("LoadCheckpointButton").GetValue<GameObject>();
             Check("ending completes the goal", ApGame.State.GoalDone);
